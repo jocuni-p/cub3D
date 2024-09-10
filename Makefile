@@ -1,6 +1,4 @@
-#Basic Makefile sample as a starting from MLX42 repo
-
-
+#Basic Makefile sample as a starting point from MLX42 repo
 
 
 NAME	:= cub3D
