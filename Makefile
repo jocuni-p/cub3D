@@ -1,6 +1,6 @@
-#Makefile sample from MLX42 repo
+#Basic Makefile sample as a starting from MLX42 repo
 
-##TO DO: include the libft library
+
 
 
 NAME	:= cub3D
