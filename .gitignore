@@ -1,0 +1,12 @@
+.vscode/
+.dep/
+.objs/
+lib/libft/*.o
+lib/libft/libft.a
+.DS_Store
+a.out
+*.swp
+*.dSYM
+*.d
+/mpanic
+.timmer
