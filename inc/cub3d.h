@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 15:41:01 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/09/10 10:46:55 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/09/11 18:54:09 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,19 @@
 
 /*-------------------Error messages--------------------*/
 
-//# define ERR_FD "Error:\nInvalid fd :(\n"
-//# define ERR_EX "Error:\nInvalid extension :(\n"
-//# define ERR_MAP "Error:\nInvalid map :(\n"
-//# define ERR_FILE "Error:\nInvalid file data :(\n"
-//# define ERR_IMG "Error;\nImage not found :(\n"
+# define ERR_ARG "Invalid argument\n"
+//# define ERR_FD "Error:\nInvalid fd\n"
+# define ERR_EX "Error:\nInvalid extension\n"
+//# define ERR_MAP "Error:\nInvalid map\n"
+//# define ERR_FILE "Error:\nInvalid file data\n"
+//# define ERR_IMG "Error;\nImage not found\n"
 
+/*-----List containing all file.cub lines------*/
+typedef struct s_cub
+{
+	char			*str;//each line from file.cub
+	struct s_cub	*next;
+}					t_cub;
 
 typedef struct s_elem
 {
@@ -41,22 +48,26 @@ typedef struct s_elem
 
 typedef struct s_parser
 {
-	t_list	raw_input;//will contain all lines from .cub
+	t_cub	*cub;//Linked_List containing each line from file.cub
+	t_elem	elem;
 	char	**raw_map;//original map before 
 	int		player_x;
 	int		player_y;
 	char	player_view;
-	t_elem	elements;
 }			t_parser;
 
 typedef struct s_data
 {
-	char	**map;//already formated
+	char	**map;//already formated with rectangular shape
 
 
 	
 }			t_data;
 
+
+
+
+int	check_file_ext(char *str);
 
 
 
