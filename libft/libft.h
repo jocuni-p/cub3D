@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jocuni-p <jocuni-p@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 10:20:18 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/05/02 10:02:11 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/09/12 14:32:12 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ long	ft_atol(const char *str);
 char	*ft_itoa(int n);
 char	*ft_ltoa(int n);
 
+void	*p_malloc(size_t size);
 void	*ft_calloc(size_t count, size_t size);
 void	ft_bzero(void *s, size_t n);
 void	*ft_memset(void *b, int c, size_t len);

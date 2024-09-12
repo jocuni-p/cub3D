@@ -1,23 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstdelone_bonus.c                               :+:      :+:    :+:   */
+/*   lstadd_back.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/16 13:54:18 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/09/12 14:52:35 by jocuni-p         ###   ########.fr       */
+/*   Created: 2024/09/12 11:51:42 by jocuni-p          #+#    #+#             */
+/*   Updated: 2024/09/12 12:03:42 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*Libera/borra la memoria del content de un nodo utilizando una funcion
-externa, ademas de liberar el nodo. No devuelve nada.
-OJO: No tiene en cuenta si el nodo forma parte de una lista, porque en ese 
-caso, quedaria rota.*/
-#include "libft.h"
+#include "./inc/cub3d.h"
 
-void	ft_lstdelone(t_list *lst, void (*del)(void *))
+/*----Adds a node to the end of a 't_cub' list----*/
+void	lstadd_back(t_cub **lst, t_cub *new)
 {
-	del(lst->content);
-	free(lst);
+	t_cub	*aux;
+
+	if (*lst)
+	{
+		aux = lstlast(*lst);
+		aux->next = new;
+	}
+	else
+		*lst = new;
 }

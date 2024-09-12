@@ -1,23 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstdelone_bonus.c                               :+:      :+:    :+:   */
+/*   lst_newnode.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/16 13:54:18 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/09/12 14:52:35 by jocuni-p         ###   ########.fr       */
+/*   Created: 2024/09/12 10:42:04 by jocuni-p          #+#    #+#             */
+/*   Updated: 2024/09/12 14:13:11 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*Libera/borra la memoria del content de un nodo utilizando una funcion
-externa, ademas de liberar el nodo. No devuelve nada.
-OJO: No tiene en cuenta si el nodo forma parte de una lista, porque en ese 
-caso, quedaria rota.*/
-#include "libft.h"
+#include "./inc/cub3d.h"
 
-void	ft_lstdelone(t_list *lst, void (*del)(void *))
+/*----Returns a malloced 't_cub' node initialized with the argument----*/
+t_cub	*lst_newnode(char *str)
 {
-	del(lst->content);
-	free(lst);
+	t_cub	*new_node;
+
+	new_node = (t_cub *)p_malloc(sizeof(t_cub));
+	new_node->str = str;
+	new_node->next = NULL;
+	return (new_node);
 }

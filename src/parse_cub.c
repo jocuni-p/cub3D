@@ -6,13 +6,14 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 14:27:44 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/09/11 18:49:16 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/09/12 12:59:44 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./inc/cub3d.h"
 
-static void	init_parser(t_parser *parser)
+/*----Sets to 0 all struct variables----*/ 
+void	init_parser(t_parser *parser)
 {
 	parser->cub = NULL;
 	parser->elem.no = NULL;	
@@ -27,12 +28,15 @@ static void	init_parser(t_parser *parser)
 	parser->player_view = 0;
 }
 
-//this function has to manage the printing message if fails
+//Take into account: to manage the printing messages if the function fails
 int	parse_cub(t_parser *parser, char *filename)//return 0 for success or 1 otherwise
 {
 	
-	input_file_to_list(parser, filename);
+	inputfile_to_list(parser, filename);
 
 //		parse_elements
 //		parse_map (check, among others, the only 6 characters that can contain)
 }
+/*NOTES: 
+tabs: I am gonna manage the ´tab´ in the input file as an invalid argument 
+space: think about how to manage it in the map*/

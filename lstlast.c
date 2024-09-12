@@ -1,39 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   input_file_to_list.c                               :+:      :+:    :+:   */
+/*   lstlast.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/11 18:01:35 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/09/11 18:53:55 by jocuni-p         ###   ########.fr       */
+/*   Created: 2024/09/12 12:00:20 by jocuni-p          #+#    #+#             */
+/*   Updated: 2024/09/12 12:02:53 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./inc/cub3d.h"
 
-/*----Puts in a list every line from the input filename----*/
-t_list	**input_file_to_list(t_parser *parser, char *filename)
+/*---Returns the last node of a 't_cub' list----*/
+t_cub	*lstlast(t_cub *lst)
 {
-	int		fd;
-	char	*line;
-	
-	fd = open(filename, O_RDONLY);
-	if (fd == -1)
-		return (?????);
-
-	line = get_next_line(fd);
-	while (line != NULL)
+	if (lst == NULL)
+		return (NULL);
+	while (lst->next != NULL)
 	{
-		newnode: 
-			mallocar su length
-			asignarle un valor con ft_strlcpy
-			next->NULL
-		listaddback(listname, newnode)
-
-		line = get_next_line(fd);
+		lst = lst->next;
 	}
-	
-	close(fd);
-	
+	return (lst);
 }

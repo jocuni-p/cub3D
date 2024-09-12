@@ -6,14 +6,14 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 12:38:53 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/09/11 18:45:04 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/09/12 12:06:13 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*A trick to return
 return (ft_printf(ERR_FILE), free_parser(&parser), 1); */
 
-#include "../inc/cub3d.h"
+#include "./inc/cub3d.h"
 
 
 int	main(int ac, char **av)

@@ -1,23 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstdelone_bonus.c                               :+:      :+:    :+:   */
+/*   ft_p_malloc.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/16 13:54:18 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/09/12 14:52:35 by jocuni-p         ###   ########.fr       */
+/*   Created: 2024/09/12 14:27:37 by jocuni-p          #+#    #+#             */
+/*   Updated: 2024/09/12 14:33:37 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*Libera/borra la memoria del content de un nodo utilizando una funcion
-externa, ademas de liberar el nodo. No devuelve nada.
-OJO: No tiene en cuenta si el nodo forma parte de una lista, porque en ese 
-caso, quedaria rota.*/
 #include "libft.h"
 
-void	ft_lstdelone(t_list *lst, void (*del)(void *))
+/* Protected malloc. Allocates 'size' bytes of mem and returns a pointer to it.
+Exits properly if memory allocation fails.*/
+void	*p_malloc(size_t size)
 {
-	del(lst->content);
-	free(lst);
+	void	*ptr;
+
+	ptr = malloc(size);
+	if (ptr == NULL)
+	{
+		write(2, "Error: memory allocation failure\n", 33);
+		exit (EXIT_FAILURE);
+	}
+	return (ptr);
 }

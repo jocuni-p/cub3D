@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 15:41:01 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/09/11 18:54:09 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/09/12 13:51:55 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <fcntl.h>// for ´open´
 # include <math.h>//not sure if to be needed
 
 /*-------------------Error messages--------------------*/
@@ -30,7 +31,7 @@
 //# define ERR_IMG "Error;\nImage not found\n"
 
 /*-----List containing all file.cub lines------*/
-typedef struct s_cub
+typedef struct s_cublst
 {
 	char			*str;//each line from file.cub
 	struct s_cub	*next;
@@ -48,27 +49,34 @@ typedef struct s_elem
 
 typedef struct s_parser
 {
-	t_cub	*cub;//Linked_List containing each line from file.cub
-	t_elem	elem;
-	char	**raw_map;//original map before 
+	t_cub	*cub;//List containing each line from file.cub
+	t_elem	lem;
+	char	**raw_map;//original map before to be parsed
 	int		player_x;
 	int		player_y;
 	char	player_view;
 }			t_parser;
 
-typedef struct s_data
+typedef struct s_data//IN PROGRESS
 {
 	char	**map;//already formated with rectangular shape
-
-
-	
+	?
+	?
+	?
 }			t_data;
 
 
 
+/*-------------parse management--------------*/
+void	init_parser(t_parser *parser);
+int		check_file_ext(char *str);
+t_cub	**inputfile_to_list(t_parser *parser, char *filename);
 
-int	check_file_ext(char *str);
-
+/*-------------lists management--------------*/
+t_cub	*lst_newnode(char *str);
+t_cub	*lstlast(t_cub *lst);
+void	lstadd_back(t_cub **lst, t_cub *new);
+void	lst_delone(t_cub **lst, char **node_to_del, void (*del)(void*));
 
 
 
