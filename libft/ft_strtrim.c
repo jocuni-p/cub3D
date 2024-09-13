@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jocuni-p <jocuni-p@student.42barcel>       +#+  +:+       +#+        */
+/*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 12:49:52 by jocuni-p          #+#    #+#             */
-/*   Updated: 2023/07/06 11:25:11 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/09/13 15:55:16 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-/*Elimina todos los caracteres de la string ’set’ desde el principio y desde el
- * final de ’s1’, hasta encontrar un caracter no perteneciente a ’set’. Retorna 
- * un puntero a la reserva de memoria con el string resultante. Retorna NULL si
- * falla la reserva de memoria.*/
+
+/*Elimina de "s1" todos los caracteres "set" que encuentra al inicio y al final
+del string hasta que topa con algun caracter diferente y se para. Retorna un 
+puntero al nuevo string mallocado resultante o NULL si falla la reserva de 
+memoria.*/
 
 //#include<stdlib.h>
 //#include<stdio.h>

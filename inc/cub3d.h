@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 15:41:01 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/09/12 13:51:55 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/09/13 13:35:02 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,10 @@
 /*-------------------Error messages--------------------*/
 
 # define ERR_ARG "Invalid argument\n"
-//# define ERR_FD "Error:\nInvalid fd\n"
+# define ERR_FD "Error:\nInvalid fd\n"
 # define ERR_EX "Error:\nInvalid extension\n"
+# define ERR_FILE "Error:\nInvalid file data\n"
 //# define ERR_MAP "Error:\nInvalid map\n"
-//# define ERR_FILE "Error:\nInvalid file data\n"
 //# define ERR_IMG "Error;\nImage not found\n"
 
 /*-----List containing all file.cub lines------*/
@@ -40,17 +40,23 @@ typedef struct s_cublst
 typedef struct s_elem
 {
 	char	*no;//pointer to the texture .xpm
+	int		no_qty;
 	char	*so;
+	int		so_qty;
 	char	*we;
+	int		we_qty;
 	char	*ea;
+	int		ea_qty;
 	char	*c;//pointer to the ceiling color
+	int		c_qty;
 	char	*f;
+	int		f_qty;
 }			t_elem;
 
 typedef struct s_parser
 {
 	t_cub	*cub;//List containing each line from file.cub
-	t_elem	lem;
+	t_elem	elem;
 	char	**raw_map;//original map before to be parsed
 	int		player_x;
 	int		player_y;
@@ -60,9 +66,9 @@ typedef struct s_parser
 typedef struct s_data//IN PROGRESS
 {
 	char	**map;//already formated with rectangular shape
-	?
-	?
-	?
+
+
+
 }			t_data;
 
 
@@ -70,7 +76,7 @@ typedef struct s_data//IN PROGRESS
 /*-------------parse management--------------*/
 void	init_parser(t_parser *parser);
 int		check_file_ext(char *str);
-t_cub	**inputfile_to_list(t_parser *parser, char *filename);
+int		inputfile_to_list(t_parser *parser, char *filename);
 
 /*-------------lists management--------------*/
 t_cub	*lst_newnode(char *str);
