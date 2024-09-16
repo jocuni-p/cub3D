@@ -6,11 +6,11 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 13:43:28 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/09/13 13:48:15 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/09/16 15:45:54 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./inc/cub3D.h"
+#include "../include/cub3D.h"
 
 /*----Sets to 0 all struct variables----*/ 
 void	init_parser(t_parser *parser)

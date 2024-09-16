@@ -23,15 +23,16 @@ int	inputfile_to_list(t_parser *parser, char *filename)
 	
 	fd = open(filename, O_RDONLY);
 	if (fd == -1)
-		return (msg_print(ERR_FD), 1);
+		return (handle_error(ERR_FD, NULL), 1);
 
 	line = get_next_line(fd);
 	if (line == NULL)
-		return (msg_print(ERR_FILE), 1);
+		return (handle_error(ERR_FILE, NULL), 1);
 		
 	while (line != NULL)
 	{
 		node = lst_newnode(line);
+//Is needed to protect the node creation ???
 		lstadd_back(&parser->cub, node);
 		line = get_next_line(fd);
 	}
