@@ -1,26 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_file_ext.c                                   :+:      :+:    :+:   */
+/*   lst_newnode.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/11 13:56:46 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/09/17 15:24:31 by jocuni-p         ###   ########.fr       */
+/*   Created: 2024/09/12 10:42:04 by jocuni-p          #+#    #+#             */
+/*   Updated: 2024/09/17 12:22:39 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-/*------Argument extension name validator-----*/
-int	check_file_ext(char *str)//check_filename_and_extension
+/*----Returns a malloced 't_cub' node initialized with the argument----*/
+t_cub	*lst_newnode(char *str)
 {
-	char	*ext;
+	t_cub	*new_node;
 
-	if (str == NULL)
-		return (1);
-	ext = ft_strrchr(str, '.');
-	if (ext == NULL || ft_strlen(ext) != 4 || ft_strncmp(ext, ".cub", 4) != 0)
-		return (1);
-	return (0);
+	new_node = (t_cub *)p_malloc(sizeof(t_cub));
+	new_node->str = str;
+	new_node->next = NULL;
+	return (new_node);
 }

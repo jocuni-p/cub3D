@@ -6,7 +6,7 @@
 #    By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/05 16:15:05 by jocuni-p          #+#    #+#              #
-#    Updated: 2024/09/16 16:13:29 by jocuni-p         ###   ########.fr        #
+#    Updated: 2024/09/17 12:40:00 by jocuni-p         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,13 +38,24 @@ SRC = ft_atoi.c ft_bzero.c ft_calloc.c ft_isalpha.c ft_isdigit.c ft_isalnum.c\
 
 OBJ = $(SRC:.c=.o)
 
+# Colors
+################################################################################
+
+DEF_COLOR =		\033[0;39m
+DARK_YELLOW =	\033[38;5;143m
+DARK_GREEN 	=	\033[1m\033[38;2;75;179;82m
+GREEN 		=	\033[0;32m
+
+
+# Rules
+################################################################################
+
 all: $(NAME)
 
 
 $(NAME): $(OBJ)
 	@$(LIB) $(NAME) $(OBJ)
-	@echo "Library $(NAME) created."
-
+	@echo "$(DARK_GREEN)Built target $(NAME) $(DEF_COLOR)"	
 
 #%.o : %.c libft.h  Makefile libft.a
 %.o : %.c libft.h  Makefile

@@ -6,11 +6,11 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 13:45:15 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/09/12 15:05:23 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/09/17 12:14:05 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./inc/cub3d.h"
+#include "./include/cub3d.h"
 
 
 //>>>>>>>>>>>>>>>>>>>ATENTION, IN PROGRESS<<<<<<<<<<<<<<<<<< 

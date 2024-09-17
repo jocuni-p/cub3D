@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/cub3d.h"
+#include "../include/cub3d.h"
 
 /*----Copies every line from filename into a list----*/
 /*Gets a line from filename, puts it in a node and adds the node to the end

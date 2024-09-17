@@ -1,26 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_file_ext.c                                   :+:      :+:    :+:   */
+/*   lstadd_back.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/11 13:56:46 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/09/17 15:24:31 by jocuni-p         ###   ########.fr       */
+/*   Created: 2024/09/12 11:51:42 by jocuni-p          #+#    #+#             */
+/*   Updated: 2024/09/17 12:22:46 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-/*------Argument extension name validator-----*/
-int	check_file_ext(char *str)//check_filename_and_extension
+/*----Adds a node to the end of a 't_cub' list----*/
+void	lstadd_back(t_cub **lst, t_cub *new)
 {
-	char	*ext;
+	t_cub	*aux;
 
-	if (str == NULL)
-		return (1);
-	ext = ft_strrchr(str, '.');
-	if (ext == NULL || ft_strlen(ext) != 4 || ft_strncmp(ext, ".cub", 4) != 0)
-		return (1);
-	return (0);
+	if (*lst)
+	{
+		aux = lstlast(*lst);
+		aux->next = new;
+	}
+	else
+		*lst = new;
 }

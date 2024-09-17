@@ -1,27 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lstadd_back.c                                      :+:      :+:    :+:   */
+/*   check_file_name.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/12 11:51:42 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/09/12 12:03:42 by jocuni-p         ###   ########.fr       */
+/*   Created: 2024/09/17 16:12:09 by jocuni-p          #+#    #+#             */
+/*   Updated: 2024/09/17 16:58:14 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./inc/cub3d.h"
+#include "../include/cub3d.h"
 
-/*----Adds a node to the end of a 't_cub' list----*/
-void	lstadd_back(t_cub **lst, t_cub *new)
+int	check_file_name(char *str)
 {
-	t_cub	*aux;
+	int	i;
 
-	if (*lst)
+	i = 0;
+	if (str == NULL)
+		return (1);
+	while (str[i] && str[i] != '.')
 	{
-		aux = lstlast(*lst);
-		aux->next = new;
+		if ((str[i] >= 97 && str[i] <= 122) \
+		|| (str[i] >= 48 && str[i] <= 57) || str[i] == '_')
+			i++;
+		else
+			return (1);
 	}
-	else
-		*lst = new;
+	return (0);
 }

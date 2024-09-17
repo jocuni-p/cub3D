@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 12:38:53 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/09/16 16:08:42 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/09/17 15:42:08 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 return (ft_printf(ERR_FILE), free_parser(&parser), 1); */
 
 #include "../include/cub3d.h"
-
+//#include "../lib/libft.h"
 
 int	main(int ac, char **av)
 {
@@ -22,17 +22,15 @@ int	main(int ac, char **av)
 	
 	if (ac != 2)
 		return (handle_error(ERR_ARG, NULL), 1);//paso NULL hasta que no este mallocado algo que se deba liberar
-	if (check_file_ext(av[1]));//maybe could be moved inside parser
-		return (handle_error(ERR_EX, NULL), 1);
-	init_parser(&parser);//maybe could be moved inside parser
-	if (parse_cub(&parser, av[1]));
+	init_parser(&parser);
+	if (parse_cub(&parser, av[1]))
 		return (1);//parse_cub should manage the message to print if failed
 		
 //>>>>>>>>>>>GRAPHIC PART<<<<<<<<<<<<<
 //	set_game//inits the mlx
 //	mlx_loop(mlx);
 //	mlx_terminate(mlx);//not sure if this is the proper way to finish ??
-	printf("final\n");
+	printf("FIN\n");
 	return (0);
 }
 /*
