@@ -6,13 +6,13 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 15:00:47 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/09/16 15:21:13 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/09/18 18:18:20 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-//>>>>>>>>>>>>>>>>PENDING TO WRITE - DRAFT COPY<<<<<<<<<<<<<<<<<<<<<<
+//>>>>>>>>>>>>>>>>DRAFT / IN CONSTRUCTION<<<<<<<<<<<<<<<<<<<<<<
 /*------Frees all t_parser struct memory-----*/
 void	parser_free(t_parser **parser)
 {

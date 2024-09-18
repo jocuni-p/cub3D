@@ -31,7 +31,7 @@ int	inputfile_to_list(t_parser *parser, char *filename)
 		
 	while (line != NULL)
 	{
-		node = lst_newnode(line);//my malloc is already protectec.
+		node = lst_newnode(line);//this malloc (p_malloc) is already protectec.
 		lstadd_back(&parser->cub, node);
 		line = get_next_line(fd);
 	}

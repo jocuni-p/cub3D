@@ -1,26 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_file_ext.c                                   :+:      :+:    :+:   */
+/*   check_tab.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/11 13:56:46 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/09/18 17:55:39 by jocuni-p         ###   ########.fr       */
+/*   Created: 2024/09/18 17:47:05 by jocuni-p          #+#    #+#             */
+/*   Updated: 2024/09/18 18:09:51 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-/*---Returns 0 if *str contains ".cub", otherwise or NULL returns 1 -----*/
-int	check_file_ext(char *str)
+/*---Returns 1 if a '\t' is found in str, otherwise returns 0----*/
+int	check_tab(char *str)
 {
-	char	*ext;
-
-	if (str == NULL)
-		return (1);
-	ext = ft_strrchr(str, '.');
-	if (ext == NULL || ft_strlen(ext) != 4 || ft_strncmp(ext, ".cub", 4) != 0)
+	if(ft_strchr(str, '\t'))
 		return (1);
 	return (0);
 }

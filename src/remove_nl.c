@@ -1,26 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_file_ext.c                                   :+:      :+:    :+:   */
+/*   remove_nl.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/11 13:56:46 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/09/18 17:55:39 by jocuni-p         ###   ########.fr       */
+/*   Created: 2024/09/18 17:28:49 by jocuni-p          #+#    #+#             */
+/*   Updated: 2024/09/18 17:36:51 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-/*---Returns 0 if *str contains ".cub", otherwise or NULL returns 1 -----*/
-int	check_file_ext(char *str)
+//Removes '\n' at the end of the string 
+void	remove_nl(char *str)
 {
-	char	*ext;
-
-	if (str == NULL)
-		return (1);
-	ext = ft_strrchr(str, '.');
-	if (ext == NULL || ft_strlen(ext) != 4 || ft_strncmp(ext, ".cub", 4) != 0)
-		return (1);
-	return (0);
+	size_t	len;
+	
+    len = strlen(str);
+    if (len > 0 && str[len - 1] == '\n')
+        str[len - 1] = '\0';	
 }
