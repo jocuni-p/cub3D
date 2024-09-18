@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 14:27:44 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/09/17 15:58:12 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/09/18 12:33:40 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,8 @@ int	parse_cub(t_parser *parser, char *filename)
 {
 	if (check_arg(filename))
 		return (1);
-		
 	if (inputfile_to_list(parser, filename))
 		return (1);
-		
 	print_cub_list(parser->cub);//TEMPORAL
 	
 //	parse_elements

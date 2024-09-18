@@ -13,7 +13,7 @@
 #include "../include/cub3d.h"
 
 /*----Copies every line from filename into a list----*/
-/*Gets a line from filename, puts it in a node and adds the node to the end
+/*Gets a line from filename(fd), puts it in a node and adds the node to the end
  of a list */
 int	inputfile_to_list(t_parser *parser, char *filename)
 {
@@ -31,8 +31,7 @@ int	inputfile_to_list(t_parser *parser, char *filename)
 		
 	while (line != NULL)
 	{
-		node = lst_newnode(line);
-//Is needed to protect the node creation ???
+		node = lst_newnode(line);//my malloc is already protectec.
 		lstadd_back(&parser->cub, node);
 		line = get_next_line(fd);
 	}

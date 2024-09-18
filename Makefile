@@ -6,25 +6,27 @@
 #    By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/16 11:26:53 by jocuni-p          #+#    #+#              #
-#    Updated: 2024/09/17 17:10:17 by jocuni-p         ###   ########.fr        #
+#    Updated: 2024/09/18 12:06:03 by jocuni-p         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-#TO DO: 
-#create a directory to put all .o files
-#create diferent directories inside src to put every type of functions 
+#PENDING TO DO: 
+#create a directory to contain all .o files
+#create diferent subdirectories inside src to contain every part of the project 
 
 
 
 NAME	:= cub3D
-CFLAGS	:= -Wextra -Wall -Werror -Wunreachable-code -Ofast
+CFLAGS	:= -Wextra -Wall -Werror -Wunreachable-code -Ofast -g #-fsanitize=address
 LIBMLX	:= ./lib/MLX42
 LIBFT	:= ./lib/libft/
-
+LIBFT_A	:= $(LIBFT)libft.a 
 
 HEADERS	:= -I ./include -I $(LIBMLX)/include -I $(LIBFT)
 LIBS	:= $(LIBMLX)/build/libmlx42.a -ldl -lglfw -pthread -lm
-#SRCS	:= $(shell find ./src -iname "*.c") NOT allowed wildcards in 42
+LIBS += -L$(LIBFT) -lft
+
+
 SRCS	:= 	./src/main.c \
 			./src/check_arg.c \
 			./src/check_file_ext.c \
@@ -38,11 +40,8 @@ SRCS	:= 	./src/main.c \
 			./src/parse_cub.c \
             ./src/print_cub_list.c
 			
+
 OBJS	:= ${SRCS:.c=.o}
-
-LIBFT_A	:= $(LIBFT)libft.a 
-LIBS += -L$(LIBFT) -lft
-
 
 # Colors
 ################################################################################
@@ -74,7 +73,7 @@ $(NAME): $(OBJS)
 clean:
 	@rm -rf $(OBJS)
 	@rm -rf $(LIBMLX)/build
-#	@rm -rf $(LIBFT_A)
+	@rm -rf $(LIBFT_A)
 	@$(MAKE) -C $(LIBFT) clean
 
 fclean: clean

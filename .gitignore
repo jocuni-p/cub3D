@@ -10,3 +10,4 @@ a.out
 *.d
 /mpanic
 .timmer
+src/*.o
