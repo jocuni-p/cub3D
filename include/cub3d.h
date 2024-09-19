@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 15:41:01 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/09/17 17:01:46 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/09/19 16:11:24 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,17 +41,17 @@ typedef struct s_cub
 typedef struct s_elem
 {
 	char	*no;//pointer to the texture .xpm
-	int		no_qty;
+//	int		no_qty;
 	char	*so;
-	int		so_qty;
+//	int		so_qty;
 	char	*we;
-	int		we_qty;
+//	int		we_qty;
 	char	*ea;
-	int		ea_qty;
+//	int		ea_qty;
 	char	*c;//pointer to the ceiling color
-	int		c_qty;
+//	int		c_qty;
 	char	*f;
-	int		f_qty;
+//	int		f_qty;
 }			t_elem;
 
 typedef struct s_parser

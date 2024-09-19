@@ -1,23 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_tab.c                                        :+:      :+:    :+:   */
+/*   check_valid_chars.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/18 17:47:05 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/09/19 14:08:34 by jocuni-p         ###   ########.fr       */
+/*   Created: 2024/09/19 14:09:10 by jocuni-p          #+#    #+#             */
+/*   Updated: 2024/09/19 15:03:54 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-/*>>>>>>>>>>>>>>>>>>NOT USED AT THE MOMENT<<<<<<<<<<<<<<<<<*/
-
-/*---Returns 1 if a '\t' is found in str, otherwise returns 0----*/
-int	check_tab(char *str)
+/*Returns 1 if it is found on *str any invalid character, otherwise returns 0*/
+int	check_valid_chars(char *str)
 {
-	if(ft_strchr(str, '\t'))
-		return (1);
+	int	i;
+
+	i = 0;
+	while(str[i])
+	{
+		if (ft_isalnum(str[i]) || str[i] == '_' || str[i] == ' ' \
+			|| str[i] == '/' || str[i] == '.')
+			i++;
+		else
+			return (1);
+	}
 	return (0);
 }
