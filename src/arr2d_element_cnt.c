@@ -1,23 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   remove_nl.c                                        :+:      :+:    :+:   */
+/*   arr2d_element_cnt.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/18 17:28:49 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/09/20 21:04:57 by jocuni-p         ###   ########.fr       */
+/*   Created: 2024/09/20 14:49:27 by jocuni-p          #+#    #+#             */
+/*   Updated: 2024/09/20 14:57:48 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-//Removes '\n' at the end of the string 
-void	remove_nl(char *str)
+/*Returns the num of elements has a 2D_array (char **str)*/
+int	arr2d_element_cnt(char **arr)
 {
-	size_t	len;
-	
-    len = ft_strlen(str);
-    if (len > 0 && str[len - 1] == '\n')
-        str[len - 1] = '\0';	
+	int	cnt;
+
+	cnt = 0;
+	if (arr != NULL)
+	{
+		while (arr[cnt] != NULL)
+			cnt++;
+		return (cnt);
+	}
+	return (0);
 }

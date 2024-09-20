@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 12:38:53 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/09/18 17:41:25 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/09/20 17:54:04 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,4 @@ HOW TO PROCEED:
 - Check the correct extension of the argument
 - PARSER elements
 - Parser map
-
-  
-NOTES: 
-tabs: I going to manage the ´tab´ in the input file as an INVALID argument 
-space: think about how to manage it in the map*/
+*/

@@ -1,23 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   remove_nl.c                                        :+:      :+:    :+:   */
+/*   arr2d_free.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/18 17:28:49 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/09/20 21:04:57 by jocuni-p         ###   ########.fr       */
+/*   Created: 2024/09/20 15:30:58 by jocuni-p          #+#    #+#             */
+/*   Updated: 2024/09/20 15:36:01 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-//Removes '\n' at the end of the string 
-void	remove_nl(char *str)
+/*Frees all elements of **arr2d and finally the main pointer as well.*/
+void	arr2d_free(char **arr)
 {
-	size_t	len;
-	
-    len = ft_strlen(str);
-    if (len > 0 && str[len - 1] == '\n')
-        str[len - 1] = '\0';	
+	size_t	i;
+
+	if (arr == NULL)
+		return ;
+	i = 0;
+	if (arr != NULL)
+	{
+		while (arr[i] != NULL)
+		{
+			free(arr[i]);
+			arr[i] = NULL;
+			i++;
+		}
+		free(arr);
+		arr = NULL;
+	}
 }

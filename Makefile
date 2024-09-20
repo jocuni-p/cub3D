@@ -6,7 +6,7 @@
 #    By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/16 11:26:53 by jocuni-p          #+#    #+#              #
-#    Updated: 2024/09/18 12:06:03 by jocuni-p         ###   ########.fr        #
+#    Updated: 2024/09/20 18:10:04 by jocuni-p         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,18 +27,24 @@ LIBS	:= $(LIBMLX)/build/libmlx42.a -ldl -lglfw -pthread -lm
 LIBS += -L$(LIBFT) -lft
 
 
-SRCS	:= 	./src/main.c \
+SRCS	:=	./src/arr2d_element_cnt.c \
+			./src/arr2d_free.c \
 			./src/check_arg.c \
 			./src/check_file_ext.c \
             ./src/check_file_name.c \
+			./src/check_valid_chars.c \
 			./src/handle_error.c \
 			./src/init_parser.c \
             ./src/inputfile_to_list.c \
 			./src/lst_newnode.c \
 			./src/lstadd_back.c \
 			./src/lstlast.c \
+		 	./src/main.c \
 			./src/parse_cub.c \
-            ./src/print_cub_list.c
+			./src/parse_elements.c \
+            ./src/print_cub_list.c \
+			./src/remove_nl.c \
+			./src/set_element.c
 			
 
 OBJS	:= ${SRCS:.c=.o}

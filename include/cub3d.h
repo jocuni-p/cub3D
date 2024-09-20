@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 15:41:01 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/09/19 16:11:24 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/09/20 21:03:35 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,18 +40,12 @@ typedef struct s_cub
 
 typedef struct s_elem
 {
-	char	*no;//pointer to the texture .xpm
-//	int		no_qty;
+	char	*no;//pointer to the texture(.xpm)
 	char	*so;
-//	int		so_qty;
 	char	*we;
-//	int		we_qty;
 	char	*ea;
-//	int		ea_qty;
-	char	*c;//pointer to the ceiling color
-//	int		c_qty;
+	char	*c;//pointer to the color
 	char	*f;
-//	int		f_qty;
 }			t_elem;
 
 typedef struct s_parser
@@ -82,6 +76,17 @@ int		check_file_name(char *str);
 int		check_file_ext(char *str);
 int		inputfile_to_list(t_parser *parser, char *filename);
 int		parse_cub(t_parser *parser, char *filename);
+int		parse_elements(t_parser *parser);
+void	remove_nl(char *str);
+int		check_valid_chars(char *str);
+int		set_element(t_parser *parser, char **elements);
+
+
+/*-------------arrays management------------*/
+
+int		arr2d_element_cnt(char **arr);
+void	arr2d_free(char **arr);
+
 
 /*-------------lists management--------------*/
 
@@ -89,7 +94,10 @@ t_cub	*lst_newnode(char *str);
 t_cub	*lstlast(t_cub *lst);
 void	lstadd_back(t_cub **lst, t_cub *new);
 //void	lst_delone(t_cub **lst, char **node_to_del, void (*del)(void*));
-void	handle_error(char *str, t_parser *parser);
+//void	handle_error(char *str, t_parser *parser);
+void	handle_error(char *str);
+
+/*------------my prints to test program behabior------------*/
 void	print_cub_list(t_cub *lst);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 15:00:47 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/09/18 18:18:20 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/09/20 15:39:40 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,10 @@
 
 //>>>>>>>>>>>>>>>>DRAFT / IN CONSTRUCTION<<<<<<<<<<<<<<<<<<<<<<
 /*------Frees all t_parser struct memory-----*/
+//DEBE LIBERAR:
+//LA LISTA t_cub *cub
+//
+//
 void	parser_free(t_parser **parser)
 {
 	if (parser != NULL)
