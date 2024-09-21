@@ -6,7 +6,7 @@
 #    By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/16 11:26:53 by jocuni-p          #+#    #+#              #
-#    Updated: 2024/09/20 18:10:04 by jocuni-p         ###   ########.fr        #
+#    Updated: 2024/09/21 19:05:43 by jocuni-p         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,16 +14,25 @@
 #create a directory to contain all .o files
 #create diferent subdirectories inside src to contain every part of the project 
 
-
+#para compilar el programa desde MacOS: gcc main.c ... libmlx42.a -Iinclude -lglfw
+#para compilar el programa desde Linux: gcc main.c ... libmlx42.a -Iinclude -ldl -lglfw -pthread -lm
 
 NAME	:= cub3D
 CFLAGS	:= -Wextra -Wall -Werror -Wunreachable-code -Ofast -g #-fsanitize=address
+
+#For MacOS you need to use the following flags to compile your program with the
+#library in order to link the program with the correct frameworks:
+# -framework Cocoa -framework OpenGL -framework IOKit
 LIBMLX	:= ./lib/MLX42
 LIBFT	:= ./lib/libft/
 LIBFT_A	:= $(LIBFT)libft.a 
 
 HEADERS	:= -I ./include -I $(LIBMLX)/include -I $(LIBFT)
-LIBS	:= $(LIBMLX)/build/libmlx42.a -ldl -lglfw -pthread -lm
+
+#to compile the mlx for Linus in campus 42Barcelona:  
+#LIBS	:= $(LIBMLX)/build/libmlx42.a -ldl -lglfw -pthread -lm
+#to compile the mlx at jocuni-p' home
+LIBS	:= $(LIBMLX)/build/libmlx42.a -ldl -L/opt/homebrew/lib -lglfw -pthread -lm
 LIBS += -L$(LIBFT) -lft
 
 

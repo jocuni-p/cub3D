@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 15:41:01 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/09/20 21:03:35 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/09/21 23:04:13 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@
 # define ERR_ARG_EX "Invalid argument extension\n"
 # define ERR_FD "Error:\nInvalid file descriptor\n"
 # define ERR_FILE "Error:\nInvalid file data\n"
+# define ERR_MEMORY "Error:\n Memory failure\n"
 //# define ERR_MAP "Error:\nInvalid map\n"
 //# define ERR_IMG "Error;\nImage not found\n"
 

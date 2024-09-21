@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 14:27:44 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/09/18 14:26:47 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/09/21 22:02:30 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,9 @@ int	parse_cub(t_parser *parser, char *filename)
 	if (inputfile_to_list(parser, filename))
 		return (1);
 		
-	print_cub_list(parser->cub);//TEMPORAL
-	
 	if (parse_elements(parser))
 		return (1);
+
 
 //	parse_map (check, among others, the only 6 characters that can contain, the walls, ...)
 

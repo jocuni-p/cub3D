@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 15:55:20 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/09/18 14:24:47 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/09/21 17:03:22 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 int	check_arg(char *str)
 {
 	if (check_file_name(str))//probably could be removed ???
-		return (handle_error(ERR_ARG_NAME, NULL), 1);
+		return (handle_error(ERR_ARG_NAME), 1);
 	if (check_file_ext(str))
-		return (handle_error(ERR_ARG_EX, NULL), 1);
+		return (handle_error(ERR_ARG_EX), 1);
 	return (0);
 }

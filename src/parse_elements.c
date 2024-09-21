@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 12:34:56 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/09/20 18:18:26 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/09/21 22:42:30 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,11 @@ int	parse_elements(t_parser *parser)
 	aux = parser->cub;
 	while(aux)
 	{
+		if (aux->str == NULL)
+		{
+			aux = aux->next;
+			continue;
+		}
 		remove_nl(aux->str);
 		if (check_valid_chars(aux->str))
 //			return (handle_error(ERR_FILE), parser_free(parser)), 1);

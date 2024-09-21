@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 12:38:53 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/09/20 17:54:04 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/09/21 17:04:36 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	main(int ac, char **av)
 	t_parser	parser;
 	
 	if (ac != 2)
-		return (handle_error(ERR_ARG, NULL), 1);//paso NULL hasta que no este mallocado algo que se deba liberar
+		return (handle_error(ERR_ARG), 1);//paso NULL hasta que no este mallocado algo que se deba liberar
 	init_parser(&parser);
 	if (parse_cub(&parser, av[1]))
 		return (1);//parse_cub should manage the message to print if failed
