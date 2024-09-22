@@ -1,8 +1,13 @@
+       
 
 
-NO textures/Wall_NO1.xpm
+NO      textures/Wall_NO1.xpm
+
+
 SO textures/Wall_SO1.xpm
-WE textures/Wall_WE1.xpm
+          WE textures/Wall_WE1.xpm
+
+
 EA textures/Wall_EA1.xpm
 
 F 184,113,39

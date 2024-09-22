@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 15:41:01 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/09/21 23:04:13 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/09/22 14:53:21 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,5 +100,6 @@ void	handle_error(char *str);
 
 /*------------my prints to test program behabior------------*/
 void	print_cub_list(t_cub *lst);
+void	arr2d_print(char **arr2d);
 
 #endif

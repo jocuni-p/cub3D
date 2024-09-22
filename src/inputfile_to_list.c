@@ -59,7 +59,7 @@ int	inputfile_to_list(t_parser *parser, char *filename)
 		return (handle_error(ERR_FD), 1);
 	while ((line = get_next_line(fd)) != NULL)
 	{
-		if (line[0] == '\0')//si la linea esta vacia, salta a la siguiente linea
+		if (line[0] == '\0' || line[0] == '\n')//si la linea esta vacia, salta a la siguiente linea
 		{
 			free(line);//no estoy seguro
 			continue;
@@ -68,7 +68,7 @@ int	inputfile_to_list(t_parser *parser, char *filename)
 		if (node == NULL)
 		{
 			free(line);
-//			free (toda la lista)
+//			free (toda la lista)  ??????
 			close(fd);
 			return (handle_error(ERR_MEMORY), 1);
 		}

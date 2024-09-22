@@ -11,3 +11,4 @@ a.out
 /mpanic
 .timmer
 src/*.o
+cub3D

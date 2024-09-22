@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 12:34:56 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/09/21 22:42:30 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/09/22 14:55:31 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,13 @@ int	parse_elements(t_parser *parser)
 	char	**elements;
 	
 	aux = parser->cub;
-	while(aux)
+	while(aux)//solo las 
 	{
-		if (aux->str == NULL)
-		{
-			aux = aux->next;
-			continue;
-		}
+//		if (aux->str == NULL)
+//		{
+//			aux = aux->next;
+//			continue;
+//		}
 		remove_nl(aux->str);
 		if (check_valid_chars(aux->str))
 //			return (handle_error(ERR_FILE), parser_free(parser)), 1);
@@ -36,10 +36,13 @@ int	parse_elements(t_parser *parser)
 //			return (handle_error(ERR_FILE), parser_free(parser)), 1);
 			return (handle_error(ERR_FILE), 1);
 		}
+		arr2d_print(elements);
 		if (set_element(parser, elements))//gets the content of each element
 //			return (handle_error(ERR_FILE), parser_free(parser)), 1);
 			return (handle_error(ERR_FILE), 1);
 		aux = aux->next;
+//		if (funcio flag que diu si ja tenim els 6 elements)
+//			surtim d'aquesta funcio i anem a parse_map
 	}
 	return (0);
 }

@@ -6,13 +6,13 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 17:28:49 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/09/20 21:04:57 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/09/22 14:31:53 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-//Removes '\n' at the end of the string 
+//Removes '\n' at the end of the string if it exist.
 void	remove_nl(char *str)
 {
 	size_t	len;

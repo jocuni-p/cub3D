@@ -6,7 +6,7 @@
 #    By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/16 11:26:53 by jocuni-p          #+#    #+#              #
-#    Updated: 2024/09/21 19:05:43 by jocuni-p         ###   ########.fr        #
+#    Updated: 2024/09/22 14:54:16 by jocuni-p         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,6 +38,7 @@ LIBS += -L$(LIBFT) -lft
 
 SRCS	:=	./src/arr2d_element_cnt.c \
 			./src/arr2d_free.c \
+			./src/arr2d_print.c \
 			./src/check_arg.c \
 			./src/check_file_ext.c \
             ./src/check_file_name.c \
