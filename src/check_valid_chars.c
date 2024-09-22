@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 14:09:10 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/09/19 15:03:54 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/09/22 18:40:19 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ int	check_valid_chars(char *str)
 	i = 0;
 	while(str[i])
 	{
-		if (ft_isalnum(str[i]) || str[i] == '_' || str[i] == ' ' \
-			|| str[i] == '/' || str[i] == '.')
+		if (ft_isalnum(str[i]) || str[i] == '_' || str[i] == '/' \
+			|| str[i] == '.' || str[i] == ' ' || str[i] == ',')
 			i++;
 		else
 			return (1);

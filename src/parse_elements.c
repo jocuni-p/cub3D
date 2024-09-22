@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 12:34:56 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/09/22 14:55:31 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/09/22 18:49:21 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,28 +18,25 @@ int	parse_elements(t_parser *parser)
 	char	**elements;
 	
 	aux = parser->cub;
-	while(aux)//solo las 
+	while(aux)
 	{
-//		if (aux->str == NULL)
-//		{
-//			aux = aux->next;
-//			continue;
-//		}
 		remove_nl(aux->str);
-		if (check_valid_chars(aux->str))
+		if (check_valid_chars(aux->str))//return 0 si chars valids
 //			return (handle_error(ERR_FILE), parser_free(parser)), 1);
 			return (handle_error(ERR_FILE), 1);
-		elements = ft_split(aux->str, ' ');//retorna un char ** con 2 elementos mallocados
+//		printf("flag\n");
+		elements = ft_split(aux->str, ' ');//retorna un char ** con 2 elementos + NULL mallocados
 		if (arr2d_element_cnt(elements) != 2)//checks if the array contains only 2 elements
 		{
 			arr2d_free(elements);
 //			return (handle_error(ERR_FILE), parser_free(parser)), 1);
 			return (handle_error(ERR_FILE), 1);
 		}
-		arr2d_print(elements);
+		arr2d_print(elements);//TEMPORAL
 		if (set_element(parser, elements))//gets the content of each element
 //			return (handle_error(ERR_FILE), parser_free(parser)), 1);
 			return (handle_error(ERR_FILE), 1);
+>>>>>>>>>>>FER FUNCIO PER PRINTAR EL CONTINGUT DE LES VARS DE LAS STRUCT<<<<<<<<<<<<<<<
 		aux = aux->next;
 //		if (funcio flag que diu si ja tenim els 6 elements)
 //			surtim d'aquesta funcio i anem a parse_map

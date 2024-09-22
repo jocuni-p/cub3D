@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 14:49:10 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/09/22 14:56:15 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/09/22 18:46:25 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,4 +28,5 @@ void	arr2d_print(char **arr2d)
 		printf("%s\n", arr2d[i]);
 		i++;
 	}
+	printf("---\n");
 }

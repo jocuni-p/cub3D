@@ -51,19 +51,30 @@ int	inputfile_to_list(t_parser *parser, char *filename)
 int	inputfile_to_list(t_parser *parser, char *filename)
 {
 	int		fd;
+//	int		i;
 	char	*line;
 	t_cub	*node;
 	
+//	i = 0;
 	fd = open(filename, O_RDONLY);
 	if (fd == -1)
 		return (handle_error(ERR_FD), 1);
 	while ((line = get_next_line(fd)) != NULL)
 	{
-		if (line[0] == '\0' || line[0] == '\n')//si la linea esta vacia, salta a la siguiente linea
+//		if (line[0] == '\0' || line[0] == '\n')//si la linea esta vacia, salta a la siguiente linea
+		if (line[0] == '\n')
 		{
 			free(line);//no estoy seguro
 			continue;
 		}
+//		if (line[i] == ' ')
+//		{
+//			while (line[i] && line[i] == ' ')
+//			{
+//				i++;
+//			}
+//			
+//		}
 		node = lst_newnode(line);//this malloc (p_malloc) is already protectec.
 		if (node == NULL)
 		{
