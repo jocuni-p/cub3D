@@ -1,27 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_elements_1.c                                   :+:      :+:    :+:   */
+/*   parse_color.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/18 12:34:56 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/09/23 13:46:50 by jocuni-p         ###   ########.fr       */
+/*   Created: 2024/09/23 13:52:20 by jocuni-p          #+#    #+#             */
+/*   Updated: 2024/09/23 16:19:52 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
+/*----Parse just the 2 elements that define the ceiling and floor color----*/
+//	color_rgb_to_hex//convierte rgb a hexadecimal + canal Alfa(FF) 
 
-/*----Parse just the elements that define the 4 textures (NO, SO, WE, EA)---*/
-int	parse_elements(t_parser *parser)
+int	parse_color(t_parser *parser)
 {
+	split(str, ',');
+	if (tiene solo 3 elementos)
+	while(elemento[i])
+		ft_isdigit(str);
+		atoi(str)//guardar en 3 variables para la construccion del hex
+		if (rango >= 0  && <= 255)
+		convertir a put_hex-. ver chat
+
+}
+/*	
 	t_cub 	*aux;
 	char	**elements;
-	int		i;
-
-	i = 0;
+	
 	aux = parser->cub;
-	while(aux && i < 6)//frenar quan ha fet 6 pasades, pels elements i no pel mapa
+	while(aux)
 	{
 		remove_nl(aux->str);
 		if (check_valid_chars(aux->str))//return 0 si chars valids
@@ -39,22 +48,6 @@ int	parse_elements(t_parser *parser)
 //			return (handle_error(ERR_FILE), parser_free(parser)), 1);
 			return (handle_error(ERR_FILE), 1);
 		aux = aux->next;
-		i++;
 	}
 	return (0);
-}
-
-/*--MY PROCEEDING TO PARSE THE ELEMENTS
--Once all input_file lines are in a list
--Remove the '\0'
--Put every word of the line in a char **arr via split
--If **arr has different than 2 elements -> INVALID -> Error
--With a strcmp I check if the arr[first element] == "NO" && if his var_name is not set yet (NULL)
--I set (with strdup) the var_name with the content of arr[second element] and free the **arr
--Elements 'F' and 'C' must to be parsed deeper. With a split + atoi I'll know if the number of 
-elements is correct and get every individual color.
--  
-
-
--At this moment I should have all elements data in my struct.
-*/
+}*/

@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 15:41:01 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/09/22 14:53:21 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/09/23 18:25:51 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,14 @@ typedef struct s_cub
 
 typedef struct s_elem
 {
-	char	*no;//pointer to the texture(.xpm)
-	char	*so;
-	char	*we;
-	char	*ea;
-	char	*c;//pointer to the color
-	char	*f;
+	char		*no;//path to the texture(.xpm)
+	char		*so;
+	char		*we;
+	char		*ea;
+	char		*c;//color in RGB
+	char		*f;
+	uint32_t	c_color;//color converted to hexadecimal
+	uint32_t	f_color;
 }			t_elem;
 
 typedef struct s_parser
@@ -101,5 +103,7 @@ void	handle_error(char *str);
 /*------------my prints to test program behabior------------*/
 void	print_cub_list(t_cub *lst);
 void	arr2d_print(char **arr2d);
+void	print_elem(t_parser *parser);
+
 
 #endif

@@ -6,7 +6,7 @@
 #    By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/16 11:26:53 by jocuni-p          #+#    #+#              #
-#    Updated: 2024/09/22 14:54:16 by jocuni-p         ###   ########.fr        #
+#    Updated: 2024/09/23 17:38:25 by jocuni-p         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,6 +53,7 @@ SRCS	:=	./src/arr2d_element_cnt.c \
 			./src/parse_cub.c \
 			./src/parse_elements.c \
             ./src/print_cub_list.c \
+			./src/print_elem.c \
 			./src/remove_nl.c \
 			./src/set_element.c
 			
