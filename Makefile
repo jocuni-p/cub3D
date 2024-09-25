@@ -6,7 +6,7 @@
 #    By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/16 11:26:53 by jocuni-p          #+#    #+#              #
-#    Updated: 2024/09/23 17:38:25 by jocuni-p         ###   ########.fr        #
+#    Updated: 2024/09/24 10:59:12 by jocuni-p         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ LIBFT_A	:= $(LIBFT)libft.a
 
 HEADERS	:= -I ./include -I $(LIBMLX)/include -I $(LIBFT)
 
-#to compile the mlx for Linus in campus 42Barcelona:  
+#to compile the mlx for Linux on 42Barcelona campus:  
 #LIBS	:= $(LIBMLX)/build/libmlx42.a -ldl -lglfw -pthread -lm
 #to compile the mlx at jocuni-p' home
 LIBS	:= $(LIBMLX)/build/libmlx42.a -ldl -L/opt/homebrew/lib -lglfw -pthread -lm
