@@ -17,57 +17,80 @@
 //Retorna 1 si NO es valido el color (+err_msg +free), sino lo convierte a 
 //hexadecimal, lo guarda en la struct y retorna 0. 
 
-
+/*
 parser_colors
 
 		parse_c(parser);
-		parse_f(parser);
-		
+		parse_f(parser);*/
+
 int	parse_color(t_parser *parser, char *str)//parsea 1 elemento a la vez (c o f)
 {
 	int		i;
 	int		j;
+	int		nbr;
 	char	**rgb;
 
 	i = 0;
+
 	rgb = ft_split(str, ',');
 	free (str);
 	if (arr2d_element_cnt(rgb) != 3)
-	{
-		arr2d_free(rgb);
+//	{
+//		arr2d_free(rgb);
 //		return (handle_error(ERR_FILE), parser_free(parser)), 1);
-		return (handle_error(ERR_FILE), 1);
-	}
+		return (arr2d_free(rgb), handle_error(ERR_FILE), 1);
+//	}
 	while(rgb[i])
 	{
 		j = 0;
 		while(rgb[i][j])
 		{
-			if (ft_isdigit(rgb[i][j]) == 0)
+			if (!ft_isdigit(rgb[i][j]))
 //				return (handle_error(ERR_FILE), parser_free(parser)), 1);
-				return (handle_error(ERR_FILE), 1);
+				return (arr2d_free(rgb), handle_error(ERR_FILE), 1);
 			j++;
 		}
-		nbr = ft_atoi(rgb[i]);//guardar en 3 variables para la construccion del hex
-
+		
+//		parser->elem.rgb_c[i] = ft_atoi(rgb[i]);//guardar en 3 variables para formar el hex
+		nbr = ft_atoi(rgb[i]);
 		if (i = 0 && (nbr >= 0 && nbr <= 255))
-			color->r = nbr;
+			if (rgb_c.a == 255)
+				rgb_f.r = nbr;
+			else
+				rgb_c.r = nbr;
+
 		else if (i = 1 && (nbr >= 0 && nbr <= 255))
-			color->g = nbr;
+			if (rgb_c.a == 255)
+				rgb_f.g = nbr;
+			else
+				rgb_c.g = nbr;
+
 		else if (i = 2 && (nbr >= 0 && nbr <= 255))
-			color->b = ft_atoi(rgb[i]);
+			if (rgb_c.a == 255)
+				rgb_f.b = nbr;
+			else
+				rgb_c.b = nbr;
 		else
 //			return (handle_error(ERR_FILE), parser_free(parser)), 1);
 			return (handle_error(ERR_FILE), 1);
 		i++;
 	}
-		liberar rgb
-		convertir a put_hex-. ver chat
+	rgb_c.a == 255;
+	arr2d_free(rgb);
+	encoder_to_hex_color(color->r, color->g, color->b, 0xFF);
+	return (0);
 }
+//		if (i = 0 && (parser->elem.rgb[i] >= 0 && parser->elem.rgb_c[i] <= 255))
+//			parsercolor->r = nbr;
+//		else if (i = 1 && (nbr >= 0 && nbr <= 255))
+//			color->g = nbr;
+//		else if (i = 2 && (nbr >= 0 && nbr <= 255))
+//			color->b = ft_atoi(rgb[i]);
+
 
 /*-De mbueno-g
 int	cub_atoi(const char *nptr, long *nbr)
-{
+
 	*nbr = 0;
 	if (!nptr || !ft_isdigit(*nptr))
 		return (-1);
@@ -81,7 +104,7 @@ int	cub_atoi(const char *nptr, long *nbr)
 	if (*nptr)
 		return (-1);
 	return (0);
-}	
+	
 	t_cub 	*aux;
 	char	**elements;
 	
@@ -106,4 +129,4 @@ int	cub_atoi(const char *nptr, long *nbr)
 		aux = aux->next;
 	}
 	return (0);
-}*/
+*/

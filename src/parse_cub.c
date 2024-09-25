@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 14:27:44 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/09/25 13:45:36 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/09/25 14:31:58 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,11 @@ int	parse_cub(t_parser *parser, char *filename)
 	if (parse_elements(parser))//textures
 		return (1);
 	print_elem(parser);
-//	if (parse_colors(parser))
-//		return (1);
 //	if (parse_color(parser, parser->elem.c) || parse_color(parser, parser->elem.f))//colors
 //		return (1);
 
+//	if (parse_colors(parser))
+//		return (1);
 //	if (funcio flag que diu si ja tenim els 6 elements
 
 //	parse_map (check, among others, the only 6 characters that can contain, the walls, ...)
