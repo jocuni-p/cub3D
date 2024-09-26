@@ -1,23 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_tab.c                                        :+:      :+:    :+:   */
+/*   lst_newnode.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/18 17:47:05 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/09/19 14:08:34 by jocuni-p         ###   ########.fr       */
+/*   Created: 2024/09/12 10:42:04 by jocuni-p          #+#    #+#             */
+/*   Updated: 2024/09/26 17:01:23 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-/*>>>>>>>>>>>>>>>>>>NOT USED AT THE MOMENT<<<<<<<<<<<<<<<<<*/
-
-/*---Returns 1 if a '\t' is found in str, otherwise returns 0----*/
-int	check_tab(char *str)
+/*-Returns an allocated 't_cub' node initialized with the provided argument.-*/
+t_cub	*lst_newnode(char *str)
 {
-	if(ft_strchr(str, '\t'))
-		return (1);
-	return (0);
+	t_cub	*new_node;
+
+	new_node = (t_cub *)p_malloc(sizeof(t_cub));
+	new_node->str = ft_strdup(str);
+	new_node->next = NULL;
+	return (new_node);
 }

@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 16:10:19 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/09/24 12:02:41 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/09/26 20:26:42 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,13 @@ int	set_element(t_parser *parser, char **elements)
 //si el primer elemento es "C" y la variable no ha sido seteada
 // previamente, llamo a parse_color con una copia del segundo elemento
 	else if ((ft_strcmp(elements[0], "C") == 0) && parser->elem.c == NULL)
-		if (parse_color(parser, ft_strdup(elements[1])))//OJO: liberar en parse_color. Podria pasar elements[1] y no duplicarlo??
-			return (1);
-//		parser->elem.c = ft_strdup(elements[1]);
+		parser->elem.c = ft_strdup(elements[1]);
+//		if (parse_color(parser, ft_strdup(elements[1])))//OJO: liberar en parse_color. Podria pasar elements[1] y no duplicarlo??
+//			return (1);
 	else if ((ft_strcmp(elements[0], "F") == 0) && parser->elem.f == NULL)
-		if (parse_color(parser, ft_strdup(elements[1])))//OJO: liberar en parse_color
-			return (1);
-//		parser->elem.f = ft_strdup(elements[1]);
+		parser->elem.f = ft_strdup(elements[1]);
+//		if (parse_color(parser, ft_strdup(elements[1])))//OJO: liberar en parse_color
+//			return (1);
 	else
 	{
 		arr2d_free(elements);

@@ -8,7 +8,12 @@ a.out
 *.swp
 *.dSYM
 *.d
+*.o
+*.obj
+*.a
 /mpanic
 .timmer
 src/*.o
 cub3D
+build/
+temp/
