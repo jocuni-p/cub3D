@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 16:10:19 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/09/27 07:39:17 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/09/27 10:20:47 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	set_element(t_parser *parser, char **elements)
 	else if ((ft_strcmp(elements[0], "F") == 0) && parser->elem.f == NULL)
 	{
 		parser->elem.f = ft_strdup(elements[1]);
-		if (parse_color(parser, parser->elem.f, 'f'))
+		if (parse_color(parser, parser->elem.f, 'f'))//No cal enviar elem.f, ja esta a parser
 			return (1);
 	}
 	else

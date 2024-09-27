@@ -11,153 +11,79 @@
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
-/*----Parse the color data and save it on the struct ----*/
-//	color_rgb_to_hex//convierte rgb a hexadecimal + canal Alfa(FF) 
 
-//Retorna 1 si NO es valido el color (+err_msg +free), sino lo convierte a 
-//hexadecimal, lo guarda en la struct y retorna 0. 
+int	encoder_to_hexcolorformat(int r, int b, int g, int alpha)
+{
+	return (r << 24 | b << 16 | g << 8 | alpha);
+}
 
-/*
-parser_colors
+int	set_c(t_parser *parser, char *rgb_canal, int i)
+{
+		int	nbr;
 
-		parse_c(parser);
-		parse_f(parser);*/
+		nbr = ft_atoi(rgb_canal);//converts to int
+		if (nbr < 0 || nbr > 255)//checkcs the valid range
+			return (handle_error(ERR_FILE), 1);//liberar todo
+		if (i == 0)//first canal
+			parser->elem.rgb_c[0] = nbr;
+		if (i == 1)//second canal
+			parser->elem.rgb_c[1] = nbr;
+		if (i == 2)//third canal
+			parser->elem.rgb_c[2] = nbr;
+		parser->elem.c_color = encoder_to_hexcolorformat(parser->elem.rgb_c[0], parser->elem.rgb_c[1], parser->elem.rgb_c[2], 255);
+		return (0);
+}
+int	set_f(t_parser *parser, char *rgb_canal, int i)
+{
+		int	nbr;
+
+		nbr = ft_atoi(rgb_canal);//converts to int
+		if (nbr < 0 || nbr > 255)//checkcs the valid range
+			return (handle_error(ERR_FILE), 1);//liberar todo
+		if (i == 0)//first canal
+			parser->elem.rgb_f[0] = nbr;
+		if (i == 1)//second canal
+			parser->elem.rgb_f[1] = nbr;
+		if (i == 2)//third canal
+			parser->elem.rgb_f[2] = nbr;
+		parser->elem.f_color = encoder_to_hexcolorformat(parser->elem.rgb_f[0], parser->elem.rgb_f[1], parser->elem.rgb_f[2], 255);
+		return (0);
+}
+
+//Retorna 1 si el color es INVALIDO (+err_msg +free), sino lo codifica a color 
+//hexadecimal, setea su var y retorna 0. 
 
 int	parse_color(t_parser *parser, char *str, char c)//parsea 1 elemento a la vez (c o f)
 {
 	int		i;
 	int		j;
-	int		nbr;
-	char	**rgb;
+	char	**rgb_canals;
 
 	i = 0;
-
-	rgb = ft_split(str, ',');
-	free (str);
-	if (arr2d_element_cnt(rgb) != 3)
-//	{
-//		arr2d_free(rgb);
-//		return (handle_error(ERR_FILE), parser_free(parser)), 1);
-		return (arr2d_free(rgb), handle_error(ERR_FILE), 1);
-//	}
-	while(rgb[i])
+	rgb_canals = ft_split(str, ',');
+	if (arr2d_element_cnt(rgb_canals) != 3)
+		return (arr2d_free(rgb_canals), handle_error(ERR_FILE), 1);//liberar todo
+	while(rgb_canals[i])
 	{
 		j = 0;
-		while(rgb[i][j])
+		while (rgb_canals[i][j])
 		{
-			if (!ft_isdigit(rgb[i][j]))
-//				return (handle_error(ERR_FILE), parser_free(parser)), 1);
-				return (arr2d_free(rgb), handle_error(ERR_FILE), 1);
+			if (!ft_isdigit(rgb_canals[i][j]))
+				return (arr2d_free(rgb_canals), handle_error(ERR_FILE), 1);//liberar todo
 			j++;
 		}
-		
-//		parser->elem.rgb_c[i] = ft_atoi(rgb[i]);//guardar en 3 variables para formar el hex
-		nbr = ft_atoi(rgb[i]);
-		if (nbr < 0 || nbr > 255)
-			return (handle_error(ERR_FILE), 1);//repasar si esta bien
 		if (c == 'c')
-			set_c(i, parser);
+		{
+			if (set_c(parser, rgb_canals[i], i)) //encoder_to_hex_color(color->r, color->g, color->b, 0xFF);
+				return (arr2d_free(rgb_canals), handle_error(ERR_FILE), 1);//liberar todo
+		}
 		else
-			set_f(i, parser);
-
-//FUNCION set_c
-//		if (i == 0 && parser->elem.rgb_c[1] == -1)
-		if (i = 0)
-			parser->elem.rgb_c[0] = nbr;
-		else if (i = 1)
-			parser->elem.rgb_c[1] = nbr;
-		else if (i = 2)
-			parser->elem.rgb_c[2] = nbr;
-		else
-			return (1);
-		return (0);
-//FUNCION set_f
-
-
-
-
-
-		if (c == 'c' && i == 0 && parser->elem.rgb_c[1] == -1)
-			parser->elem.rgb_c[0] = nbr;
-
-
-
-
-
-		if (i = 0 && (nbr >= 0 && nbr <= 255))
-			if (rgb_c.a == 255)
-				rgb_f.r = nbr;
-			else
-				rgb_c.r = nbr;
-
-		else if (i = 1 && (nbr >= 0 && nbr <= 255))
-			if (rgb_c.a == 255)
-				rgb_f.g = nbr;
-			else
-				rgb_c.g = nbr;
-
-		else if (i = 2 && (nbr >= 0 && nbr <= 255))
-			if (rgb_c.a == 255)
-				rgb_f.b = nbr;
-			else
-				rgb_c.b = nbr;
-		else
-//			return (handle_error(ERR_FILE), parser_free(parser)), 1);
-			return (handle_error(ERR_FILE), 1);
+		{
+			if (set_f(parser, rgb_canals[i], i))//encoder_to_hex_color(color->r, color->g, color->b, 0xFF);
+				return (arr2d_free(rgb_canals), handle_error(ERR_FILE), 1);//liberar todo
+		}
 		i++;
 	}
-	rgb_c.a == 255;
-	arr2d_free(rgb);
-	encoder_to_hex_color(color->r, color->g, color->b, 0xFF);
-	return (0);
+	return (arr2d_free(rgb_canals), 0);
 }
-//		if (i = 0 && (parser->elem.rgb[i] >= 0 && parser->elem.rgb_c[i] <= 255))
-//			parsercolor->r = nbr;
-//		else if (i = 1 && (nbr >= 0 && nbr <= 255))
-//			color->g = nbr;
-//		else if (i = 2 && (nbr >= 0 && nbr <= 255))
-//			color->b = ft_atoi(rgb[i]);
 
-
-/*-De mbueno-g
-int	cub_atoi(const char *nptr, long *nbr)
-
-	*nbr = 0;
-	if (!nptr || !ft_isdigit(*nptr))
-		return (-1);
-	while (ft_isdigit(*nptr))
-	{
-		*nbr = 10 * (*nbr) + (*nptr - '0');
-		if (*nbr < 0 || *nbr > 255)
-			return (-1);
-		nptr++;
-	}
-	if (*nptr)
-		return (-1);
-	return (0);
-	
-	t_cub 	*aux;
-	char	**elements;
-	
-	aux = parser->cub;
-	while(aux)
-	{
-		remove_nl(aux->str);
-		if (check_valid_chars(aux->str))//return 0 si chars valids
-//			return (handle_error(ERR_FILE), parser_free(parser)), 1);
-			return (handle_error(ERR_FILE), 1);
-		elements = ft_split(aux->str, ' ');//retorna un char ** con 2 elementos + NULL mallocados
-		if (arr2d_element_cnt(elements) != 2)//checks if the array contains only 2 elements
-		{
-			arr2d_free(elements);
-//			return (handle_error(ERR_FILE), parser_free(parser)), 1);
-			return (handle_error(ERR_FILE), 1);
-		}
-//		arr2d_print(elements);//TEMPORAL
-		if (set_element(parser, elements))//gets the content of each element
-//			return (handle_error(ERR_FILE), parser_free(parser)), 1);
-			return (handle_error(ERR_FILE), 1);
-		aux = aux->next;
-	}
-	return (0);
-*/

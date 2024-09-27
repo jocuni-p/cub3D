@@ -6,7 +6,7 @@
 #    By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/26 17:23:07 by jocuni-p          #+#    #+#              #
-#    Updated: 2024/09/26 20:31:30 by jocuni-p         ###   ########.fr        #
+#    Updated: 2024/09/27 11:58:35 by jocuni-p         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,7 +42,7 @@ SRCS_LST :=         ./src/lst/inputfile_to_list.c \
 # Archivos fuente del directorio ./src
 SRCS_PARSER := 		./src/parser/check_valid_chars.c \
 					./src/parser/handle_error.c \
-					./src/parser/init_parser.c \
+					./src/parser/parse_color.c \
 					./src/parser/parse_cub.c \
 					./src/parser/parse_elements.c \
 					./src/parser/remove_nl.c \

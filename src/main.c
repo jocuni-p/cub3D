@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 12:38:53 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/09/21 17:04:36 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/09/27 12:13:45 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,9 @@ int	main(int ac, char **av)
 	
 	if (ac != 2)
 		return (handle_error(ERR_ARG), 1);//paso NULL hasta que no este mallocado algo que se deba liberar
-	init_parser(&parser);
+//	init_parser(&parser);//creo que funcionaria bien con un memset
+	ft_memset(&parser, 0, sizeof(parser));
+	print_elem(&parser);//TEMPORAL
 	if (parse_cub(&parser, av[1]))
 		return (1);//parse_cub should manage the message to print if failed
 		

@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 15:41:01 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/09/27 07:00:59 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/09/27 11:58:12 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,10 @@ typedef struct s_elem
 	char		*we;
 	char		*ea;
 	char		*c;//color data before parse
-	int			rgb_c[4];//rgb values, seteo inicial a -1
+	int			rgb_c[3];//rgb values, seteo inicial a -1
 	uint32_t	c_color;//color value converted to hexadecimal
 	char		*f;
-	int			rgb_f[4];
+	int			rgb_f[3];
 	uint32_t	f_color;
 }			t_elem;
 
@@ -75,7 +75,7 @@ typedef struct s_data//IN PROGRESS-It will be passed to the graphic part of cu3D
 
 /*-------------parse management--------------*/
 
-void	init_parser(t_parser *parser);
+//void	init_parser(t_parser *parser);
 int		check_arg(char *str);
 int		check_file_name(char *str);
 int		check_file_ext(char *str);
@@ -85,7 +85,10 @@ int		parse_elements(t_parser *parser);
 void	remove_nl(char *str);
 int		check_valid_chars(char *str);
 int		set_element(t_parser *parser, char **elements);
-
+int		parse_color(t_parser *parser, char *str, char c);
+int		set_f(t_parser *parser, char *rgb_canal, int i);
+int		set_c(t_parser *parser, char *rgb_canal, int i);
+int		encoder_to_hexcolorformat(int r, int g, int b, int alpha);
 
 /*-------------arrays management------------*/
 
