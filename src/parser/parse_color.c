@@ -23,7 +23,7 @@ parser_colors
 		parse_c(parser);
 		parse_f(parser);*/
 
-int	parse_color(t_parser *parser, char *str)//parsea 1 elemento a la vez (c o f)
+int	parse_color(t_parser *parser, char *str, char c)//parsea 1 elemento a la vez (c o f)
 {
 	int		i;
 	int		j;
@@ -53,6 +53,37 @@ int	parse_color(t_parser *parser, char *str)//parsea 1 elemento a la vez (c o f)
 		
 //		parser->elem.rgb_c[i] = ft_atoi(rgb[i]);//guardar en 3 variables para formar el hex
 		nbr = ft_atoi(rgb[i]);
+		if (nbr < 0 || nbr > 255)
+			return (handle_error(ERR_FILE), 1);//repasar si esta bien
+		if (c == 'c')
+			set_c(i, parser);
+		else
+			set_f(i, parser);
+
+//FUNCION set_c
+//		if (i == 0 && parser->elem.rgb_c[1] == -1)
+		if (i = 0)
+			parser->elem.rgb_c[0] = nbr;
+		else if (i = 1)
+			parser->elem.rgb_c[1] = nbr;
+		else if (i = 2)
+			parser->elem.rgb_c[2] = nbr;
+		else
+			return (1);
+		return (0);
+//FUNCION set_f
+
+
+
+
+
+		if (c == 'c' && i == 0 && parser->elem.rgb_c[1] == -1)
+			parser->elem.rgb_c[0] = nbr;
+
+
+
+
+
 		if (i = 0 && (nbr >= 0 && nbr <= 255))
 			if (rgb_c.a == 255)
 				rgb_f.r = nbr;

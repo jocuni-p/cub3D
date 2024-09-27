@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 14:27:44 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/09/25 14:31:58 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/09/27 06:28:27 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	parse_cub(t_parser *parser, char *filename)
 		return (1);
 	if (parse_elements(parser))//textures
 		return (1);
-	print_elem(parser);
+	print_elem(parser);//TEMPORAL
 //	if (parse_color(parser, parser->elem.c) || parse_color(parser, parser->elem.f))//colors
 //		return (1);
 

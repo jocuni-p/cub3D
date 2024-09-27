@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 15:41:01 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/09/25 17:03:24 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/09/27 07:00:59 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ typedef struct s_elem
 	char		*so;
 	char		*we;
 	char		*ea;
-	char		*c;//color data
-	int			rgb_c[4];//rgb values
+	char		*c;//color data before parse
+	int			rgb_c[4];//rgb values, seteo inicial a -1
 	uint32_t	c_color;//color value converted to hexadecimal
 	char		*f;
 	int			rgb_f[4];
