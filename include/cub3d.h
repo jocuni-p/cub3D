@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 15:41:01 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/09/27 11:58:12 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/09/28 18:04:04 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,12 +83,13 @@ int		inputfile_to_list(t_parser *parser, char *filename);
 int		parse_cub(t_parser *parser, char *filename);
 int		parse_elements(t_parser *parser);
 void	remove_nl(char *str);
-int		check_valid_chars(char *str);
+int		check_element_chars(char *str);
 int		set_element(t_parser *parser, char **elements);
 int		parse_color(t_parser *parser, char *str, char c);
 int		set_f(t_parser *parser, char *rgb_canal, int i);
 int		set_c(t_parser *parser, char *rgb_canal, int i);
 int		encoder_to_hexcolorformat(int r, int g, int b, int alpha);
+int		flag_elem(t_parser *parser);
 
 /*-------------arrays management------------*/
 

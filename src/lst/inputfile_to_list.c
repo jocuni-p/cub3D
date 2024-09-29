@@ -74,7 +74,6 @@ int	inputfile_to_list(t_parser *parser, char *filename)
 		lstadd_back(&parser->cub, node);
 		free(line);
 	}
-//	close(fd);
 	print_cub_list(parser->cub);//TEMPORAL
-	return (close(fd), 0);//done to save 1 line
+	return (close(fd), 0);
 }

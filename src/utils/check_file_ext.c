@@ -6,13 +6,13 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 13:56:46 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/09/18 17:55:39 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/09/28 17:00:15 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-/*---Returns 0 if *str contains ".cub", otherwise or NULL returns 1 -----*/
+/*---Returns 0 if str contains ".cub"; if not or it is NULL, returns 1---*/
 int	check_file_ext(char *str)
 {
 	char	*ext;

@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_valid_chars.c                                :+:      :+:    :+:   */
+/*   check_element_chars.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -13,7 +13,7 @@
 #include "../include/cub3d.h"
 
 /*Returns 1 if it is found on *str any invalid character, otherwise returns 0*/
-int	check_valid_chars(char *str)
+int	check_element_chars(char *str)
 {
 	int	i;
 

@@ -6,7 +6,7 @@
 #    By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/26 17:23:07 by jocuni-p          #+#    #+#              #
-#    Updated: 2024/09/27 11:58:35 by jocuni-p         ###   ########.fr        #
+#    Updated: 2024/09/29 19:27:33 by jocuni-p         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,11 +25,14 @@ LIBFT	:= ./lib/libft/
 LIBFT_A	:= $(LIBFT)libft.a 
 HEADERS	:= -I ./include -I $(LIBMLX)/include -I $(LIBFT)
 
-# To compile the mlx on Linux systems at 42Barcelona campus uncomment the next line   
-# LIBS	:= $(LIBMLX)/build/libmlx42.a -ldl -lglfw -pthread -lm
+ifeq ($(UNAME), Linux)
+# To compile the mlx on Linux at 42Barcelona campus   
+	LIBS	:= $(LIBMLX)/build/libmlx42.a -ldl -lglfw -pthread -lm
 
-# To compile the mlx at on MacOS uncomment the next line
-LIBS	:= $(LIBMLX)/build/libmlx42.a -ldl -L/opt/homebrew/lib -lglfw -pthread -lm
+else ifeq ($(UNAME), Darwin)
+# To compile the mlx on MacOS
+	LIBS	:= $(LIBMLX)/build/libmlx42.a -ldl -L/opt/homebrew/lib -lglfw -pthread -lm
+endif
 
 LIBS += -L$(LIBFT) -lft
 
@@ -40,7 +43,7 @@ SRCS_LST :=         ./src/lst/inputfile_to_list.c \
 					./src/lst/lstlast.c
 
 # Archivos fuente del directorio ./src
-SRCS_PARSER := 		./src/parser/check_valid_chars.c \
+SRCS_PARSER := 		./src/parser/check_element_chars.c \
 					./src/parser/handle_error.c \
 					./src/parser/parse_color.c \
 					./src/parser/parse_cub.c \

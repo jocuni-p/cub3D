@@ -12,49 +12,56 @@
 
 #include "../include/cub3d.h"
 
+/*---Returns 0 if all elements are set; otherwise, returns 1.----*/
+int	flag_elem(t_parser *parser)
+{
+	if (parser->elem.no != NULL && parser->elem.so != NULL \
+		&& parser->elem.we != NULL && parser->elem.ea != NULL \
+		&& parser->elem.c_color != 0 && parser->elem.f_color != 0)
+		return (0);
+	return (1);
+}
+
 /*----Parse just the elements that define the 4 textures (NO, SO, WE, EA)---*/
 int	parse_elements(t_parser *parser)
 {
 	t_cub 	*aux;
 	char	**elements;
-	int		i;
 
-	i = 0;
 	aux = parser->cub;
-	while(aux && i < 6)//frenar quan ha fet 6 pasades, pels elements i no pel mapa
+	while(aux)//frenar quan ha fet 6 pasades, pels elements i no pel mapa
 	{
 		remove_nl(aux->str);
-		if (check_valid_chars(aux->str))//return 0 si chars valids
-//			return (handle_error(ERR_FILE), parser_free(parser)), 1);
+		if (check_element_chars(aux->str))//return 0 si chars valids
 			return (handle_error(ERR_FILE), 1);
-		elements = ft_split(aux->str, ' ');//retorna un char ** con 2 elementos + NULL mallocados
-		if (arr2d_element_cnt(elements) != 2)//checks if the array contains only 2 elements
+		elements = ft_split(aux->str, ' ');//retorns a char ** allocated
+		if (arr2d_element_cnt(elements) != 2)//checks if the array has only 2 elements
 		{
 			arr2d_free(elements);
-//			return (handle_error(ERR_FILE), parser_free(parser)), 1);
 			return (handle_error(ERR_FILE), 1);
 		}
 //		arr2d_print(elements);//TEMPORAL
 		if (set_element(parser, elements))//gets the content of each element
-//			return (handle_error(ERR_FILE), parser_free(parser)), 1);
 			return (handle_error(ERR_FILE), 1);
 		aux = aux->next;
-		i++;
+//		if (!flag_elem(parser) && !check_map_chars(aux->str))//si ja tens tots els elements i la linea actual pertany al mapa, retorna
+//			setear el puntero con el inicio del mapa en la lista
+//			return (0);
+	}
+	return (0);//aquest return no faria falta
+}
+int	check_map_chars(char *str)
+{
+	int	i;
+
+	i = 0;
+	while(str[i])
+	{
+		if (str[i] == ' ' || str[i] == '1' || str[i] == '0' || str[i] == 'N' \
+			|| str[i] == 'S' || str[i] == 'E' || str[i] == 'W')
+			i++;
+		else
+			return (1);
 	}
 	return (0);
 }
-
-/*--MY PROCEEDING TO PARSE THE ELEMENTS
--Once all input_file lines are in a list
--Remove the '\0'
--Put every word of the line in a char **arr via split
--If **arr has different than 2 elements -> INVALID -> Error
--With a strcmp I check if the arr[first element] == "NO" && if his var_name is not set yet (NULL)
--I set (with strdup) the var_name with the content of arr[second element] and free the **arr
--Elements 'F' and 'C' must to be parsed deeper. With a split + atoi I'll know if the number of 
-elements is correct and get every individual color.
--  
-
-
--At this moment I should have all elements data in my struct.
-*/

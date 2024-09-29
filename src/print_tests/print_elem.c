@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 11:20:55 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/09/27 12:18:24 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/09/27 14:45:13 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 void	print_elem(t_parser *parser)
 {
 	printf("===============VAR VALUES=====\n");
+	printf("cub: %p\n", parser->cub);
 	printf("no: %s\n", parser->elem.no);
 	printf("so: %s\n", parser->elem.so);
 	printf("we: %s\n", parser->elem.we);
@@ -25,5 +26,6 @@ void	print_elem(t_parser *parser)
 	printf("f: %s\n", parser->elem.f);
 	printf("rgb_f: %i,%i,%i\n", parser->elem.rgb_f[0], parser->elem.rgb_f[1], parser->elem.rgb_f[2]);
 	printf("f_color: 0x%X\n", parser->elem.f_color);
+	printf("raw_map: %p\n", parser->raw_map);
 	printf("\n");
 }
