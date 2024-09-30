@@ -6,7 +6,7 @@
 #    By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/26 17:23:07 by jocuni-p          #+#    #+#              #
-#    Updated: 2024/09/29 19:27:33 by jocuni-p         ###   ########.fr        #
+#    Updated: 2024/09/30 12:46:54 by jocuni-p         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,12 +25,12 @@ LIBFT	:= ./lib/libft/
 LIBFT_A	:= $(LIBFT)libft.a 
 HEADERS	:= -I ./include -I $(LIBMLX)/include -I $(LIBFT)
 
-ifeq ($(UNAME), Linux)
 # To compile the mlx on Linux at 42Barcelona campus   
+ifeq ($(UNAME), Linux)
 	LIBS	:= $(LIBMLX)/build/libmlx42.a -ldl -lglfw -pthread -lm
 
-else ifeq ($(UNAME), Darwin)
 # To compile the mlx on MacOS
+else ifeq ($(UNAME), Darwin)
 	LIBS	:= $(LIBMLX)/build/libmlx42.a -ldl -L/opt/homebrew/lib -lglfw -pthread -lm
 endif
 
@@ -43,13 +43,10 @@ SRCS_LST :=         ./src/lst/inputfile_to_list.c \
 					./src/lst/lstlast.c
 
 # Archivos fuente del directorio ./src
-SRCS_PARSER := 		./src/parser/check_element_chars.c \
-					./src/parser/handle_error.c \
+SRCS_PARSER := 		./src/parser/handle_error.c \
 					./src/parser/parse_color.c \
 					./src/parser/parse_cub.c \
-					./src/parser/parse_elements.c \
-					./src/parser/remove_nl.c \
-					./src/parser/set_element.c
+					./src/parser/parse_elements.c
 					
 # Archivos fuente del subdirectorio ./src/print_tests
 SRCS_PRINT_TESTS := ./src/print_tests/arr2d_print.c \
@@ -61,6 +58,7 @@ SRCS_UTILS := 		./src/utils/arr2d_element_cnt.c \
 					./src/utils/check_arg.c \
 					./src/utils/check_file_ext.c \
 		            ./src/utils/check_file_name.c 
+					./src/utils/remove_nl.c \
 
 # Source files from subdir .src/game
 SRCS_GAME :=

@@ -4,12 +4,12 @@
 SO textures/Wall_SO1.xpm
 WE textures/Wall_WE1.xpm
 
-F 43,51,123
+
 C     221,198,255
 
 EA textures/Wall_EA1.xpm
 
-F 12, 33, 255
+F 12,33,255
 
 11111111111111111111111111111
 100001  101101000000000000001

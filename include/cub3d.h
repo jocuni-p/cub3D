@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 15:41:01 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/09/28 18:04:04 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/09/30 12:40:21 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,11 @@ typedef struct s_elem
 	uint32_t	f_color;
 }			t_elem;
 
+
 typedef struct s_parser
 {
 	t_cub	*cub;//List containing every line from file.cub
+	t_cub	*aux;
 	t_elem	elem;
 	char	**raw_map;//original map before to be parsed
 //	int		player_x;
@@ -82,7 +84,6 @@ int		check_file_ext(char *str);
 int		inputfile_to_list(t_parser *parser, char *filename);
 int		parse_cub(t_parser *parser, char *filename);
 int		parse_elements(t_parser *parser);
-void	remove_nl(char *str);
 int		check_element_chars(char *str);
 int		set_element(t_parser *parser, char **elements);
 int		parse_color(t_parser *parser, char *str, char c);
@@ -107,9 +108,13 @@ void	lstadd_back(t_cub **lst, t_cub *new);
 void	handle_error(char *str);
 
 /*------------my prints to test program behabior------------*/
+
 void	print_cub_list(t_cub *lst);
 void	arr2d_print(char **arr2d);
 void	print_elem(t_parser *parser);
 
+/*----------------------utils---------------------*/
+
+void	remove_nl(char *str);
 
 #endif
