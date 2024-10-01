@@ -1,25 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_cub_list.c                                   :+:      :+:    :+:   */
+/*   lst_size.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/16 16:47:44 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/10/01 16:35:01 by jocuni-p         ###   ########.fr       */
+/*   Created: 2024/10/01 11:08:38 by jocuni-p          #+#    #+#             */
+/*   Updated: 2024/10/01 11:11:09 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-/*----Prints a t_cub list----*/
-void	print_cub_list(t_cub *lst)
+/*Counts the number of nodes in a list. Returns an integer.*/
+
+/*
+typedef struct	s_list
 {
-	printf  ("===============LIST ELEMENTS============\n");
-	while (lst)
+		int				content;
+		struct s_list	*next;
+}						t_list;
+*/
+int	lst_size(t_cub *lst)
+{
+	int	size;
+
+	size = 0;
+	if (lst != 0)
 	{
-		printf("%s", lst->str);
-		lst = lst->next;
+		while (lst != 0)
+		{
+			lst = lst->next;
+			size++;
+		}
 	}
-	printf("\n");
+	return (size);
 }

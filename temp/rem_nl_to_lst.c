@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_cub_list.c                                   :+:      :+:    :+:   */
+/*   rem_nl_to_lst.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/16 16:47:44 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/10/01 16:35:01 by jocuni-p         ###   ########.fr       */
+/*   Created: 2024/10/01 15:37:15 by jocuni-p          #+#    #+#             */
+/*   Updated: 2024/10/01 15:39:01 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
-
-/*----Prints a t_cub list----*/
-void	print_cub_list(t_cub *lst)
+#include "   "
+>>>>>>>>>>>>OJO. PROVAR ANTES DE PONER EN LIBFT>>>>>>>>>>>>>>>>>>>
+//Elimina el caracter '\n' en todas las lineas de una lista
+void	rem_nl_to_lst(t_parser *parser)
 {
-	printf  ("===============LIST ELEMENTS============\n");
-	while (lst)
+	t_cub	*tmp;
+	tmp = parser->aux;
+	while (tmp)
 	{
-		printf("%s", lst->str);
-		lst = lst->next;
+		remove_nl(tmp->str);
+		tmp = tmp->next;
 	}
-	printf("\n");
 }

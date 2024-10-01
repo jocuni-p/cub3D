@@ -78,6 +78,13 @@ int	parse_elements(t_parser *parser)
 	parser->aux = parser->cub;
 	while(parser->aux)
 	{
+		if (parser->aux->str[0] == '\n')//skips empty lines
+		{
+			parser->aux = parser->aux->next;
+			continue;
+		}
+		if (!flag_elem(parser))//si ja tenim tots els elements setejats 
+			return (0);
 		remove_nl(parser->aux->str);
 		if (check_element_chars(parser->aux->str))//return 0 if chars are valids
 			return (handle_error(ERR_FILE), 1);
@@ -91,8 +98,11 @@ int	parse_elements(t_parser *parser)
 		if (set_element(parser, elements))//gets the content of each element
 			return (handle_error(ERR_FILE), 1);
 		parser->aux = parser->aux->next;
-		if (!flag_elem(parser))//si ja tenim tots els elements setejats 
-			return (0);
+//		if (parser->aux->str[0] == '\n')//skips empty lines
+//		{
+//			parser->aux = parser->aux->next;
+//			continue;
+//		}
 	}
 	return (0);//aquest return no faria falta??
 }

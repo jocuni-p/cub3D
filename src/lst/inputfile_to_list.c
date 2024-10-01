@@ -59,11 +59,11 @@ int	inputfile_to_list(t_parser *parser, char *filename)
 		return (handle_error(ERR_FD), 1);
 	while ((line = get_next_line(fd)) != NULL)
 	{
-		if (line[0] == '\n')
-		{
-			free(line);
-			continue;
-		}
+//		if (line[0] == '\n')
+//		{
+//			free(line);
+//			continue;
+//		}
 		node = lst_newnode(line);//this malloc (p_malloc) is already protectec.
 		if (node == NULL)
 		{

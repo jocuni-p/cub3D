@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 15:41:01 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/09/30 12:40:21 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/10/01 11:12:21 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ typedef struct s_elem
 typedef struct s_parser
 {
 	t_cub	*cub;//List containing every line from file.cub
-	t_cub	*aux;
+	t_cub	*aux;//just to iter t_cub *cub
 	t_elem	elem;
 	char	**raw_map;//original map before to be parsed
 //	int		player_x;
@@ -106,6 +106,8 @@ void	lstadd_back(t_cub **lst, t_cub *new);
 //void	lst_delone(t_cub **lst, char **node_to_del, void (*del)(void*));
 //void	handle_error(char *str, t_parser *parser);
 void	handle_error(char *str);
+int		lst_size(t_cub *lst);
+
 
 /*------------my prints to test program behabior------------*/
 

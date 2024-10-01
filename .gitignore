@@ -16,4 +16,3 @@ a.out
 src/*.o
 cub3D
 build/
-temp/

@@ -6,7 +6,7 @@
 #    By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/26 17:23:07 by jocuni-p          #+#    #+#              #
-#    Updated: 2024/09/30 12:46:54 by jocuni-p         ###   ########.fr        #
+#    Updated: 2024/09/30 14:03:33 by jocuni-p         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,8 +57,8 @@ SRCS_UTILS := 		./src/utils/arr2d_element_cnt.c \
 					./src/utils/arr2d_free.c \
 					./src/utils/check_arg.c \
 					./src/utils/check_file_ext.c \
-		            ./src/utils/check_file_name.c 
-					./src/utils/remove_nl.c \
+		            ./src/utils/check_file_name.c \
+					./src/utils/remove_nl.c 
 
 # Source files from subdir .src/game
 SRCS_GAME :=
