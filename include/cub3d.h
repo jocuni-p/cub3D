@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 15:41:01 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/10/01 11:12:21 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/10/02 12:17:06 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,9 @@ typedef struct s_elem
 typedef struct s_parser
 {
 	t_cub	*cub;//List containing every line from file.cub
-	t_cub	*aux;//just to iter t_cub *cub
+	t_cub	*map_firstline;//points to the first line after the elements
 	t_elem	elem;
-	char	**raw_map;//original map before to be parsed
+	char	**raw_map;//map before to be parsed
 //	int		player_x;
 //	int		player_y;
 //	char	player_view;
@@ -81,7 +81,7 @@ typedef struct s_data//IN PROGRESS-It will be passed to the graphic part of cu3D
 int		check_arg(char *str);
 int		check_file_name(char *str);
 int		check_file_ext(char *str);
-int		inputfile_to_list(t_parser *parser, char *filename);
+int		lst_creator(t_parser *parser, char *filename);
 int		parse_cub(t_parser *parser, char *filename);
 int		parse_elements(t_parser *parser);
 int		check_element_chars(char *str);

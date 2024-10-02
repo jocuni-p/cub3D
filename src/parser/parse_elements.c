@@ -68,27 +68,26 @@ int	flag_elem(t_parser *parser)
 	return (1);
 }
 
-/*----Parses just the elements (4 textures + 2 colors) and sets parser->aux 
-pointed to the beginning of the map---*/
+/*----Parses just the elements (4 textures + 2 colors)---*/
 int	parse_elements(t_parser *parser)
 {
 //	t_cub 	*aux;
 	char	**elements;
 
-	parser->aux = parser->cub;
-	while(parser->aux)
+//	parser->aux = parser->cub;
+	while(parser->cub)
 	{
-		if (parser->aux->str[0] == '\n')//skips empty lines
+		if (parser->cub->str[0] == '\n')//skips empty lines
 		{
-			parser->aux = parser->aux->next;
+			parser->cub = parser->cub->next;
 			continue;
 		}
 		if (!flag_elem(parser))//si ja tenim tots els elements setejats 
 			return (0);
-		remove_nl(parser->aux->str);
-		if (check_element_chars(parser->aux->str))//return 0 if chars are valids
+		remove_nl(parser->cub->str);
+		if (check_element_chars(parser->cub->str))//return 0 if chars are valids
 			return (handle_error(ERR_FILE), 1);
-		elements = ft_split(parser->aux->str, ' ');//retorns a char ** allocated
+		elements = ft_split(parser->cub->str, ' ');//retorns a char ** allocated
 		if (arr2d_element_cnt(elements) != 2)//checks if the array has only 2 elements
 		{
 			arr2d_free(elements);
@@ -97,12 +96,7 @@ int	parse_elements(t_parser *parser)
 //		arr2d_print(elements);//TEMPORAL
 		if (set_element(parser, elements))//gets the content of each element
 			return (handle_error(ERR_FILE), 1);
-		parser->aux = parser->aux->next;
-//		if (parser->aux->str[0] == '\n')//skips empty lines
-//		{
-//			parser->aux = parser->aux->next;
-//			continue;
-//		}
+		parser->cub = parser->cub->next;
 	}
 	return (0);//aquest return no faria falta??
 }

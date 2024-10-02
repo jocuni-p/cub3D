@@ -1,0 +1,132 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile_minishell                                 :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/06/06 17:59:33 by castorga          #+#    #+#              #
+#    Updated: 2024/09/17 11:29:30 by jocuni-p         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+
+NAME =	cub3D
+
+# Compiler
+GCC := cc
+
+# Compiler flags
+CFLAGS	:=	-Wextra -Wall -Werror -Wunreachable-code -Ofast
+#FLAGS := -Wall -Werror -Wextra -MMD -g
+
+# Remove
+RM 	:=	rm -rf
+
+# Makefile
+MKF :=	Makefile
+
+# Root Folders
+SRC_ROOT := src/
+DEP_ROOT := .dep/
+OBJ_ROOT := .objs/
+INC_ROOT := include/
+LIB_ROOT := lib/
+
+INC_DIRS += ${INC_ROOT}
+
+# Lib readline
+READLINE_MK_ROOT := ${LIB_ROOT}readline/Makefile
+READLINE_ROOT := ${LIB_ROOT}readline/
+READLINE := ${READLINE_ROOT}libreadline.a ${READLINE_ROOT}libhistory.a
+
+# Libft
+LIBFT_ROOT := ${LIB_ROOT}libft/
+LIBFT_INC := $(LIBFT_ROOT) 
+LIBFT := $(LIBFT_ROOT)libft.a
+
+INC_DIRS += ${LIBFT_INC}
+LIBS += -L${LIBFT_ROOT} -lft
+
+INC_DIRS += ${READLINE_ROOT}
+LIBS += -L${READLINE_ROOT} -ltermcap
+
+# Source Files
+################################################################################
+
+FILES =	main.c \
+		handle_error.c\
+		check_file_ext.c init_parser.c\
+		inputfile_to_list.c parse_cub.c\
+		print_cub_list.c
+
+SRC 	:= $(addprefix $(SRC_ROOT), $(FILES))
+OBJS 	:= $(addprefix $(OBJ_ROOT), $(FILES:.c=.o))
+DEPS 	:= $(addprefix $(DEP_ROOT), $(FILES:.c=.d))
+INCS 	:= $(addprefix -I, $(INC_DIRS))
+
+
+# Colors
+################################################################################
+
+DEF_COLOR =		\033[0;39m
+DARK_YELLOW =	\033[38;5;143m
+DARK_GREEN 	=	\033[1m\033[38;2;75;179;82m
+GREEN 		=	\033[0;32m
+
+# Rules
+################################################################################
+
+all:	$(READLINE_MK_ROOT)
+		@echo "$(DARK_GREEN)GNU READLINE 8.2 COMPILING... $(DEF_COLOR)"
+		@$(MAKE) -sC $(READLINE_ROOT)
+		@echo "$(DARK_GREEN)LIBFT COMPILING... $(DEF_COLOR)"
+		@$(MAKE) -C  $(LIBFT_ROOT)
+		@echo "$(DARK_GREEN)MINISHELL COMPILING... $(DEF_COLOR)"
+		@$(MAKE) $(NAME)
+		@echo "                              $(DEF_COLOR)"
+		@echo "$(GREEN)▶  MINISHELL BUILD COMPLETED!$(DEF_COLOR)"
+		@echo "                              $(DEF_COLOR)"
+		@echo "$(DARK_GREEN)-->	Now you can run ./minishell$(DEF_COLOR)"
+
+$(READLINE_MK_ROOT):
+		pwd ${BLOCK}
+		cd ./${READLINE_ROOT} && ./configure
+		cd ${BLOCK}
+
+$(LIBFT):
+		@$(MAKE) -C  $(LIBFT_ROOT)
+
+$(NAME): $(OBJS)
+		@$(GCC) $(FLAGS) $(OBJS) $(READLINE) $(LIBS) -o $(NAME)
+
+$(OBJ_ROOT)%.o: $(SRC_ROOT)%.c $(MKF)
+		@mkdir -p $(dir $@) $(dir $(subst $(OBJ_ROOT), $(DEP_ROOT), $@))
+		@echo "▶ Compiling minishell file: <$(notdir $<)>"
+		@$(GCC) $(FLAGS) $(INCS) -c $< -o $@
+		@mv $(patsubst %.o, %.d, $@) $(dir $(subst $(OBJ_ROOT), $(DEP_ROOT), $@))
+
+-include $(DEPS)
+
+readline:
+		@$(MAKE) $(READLINE_MK_ROOT)
+
+clean:
+		@$(RM) $(OBJ_ROOT)
+		@$(RM) $(DEP_ROOT)
+		@$(MAKE) clean -C $(LIBFT_ROOT)
+
+fclean:	clean
+		@$(RM) $(NAME)
+		@$(RM) $(LIBFT)
+
+re:
+		@$(MAKE) fclean
+		@$(MAKE) all
+
+
+cleanrl:
+		@$(MAKE) clean -sC $(READLINE_ROOT)
+
+
+.PHONY:	all bonus update clean fclean re

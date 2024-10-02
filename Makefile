@@ -6,7 +6,7 @@
 #    By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/26 17:23:07 by jocuni-p          #+#    #+#              #
-#    Updated: 2024/09/30 14:03:33 by jocuni-p         ###   ########.fr        #
+#    Updated: 2024/10/02 10:54:00 by jocuni-p         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,7 @@ endif
 LIBS += -L$(LIBFT) -lft
 
 # Source files from subdir .src/lst
-SRCS_LST :=         ./src/lst/inputfile_to_list.c \
+SRCS_LST :=         ./src/lst/lst_creator.c \
 					./src/lst/lst_newnode.c \
 					./src/lst/lstadd_back.c \
 					./src/lst/lstlast.c
