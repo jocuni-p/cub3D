@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_cub_list.c                                   :+:      :+:    :+:   */
+/*   print_map_list.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/16 16:47:44 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/10/03 14:16:27 by jocuni-p         ###   ########.fr       */
+/*   Created: 2024/10/03 14:16:52 by jocuni-p          #+#    #+#             */
+/*   Updated: 2024/10/03 14:24:52 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-/*----Prints a t_cub list----*/
-void	print_cub_list(t_cub *lst)
+/*----Prints from the pointer to map----*/
+void	print_map_list(t_cub *lst)
 {
-	printf  ("===============LIST ELEMENTS============\n");
+	printf  ("===============MAP PARSING 1============\n");
 	while (lst)
 	{
-		printf("%s", lst->str);
+		printf("%s\n", lst->str);
 		lst = lst->next;
 	}
 	printf("\n");

@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 15:41:01 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/10/03 12:36:14 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/10/03 18:12:13 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@
 # define ERR_ARG_EX "Invalid argument extension\n"
 # define ERR_FD "Error:\nInvalid file descriptor\n"
 # define ERR_FILE "Error:\nInvalid file data\n"
-# define ERR_ELEM "Error:\nInvalid file element data\n"
-# define ERR_MAP "Error:\nInvalid file map data\n"
+# define ERR_ELEM "Error:\nInvalid elements data\n"
+# define ERR_MAP "Error:\nInvalid map data\n"
 # define ERR_MEMORY "Error:\n Memory failure\n"
 //# define ERR_IMG "Error;\nImage not found\n"
 
@@ -52,14 +52,21 @@ typedef struct s_elem
 	char		*f;
 	int			rgb_f[3];
 	uint32_t	f_color;
-}			t_elem;
+}				t_elem;
 
+typedef struct s_map
+{
+	int	w;
+	int	h;
+	int	player_qty;
+}		t_map;
 
 typedef struct s_parser
 {
 	t_cub	*cub;//List containing every line from file.cub
 	t_cub	*map_firstline;//points to the first line after the elements
 	t_elem	elem;
+	t_map	map;//map infos
 	char	**raw_map;//map before to be parsed
 //	int		player_x;
 //	int		player_y;
@@ -92,6 +99,14 @@ int		set_f(t_parser *parser, char *rgb_canal, int i);
 int		set_c(t_parser *parser, char *rgb_canal, int i);
 int		encoder_to_hexcolorformat(int r, int g, int b, int alpha);
 int		flag_elem(t_parser *parser);
+int		parse_map_1(t_parser *parser);
+int		is_firstline_valid(char *str);
+int		is_first_and_last_char_valid(char *str);
+int		is_middle_char_valid(char *str);
+
+int 	map_size(t_parser *parser);
+int		arr2d_creator(t_parser *parser);
+
 
 /*-------------arrays management------------*/
 
@@ -110,11 +125,13 @@ void	handle_error(char *str);
 int		lst_size(t_cub *lst);
 
 
-/*------------my prints to test program behabior------------*/
+/*------------my prints to test program behavior------------*/
 
 void	print_cub_list(t_cub *lst);
 void	arr2d_print(char **arr2d);
 void	print_elem(t_parser *parser);
+void	print_map_list(t_cub *lst);
+
 
 /*----------------------utils---------------------*/
 

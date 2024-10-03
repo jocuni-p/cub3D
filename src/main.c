@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 12:38:53 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/10/02 10:49:42 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/10/03 14:30:27 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ int	main(int ac, char **av)
 	ft_memset(&parser, 0, sizeof(parser));//Initializes all parser' vars to 0
 	if (parse_cub(&parser, av[1]))
 		return (1);//manage the message to print if failures
+	print_map_list(parser.map_firstline);//TEMPORAL
+
 	
 //>>>>>>>>>>>GRAPHIC_PART MISSING<<<<<<<<<<<<<
 
