@@ -86,16 +86,16 @@ int	parse_elements(t_parser *parser)
 			return (0);
 		remove_nl(parser->cub->str);
 		if (check_element_chars(parser->cub->str))//return 0 if chars are valids
-			return (handle_error(ERR_FILE), 1);
+			return (handle_error(ERR_ELEM), 1);
 		elements = ft_split(parser->cub->str, ' ');//retorns a char ** allocated
 		if (arr2d_element_cnt(elements) != 2)//checks if the array has only 2 elements
 		{
 			arr2d_free(elements);
-			return (handle_error(ERR_FILE), 1);
+			return (handle_error(ERR_ELEM), 1);
 		}
 //		arr2d_print(elements);//TEMPORAL
 		if (set_element(parser, elements))//gets the content of each element
-			return (handle_error(ERR_FILE), 1);
+			return (handle_error(ERR_ELEM), 1);
 		parser->cub = parser->cub->next;
 	}
 	return (0);//aquest return no faria falta??
