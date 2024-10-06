@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 14:16:52 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/10/03 14:24:52 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/10/06 12:52:44 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 /*----Prints from the pointer to map----*/
 void	print_map_list(t_cub *lst)
 {
-	printf  ("===============MAP PARSING 1============\n");
+	printf ("===============MAP PARSING 1============\n");
 	while (lst)
 	{
 		printf("%s\n", lst->str);

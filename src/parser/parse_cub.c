@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 14:27:44 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/10/03 18:16:27 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/10/06 13:35:04 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,9 @@ int	parse_cub(t_parser *parser, char *filename)
 	if (arr2d_creator(parser))
 		return (1);
 	print_elem(parser);//TEMPORAL
-//	if (parse_map_2(parser))
-//		return (1);
+	arr2d_print(parser->raw_map);//TEMPORAL
+	if (parse_map_2(parser))
+		return (1);
 	return (0);	
 }
+//>>>>>>>GESTIONAR TODOS RETURN -> LOS HANDLE ERROR>>>>>>>>>>>>>>>

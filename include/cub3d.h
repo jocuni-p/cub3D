@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 15:41:01 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/10/03 18:12:13 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/10/06 18:42:20 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ typedef struct s_map
 	int	w;
 	int	h;
 	int	player_qty;
+	int	player_view;
 }		t_map;
 
 typedef struct s_parser
@@ -102,11 +103,14 @@ int		flag_elem(t_parser *parser);
 int		parse_map_1(t_parser *parser);
 int		is_firstline_valid(char *str);
 int		is_first_and_last_char_valid(char *str);
-int		is_middle_char_valid(char *str);
+int		is_middle_char_valid(char *str, t_parser *parser);
 
-int 	map_size(t_parser *parser);
+int 	arr2d_size(t_parser *parser);
+int 	arr2d_filler(t_parser *parser);
 int		arr2d_creator(t_parser *parser);
 
+int		parse_map_2(t_parser *parser);
+int		is_map_properly_closed(t_parser *parser);
 
 /*-------------arrays management------------*/
 

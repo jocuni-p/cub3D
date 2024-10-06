@@ -6,7 +6,7 @@
 #    By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/26 17:23:07 by jocuni-p          #+#    #+#              #
-#    Updated: 2024/10/03 16:16:21 by jocuni-p         ###   ########.fr        #
+#    Updated: 2024/10/06 13:36:29 by jocuni-p         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,7 +48,8 @@ SRCS_PARSER := 		./src/parser/handle_error.c \
 					./src/parser/parse_cub.c \
 					./src/parser/parse_elements.c \
 					./src/parser/parse_map_1.c \
-					./src/parser/arr2d_creator.c
+					./src/parser/parse_map_2.c \
+					./src/parser/arr2d_creator.c 
 					
 # Archivos fuente del subdirectorio ./src/print_tests
 SRCS_PRINT_TESTS := ./src/print_tests/arr2d_print.c \

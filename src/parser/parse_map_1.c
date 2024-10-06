@@ -6,13 +6,14 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 12:26:44 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/10/03 17:58:27 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/10/06 12:37:45 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
 /*---Return 0 if str contains '1' and/or ' ' character, otherwise return 1*/
+/*This function checks the first and last lines*/
 int	is_firstline_valid(char *str)
 {
 	int	i;
@@ -52,16 +53,21 @@ int	is_first_and_last_char_valid(char *str)
 }
 
 /*Return 0 if str contents 1/0/' '/N/S/W or E, otherwise return 1*/
-int	is_middle_char_valid(char *str)
+int	is_middle_char_valid(char *str, t_parser *parser)
 {
 	int	i;
 
 	i = 1;
 	while (str[i])
 	{
-		if (str[i] == ' ' || str[i] == '1' || str[i] == '0' || str[i] == 'N' \
-			|| str[i] == 'S' || str[i] == 'W' || str[i] == 'E')
+		if (str[i] == ' ' || str[i] == '1' || str[i] == '0')
 			i++;
+		else if ( str[i] == 'N' || str[i] == 'S' || str[i] == 'W' || str[i] == 'E')
+		{
+			parser->map.player_qty++;//counts the number of players
+			parser->map.player_view = str[i];//sets the player's view
+			i++;
+		}
 		else
 			return (1);
 	}
@@ -86,7 +92,7 @@ int	parse_map_1(t_parser *parser)
 		trimmed_line = ft_strtrim(parser->cub->str, " ");//quito espacios para analizar el str
 		if (is_first_and_last_char_valid(trimmed_line))//si la linea empieza y acaba en 1  
 			return (handle_error(ERR_MAP), 1);//OJO incluir aqui el free de trimmmed_line	
-		if (is_middle_char_valid(trimmed_line))//si contenido != 1, 0, E, N,S, W, " " -> INVALID
+		if (is_middle_char_valid(trimmed_line, parser))//si contenido != 1, 0, E, N,S, W, " " -> INVALID
 			return (handle_error(ERR_MAP), 1);//OJO incluir aqui el free de trimmmed_line
 		if (parser->cub->next == NULL)//si es la ultima linea
 			if (is_firstline_valid(trimmed_line))//cheks if the last map line is valid (same function than the first line) 
