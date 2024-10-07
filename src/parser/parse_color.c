@@ -62,28 +62,28 @@ int	parse_color(t_parser *parser, char *str, char c)//parsea 1 elemento a la vez
 	i = 0;
 	rgb_canals = ft_split(str, ',');
 	if (arr2d_element_cnt(rgb_canals) != 3)
-		return (arr2d_free(rgb_canals), handle_error(ERR_FILE), 1);//liberar todo
+		return (arr2d_free(&rgb_canals), handle_error(ERR_FILE), 1);//liberar todo
 	while(rgb_canals[i])
 	{
 		j = 0;
 		while (rgb_canals[i][j])
 		{
 			if (!ft_isdigit(rgb_canals[i][j]))
-				return (arr2d_free(rgb_canals), handle_error(ERR_FILE), 1);//liberar todo
+				return (arr2d_free(&rgb_canals), handle_error(ERR_FILE), 1);//liberar todo
 			j++;
 		}
 		if (c == 'c')
 		{
 			if (set_c(parser, rgb_canals[i], i)) //encoder_to_hex_color(color->r, color->g, color->b, 0xFF);
-				return (arr2d_free(rgb_canals), handle_error(ERR_FILE), 1);//liberar todo
+				return (arr2d_free(&rgb_canals), handle_error(ERR_FILE), 1);//liberar todo
 		}
 		else
 		{
 			if (set_f(parser, rgb_canals[i], i))//encoder_to_hex_color(color->r, color->g, color->b, 0xFF);
-				return (arr2d_free(rgb_canals), handle_error(ERR_FILE), 1);//liberar todo
+				return (arr2d_free(&rgb_canals), handle_error(ERR_FILE), 1);//liberar todo
 		}
 		i++;
 	}
-	return (arr2d_free(rgb_canals), 0);
+	return (arr2d_free(&rgb_canals), 0);
 }
 

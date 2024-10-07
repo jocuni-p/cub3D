@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 12:26:44 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/10/06 12:37:45 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/10/07 14:45:10 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ int	parse_map_1(t_parser *parser)
 	while (parser->cub->str[0] == '\n')//skips empty lines
 		parser->cub = parser->cub->next;
 	parser->map_firstline = parser->cub;//sets a pointer to the map first line
-	if (is_firstline_valid(parser->cub->str))
+	if (parser->map_firstline == NULL || is_firstline_valid(parser->cub->str))
 		return (handle_error(ERR_MAP), 1);
 	parser->cub = parser->cub->next;
 	while (parser->cub)

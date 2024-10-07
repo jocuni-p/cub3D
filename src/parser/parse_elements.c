@@ -12,7 +12,7 @@
 
 #include "../include/cub3d.h"
 
-/*Returns 1 if it is found on *str any invalid character, otherwise returns 0*/
+/*Returns 1 if any invalid character is found, otherwise returns 0*/
 int	check_element_chars(char *str)
 {
 	int	i;
@@ -33,8 +33,8 @@ int	check_element_chars(char *str)
 element is found returns 1. Finally frees **elements. */
 int	set_element(t_parser *parser, char **elements)
 {
-	if ((ft_strcmp(elements[0], "NO") == 0) && parser->elem.no == NULL)//si el elemento es "NO" y la variable no ha sido seteada previamente, se le asigna el valor del segundo elemento
-		parser->elem.no = ft_strdup(elements[1]);//no cal duplicar podria seguir amb elements? (Adria?)				
+	if ((ft_strcmp(elements[0], "NO") == 0) && parser->elem.no == NULL)
+		parser->elem.no = ft_strdup(elements[1]);				
 	else if ((ft_strcmp(elements[0], "SO") == 0) && parser->elem.so == NULL)
 		parser->elem.so = ft_strdup(elements[1]);				
 	else if ((ft_strcmp(elements[0], "WE") == 0) && parser->elem.we == NULL)
@@ -54,8 +54,8 @@ int	set_element(t_parser *parser, char **elements)
 			return (1);
 	}
 	else
-		return (arr2d_free(elements), 1);
-	return (arr2d_free(elements), 0);
+		return (arr2d_free(&elements), 1);
+	return (arr2d_free(&elements), 0);
 }
 
 /*---Returns 0 if all elements are set; otherwise, returns 1.----*/
@@ -68,13 +68,12 @@ int	flag_elem(t_parser *parser)
 	return (1);
 }
 
-/*----Parses just the elements (4 textures + 2 colors)---*/
+/*----Parses only the elements (4 textures + 2 colors) and sets a pointer to 
+the map starting line. Returns 1 if some invalid case is found---*/
 int	parse_elements(t_parser *parser)
 {
-//	t_cub 	*aux;
 	char	**elements;
 
-//	parser->aux = parser->cub;
 	while(parser->cub)
 	{
 		if (parser->cub->str[0] == '\n')//skips empty lines
@@ -89,14 +88,13 @@ int	parse_elements(t_parser *parser)
 			return (handle_error(ERR_ELEM), 1);
 		elements = ft_split(parser->cub->str, ' ');//retorns a char ** allocated
 		if (arr2d_element_cnt(elements) != 2)//checks if the array has only 2 elements
-		{
-			arr2d_free(elements);
-			return (handle_error(ERR_ELEM), 1);
-		}
+			return (arr2d_free(&elements), handle_error(ERR_ELEM), 1);
 //		arr2d_print(elements);//TEMPORAL
 		if (set_element(parser, elements))//gets the content of each element
 			return (handle_error(ERR_ELEM), 1);
 		parser->cub = parser->cub->next;
+		if (parser->cub == NULL)//significa que no hay mapa en el file.
+			return (handle_error(ERR_ELEM), 1);
 	}
-	return (0);//aquest return no faria falta??
+	return (0);
 }

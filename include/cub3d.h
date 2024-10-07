@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 15:41:01 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/10/06 18:42:20 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/10/07 17:31:34 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,8 +88,8 @@ typedef struct s_data//IN PROGRESS-It will be passed to the graphic part of cu3D
 
 //void	init_parser(t_parser *parser);
 int		check_arg(char *str);
-int		check_file_name(char *str);
-int		check_file_ext(char *str);
+int		check_arg_name(char *str);
+int		check_arg_ext(char *str);
 int		lst_creator(t_parser *parser, char *filename);
 int		parse_cub(t_parser *parser, char *filename);
 int		parse_elements(t_parser *parser);
@@ -115,7 +115,7 @@ int		is_map_properly_closed(t_parser *parser);
 /*-------------arrays management------------*/
 
 int		arr2d_element_cnt(char **arr);
-void	arr2d_free(char **arr);
+void	arr2d_free(char ***arr);
 
 
 /*-------------lists management--------------*/

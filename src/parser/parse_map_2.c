@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 15:33:39 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/10/06 18:43:36 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/10/07 17:27:38 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	is_map_properly_closed(t_parser *parser)
 //					return (handle_error(ERR_MAP), 1);
 				if (parser->raw_map[y][x + 1] == ' ' || parser->raw_map[y][x - 1] == ' ' \
 				|| parser->raw_map[y + 1][x] == ' ' || parser->raw_map[y - 1][x] == ' ')
-					return (handle_error(ERR_MAP), 1);
+					return (1);
 			}
 			x++;
 		}

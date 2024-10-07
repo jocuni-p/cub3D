@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 11:14:18 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/10/06 14:04:11 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/10/07 17:25:31 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ int	arr2d_size(t_parser *parser)
 	len = 0;
 	high = 1;
 	tmp = parser->map_firstline;//lo apunto al inicio del mapa
+	if (!tmp)
+		return (1);
 	len = ft_strlen(tmp->str);
 	tmp = tmp->next;
 	while (tmp)
@@ -67,7 +69,7 @@ int	arr2d_creator(t_parser *parser)
 
 	i = 0;
 	if (arr2d_size(parser))
-		return (1);
+		return (handle_error(ERR_MAP), 1);
 //MALLOCADO DE LA MATRIZ EXTERNA
 	parser->raw_map = (char **)malloc(sizeof(char *) * parser->map.h + 1);
 	if (!parser->raw_map)
