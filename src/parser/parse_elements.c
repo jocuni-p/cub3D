@@ -34,7 +34,7 @@ element is found returns 1. Finally frees **elements. */
 int	set_element(t_parser *parser, char **elements)
 {
 	if ((ft_strcmp(elements[0], "NO") == 0) && parser->elem.no == NULL)
-		parser->elem.no = ft_strdup(elements[1]);				
+		parser->elem.no = ft_strdup(elements[1]);//OJO hace malloc				
 	else if ((ft_strcmp(elements[0], "SO") == 0) && parser->elem.so == NULL)
 		parser->elem.so = ft_strdup(elements[1]);				
 	else if ((ft_strcmp(elements[0], "WE") == 0) && parser->elem.we == NULL)

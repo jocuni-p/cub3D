@@ -59,15 +59,16 @@ int	lst_creator(t_parser *parser, char *filename)
 		return (handle_error(ERR_FD), 1);
 	while ((line = get_next_line(fd)) != NULL)
 	{
-		node = lst_newnode(line);//this malloc (p_malloc) is already protectec.
+		node = lst_newnode(line);
 		if (node == NULL)
 		{
-			free(parser->cub);//Hacer funcion que libere toda la lista
 			close(fd);
+			lst_clear(&parser->cub);//libera la lista si falla algun malloc del new_node
 			return (handle_error(ERR_MEMORY), 1);
 		}
 		lstadd_back(&parser->cub, node);
 		free(line);
 	}
+//	parser->cub_firstline = parser->cub;
 	return (close(fd), 0);
 }

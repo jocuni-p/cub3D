@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 15:33:39 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/10/07 17:27:38 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/10/08 17:13:36 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,6 @@ int	is_map_properly_closed(t_parser *parser)
 			|| parser->raw_map[y][x] == 'S' || parser->raw_map[y][x] == 'W' \
 			|| parser->raw_map[y][x] == 'E')
 			{
-//				if (check_char(parser, x, y))
-//					return (handle_error(ERR_MAP), 1);
 				if (parser->raw_map[y][x + 1] == ' ' || parser->raw_map[y][x - 1] == ' ' \
 				|| parser->raw_map[y + 1][x] == ' ' || parser->raw_map[y - 1][x] == ' ')
 					return (1);
@@ -46,16 +44,11 @@ int	is_map_properly_closed(t_parser *parser)
 int	parse_map_2(t_parser *parser)
 {
 	if (parser->map.player_qty != 1)
-		return (handle_error(ERR_MAP), 1);
-		
+		return (handle_error(ERR_MAP), 1);		
 	if (parser->map.w < 3 || parser->map.h < 3)//tamanyo minimo de mapa viable
 		return (handle_error(ERR_MAP), 1);
-
 	if (is_map_properly_closed(parser))
-		return (handle_error(ERR_MAP), 1);
- 
-//	sustituyo espacios iniciales y finales de cada linea por '1' (NO SE SI HACE FALTA DESARROLLAR ESTO ??)
-
+		return (handle_error(ERR_MAP), 1); 
 	return (0);
 }
  

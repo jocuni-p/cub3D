@@ -33,6 +33,7 @@ int	set_c(t_parser *parser, char *rgb_canal, int i)
 		parser->elem.c_color = encoder_to_hexcolorformat(parser->elem.rgb_c[0], parser->elem.rgb_c[1], parser->elem.rgb_c[2], 255);
 		return (0);
 }
+
 int	set_f(t_parser *parser, char *rgb_canal, int i)
 {
 		int	nbr;
@@ -49,7 +50,6 @@ int	set_f(t_parser *parser, char *rgb_canal, int i)
 		parser->elem.f_color = encoder_to_hexcolorformat(parser->elem.rgb_f[0], parser->elem.rgb_f[1], parser->elem.rgb_f[2], 255);
 		return (0);
 }
-
 //Retorna 1 si el color es INVALIDO (+err_msg +free), sino lo codifica a color 
 //hexadecimal, setea su var y retorna 0. 
 
@@ -61,6 +61,7 @@ int	parse_color(t_parser *parser, char *str, char c)//parsea 1 elemento a la vez
 
 	i = 0;
 	rgb_canals = ft_split(str, ',');
+	free(str);//frees elem.c and elem.f
 	if (arr2d_element_cnt(rgb_canals) != 3)
 		return (arr2d_free(&rgb_canals), handle_error(ERR_FILE), 1);//liberar todo
 	while(rgb_canals[i])
@@ -86,4 +87,3 @@ int	parse_color(t_parser *parser, char *str, char c)//parsea 1 elemento a la vez
 	}
 	return (arr2d_free(&rgb_canals), 0);
 }
-

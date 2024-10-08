@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 15:41:01 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/10/07 17:31:34 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/10/08 17:19:24 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ typedef struct s_map
 typedef struct s_parser
 {
 	t_cub	*cub;//List containing every line from file.cub
+	t_cub	*cub_firstline;
 	t_cub	*map_firstline;//points to the first line after the elements
 	t_elem	elem;
 	t_map	map;//map infos
@@ -104,6 +105,8 @@ int		parse_map_1(t_parser *parser);
 int		is_firstline_valid(char *str);
 int		is_first_and_last_char_valid(char *str);
 int		is_middle_char_valid(char *str, t_parser *parser);
+void	parser_free(t_parser *parser);
+void	elem_free(t_elem elem);
 
 int 	arr2d_size(t_parser *parser);
 int 	arr2d_filler(t_parser *parser);
@@ -127,7 +130,7 @@ void	lstadd_back(t_cub **lst, t_cub *new);
 //void	handle_error(char *str, t_parser *parser);
 void	handle_error(char *str);
 int		lst_size(t_cub *lst);
-
+void 	lst_clear(t_cub **lst);
 
 /*------------my prints to test program behavior------------*/
 

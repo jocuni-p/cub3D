@@ -6,42 +6,35 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 15:00:47 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/09/20 15:39:40 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/10/08 17:22:06 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../include/cub3d.h"
+//>>>>>>>>>>>>>>>>IN CONSTRUCTION<<<<<<<<<<<<<<<<<<<<<<
 
-//>>>>>>>>>>>>>>>>DRAFT / IN CONSTRUCTION<<<<<<<<<<<<<<<<<<<<<<
-/*------Frees all t_parser struct memory-----*/
-//DEBE LIBERAR:
-//LA LISTA t_cub *cub
-//
-//
-void	parser_free(t_parser **parser)
+/*Frees all allocated elements in the struct elem */
+void	elem_free(t_elem elem)
 {
-	if (parser != NULL)
-		tok_free(tok);
+	if(elem.no)
+		free(elem.no);
+	if(elem.no)
+		free(elem.so);
+	if(elem.no)
+		free(elem.we);
+	if(elem.no)
+		free(elem.ea);
+	if(elem.no)
+		free(elem.c);
+	if(elem.no)
+		free(elem.f);
 }
 
-void	tok_free(t_tok **lst)
+/*------Frees all t_parser struct memory-----*/
+//LIBERADOR FINAL DEL PROGRAMA SI TODO FUE BIEN
+void	parser_free(t_parser *parser)
 {
-	t_tok	*aux;
-
-	aux = (*lst);
-	if (lst == NULL || (*lst) == NULL)
-		return ;
-	while (aux != NULL)
-	{
-		if (aux->str != NULL)
-		{
-			free(aux->str);
-			aux->str = NULL;
-		}
-		aux->type = NULL_TYPE;
-		(*lst) = aux->next;
-		free(aux);
-		aux = (*lst);
-	}
-	(*lst) = NULL;
+	lst_clear(&parser->cub);//libera la lista cub, crear un punter a l'inici i guardarlo
+	elem_free(parser->elem);
+	arr2d_free(&parser->raw_map);
 }

@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 11:14:18 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/10/07 17:25:31 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/10/08 17:13:07 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ int	arr2d_creator(t_parser *parser)
 		parser->raw_map[i] = (char *)malloc(sizeof(char) * parser->map.w + 1);
 		if (!parser->raw_map[i])
 			return (handle_error(ERR_MAP), 1);//OJO, liberar todo lo allocado hasta ahora
+//OJO: aqui faltaria una funcion de borrar los elementos ya mallocados de la matriz y la matriz
 		ft_memset(parser->raw_map[i], ' ', parser->map.w);//inicializo todo el str con ' '
 		parser->raw_map[i][parser->map.w] = '\0';//cierro el str 
 		i++;

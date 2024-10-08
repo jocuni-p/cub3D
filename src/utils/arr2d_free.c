@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 15:30:58 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/10/07 16:01:25 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/10/08 16:53:06 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,3 +30,26 @@ void	arr2d_free(char ***arr)
 	*arr = NULL;
 	return ;
 }
+/*del meu minishell*/
+/*Frees all elements of an **arr2d included the main pointer as well.*/
+/*
+void	free_arr2d(char **array_strings)
+{
+	size_t	i;
+
+	if (array_strings == NULL)
+		return ;
+	i = 0;
+	if (array_strings != NULL)
+	{
+		while (array_strings[i] != NULL)
+		{
+			free(array_strings[i]);
+			array_strings[i] = NULL;
+			i++;
+		}
+		free(array_strings);
+		array_strings = NULL;
+	}
+}
+*/
