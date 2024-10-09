@@ -6,7 +6,7 @@
 #    By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/26 17:23:07 by jocuni-p          #+#    #+#              #
-#    Updated: 2024/10/08 17:06:19 by jocuni-p         ###   ########.fr        #
+#    Updated: 2024/10/09 19:03:23 by jocuni-p         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,11 +27,11 @@ HEADERS	:= -I ./include -I $(LIBMLX)/include -I $(LIBFT)
 
 # To compile the mlx on Linux at 42Barcelona campus   
 ifeq ($(UNAME), Linux)
-	LIBS	:= $(LIBMLX)/build/libmlx42.a -ldl -lglfw -pthread -lm -g #-fsanitize=address
+	LIBS	:= $(LIBMLX)/build/libmlx42.a -ldl -lglfw -pthread -lm -g #-fsanitize=address -fsanitize=leak
 
 # To compile the mlx on MacOS
 else ifeq ($(UNAME), Darwin)
-	LIBS	:= $(LIBMLX)/build/libmlx42.a -ldl -L/opt/homebrew/lib -lglfw -pthread -lm #-g -fsanitize=address
+	LIBS	:= $(LIBMLX)/build/libmlx42.a -ldl -L/opt/homebrew/lib -lglfw -pthread -lm -g #-fsanitize=address
 endif
 
 LIBS += -L$(LIBFT) -lft
@@ -45,8 +45,9 @@ SRCS_LST :=         ./src/lst/lst_creator.c \
 					./src/lst/lst_clear.c
 
 # Archivos fuente del directorio ./src
-SRCS_PARSER := 		./src/parser/handle_error.c \
-					./src/parser/parse_color.c \
+SRCS_PARSER :=		./src/parser/parse_color.c \
+			 		./src/parser/handle_error.c \
+					./src/parser/init_parser.c \
 					./src/parser/parse_cub.c \
 					./src/parser/parse_elements.c \
 					./src/parser/parse_map_1.c \

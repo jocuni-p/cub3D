@@ -6,12 +6,12 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 15:55:20 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/10/07 16:10:34 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/10/09 15:46:25 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
-
+/*Checks if the input is a valid name format*/
 int	check_arg_name(char *str)
 {
 	int	i;
@@ -23,7 +23,7 @@ int	check_arg_name(char *str)
 		return (1);
 	while (str[i])
 	{
-		if (str[i] == '.')//detecta si hay mas de un '.' en el nombre del archivo
+		if (str[i] == '.')
 		{
 			flag++;
 			if (flag > 1)
@@ -53,7 +53,7 @@ int	check_arg_ext(char *str)
 
 int	check_arg(char *str)
 {
-	if (check_arg_name(str))//probably could be removed ???
+	if (check_arg_name(str))
 		return (handle_error(ERR_ARG_NAME), 1);
 	if (check_arg_ext(str))
 		return (handle_error(ERR_ARG_EX), 1);

@@ -6,35 +6,34 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 15:00:47 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/10/08 17:22:06 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/10/09 15:40:39 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
-//>>>>>>>>>>>>>>>>IN CONSTRUCTION<<<<<<<<<<<<<<<<<<<<<<
 
 /*Frees all allocated elements in the struct elem */
-void	elem_free(t_elem elem)
+void	elem_free(t_parser *parser)
 {
-	if(elem.no)
-		free(elem.no);
-	if(elem.no)
-		free(elem.so);
-	if(elem.no)
-		free(elem.we);
-	if(elem.no)
-		free(elem.ea);
-	if(elem.no)
-		free(elem.c);
-	if(elem.no)
-		free(elem.f);
+	if(parser->elem.no)
+		free(parser->elem.no);
+	if(parser->elem.so)
+		free(parser->elem.so);
+	if(parser->elem.we)
+		free(parser->elem.we);
+	if(parser->elem.ea)
+		free(parser->elem.ea);
+	if(parser->elem.c)
+		free(parser->elem.c);
+	if(parser->elem.f)
+		free(parser->elem.f);
 }
 
 /*------Frees all t_parser struct memory-----*/
-//LIBERADOR FINAL DEL PROGRAMA SI TODO FUE BIEN
 void	parser_free(t_parser *parser)
 {
-	lst_clear(&parser->cub);//libera la lista cub, crear un punter a l'inici i guardarlo
-	elem_free(parser->elem);
+//	lst_clear(&parser->cub);
+	lst_clear(&parser->cub_firstline);
+	elem_free(parser);
 	arr2d_free(&parser->raw_map);
 }

@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 15:41:01 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/10/08 17:19:24 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/10/09 18:11:08 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <fcntl.h>// for ´open´
-# include <math.h>//not sure if to be needed
+# include <math.h>//check with Roman if it is needed
 
 /*-------------------Error messages--------------------*/
 
@@ -40,6 +40,7 @@ typedef struct s_cub
 	struct s_cub	*next;
 }					t_cub;
 
+/*-----Values of the elements----*/
 typedef struct s_elem
 {
 	char		*no;//path to the texture(.xpm)
@@ -47,20 +48,24 @@ typedef struct s_elem
 	char		*we;
 	char		*ea;
 	char		*c;//color data before parse
-	int			rgb_c[3];//rgb values, seteo inicial a -1
+	int			rgb_c[3];//rgb color values
 	uint32_t	c_color;//color value converted to hexadecimal
 	char		*f;
 	int			rgb_f[3];
 	uint32_t	f_color;
 }				t_elem;
 
+/*-----Map size and player------*/
 typedef struct s_map
 {
 	int	w;
 	int	h;
 	int	player_qty;
 	int	player_view;
+	int	pl_x;
+	int	pl_y;
 }		t_map;
+
 
 typedef struct s_parser
 {
@@ -81,16 +86,15 @@ typedef struct s_data//IN PROGRESS-It will be passed to the graphic part of cu3D
 	int		player_x;
 	int		player_y;
 	char	player_view;	
-}			t_data;
+}			t_game;
 
 
 
 /*-------------parse management--------------*/
 
-//void	init_parser(t_parser *parser);
-int		check_arg(char *str);
 int		check_arg_name(char *str);
 int		check_arg_ext(char *str);
+void	init_parser(t_parser *parser);
 int		lst_creator(t_parser *parser, char *filename);
 int		parse_cub(t_parser *parser, char *filename);
 int		parse_elements(t_parser *parser);
@@ -105,21 +109,14 @@ int		parse_map_1(t_parser *parser);
 int		is_firstline_valid(char *str);
 int		is_first_and_last_char_valid(char *str);
 int		is_middle_char_valid(char *str, t_parser *parser);
+int		is_map_properly_closed(t_parser *parser);
+int		parse_map_2(t_parser *parser);
 void	parser_free(t_parser *parser);
-void	elem_free(t_elem elem);
-
+void	elem_free(t_parser *parser);
 int 	arr2d_size(t_parser *parser);
 int 	arr2d_filler(t_parser *parser);
 int		arr2d_creator(t_parser *parser);
-
-int		parse_map_2(t_parser *parser);
-int		is_map_properly_closed(t_parser *parser);
-
-/*-------------arrays management------------*/
-
-int		arr2d_element_cnt(char **arr);
-void	arr2d_free(char ***arr);
-
+void	get_player_pos(t_parser *parser, int x, int y);
 
 /*-------------lists management--------------*/
 
@@ -132,7 +129,22 @@ void	handle_error(char *str);
 int		lst_size(t_cub *lst);
 void 	lst_clear(t_cub **lst);
 
-/*------------my prints to test program behavior------------*/
+/*----------------------utils---------------------*/
+
+int		arr2d_element_cnt(char **arr);
+void	arr2d_free(char ***arr);
+int		check_arg(char *str);
+void	remove_nl(char *str);
+
+/*-------------------------Game-------------------*/
+
+void	init_game(t_game *game, t_parser *parser);
+
+
+
+
+
+/*--TEMPORAL - Prints to test program behavior---*/
 
 void	print_cub_list(t_cub *lst);
 void	arr2d_print(char **arr2d);
@@ -140,8 +152,6 @@ void	print_elem(t_parser *parser);
 void	print_map_list(t_cub *lst);
 
 
-/*----------------------utils---------------------*/
 
-void	remove_nl(char *str);
 
 #endif

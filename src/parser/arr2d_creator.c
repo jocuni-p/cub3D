@@ -6,13 +6,13 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 11:14:18 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/10/08 17:13:07 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/10/09 15:37:04 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-
+/*Calculates an array of strings size according the measures of our map*/
 int	arr2d_size(t_parser *parser)
 {
 	t_cub	*tmp;
@@ -22,7 +22,7 @@ int	arr2d_size(t_parser *parser)
 	
 	len = 0;
 	high = 1;
-	tmp = parser->map_firstline;//lo apunto al inicio del mapa
+	tmp = parser->map_firstline;
 	if (!tmp)
 		return (1);
 	len = ft_strlen(tmp->str);
@@ -41,7 +41,7 @@ int	arr2d_size(t_parser *parser)
 	return (0);
 }
 
-//	relleno cada elemento de la matriz con su linea y donde acabe habra " "
+/*Fills every element of the array*/
 int arr2d_filler(t_parser *parser)
 {
 	int	i;
@@ -62,7 +62,7 @@ int arr2d_filler(t_parser *parser)
 	return (0);
 }
 
-/*Transfers the map from a list in a rectangular 2D matrix*/
+/*Transfers map from a list into a 2D matrix*/
 int	arr2d_creator(t_parser *parser)
 {
 	int	i;
@@ -70,22 +70,19 @@ int	arr2d_creator(t_parser *parser)
 	i = 0;
 	if (arr2d_size(parser))
 		return (handle_error(ERR_MAP), 1);
-//MALLOCADO DE LA MATRIZ EXTERNA
 	parser->raw_map = (char **)malloc(sizeof(char *) * parser->map.h + 1);
 	if (!parser->raw_map)
-		return (handle_error(ERR_MAP), 1);//OJO, liberar todo lo allocado hasta ahora		
-//MALLOCADO DE SUS ELEMENTOS, AL MISMO SIZE
+		return (handle_error(ERR_MAP), 1);		
 	 while (i < parser->map.h)
 	{
 		parser->raw_map[i] = (char *)malloc(sizeof(char) * parser->map.w + 1);
 		if (!parser->raw_map[i])
-			return (handle_error(ERR_MAP), 1);//OJO, liberar todo lo allocado hasta ahora
-//OJO: aqui faltaria una funcion de borrar los elementos ya mallocados de la matriz y la matriz
-		ft_memset(parser->raw_map[i], ' ', parser->map.w);//inicializo todo el str con ' '
-		parser->raw_map[i][parser->map.w] = '\0';//cierro el str 
+			return (handle_error(ERR_MAP), 1);
+		ft_memset(parser->raw_map[i], ' ', parser->map.w);
+		parser->raw_map[i][parser->map.w] = '\0';
 		i++;
 	}
-	parser->raw_map[i] = NULL;//cierro el arr2d
+	parser->raw_map[i] = NULL;
 	arr2d_filler(parser);
 	return (0);
 }
