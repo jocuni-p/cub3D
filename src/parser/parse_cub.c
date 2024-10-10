@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 14:27:44 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/10/09 18:25:56 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/10/10 17:04:17 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,5 @@ int	parse_cub(t_parser *parser, char *filename)
 		return (1);
 	print_elem(parser);//TEMPORAL
 	arr2d_print(parser->raw_map);//TEMPORAL
-	return (0);	
+	return (0);
 }

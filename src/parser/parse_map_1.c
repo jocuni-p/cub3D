@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 12:26:44 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/10/09 18:53:44 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/10/10 17:07:34 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@
 /*The function works equally for the first or the last lines*/
 int	is_firstline_valid(char *str)
 {
-	int	i;
+	int		i;
 	char	*trim_line;
-	
+
 	i = 0;
 	remove_nl(str);
 	trim_line = ft_strtrim(str, " ");
@@ -27,7 +27,7 @@ int	is_firstline_valid(char *str)
 		free(trim_line);
 		return (1);
 	}
-	while(trim_line[i])
+	while (trim_line[i])
 	{
 		if (trim_line[i] == '1')
 			i++;
@@ -62,7 +62,7 @@ int	is_middle_char_valid(char *str, t_parser *parser)
 	{
 		if (str[i] == ' ' || str[i] == '1' || str[i] == '0')
 			i++;
-		else if ( str[i] == 'N' || str[i] == 'S' || str[i] == 'W' \
+		else if (str[i] == 'N' || str[i] == 'S' || str[i] == 'W' \
 		|| str[i] == 'E')
 		{
 			parser->map.player_qty++;
@@ -74,11 +74,12 @@ int	is_middle_char_valid(char *str, t_parser *parser)
 	}
 	return (0);
 }
+
 /*Parses since the next line of elements til the end of file.cub*/
 int	parse_map_1(t_parser *parser)
 {
 	char	*trimmed_line;
-	
+
 	while (parser->cub->str[0] == '\n')
 		parser->cub = parser->cub->next;
 	parser->map_firstline = parser->cub;//sets a pointer to the map first line
@@ -91,13 +92,13 @@ int	parse_map_1(t_parser *parser)
 		if (parser->cub->str[0] == '\0')//if it's an empty line
 			return (handle_error(ERR_MAP), 1);
 		trimmed_line = ft_strtrim(parser->cub->str, " ");//remove ' ' from beginning and from end
-		if (is_first_and_last_char_valid(trimmed_line)) 
-			return (free(trimmed_line), handle_error(ERR_MAP), 1);	
+		if (is_first_and_last_char_valid(trimmed_line))
+			return (free(trimmed_line), handle_error(ERR_MAP), 1);
 		if (is_middle_char_valid(trimmed_line, parser))
 			return (free(trimmed_line), handle_error(ERR_MAP), 1);
 		if (parser->cub->next == NULL)//if it is the last line
 			if (is_firstline_valid(trimmed_line))//cheks if the last map line is valid 
-				return (free(trimmed_line),handle_error(ERR_MAP), 1);
+				return (free(trimmed_line), handle_error(ERR_MAP), 1);
 		free(trimmed_line);
 		parser->cub = parser->cub->next;
 	}

@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 11:20:55 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/10/09 18:27:27 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/10/10 12:59:09 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	print_elem(t_parser *parser)
 	printf("map size (w x h): %i x %i\n", parser->map.w, parser->map.h);
 //	printf("player qty: %i\n", parser->map.player_qty);
 	printf("player_view: %c\n", parser->map.player_view);
-	printf("Player position: (%i,%i)\n", parser->map.pl_x, parser->map.pl_y);
+	printf("Player position: (%i,%i)\n", parser->map.player_x, parser->map.player_y);
 	printf("raw_map: %p\n", parser->raw_map);
 	printf("\n");
 }

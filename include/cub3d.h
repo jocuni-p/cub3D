@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 15:41:01 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/10/09 18:11:08 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/10/10 16:31:10 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <fcntl.h>// for ´open´
-# include <math.h>//check with Roman if it is needed
+//# include <math.h>//check with Roman if it is needed
 
 /*-------------------Error messages--------------------*/
 
@@ -27,20 +27,22 @@
 # define ERR_ARG_NAME "Invalid argument name\n"
 # define ERR_ARG_EX "Invalid argument extension\n"
 # define ERR_FD "Error:\nInvalid file descriptor\n"
+# define ERR_EMPTY_FILE "Error:\nArgument file is empty\n"
 # define ERR_FILE "Error:\nInvalid file data\n"
 # define ERR_ELEM "Error:\nInvalid elements data\n"
 # define ERR_MAP "Error:\nInvalid map data\n"
 # define ERR_MEMORY "Error:\n Memory failure\n"
 //# define ERR_IMG "Error;\nImage not found\n"
 
-/*-----List containing all file.cub lines------*/
+
+/*-----List containing all lines from filename.cub------*/
 typedef struct s_cub
 {
-	char			*str;//each line from file.cub
+	char			*str;
 	struct s_cub	*next;
 }					t_cub;
 
-/*-----Values of the elements----*/
+/*-----Value of the elements----*/
 typedef struct s_elem
 {
 	char		*no;//path to the texture(.xpm)
@@ -62,11 +64,11 @@ typedef struct s_map
 	int	h;
 	int	player_qty;
 	int	player_view;
-	int	pl_x;
-	int	pl_y;
+	int	player_x;
+	int	player_y;
 }		t_map;
 
-
+/*-------Parsing variables-------*/
 typedef struct s_parser
 {
 	t_cub	*cub;//List containing every line from file.cub
@@ -75,17 +77,21 @@ typedef struct s_parser
 	t_elem	elem;
 	t_map	map;//map infos
 	char	**raw_map;//map before to be parsed
-//	int		player_x;
-//	int		player_y;
-//	char	player_view;
 }			t_parser;
 
-typedef struct s_data//IN PROGRESS-It will be passed to the graphic part of cu3D
+
+typedef struct s_data//It will be passed to the graphic part of cu3D
 {
 	char	**map;//already formated with rectangular shape
-	int		player_x;
-	int		player_y;
-	char	player_view;	
+	int		p_x;
+	int		p_y;
+	char	p_view;
+//	char	*no;
+//	char	*so;
+//	char	*ea;
+//	char 	*we;
+//	uint32_t	c_col;
+//	uint32_t	f_col;	
 }			t_game;
 
 
@@ -123,8 +129,6 @@ void	get_player_pos(t_parser *parser, int x, int y);
 t_cub	*lst_newnode(char *str);
 t_cub	*lstlast(t_cub *lst);
 void	lstadd_back(t_cub **lst, t_cub *new);
-//void	lst_delone(t_cub **lst, char **node_to_del, void (*del)(void*));
-//void	handle_error(char *str, t_parser *parser);
 void	handle_error(char *str);
 int		lst_size(t_cub *lst);
 void 	lst_clear(t_cub **lst);
@@ -144,13 +148,15 @@ void	init_game(t_game *game, t_parser *parser);
 
 
 
-/*--TEMPORAL - Prints to test program behavior---*/
+
+
+/*---------TEMPORAL - Prints for testing----------*/
 
 void	print_cub_list(t_cub *lst);
 void	arr2d_print(char **arr2d);
 void	print_elem(t_parser *parser);
 void	print_map_list(t_cub *lst);
-
+void	print_game(t_game *game);
 
 
 

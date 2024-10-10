@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 17:28:49 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/10/09 15:43:26 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/10/10 17:17:43 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 void	remove_nl(char *str)
 {
 	size_t	len;
-	
-    len = ft_strlen(str);
-    if (len > 0 && str[len - 1] == '\n')
-        str[len - 1] = '\0';	
+
+	len = ft_strlen(str);
+	if (len > 0 && str[len - 1] == '\n')
+		str[len - 1] = '\0';
 }

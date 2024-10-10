@@ -6,13 +6,13 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 13:43:28 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/10/09 18:09:46 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/10/10 16:52:35 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-/*----Sets to 0 all struct and substruct variables----*/ 
+/*----Sets to 0 all struct and substruct variables----*/
 void	init_parser(t_parser *parser)
 {
 	parser->cub = NULL;
@@ -36,7 +36,7 @@ void	init_parser(t_parser *parser)
 	parser->map.h = 0;
 	parser->map.player_qty = 0;
 	parser->map.player_view = 0;
-	parser->map.pl_x = 0;
-	parser->map.pl_y = 0;
+	parser->map.player_x = 0;
+	parser->map.player_y = 0;
 	parser->raw_map = NULL;
 }

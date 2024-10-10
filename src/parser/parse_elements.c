@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_elements_1.c                                   :+:      :+:    :+:   */
+/*   parse_elements.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 12:34:56 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/09/23 13:46:50 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/10/10 17:02:02 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	check_element_chars(char *str)
 	int	i;
 
 	i = 0;
-	while(str[i])
+	while (str[i])
 	{
 		if (ft_isalnum(str[i]) || str[i] == '_' || str[i] == '/' \
 			|| str[i] == '.' || str[i] == ' ' || str[i] == ',')
@@ -34,9 +34,9 @@ element is found returns 1. Finally, 'elements' is freed. */
 int	set_element(t_parser *parser, char **elements)
 {
 	if ((ft_strcmp(elements[0], "NO") == 0) && parser->elem.no == NULL)
-		parser->elem.no = ft_strdup(elements[1]);				
+		parser->elem.no = ft_strdup(elements[1]);
 	else if ((ft_strcmp(elements[0], "SO") == 0) && parser->elem.so == NULL)
-		parser->elem.so = ft_strdup(elements[1]);				
+		parser->elem.so = ft_strdup(elements[1]);
 	else if ((ft_strcmp(elements[0], "WE") == 0) && parser->elem.we == NULL)
 		parser->elem.we = ft_strdup(elements[1]);
 	else if ((ft_strcmp(elements[0], "EA") == 0) && parser->elem.ea == NULL)
@@ -74,12 +74,12 @@ int	parse_elements(t_parser *parser)
 {
 	char	**elements;
 
-	while(parser->cub)
+	while (parser->cub)
 	{
-		if (parser->cub->str[0] == '\n')//skips empty lines
+		if (parser->cub->str[0] == '\n')
 		{
 			parser->cub = parser->cub->next;
-			continue;
+			continue ;
 		}
 		if (!flag_elem(parser))//checks if all elem.variables are already setted. 
 			return (0);

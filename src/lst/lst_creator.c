@@ -18,20 +18,25 @@ int	lst_creator(t_parser *parser, char *filename)
 	int		fd;
 	char	*line;
 	t_cub	*node;
-	
+
 	fd = open(filename, O_RDONLY);
 	if (fd == -1)
 		return (handle_error(ERR_FD), 1);
-	while ((line = get_next_line(fd)) != NULL)
+	line = get_next_line(fd);
+	if (!line)
+		return (close(fd), handle_error(ERR_EMPTY_FILE), 1);
+	while (line != NULL)
 	{
 		node = lst_newnode(line);
 		if (node == NULL)
 		{
+			free(line);
 			close(fd);
 			return (handle_error(ERR_MEMORY), 1);
 		}
 		lstadd_back(&parser->cub, node);
 		free(line);
+		line = get_next_line(fd);
 	}
 	return (close(fd), 0);
 }

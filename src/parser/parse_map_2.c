@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 15:33:39 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/10/09 19:01:16 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/10/10 17:15:26 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ void	get_player_pos(t_parser *parser, int x, int y)
 	if (parser->raw_map[y][x] == 'N' || parser->raw_map[y][x] == 'S' \
 	|| parser->raw_map[y][x] == 'W' || parser->raw_map[y][x] == 'E')
 	{
-		parser->map.pl_x = x;
-		parser->map.pl_y = y;
+		parser->map.player_x = x;
+		parser->map.player_y = y;
 	}
 }
 
@@ -26,21 +26,24 @@ void	get_player_pos(t_parser *parser, int x, int y)
 'E', or 'W' have any ' ' character around them.*/
 int	is_map_properly_closed(t_parser *parser)
 {
-	int	x;
-	int	y;
-	
+	int		x;
+	int		y;
+	char	c;
+
 	y = 1;
-	while (y < parser->map.h - 1)//REVISAR TAMANY 1rst and last lines are not itered
+	while (y < parser->map.h - 1)//1rst and last lines are not itered
 	{
 		x = 1;
-		while (x < parser->map.w)//REVISAR TAMANY first and last element of the line are not checked
+		while (x < parser->map.w)//first and last element of the line are not checked
 		{
-			if (parser->raw_map[y][x] == '0' || parser->raw_map[y][x] == 'N' \
-			|| parser->raw_map[y][x] == 'S' || parser->raw_map[y][x] == 'W' \
-			|| parser->raw_map[y][x] == 'E')
+			c = parser->raw_map[y][x];
+//			if (parser->raw_map[y][x] == '0' || parser->raw_map[y][x] == 'N' || parser->raw_map[y][x] == 'S' || parser->raw_map[y][x] == 'W' || parser->raw_map[y][x] == 'E')
+			if (c == '0' || c == 'N' || c == 'S' || c == 'W' || c == 'E')
 			{
-				if (parser->raw_map[y][x + 1] == ' ' || parser->raw_map[y][x - 1] == ' ' \
-				|| parser->raw_map[y + 1][x] == ' ' || parser->raw_map[y - 1][x] == ' ')
+				if (parser->raw_map[y][x + 1] == ' ' \
+				|| parser->raw_map[y][x - 1] == ' ' \
+				|| parser->raw_map[y + 1][x] == ' ' \
+				|| parser->raw_map[y - 1][x] == ' ')
 					return (1);
 				get_player_pos(parser, x, y);
 			}
@@ -54,11 +57,10 @@ int	is_map_properly_closed(t_parser *parser)
 int	parse_map_2(t_parser *parser)
 {
 	if (parser->map.player_qty != 1)
-		return (handle_error(ERR_MAP), 1);		
+		return (handle_error(ERR_MAP), 1);	
 	if (parser->map.w < 3 || parser->map.h < 3)//minim map playeble size 
 		return (handle_error(ERR_MAP), 1);
 	if (is_map_properly_closed(parser))
-		return (handle_error(ERR_MAP), 1); 
+		return (handle_error(ERR_MAP), 1);
 	return (0);
 }
- 

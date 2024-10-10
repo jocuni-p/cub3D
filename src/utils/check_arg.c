@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 15:55:20 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/10/09 15:46:25 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/10/10 17:16:34 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,10 @@ int	check_arg_name(char *str)
 			if (flag > 1)
 				return (1);
 		}
+		if (str[i] == '/' && (str[i + 1] == '.' || str[i + 1] == ' '))
+			return (1);
 		if ((str[i] >= 97 && str[i] <= 122) || (str[i] >= 48 && str[i] <= 57) \
-		|| str[i] == '_' || str[i] == '/' || str[i] == '.') 
+		|| str[i] == '_' || str[i] == '/' || str[i] == '.')
 			i++;
 		else
 			return (1);

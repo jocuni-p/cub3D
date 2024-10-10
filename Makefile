@@ -6,12 +6,12 @@
 #    By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/26 17:23:07 by jocuni-p          #+#    #+#              #
-#    Updated: 2024/10/09 19:03:23 by jocuni-p         ###   ########.fr        #
+#    Updated: 2024/10/10 13:45:37 by jocuni-p         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-# para compilar el programa desde MacOS: gcc main.c ... libmlx42.a -Iinclude -lglfw
-# para compilar el programa desde Linux: gcc main.c ... libmlx42.a -Iinclude -ldl -lglfw -pthread -lm
+# MacOS compilation: gcc main.c ... libmlx42.a -Iinclude -lglfw
+# Linux compilation: gcc main.c ... libmlx42.a -Iinclude -ldl -lglfw -pthread -lm
 
 # For MacOS you need to use the following flags to compile your program with the
 # library in order to link the program with the correct frameworks:
@@ -27,16 +27,16 @@ HEADERS	:= -I ./include -I $(LIBMLX)/include -I $(LIBFT)
 
 # To compile the mlx on Linux at 42Barcelona campus   
 ifeq ($(UNAME), Linux)
-	LIBS	:= $(LIBMLX)/build/libmlx42.a -ldl -lglfw -pthread -lm -g #-fsanitize=address -fsanitize=leak
+	LIBS	:= $(LIBMLX)/build/libmlx42.a -ldl -lglfw -pthread -lm -g -fsanitize=address -fsanitize=leak
 
 # To compile the mlx on MacOS
 else ifeq ($(UNAME), Darwin)
-	LIBS	:= $(LIBMLX)/build/libmlx42.a -ldl -L/opt/homebrew/lib -lglfw -pthread -lm -g #-fsanitize=address
+	LIBS	:= $(LIBMLX)/build/libmlx42.a -ldl -L/opt/homebrew/lib -lglfw -pthread -lm -g #-fsanitize=address -fsanitize=leak
 endif
 
 LIBS += -L$(LIBFT) -lft
 
-# Source files from subdir .src/lst
+# Source files about lists
 SRCS_LST :=         ./src/lst/lst_creator.c \
 					./src/lst/lst_newnode.c \
 					./src/lst/lst_size.c \
@@ -44,7 +44,7 @@ SRCS_LST :=         ./src/lst/lst_creator.c \
 					./src/lst/lstlast.c \
 					./src/lst/lst_clear.c
 
-# Archivos fuente del directorio ./src
+# Source files about parsing
 SRCS_PARSER :=		./src/parser/parse_color.c \
 			 		./src/parser/handle_error.c \
 					./src/parser/init_parser.c \
@@ -55,25 +55,27 @@ SRCS_PARSER :=		./src/parser/parse_color.c \
 					./src/parser/arr2d_creator.c \
 					./src/parser/parser_free.c
 					
-# Archivos fuente del subdirectorio ./src/print_tests
+# Source files about print_tests
 SRCS_PRINT_TESTS := ./src/print_tests/arr2d_print.c \
 					./src/print_tests/print_cub_list.c \
 					./src/print_tests/print_elem.c \
-					./src/print_tests/print_map_list.c 
+					./src/print_tests/print_map_list.c \
+					./src/print_tests/print_game.c
 
+# Source files about utils
 SRCS_UTILS := 		./src/utils/arr2d_element_cnt.c \
 					./src/utils/arr2d_free.c \
 					./src/utils/check_arg.c \
 					./src/utils/remove_nl.c 
 
-# Source files from subdir .src/game
-SRCS_GAME :=
+# Source files about graphic part
+SRCS_GAME :=		./src/game/init_game.c
 
 
-# Concatenar todos los archivos fuente
-SRCS := ./src/main.c $(SRCS_LST) $(SRCS_PARSER) $(SRCS_PRINT_TESTS) $(SRCS_UTILS)
+# Puts together all src files
+SRCS := ./src/main.c $(SRCS_LST) $(SRCS_PARSER) $(SRCS_PRINT_TESTS) $(SRCS_UTILS) $(SRCS_GAME)
 
-# Archivos objeto
+# Object files
 OBJS := $(SRCS:.c=.o)
 
 # Colors
