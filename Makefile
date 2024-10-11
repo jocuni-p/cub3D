@@ -6,7 +6,7 @@
 #    By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/16 11:26:53 by jocuni-p          #+#    #+#              #
-#    Updated: 2024/09/18 13:16:17 by jocuni-p         ###   ########.fr        #
+#    Updated: 2024/10/11 17:20:28 by jocuni-p         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,7 +40,10 @@ DARK_YELLOW =	\033[38;5;143m
 DARK_GREEN 	=	\033[1m\033[38;2;75;179;82m
 GREEN 		=	\033[0;32m
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 99f7258f561db33e0d72dbda14d27f8f79fe0fc0
 # Rules
 ################################################################################
 
@@ -53,17 +56,29 @@ libmlx:
 libft: 
 	@$(MAKE) -C $(LIBFT)
 
+<<<<<<< HEAD
+=======
+# Regla para compilar cualquier archivo .c en los subdirectorios
+>>>>>>> 99f7258f561db33e0d72dbda14d27f8f79fe0fc0
 ./src/%.o: ./src/%.c
 	@$(CC) $(CFLAGS) -o $@ -c $< $(HEADERS) && printf "Compiling: $(notdir $<)\n"
 
 $(NAME): $(OBJS)
+<<<<<<< HEAD
 	@$(CC) $(OBJS) $(LIBS) $(HEADERS) -o $(NAME)
+=======
+	@$(CC) $(OBJS) $(LIBS) $(HEADERS) $(LDFLAGS) -o $(NAME)
+>>>>>>> 99f7258f561db33e0d72dbda14d27f8f79fe0fc0
 	@echo "\n$(DARK_GREEN)▶  cub3D built completed!$(DEF_COLOR)\n"
 
 clean:
 	@rm -rf $(OBJS)
 	@rm -rf $(LIBMLX)/build
+<<<<<<< HEAD
 	@rm -rf $(LIBFT_A)
+=======
+#	@rm -rf $(LIBFT_A)
+>>>>>>> 99f7258f561db33e0d72dbda14d27f8f79fe0fc0
 	@$(MAKE) -C $(LIBFT) clean
 
 fclean: clean
