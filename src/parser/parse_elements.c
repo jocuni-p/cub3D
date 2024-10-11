@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 12:34:56 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/10/10 17:02:02 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/10/11 10:27:10 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,16 +85,16 @@ int	parse_elements(t_parser *parser)
 			return (0);
 		remove_nl(parser->cub->str);
 		if (check_element_chars(parser->cub->str))
-			return (handle_error(ERR_ELEM), 1);
+			return (print_error(ERR_ELEM), 1);
 		elements = ft_split(parser->cub->str, ' ');
 		if (arr2d_element_cnt(elements) != 2)
-			return (arr2d_free(&elements), handle_error(ERR_ELEM), 1);
+			return (arr2d_free(&elements), print_error(ERR_ELEM), 1);
 //		arr2d_print(elements);//TEMPORAL
 		if (set_element(parser, elements))
-			return (handle_error(ERR_ELEM), 1);
+			return (print_error(ERR_ELEM), 1);
 		parser->cub = parser->cub->next;
 		if (parser->cub == NULL)//if there isn't any map on the file.cub.
-			return (handle_error(ERR_ELEM), 1);
+			return (print_error(ERR_ELEM), 1);
 	}
 	return (0);
 }

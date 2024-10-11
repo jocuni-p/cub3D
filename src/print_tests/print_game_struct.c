@@ -1,21 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser_free.c                                      :+:      :+:    :+:   */
+/*   print_game_struct.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/16 15:00:47 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/10/11 10:17:01 by jocuni-p         ###   ########.fr       */
+/*   Created: 2024/10/10 13:23:14 by jocuni-p          #+#    #+#             */
+/*   Updated: 2024/10/11 10:40:02 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-/*------Frees all t_parser struct memory-----*/
-void	parser_free(t_parser *parser)
+void	print_game_struct(t_game *game)
 {
-	lst_clear(&parser->cub_firstline);
-	elem_free(parser);
-	arr2d_free(&parser->raw_map);
+	ft_printf("====GAME STRUCT VALUES====\n");
+	ft_printf("map: %p\n", game->map);
+	ft_printf("p_x: %i\n", game->p_x);
+	ft_printf("p_y: %i\n", game->p_y);
+	ft_printf("p_view: %c\n", game->p_view);
+	ft_printf("\n");
 }

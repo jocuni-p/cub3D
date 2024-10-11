@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 12:26:44 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/10/10 17:07:34 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/10/11 10:27:10 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,21 +84,21 @@ int	parse_map_1(t_parser *parser)
 		parser->cub = parser->cub->next;
 	parser->map_firstline = parser->cub;//sets a pointer to the map first line
 	if (parser->map_firstline == NULL || is_firstline_valid(parser->cub->str))
-		return (handle_error(ERR_MAP), 1);
+		return (print_error(ERR_MAP), 1);
 	parser->cub = parser->cub->next;
 	while (parser->cub)
 	{
 		remove_nl(parser->cub->str);
 		if (parser->cub->str[0] == '\0')//if it's an empty line
-			return (handle_error(ERR_MAP), 1);
+			return (print_error(ERR_MAP), 1);
 		trimmed_line = ft_strtrim(parser->cub->str, " ");//remove ' ' from beginning and from end
 		if (is_first_and_last_char_valid(trimmed_line))
-			return (free(trimmed_line), handle_error(ERR_MAP), 1);
+			return (free(trimmed_line), print_error(ERR_MAP), 1);
 		if (is_middle_char_valid(trimmed_line, parser))
-			return (free(trimmed_line), handle_error(ERR_MAP), 1);
+			return (free(trimmed_line), print_error(ERR_MAP), 1);
 		if (parser->cub->next == NULL)//if it is the last line
 			if (is_firstline_valid(trimmed_line))//cheks if the last map line is valid 
-				return (free(trimmed_line), handle_error(ERR_MAP), 1);
+				return (free(trimmed_line), print_error(ERR_MAP), 1);
 		free(trimmed_line);
 		parser->cub = parser->cub->next;
 	}

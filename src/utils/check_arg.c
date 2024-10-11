@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 15:55:20 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/10/10 17:16:34 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/10/11 10:27:10 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,8 @@ int	check_arg_ext(char *str)
 int	check_arg(char *str)
 {
 	if (check_arg_name(str))
-		return (handle_error(ERR_ARG_NAME), 1);
+		return (print_error(ERR_ARG_NAME), 1);
 	if (check_arg_ext(str))
-		return (handle_error(ERR_ARG_EX), 1);
+		return (print_error(ERR_ARG_EX), 1);
 	return (0);
 }

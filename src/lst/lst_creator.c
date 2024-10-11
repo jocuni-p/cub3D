@@ -21,10 +21,10 @@ int	lst_creator(t_parser *parser, char *filename)
 
 	fd = open(filename, O_RDONLY);
 	if (fd == -1)
-		return (handle_error(ERR_FD), 1);
+		return (print_error(ERR_FD), 1);
 	line = get_next_line(fd);
 	if (!line)
-		return (close(fd), handle_error(ERR_EMPTY_FILE), 1);
+		return (close(fd), print_error(ERR_EMPTY_FILE), 1);
 	while (line != NULL)
 	{
 		node = lst_newnode(line);
@@ -32,7 +32,7 @@ int	lst_creator(t_parser *parser, char *filename)
 		{
 			free(line);
 			close(fd);
-			return (handle_error(ERR_MEMORY), 1);
+			return (print_error(ERR_MEMORY), 1);
 		}
 		lstadd_back(&parser->cub, node);
 		free(line);

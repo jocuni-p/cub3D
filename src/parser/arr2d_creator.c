@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 11:14:18 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/10/10 17:03:44 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/10/11 10:27:10 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,15 +69,15 @@ int	arr2d_creator(t_parser *parser)
 
 	i = 0;
 	if (arr2d_size(parser))
-		return (handle_error(ERR_MAP), 1);
+		return (print_error(ERR_MAP), 1);
 	parser->raw_map = (char **)malloc(sizeof(char *) * parser->map.h + 1);
 	if (!parser->raw_map)
-		return (handle_error(ERR_MAP), 1);		
+		return (print_error(ERR_MAP), 1);		
 	while (i < parser->map.h)
 	{
 		parser->raw_map[i] = (char *)malloc(sizeof(char) * parser->map.w + 1);
 		if (!parser->raw_map[i])
-			return (handle_error(ERR_MAP), 1);
+			return (print_error(ERR_MAP), 1);
 		ft_memset(parser->raw_map[i], ' ', parser->map.w);
 		parser->raw_map[i][parser->map.w] = '\0';
 		i++;

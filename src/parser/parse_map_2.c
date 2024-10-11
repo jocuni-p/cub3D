@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 15:33:39 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/10/10 17:15:26 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/10/11 10:27:10 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ int	is_map_properly_closed(t_parser *parser)
 		while (x < parser->map.w)//first and last element of the line are not checked
 		{
 			c = parser->raw_map[y][x];
-//			if (parser->raw_map[y][x] == '0' || parser->raw_map[y][x] == 'N' || parser->raw_map[y][x] == 'S' || parser->raw_map[y][x] == 'W' || parser->raw_map[y][x] == 'E')
 			if (c == '0' || c == 'N' || c == 'S' || c == 'W' || c == 'E')
 			{
 				if (parser->raw_map[y][x + 1] == ' ' \
@@ -57,10 +56,10 @@ int	is_map_properly_closed(t_parser *parser)
 int	parse_map_2(t_parser *parser)
 {
 	if (parser->map.player_qty != 1)
-		return (handle_error(ERR_MAP), 1);	
+		return (print_error(ERR_MAP), 1);	
 	if (parser->map.w < 3 || parser->map.h < 3)//minim map playeble size 
-		return (handle_error(ERR_MAP), 1);
+		return (print_error(ERR_MAP), 1);
 	if (is_map_properly_closed(parser))
-		return (handle_error(ERR_MAP), 1);
+		return (print_error(ERR_MAP), 1);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 15:41:01 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/10/10 16:31:10 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/10/11 10:36:04 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ typedef struct s_parser
 
 typedef struct s_data//It will be passed to the graphic part of cu3D
 {
-	char	**map;//already formated with rectangular shape
+	char	**map;//already parsed and formated to rectangular shape
 	int		p_x;
 	int		p_y;
 	char	p_view;
@@ -118,7 +118,6 @@ int		is_middle_char_valid(char *str, t_parser *parser);
 int		is_map_properly_closed(t_parser *parser);
 int		parse_map_2(t_parser *parser);
 void	parser_free(t_parser *parser);
-void	elem_free(t_parser *parser);
 int 	arr2d_size(t_parser *parser);
 int 	arr2d_filler(t_parser *parser);
 int		arr2d_creator(t_parser *parser);
@@ -129,7 +128,7 @@ void	get_player_pos(t_parser *parser, int x, int y);
 t_cub	*lst_newnode(char *str);
 t_cub	*lstlast(t_cub *lst);
 void	lstadd_back(t_cub **lst, t_cub *new);
-void	handle_error(char *str);
+void	print_error(char *str);
 int		lst_size(t_cub *lst);
 void 	lst_clear(t_cub **lst);
 
@@ -138,14 +137,12 @@ void 	lst_clear(t_cub **lst);
 int		arr2d_element_cnt(char **arr);
 void	arr2d_free(char ***arr);
 int		check_arg(char *str);
+void	elem_free(t_parser *parser);
 void	remove_nl(char *str);
 
 /*-------------------------Game-------------------*/
 
 void	init_game(t_game *game, t_parser *parser);
-
-
-
 
 
 
@@ -156,7 +153,7 @@ void	print_cub_list(t_cub *lst);
 void	arr2d_print(char **arr2d);
 void	print_elem(t_parser *parser);
 void	print_map_list(t_cub *lst);
-void	print_game(t_game *game);
+void	print_game_struct(t_game *game);
 
 
 

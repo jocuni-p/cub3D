@@ -6,7 +6,7 @@
 #    By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/26 17:23:07 by jocuni-p          #+#    #+#              #
-#    Updated: 2024/10/10 13:45:37 by jocuni-p         ###   ########.fr        #
+#    Updated: 2024/10/11 12:41:45 by jocuni-p         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ HEADERS	:= -I ./include -I $(LIBMLX)/include -I $(LIBFT)
 
 # To compile the mlx on Linux at 42Barcelona campus   
 ifeq ($(UNAME), Linux)
-	LIBS	:= $(LIBMLX)/build/libmlx42.a -ldl -lglfw -pthread -lm -g -fsanitize=address -fsanitize=leak
+	LIBS	:= $(LIBMLX)/build/libmlx42.a -ldl -lglfw -pthread -lm -g #-fsanitize=address -fsanitize=leak
 
 # To compile the mlx on MacOS
 else ifeq ($(UNAME), Darwin)
@@ -46,7 +46,7 @@ SRCS_LST :=         ./src/lst/lst_creator.c \
 
 # Source files about parsing
 SRCS_PARSER :=		./src/parser/parse_color.c \
-			 		./src/parser/handle_error.c \
+			 		./src/parser/print_error.c \
 					./src/parser/init_parser.c \
 					./src/parser/parse_cub.c \
 					./src/parser/parse_elements.c \
@@ -60,12 +60,13 @@ SRCS_PRINT_TESTS := ./src/print_tests/arr2d_print.c \
 					./src/print_tests/print_cub_list.c \
 					./src/print_tests/print_elem.c \
 					./src/print_tests/print_map_list.c \
-					./src/print_tests/print_game.c
+					./src/print_tests/print_game_struct.c
 
 # Source files about utils
 SRCS_UTILS := 		./src/utils/arr2d_element_cnt.c \
 					./src/utils/arr2d_free.c \
 					./src/utils/check_arg.c \
+					./src/utils/elem_free.c \
 					./src/utils/remove_nl.c 
 
 # Source files about graphic part
