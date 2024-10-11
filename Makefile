@@ -6,7 +6,7 @@
 #    By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/26 17:23:07 by jocuni-p          #+#    #+#              #
-#    Updated: 2024/10/11 12:41:45 by jocuni-p         ###   ########.fr        #
+#    Updated: 2024/10/11 17:06:38 by jocuni-p         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,9 @@
 
 
 NAME	:= cub3D
-CFLAGS	:= -Wextra -Wall -Werror -Wunreachable-code -Ofast -g #-fsanitize=address
+CFLAGS	:= -Wextra -Wall -Werror -Wunreachable-code -Ofast -g #-fsanitize=address #-fsanitize=leak
+# Si uso fsanitize en las flags de compilado, debo ponerla tambien en las del enlazado, sino da error al compilar
+LDFLAGS	:= #-fsanitize=address
 LIBMLX	:= ./lib/MLX42
 LIBFT	:= ./lib/libft/
 LIBFT_A	:= $(LIBFT)libft.a 
@@ -27,11 +29,11 @@ HEADERS	:= -I ./include -I $(LIBMLX)/include -I $(LIBFT)
 
 # To compile the mlx on Linux at 42Barcelona campus   
 ifeq ($(UNAME), Linux)
-	LIBS	:= $(LIBMLX)/build/libmlx42.a -ldl -lglfw -pthread -lm -g #-fsanitize=address -fsanitize=leak
+	LIBS	:= $(LIBMLX)/build/libmlx42.a -ldl -lglfw -pthread -lm #-g -fsanitize=address
 
 # To compile the mlx on MacOS
 else ifeq ($(UNAME), Darwin)
-	LIBS	:= $(LIBMLX)/build/libmlx42.a -ldl -L/opt/homebrew/lib -lglfw -pthread -lm -g #-fsanitize=address -fsanitize=leak
+	LIBS	:= $(LIBMLX)/build/libmlx42.a -ldl -L/opt/homebrew/lib -lglfw -pthread -lm #-g -fsanitize=address
 endif
 
 LIBS += -L$(LIBFT) -lft
@@ -67,7 +69,7 @@ SRCS_UTILS := 		./src/utils/arr2d_element_cnt.c \
 					./src/utils/arr2d_free.c \
 					./src/utils/check_arg.c \
 					./src/utils/elem_free.c \
-					./src/utils/remove_nl.c 
+					./src/utils/remove_nl.c
 
 # Source files about graphic part
 SRCS_GAME :=		./src/game/init_game.c
@@ -104,13 +106,13 @@ libft:
 	@$(CC) $(CFLAGS) -o $@ -c $< $(HEADERS) && printf "Compiling: $(notdir $<)\n"
 
 $(NAME): $(OBJS)
-	@$(CC) $(OBJS) $(LIBS) $(HEADERS) -o $(NAME)
+	@$(CC) $(OBJS) $(LIBS) $(HEADERS) $(LDFLAGS) -o $(NAME)
 	@echo "\n$(DARK_GREEN)▶  cub3D built completed!$(DEF_COLOR)\n"
 
 clean:
 	@rm -rf $(OBJS)
 	@rm -rf $(LIBMLX)/build
-	@rm -rf $(LIBFT_A)
+#	@rm -rf $(LIBFT_A)
 	@$(MAKE) -C $(LIBFT) clean
 
 fclean: clean
