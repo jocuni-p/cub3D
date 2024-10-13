@@ -6,7 +6,7 @@
 #    By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/26 17:23:07 by jocuni-p          #+#    #+#              #
-#    Updated: 2024/10/11 17:06:38 by jocuni-p         ###   ########.fr        #
+#    Updated: 2024/10/13 20:33:52 by jocuni-p         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,9 +19,9 @@
 
 
 NAME	:= cub3D
-CFLAGS	:= -Wextra -Wall -Werror -Wunreachable-code -Ofast -g #-fsanitize=address #-fsanitize=leak
+CFLAGS	:= -Wextra -Wall -Werror -Wunreachable-code -Ofast -g -fsanitize=address
 # Si uso fsanitize en las flags de compilado, debo ponerla tambien en las del enlazado, sino da error al compilar
-LDFLAGS	:= #-fsanitize=address
+LDFLAGS	:= -fsanitize=address
 LIBMLX	:= ./lib/MLX42
 LIBFT	:= ./lib/libft/
 LIBFT_A	:= $(LIBFT)libft.a 

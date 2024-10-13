@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 15:30:58 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/10/09 15:47:02 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/10/13 18:25:24 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	arr2d_free(char ***arr)
 	size_t	i;
 
 	i = 0;
-	if (*arr == NULL)
+	if (*arr == NULL || arr == NULL)
 		return ;
 	while ((*arr)[i] != NULL)
 	{
