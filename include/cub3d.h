@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 15:41:01 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/10/13 20:32:54 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/10/14 17:45:03 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,13 @@
 # define ERR_MAP "Error:\nInvalid map data\n"
 # define ERR_MEMORY "Error:\n Memory failure\n"
 # define ERR_IMG "Error;\nImage not found\n"
+# define ERR_GRAPH "Error;\nGraphic failure\n"
+
+
+/*-----------------------------------------------------*/
+
+# define WIDTH 1000
+# define HEIGHT 500
 
 
 /*-----List containing all lines from filename.cub------*/
@@ -143,8 +150,9 @@ void	remove_nl(char *str);
 /*-------------------------Game-------------------*/
 
 void	init_game(t_game *game, t_parser *parser);
-
-
+int		start_game(t_game *game);
+int		minimap(mlx_t *mlx, t_game *game);
+void 	error(void);
 
 
 /*---------TEMPORAL - Prints for testing----------*/

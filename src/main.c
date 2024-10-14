@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 12:38:53 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/10/11 14:30:24 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/10/14 14:00:03 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,12 @@ int	main(int ac, char **av)
 	init_parser(&parser);
 	if (parse_cub(&parser, av[1]))
 		return (parser_free(&parser), 1);
-//	print_map_list(parser.map_firstline);//TEMPORAL
 	init_game(&game, &parser);
 	print_game_struct(&game);//TEMPORAL
 	
-//>>>>>>>>>>>GRAPHIC_PART MISSING<<<<<<<<<<<<<
+	if (start_game(&game))
 
 	parser_free(&parser);
-	printf("EXIT PROPERLY \U0001F44D\n\n");//TEMPORAL
+//	printf("EXIT PROPERLY \U0001F44D\n\n");//TEMPORAL
 	return (0);
 }
