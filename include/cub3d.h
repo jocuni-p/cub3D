@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 15:41:01 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/10/14 17:45:03 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/10/15 12:18:54 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,9 @@
 
 /*-----------------------------------------------------*/
 
-# define WIDTH 1000
-# define HEIGHT 500
+# define WIDTH 2000
+# define HEIGHT 1000
+# define TILE_SIZE 10
 
 
 /*-----List containing all lines from filename.cub------*/
@@ -152,7 +153,7 @@ void	remove_nl(char *str);
 void	init_game(t_game *game, t_parser *parser);
 int		start_game(t_game *game);
 int		minimap(mlx_t *mlx, t_game *game);
-void 	error(void);
+void 	error(void);//not 100% sure ???
 
 
 /*---------TEMPORAL - Prints for testing----------*/

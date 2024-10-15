@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 10:47:00 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/10/14 18:12:22 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/10/15 14:57:28 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	start_game(t_game *game)
 	mlx_t *mlx;
 	
 //	mlx_set_setting(MLX_MAXIMIZED, true);//Maximizes the window to fullscreen size
-	mlx = mlx_init(WIDTH, HEIGHT, "cub3D", true);
+	mlx = mlx_init(WIDTH, HEIGHT, "cub3D", false);
 	if (!mlx)
 		return (error(), 1);
 	if (minimap(mlx, game))//Creates and Displays a maze minimap in a corner of our window 

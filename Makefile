@@ -6,7 +6,7 @@
 #    By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/26 17:23:07 by jocuni-p          #+#    #+#              #
-#    Updated: 2024/10/14 14:17:39 by jocuni-p         ###   ########.fr        #
+#    Updated: 2024/10/15 16:35:02 by jocuni-p         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,6 +35,8 @@ ifeq ($(UNAME), Linux)
 # To compile the mlx on MacOS
 else ifeq ($(UNAME), Darwin)
 	LIBS	:= $(LIBMLX)/build/libmlx42.a -ldl -L/opt/homebrew/lib -lglfw -pthread -lm #-g -fsanitize=address
+else
+    $(error Unsupported platform: $(UNAME))
 endif
 
 LIBS += -L$(LIBFT) -lft
