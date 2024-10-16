@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 11:20:55 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/10/10 12:59:09 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/10/16 13:33:12 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	print_elem(t_parser *parser)
 {
-	printf("====PARSE STRUCT VALUES=====\n");
+	printf("┌──────PARSE STRUCT─────────┐\n");
 //	printf("cub: %p\n", parser->cub);
 	printf("no: %s\n", parser->elem.no);
 	printf("so: %s\n", parser->elem.so);
@@ -31,5 +31,16 @@ void	print_elem(t_parser *parser)
 	printf("player_view: %c\n", parser->map.player_view);
 	printf("Player position: (%i,%i)\n", parser->map.player_x, parser->map.player_y);
 	printf("raw_map: %p\n", parser->raw_map);
-	printf("\n");
+	printf("└───────────────────────────┘\n");
+}
+void	print_elem_and_color(t_parser *parser)
+{
+	printf("┌──TEXTURES & COLORS──┐\n");
+	printf("north: %p\n", parser->elem.no);
+	printf("south: %p\n", parser->elem.so);
+	printf("east: %p\n", parser->elem.ea);
+	printf("west: %p\n", parser->elem.we);
+	printf("c: 0x%X\n", parser->elem.c_color);
+	printf("f: 0x%X\n", parser->elem.f_color);
+	printf("└─────────────────────┘\n");
 }

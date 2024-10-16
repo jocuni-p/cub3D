@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 12:38:53 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/10/15 14:56:38 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/10/16 17:22:24 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,9 @@ int	main(int ac, char **av)
 		return (parser_free(&parser), 1);
 	init_game(&game, &parser);
 	print_game_struct(&game);//TEMPORAL
+	print_elem_and_color(&parser);//TEMPORAL
 	
-	if (start_game(&game))
+	if (start_game(&game, &parser))
 
 	parser_free(&parser);
 //	printf("EXIT PROPERLY \U0001F44D\n\n");//TEMPORAL

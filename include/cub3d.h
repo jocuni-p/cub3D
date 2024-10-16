@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 15:41:01 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/10/15 12:18:54 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/10/16 17:23:29 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,7 @@ int		set_element(t_parser *parser, char **elements);
 int		parse_color(t_parser *parser, char *str, char c);
 int		set_f(t_parser *parser, char *rgb_canal, int i);
 int		set_c(t_parser *parser, char *rgb_canal, int i);
-int		encoder_to_hexcolorformat(int r, int g, int b, int alpha);
+int		combiner_to_hexcolorformat(int r, int g, int b, int alpha);
 int		flag_elem(t_parser *parser);
 int		parse_map_1(t_parser *parser);
 int		is_firstline_valid(char *str);
@@ -151,8 +151,8 @@ void	remove_nl(char *str);
 /*-------------------------Game-------------------*/
 
 void	init_game(t_game *game, t_parser *parser);
-int		start_game(t_game *game);
-int		minimap(mlx_t *mlx, t_game *game);
+int		start_game(t_game *game, t_parser *parser);
+int		minimap(mlx_t *mlx, t_game *game, t_parser *parser);
 void 	error(void);//not 100% sure ???
 
 
@@ -163,7 +163,7 @@ void	arr2d_print(char **arr2d);
 void	print_elem(t_parser *parser);
 void	print_map_list(t_cub *lst);
 void	print_game_struct(t_game *game);
-
+void	print_elem_and_color(t_parser *parser);
 
 
 #endif

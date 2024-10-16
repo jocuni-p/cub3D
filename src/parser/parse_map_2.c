@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 15:33:39 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/10/11 10:27:10 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/10/16 14:21:10 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	get_player_pos(t_parser *parser, int x, int y)
 	{
 		parser->map.player_x = x;
 		parser->map.player_y = y;
+		parser->raw_map[y][x] = '0';
 	}
 }
 

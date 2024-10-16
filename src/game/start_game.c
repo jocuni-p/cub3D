@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 10:47:00 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/10/15 14:57:28 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/10/16 17:22:00 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void error(void)
 	ft_printf("%s", mlx_strerror(mlx_errno));//prints the error string that describes the error code
 	exit(EXIT_FAILURE);
 }
-int	start_game(t_game *game)
+int	start_game(t_game *game, t_parser *parser)
 {
 	mlx_t *mlx;
 	
@@ -27,7 +27,7 @@ int	start_game(t_game *game)
 	mlx = mlx_init(WIDTH, HEIGHT, "cub3D", false);
 	if (!mlx)
 		return (error(), 1);
-	if (minimap(mlx, game))//Creates and Displays a maze minimap in a corner of our window 
+	if (minimap(mlx, game, parser))//Creates and Displays a maze minimap in a corner of our window 
 		return (error(), 1);
 
 //>>>>>>>>>>>>GRAPHIC PART<<<<<<<<<<<<<<

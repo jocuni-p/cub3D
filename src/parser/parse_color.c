@@ -12,7 +12,7 @@
 
 #include "../include/cub3d.h"
 /*Encodes to one hexadecimal the four diferent color parameters*/
-int	encoder_to_hexcolorformat(int r, int b, int g, int alpha)
+int	combiner_to_hexcolorformat(int r, int b, int g, int alpha)
 {
 	return (r << 24 | b << 16 | g << 8 | alpha);
 }
@@ -32,7 +32,7 @@ int	set_c(t_parser *parser, char *rgb_canal, int i)
 	if (i == 2)
 	{
 		parser->elem.rgb_c[2] = nbr;
-		parser->elem.c_color = encoder_to_hexcolorformat(\
+		parser->elem.c_color = combiner_to_hexcolorformat(\
 			parser->elem.rgb_c[0], parser->elem.rgb_c[1], \
 			parser->elem.rgb_c[2], 255);
 	}
@@ -54,9 +54,9 @@ int	set_f(t_parser *parser, char *rgb_canal, int i)
 	if (i == 2)
 	{
 		parser->elem.rgb_f[2] = nbr;
-		parser->elem.f_color = encoder_to_hexcolorformat(\
-		parser->elem.rgb_f[0], parser->elem.rgb_f[1], \
-		parser->elem.rgb_f[2], 255);
+		parser->elem.f_color = combiner_to_hexcolorformat(\
+			parser->elem.rgb_f[0], parser->elem.rgb_f[1], \
+			parser->elem.rgb_f[2], 255);
 	}
 	return (0);
 }
