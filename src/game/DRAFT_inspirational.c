@@ -36,9 +36,9 @@ void	event_listener(mlx_t *mlx, t_scene *scene)
 {
 	if (mlx_is_	key_down(mlx, MLX_KEY_ESCAPE))
 		mlx_close_window(mlx);
-	if (mlx_is_key_down(mlx, MLX_KEY_SPACE) || mlx_is_mouse_down(mlx,
-			MLX_MOUSE_BUTTON_LEFT))
-		interact(scene);
+//	if (mlx_is_key_down(mlx, MLX_KEY_SPACE) || mlx_is_mouse_down(mlx,
+//			MLX_MOUSE_BUTTON_LEFT))
+//		interact(scene);
 	if (mlx_is_key_down(mlx, MLX_KEY_UP) || mlx_is_key_down(mlx, MLX_KEY_W))
 		move(scene, scene->player.dir.x, scene->player.dir.y, SPEED);
 	if (mlx_is_key_down(mlx, MLX_KEY_DOWN) || mlx_is_key_down(mlx, MLX_KEY_S))
@@ -63,8 +63,8 @@ static void	move(t_scene *scene, float fx, float fy, double move_speed)
 //		|| scene->map.cells[next_y][(int)(scene->player.pos.x)] == DOOR_OPEN)
 //		scene->player.pos.y += fy * move_speed;
 		scene->player.pos.y += 0.01;//variar segun la velocidad deseada
-	if (scene->map.cells[(int)(scene->player.pos.y)][next_x] == SPACE
-		|| scene->map.cells[(int)(scene->player.pos.y)][next_x] == DOOR_OPEN)
+	if (scene->map.cells[(int)(scene->player.pos.y)][next_x] == SPACE)
+//		|| scene->map.cells[(int)(scene->player.pos.y)][next_x] == DOOR_OPEN)
 		scene->player.pos.x += fx * move_speed;
 }
 

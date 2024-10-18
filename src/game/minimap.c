@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minimap_2.c                                        :+:      :+:    :+:   */
+/*   minimap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 12:26:44 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/10/17 19:11:34 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/10/18 12:10:40 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ int minimap(mlx_t *mlx, t_game *game, t_parser *parser)
     int start_col, end_col, start_row, end_row; // Límites de los tiles visibles
     int player_screen_x, player_screen_y; // Posición del jugador dentro del mini_map
 
-    // Crear la imagen para el minimapa
+    // imagen minimapa.OJO: se eliminara cuando tengamos la img del juego, porque lo pintare encima
     mini_map = mlx_new_image(mlx, 300, 200); // Tamaño del minimapa
     if (!mini_map)
         return (print_error(ERR_GRAPH), 1);
@@ -98,6 +98,7 @@ int minimap(mlx_t *mlx, t_game *game, t_parser *parser)
     player_screen_x = mini_map->width >> 1; // Jugador en el centro de mini_map (eje X)
     player_screen_y = mini_map->height >> 1; // Jugador en el centro de mini_map (eje Y)
 //Sustituir las divisiones por desplazamientos de bits (/2 = >> 1)
+
     // Calcular la esquina superior izquierda del minimapa en el mapa global
     map_offset_x = game->p_x  * TILE_SIZE - player_screen_x;
     map_offset_y = game->p_y  * TILE_SIZE - player_screen_y;
@@ -138,15 +139,15 @@ int minimap(mlx_t *mlx, t_game *game, t_parser *parser)
         row++;
     }
 
-    // Dibujar la posición del jugador centrada en el minimapa
-    draw_tile(mini_map, (player_screen_x - TILE_SIZE) >> 1, (player_screen_y - TILE_SIZE) >> 1, 0xFFFFFFFF);
+    // Dibujar la posición del jugador centrada en el minimapa (>> 1 == / 2)
+//    draw_tile(mini_map, player_screen_x - TILE_SIZE / 2, player_screen_y - TILE_SIZE / 2, 0xFFFFFFFF);
+	draw_tile(mini_map, player_screen_x, player_screen_y, 0xFFFFFFFF);
 
-
-	// Dibujar el contorno del frame de mini_map
+	// Pinta contorno frame mini_map
 	draw_mini_map_frame(mini_map, 0, 0, 0xFFFFFFFF);//get_ceiling_oposite_color(parser));
-	ft_printf("ceiling opposite: %X\n", get_ceiling_opposite_color(parser));
+//	ft_printf("ceiling opposite: %X\n", get_ceiling_opposite_color(parser));
 	
-    // Mostrar el minimapa en la ventana
+    // Mostrar minimapa en ventana. Eliminare cuando tenga la img del juego
     if (mlx_image_to_window(mlx, mini_map, 20, 20) < 0)
         return (print_error(ERR_GRAPH), 1);
 
