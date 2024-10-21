@@ -7,9 +7,9 @@ int	main(int argc, char **argv)
 	print_scene(&core.scene);
 	begin_window(&core, 1280, 960);
 //	/init_minimap(&core.scene, core.img);
-	init_animation(core.img, &core.scene.a, SPRITE_TEX);
+//	init_animation(core.img, &core.scene.a, SPRITE_TEX);
 	mlx_loop_hook(core.mlx, game_loop, &core);
-	mlx_close_hook(core.mlx, (void (*)(void *))mlx_close_window, core.mlx);
+//	mlx_close_hook(core.mlx, (void (*)(void *))mlx_close_window, core.mlx);
 	mlx_loop(core.mlx);
 	dispose_scene(&core.scene);
 	dispose_mlx(core.mlx);
@@ -26,7 +26,7 @@ void	game_loop(void *param)
 	event_listener(core->mlx, &core->scene);
 //	mouse_listener(core->mlx, &core->scene);
 //	update_doors(&core->scene.map, frame_count);
-	raycast(image, core->scene);
+//	raycast(image, core->scene);
 	minimap(image, core->scene);
 //	animation(image, &core->scene.a);
 //	frame_count++;
@@ -54,6 +54,8 @@ void	event_listener(mlx_t *mlx, t_scene *scene)
 }
 static void	move(t_scene *scene, float fx, float fy, double move_speed)
 {
+//fx y fy es a donde te quieres mover en floats
+//move _speed es la longitud del salto que va a dar el player al moverse (tendra que dar mas o menos saltos para llegar a fx y se vera mas o mens fluido el movimiento)
 	int	next_y;
 	int	next_x;
 

@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 12:26:44 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/10/18 12:10:40 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/10/21 11:26:20 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,26 @@ void draw_tile(mlx_image_t *mini_map, int x, int y, uint32_t color)
     {
         j = 0;
         while (j < TILE_SIZE)
+        {
+            // Solo dibuja los píxeles que están dentro de los límites del mini_map
+            if ((uint32_t)x + i >= 0 && (uint32_t)x + i < mini_map->width && (uint32_t)y + j >= 0 && (uint32_t)y + j < mini_map->height)
+                mlx_put_pixel(mini_map, x + i, y + j, color);
+            j++;
+        }
+        i++;
+    }
+}
+
+void	draw_player_tile(mlx_image_t *mini_map, int x, int y, uint32_t color)
+{
+ 	int i;
+    int j;
+
+    i = 0;
+    while (i < 4)//player will be 4 pix high
+    {
+        j = 0;
+        while (j < 4)//player will be 4 pix wide
         {
             // Solo dibuja los píxeles que están dentro de los límites del mini_map
             if ((uint32_t)x + i >= 0 && (uint32_t)x + i < mini_map->width && (uint32_t)y + j >= 0 && (uint32_t)y + j < mini_map->height)
@@ -141,7 +161,8 @@ int minimap(mlx_t *mlx, t_game *game, t_parser *parser)
 
     // Dibujar la posición del jugador centrada en el minimapa (>> 1 == / 2)
 //    draw_tile(mini_map, player_screen_x - TILE_SIZE / 2, player_screen_y - TILE_SIZE / 2, 0xFFFFFFFF);
-	draw_tile(mini_map, player_screen_x, player_screen_y, 0xFFFFFFFF);
+//	draw_tile(mini_map, player_screen_x, player_screen_y, 0xFFFFFFFF);
+	draw_player_tile(mini_map, player_screen_x + 3, player_screen_y + 2, 0xFFFFFFFF);//un pelo desplazado para centrarlo en el tile
 
 	// Pinta contorno frame mini_map
 	draw_mini_map_frame(mini_map, 0, 0, 0xFFFFFFFF);//get_ceiling_oposite_color(parser));

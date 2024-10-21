@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 15:41:01 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/10/16 17:23:29 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/10/21 16:37:18 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,12 +88,13 @@ typedef struct s_parser
 }			t_parser;
 
 
-typedef struct s_data//It will be passed to the graphic part of cu3D
+typedef struct s_game//It will be passed to the graphic part of cu3D
 {
-	char	**map;//already parsed and formated to rectangular shape
-	int		p_x;
-	int		p_y;
-	char	p_view;
+	char		**map;//already parsed and formated to rectangular shape
+	int			p_x;
+	int			p_y;
+	char		p_view;
+	mlx_image_t	*game_img;
 //	char	*no;
 //	char	*so;
 //	char	*ea;
