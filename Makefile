@@ -6,7 +6,7 @@
 #    By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/26 17:23:07 by jocuni-p          #+#    #+#              #
-#    Updated: 2024/10/17 19:17:57 by jocuni-p         ###   ########.fr        #
+#    Updated: 2024/10/22 16:07:07 by jocuni-p         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -72,12 +72,14 @@ SRCS_UTILS := 		./src/utils/arr2d_element_cnt.c \
 					./src/utils/arr2d_free.c \
 					./src/utils/check_arg.c \
 					./src/utils/elem_free.c \
-					./src/utils/remove_nl.c
+					./src/utils/remove_nl.c \
+					./src/utils/get_opposite_color.c
 
 # Source files about graphic part
 SRCS_GAME :=		./src/game/init_game.c \
 					./src/game/minimap.c \
-					./src/game/start_game.c
+					./src/game/start_game.c \
+					./src/game/updater.c
 
 
 

@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 15:41:01 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/10/21 16:37:18 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/10/22 19:11:56 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@
 
 /*-----------------------------------------------------*/
 
-# define WIDTH 2000
-# define HEIGHT 1000
+# define WIDTH 1000
+# define HEIGHT 500
 # define TILE_SIZE 10
 
 
@@ -90,17 +90,20 @@ typedef struct s_parser
 
 typedef struct s_game//It will be passed to the graphic part of cu3D
 {
+	t_parser	parser;
 	char		**map;//already parsed and formated to rectangular shape
 	int			p_x;
 	int			p_y;
 	char		p_view;
+	mlx_t		*mlx;
 	mlx_image_t	*game_img;
 //	char	*no;
 //	char	*so;
 //	char	*ea;
 //	char 	*we;
-//	uint32_t	c_col;
-//	uint32_t	f_col;	
+	uint32_t	c_col;
+	uint32_t	f_col;
+	uint32_t	c_col_opposite;
 }			t_game;
 
 
@@ -148,13 +151,15 @@ void	arr2d_free(char ***arr);
 int		check_arg(char *str);
 void	elem_free(t_parser *parser);
 void	remove_nl(char *str);
+int		get_opposite_color(t_parser *parser);
 
 /*-------------------------Game-------------------*/
 
-void	init_game(t_game *game, t_parser *parser);
+int		init_game(mlx_t *mlx, t_game *game, t_parser *parser);
 int		start_game(t_game *game, t_parser *parser);
-int		minimap(mlx_t *mlx, t_game *game, t_parser *parser);
+int		minimap(t_game *game);
 void 	error(void);//not 100% sure ???
+void	updater(void *param);
 
 
 /*---------TEMPORAL - Prints for testing----------*/

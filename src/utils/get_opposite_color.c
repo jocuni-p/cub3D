@@ -1,24 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   updater.c                                          :+:      :+:    :+:   */
+/*   get_opposite_color.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/21 14:42:25 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/10/22 18:59:02 by jocuni-p         ###   ########.fr       */
+/*   Created: 2024/10/22 15:09:25 by jocuni-p          #+#    #+#             */
+/*   Updated: 2024/10/22 15:11:04 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-/*Contains all functions that must be repeated/updated every mlx loop*/
-void	updater(void *param)
+
+int	get_opposite_color(t_parser *parser)
 {
-	t_game *game = (t_game *)param;
-//	ft_printf("Updating frame...\n");  // Debug
-//	event_listener();
-//	raycast();
-	if (minimap(game))
-		exit (EXIT_FAILURE);//rOJO: revisar esta salida de error
+	int	opposite;
+
+	opposite = combiner_to_hexcolorformat(255 - parser->elem.rgb_c[0], \
+		255 - parser->elem.rgb_c[1], 255 - parser->elem.rgb_c[2], 255);
+	return (opposite);
 }

@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 13:23:14 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/10/18 12:12:34 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/10/22 16:28:07 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,5 @@ void	print_game_struct(t_game *game)
 	ft_printf("  p_x: %i\n", game->p_x);
 	ft_printf("  p_y: %i\n", game->p_y);
 	ft_printf("  p_view: %c\n", game->p_view);
-	ft_printf("└─────────────────────┘\n");
+	ft_printf("└─────────────────────┘\n\n");
 }
