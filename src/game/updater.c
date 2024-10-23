@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 14:42:25 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/10/22 18:59:02 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/10/23 15:34:45 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,23 @@
 void	updater(void *param)
 {
 	t_game *game = (t_game *)param;
-//	ft_printf("Updating frame...\n");  // Debug
-//	event_listener();
-//	raycast();
-	if (minimap(game))
-		exit (EXIT_FAILURE);//rOJO: revisar esta salida de error
+	
+//	event_listener(); ESTA FUNCION NO SE BIEN DONDE HA DE IR
+	
+//--------------------BACKGROUND--------------------------
+	mlx_image_to_window(game->mlx, game->img_backgr, 0, 0);
+//	va en la tercera capa
+
+//--------------------RAYCASTING--------------------------
+//	raycast(); Creates and manages all raycasting. It is updated every cicle/frame
+	mlx_image_to_window(game->mlx, game->img_raycasting, 0, 0);
+// va en segunda capa
+
+//---------------------MINIMAP----------------------------
+//	minimap(game);
+//	update_minimap();//SOLO SE REDIBUJA llamando a draw_minimap SI EL JUGADOR SE HA MOVIDO
+	//probablemente debere poner un contador de pulsaciones para determinar si hubo movimiento???
+	mlx_image_to_window(game->mlx, game->img_minimap, 0, 0);
+//va en primera capa
+	
 }
