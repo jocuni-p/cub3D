@@ -35,6 +35,7 @@ int	set_c(t_parser *parser, char *rgb_canal, int i)
 		parser->elem.c_color = combiner_to_hexcolorformat(\
 			parser->elem.rgb_c[0], parser->elem.rgb_c[1], \
 			parser->elem.rgb_c[2], 255);
+		parser->elem.c_opposite = get_opposite_color(parser);
 	}
 	return (0);
 }

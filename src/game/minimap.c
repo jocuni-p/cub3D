@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 12:26:44 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/10/23 16:50:50 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/10/23 18:32:52 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,8 +90,8 @@ void draw_img_minimap(t_game *game)
     int player_screen_x, player_screen_y; // Posición del jugador dentro del mini_map
 
     // Calcular el desplazamiento (offset) para centrar el minimapa en el jugador
-    player_screen_x = game->img_minimap->width >> 1; // Jugador en el centro de mini_map (eje X)
-    player_screen_y = game->img_minimap->height >> 1; // Jugador en el centro de mini_map (eje Y)
+    player_screen_x = (int)game->img_minimap->width >> 1; // Jugador en el centro de mini_map (eje X)
+    player_screen_y = (int)game->img_minimap->height >> 1; // Jugador en el centro de mini_map (eje Y)
 	//Sustituir las divisiones por desplazamientos de bits (/2 = >> 1)
 
     // Calcular la esquina superior izquierda del minimapa en el mapa global
@@ -100,9 +100,9 @@ void draw_img_minimap(t_game *game)
 
     // Calcular los límites de las filas y columnas que deben dibujarse
     start_col = map_offset_x / TILE_SIZE;
-    end_col = (map_offset_x + WIDTH) / TILE_SIZE;
+    end_col = (map_offset_x + game->img_minimap->width) / TILE_SIZE;
     start_row = map_offset_y / TILE_SIZE;
-    end_row = (map_offset_y + HEIGHT) / TILE_SIZE;
+    end_row = (map_offset_y + game->img_minimap->height) / TILE_SIZE;
 	
     // Asegurar que los valores no se salgan de los límites del mapa
     if (start_row < 0)
@@ -133,6 +133,8 @@ void draw_img_minimap(t_game *game)
         }
         row++;
     }
+	printf("Tile: row: %d, col: %d, x: %d, y: %d\n", row, col, x, y);//DEBUG
+
     // Dibujar la posición del jugador centrada en el minimapa (>> 1 == / 2)
 //    draw_tile(mini_map, player_screen_x - TILE_SIZE / 2, player_screen_y - TILE_SIZE / 2, 0xFFFFFFFF);
 	draw_player_tile(game->img_minimap, player_screen_x + 3, player_screen_y + 2, 0xFFFFFFFF);//algo desplazado respecto al mapa, lo centro con +3 y +2

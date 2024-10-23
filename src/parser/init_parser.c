@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 13:43:28 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/10/10 16:52:35 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/10/23 23:06:18 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void	init_parser(t_parser *parser)
 	parser->elem.rgb_c[1] = 0;
 	parser->elem.rgb_c[2] = 0;
 	parser->elem.c_color = 0;
+	parser->elem.c_opposite = 0;
 	parser->elem.f = NULL;
 	parser->elem.rgb_f[0] = 0;
 	parser->elem.rgb_f[1] = 0;

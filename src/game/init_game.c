@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 16:45:44 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/10/23 16:48:36 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/10/23 22:40:49 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,17 +50,18 @@ int	init_game(mlx_t *mlx, t_game *game, t_parser *parser)
 	game->p_view = parser->map.player_view;
 	game->mlx = mlx;
 	game->img_backgr = mlx_new_image(mlx, 1000, 500);
-	game->img_raycasting = mlx_new_image(mlx, 1000, 500);
-	game->img_minimap = mlx_new_image(mlx, 300, 200);
-	if (!game->img_backgr || !game->img_raycasting || !game->img_minimap)
+	if (!game->img_backgr)
 		return (error(), 1);
-	draw_img_background(game);
-	draw_img_minimap(game);//draw the initial minimap
-//	game->no = parser->elem.no;
-//	game->so = parser->elem.so;
-//	game->ea = parser->elem.ea;
-//	game->we = parser->elem.we;
-//	game->c_opposite = get_opposite_color(parser);
+//	game->img_raycasting = mlx_new_image(mlx, 1000, 500);
+//	if (!game->img_raycasting)
+//		return (error(), 1);
+	game->img_minimap = mlx_new_image(mlx, 300, 200);
+	if (!game->img_minimap)
+		return (error(), 1);
+//	draw_img_background(game);
+//	mlx_image_to_window(game->mlx, game->img_backgr, 0, 0);
+	printf("init_game\n");//DEBUG
+//	draw_img_minimap(game);//draw the minimap
 	return (0);
 	
 }

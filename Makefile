@@ -6,7 +6,7 @@
 #    By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/26 17:23:07 by jocuni-p          #+#    #+#              #
-#    Updated: 2024/10/22 16:07:07 by jocuni-p         ###   ########.fr        #
+#    Updated: 2024/10/23 20:07:25 by jocuni-p         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,9 +20,12 @@
 
 NAME	:= cub3D
 UNAME := $(shell uname)#gets the OS we are using (Mac or Linux)
-CFLAGS	:= -Wextra -Wall -Werror -Wunreachable-code -Ofast -g #-fsanitize=address
+#CFLAGS	:= -Wextra -Wall -Werror -Wunreachable-code -Ofast -g #-fsanitize=address
+# For MacOS Apple Silicon platforms
+CFLAGS := -Wextra -Wall -Werror -Wunreachable-code -g -arch arm64
+
 # Si uso fsanitize en las flags de compilado, debo ponerla tambien en las del enlazado, sino da error al compilar
-LDFLAGS	:= #-fsanitize=address
+LDFLAGS	:= #-fsanitize=address #(only on MacOS systems)
 LIBMLX	:= ./lib/MLX42
 LIBFT	:= ./lib/libft/
 LIBFT_A	:= $(LIBFT)libft.a 
@@ -38,6 +41,14 @@ else ifeq ($(UNAME), Darwin)
 else
     $(error Unsupported platform: $(UNAME))
 endif
+
+ifeq ($(UNAME), Darwin)
+    LIBS := $(LIBMLX)/build/libmlx42.a -ldl -L$(shell brew --prefix glfw)/lib -lglfw -pthread -lm
+endif
+
+
+
+
 
 LIBS += -L$(LIBFT) -lft
 
