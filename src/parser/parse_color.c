@@ -12,17 +12,17 @@
 
 #include "../include/cub3d.h"
 /*Encodes to one hexadecimal the four diferent color parameters*/
-int	combiner_to_hexcolorformat(int r, int b, int g, int alpha)
+uint32_t	combiner_to_hexcolorformat(uint32_t r, uint32_t g, uint32_t b, uint32_t alpha)
 {
-	return (r << 24 | b << 16 | g << 8 | alpha);
+	return (r << 24 | g << 16 | b << 8 | alpha);
 }
 
 /*Set ceiling' rgb values*/
 int	set_c(t_parser *parser, char *rgb_canal, int i)
 {
-	int	nbr;
+	uint32_t	nbr;
 
-	nbr = ft_atoi(rgb_canal);
+	nbr = (uint32_t)ft_atoi(rgb_canal);
 	if (nbr < 0 || nbr > 255)
 		return (1);
 	if (i == 0)
@@ -43,9 +43,9 @@ int	set_c(t_parser *parser, char *rgb_canal, int i)
 /*Set floor' rgb values*/
 int	set_f(t_parser *parser, char *rgb_canal, int i)
 {
-	int	nbr;
+	uint32_t	nbr;
 
-	nbr = ft_atoi(rgb_canal);
+	nbr = (uint32_t)ft_atoi(rgb_canal);
 	if (nbr < 0 || nbr > 255)
 		return (1);
 	if (i == 0)

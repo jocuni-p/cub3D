@@ -6,7 +6,7 @@
 #    By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/26 17:23:07 by jocuni-p          #+#    #+#              #
-#    Updated: 2024/10/23 20:07:25 by jocuni-p         ###   ########.fr        #
+#    Updated: 2024/10/24 11:32:26 by jocuni-p         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,7 @@
 NAME	:= cub3D
 UNAME := $(shell uname)#gets the OS we are using (Mac or Linux)
 #CFLAGS	:= -Wextra -Wall -Werror -Wunreachable-code -Ofast -g #-fsanitize=address
+
 # For MacOS Apple Silicon platforms
 CFLAGS := -Wextra -Wall -Werror -Wunreachable-code -g -arch arm64
 
@@ -87,7 +88,8 @@ SRCS_UTILS := 		./src/utils/arr2d_element_cnt.c \
 					./src/utils/get_opposite_color.c
 
 # Source files about graphic part
-SRCS_GAME :=		./src/game/init_game.c \
+SRCS_GAME :=		./src/game/draw_img_background.c \
+					./src/game/init_game.c \
 					./src/game/minimap.c \
 					./src/game/start_game.c \
 					./src/game/updater.c

@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 11:20:55 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/10/23 18:11:20 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/10/24 11:43:14 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,9 @@ void	print_elem_and_color(t_parser *parser)
 	printf("  south: %p\n", parser->elem.so);
 	printf("  east: %p\n", parser->elem.ea);
 	printf("  west: %p\n", parser->elem.we);
-	printf("  c: 0x%X\n", parser->elem.c_color);
-	printf("  f: 0x%X\n", parser->elem.f_color);
-	printf("  opp: 0x%X\n", parser->elem.c_opposite);
+	printf("  c: %X\n", parser->elem.c_color);
+	printf("  f: %X\n", parser->elem.f_color);
+	printf("  opp: %X\n", parser->elem.c_opposite);
 	printf("└─────────────────────┘\n");
 	printf("\n");
 }

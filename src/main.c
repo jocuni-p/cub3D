@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 12:38:53 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/10/23 22:50:15 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/10/24 23:14:51 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,18 @@ int	main(int ac, char **av)
 //	print_game_struct(&game);//TEMPORAL
 	print_elem_and_color(&parser);//TEMPORAL
 	if (start_game(&game, &parser))
-	printf("main\n");//DEBUG
+//	printf("main\n");//DEBUG
 	parser_free(&parser);//this free + 'exit' must be called when 'esc' or 'close window' are pressed
 //	printf("EXIT PROPERLY \U0001F44D\n\n");//TEMPORAL
 	return (0);//probably the program never is gonna finish here
 }
 
+
+
 /*There will be 3 different images into the game window:
 	-The background image, drawing half ceiling and half floor, displayed into the last window layer
 	-The raycasting image, drawing the walls in the right perspective, displayed into the medium layer
 	-The minimap image, drawing a top-left small square map, displayed into the first layer */
+
+/*NOTE: In the function 'draw_img_background' there is a problem with the
+ hexadecimal munbers that I don't know how to solve (lines 27 and 38).*/

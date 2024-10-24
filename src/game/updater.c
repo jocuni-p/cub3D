@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 14:42:25 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/10/23 15:34:45 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/10/24 18:09:23 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	updater(void *param)
 
 //--------------------RAYCASTING--------------------------
 //	raycast(); Creates and manages all raycasting. It is updated every cicle/frame
-	mlx_image_to_window(game->mlx, game->img_raycasting, 0, 0);
+//	mlx_image_to_window(game->mlx, game->img_raycasting, 0, 0);
 // va en segunda capa
 
 //---------------------MINIMAP----------------------------
