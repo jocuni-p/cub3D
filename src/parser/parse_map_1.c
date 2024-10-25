@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 12:26:44 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/10/11 10:27:10 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/10/25 18:06:59 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,8 @@ int	is_middle_char_valid(char *str, t_parser *parser)
 		else if (str[i] == 'N' || str[i] == 'S' || str[i] == 'W' \
 		|| str[i] == 'E')
 		{
-			parser->map.player_qty++;
-			parser->map.player_view = str[i];
+			parser->map.ply_qty++;
+			parser->map.ply_view = str[i];
 			i++;
 		}
 		else
@@ -82,8 +82,8 @@ int	parse_map_1(t_parser *parser)
 
 	while (parser->cub->str[0] == '\n')
 		parser->cub = parser->cub->next;
-	parser->map_firstline = parser->cub;//sets a pointer to the map first line
-	if (parser->map_firstline == NULL || is_firstline_valid(parser->cub->str))
+	parser->map_ln0 = parser->cub;//sets a pointer to the map first line
+	if (parser->map_ln0 == NULL || is_firstline_valid(parser->cub->str))
 		return (print_error(ERR_MAP), 1);
 	parser->cub = parser->cub->next;
 	while (parser->cub)

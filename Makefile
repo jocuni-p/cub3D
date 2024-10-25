@@ -6,7 +6,7 @@
 #    By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/26 17:23:07 by jocuni-p          #+#    #+#              #
-#    Updated: 2024/10/24 11:32:26 by jocuni-p         ###   ########.fr        #
+#    Updated: 2024/10/25 19:56:04 by jocuni-p         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -64,13 +64,11 @@ SRCS_LST :=         ./src/lst/lst_creator.c \
 # Source files about parsing
 SRCS_PARSER :=		./src/parser/parse_color.c \
 			 		./src/parser/print_error.c \
-					./src/parser/init_parser.c \
 					./src/parser/parse_cub.c \
 					./src/parser/parse_elements.c \
 					./src/parser/parse_map_1.c \
 					./src/parser/parse_map_2.c \
 					./src/parser/arr2d_creator.c \
-					./src/parser/parser_free.c
 					
 # Source files about print_tests
 SRCS_PRINT_TESTS := ./src/print_tests/arr2d_print.c \
@@ -85,12 +83,13 @@ SRCS_UTILS := 		./src/utils/arr2d_element_cnt.c \
 					./src/utils/check_arg.c \
 					./src/utils/elem_free.c \
 					./src/utils/remove_nl.c \
-					./src/utils/get_opposite_color.c
+					./src/utils/get_opposite_color.c \
+					./src/utils/game_free.c
 
 # Source files about graphic part
 SRCS_GAME :=		./src/game/draw_img_background.c \
+					./src/game/draw_img_minimap.c \
 					./src/game/init_game.c \
-					./src/game/minimap.c \
 					./src/game/start_game.c \
 					./src/game/updater.c
 

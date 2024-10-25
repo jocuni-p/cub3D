@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 15:41:01 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/10/25 14:40:37 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/10/25 19:57:10 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,18 +71,18 @@ typedef struct s_map
 {
 	int	w;
 	int	h;
-	int	player_qty;
-	int	player_view;
-	int	player_x;
-	int	player_y;
+	int	ply_qty;
+	int	ply_view;
+	int	ply_x;
+	int	ply_y;
 }		t_map;
 
 /*-------Parsing variables-------*/
 typedef struct s_parser
 {
 	t_cub	*cub;//List containing every line from file.cub
-	t_cub	*cub_firstline;
-	t_cub	*map_firstline;//points to the first line after the elements
+	t_cub	*cub_ln0;
+	t_cub	*map_ln0;//points to the first line after the elements
 	t_elem	elem;
 	t_map	map;//map infos
 	char	**raw_map;//map before to be parsed
@@ -99,16 +99,9 @@ typedef struct s_game//It will be passed to the graphic part of cu3D
 	int			p_y;
 	char		p_view;
 	mlx_t		*mlx;
-	mlx_image_t	*img_backgr;
-	mlx_image_t	*img_raycasting;
-	mlx_image_t	*img_minimap;
-//	char	*no;
-//	char	*so;
-//	char	*ea;
-//	char 	*we;
-//	uint32_t	c_col;
-//	uint32_t	f_col;
-//	uint32_t	c_opposite;
+	mlx_image_t	*img_back;
+	mlx_image_t	*img_ray;
+	mlx_image_t	*img_mmap;
 }			t_game;
 
 
@@ -117,9 +110,9 @@ typedef struct s_game//It will be passed to the graphic part of cu3D
 
 int			check_arg_name(char *str);
 int			check_arg_ext(char *str);
-void		init_parser(t_parser *parser);
+//void		init_game(t_game *game);
 int			lst_creator(t_parser *parser, char *filename);
-int			parse_cub(t_parser *parser, char *filename);
+int			parse_cub(t_game *game, char *filename);
 int			parse_elements(t_parser *parser);
 int			check_element_chars(char *str);
 int			set_element(t_parser *parser, char **elements);
@@ -134,7 +127,6 @@ int			is_first_and_last_char_valid(char *str);
 int			is_middle_char_valid(char *str, t_parser *parser);
 int			is_map_properly_closed(t_parser *parser);
 int			parse_map_2(t_parser *parser);
-void		parser_free(t_parser *parser);
 int 		arr2d_size(t_parser *parser);
 int 		arr2d_filler(t_parser *parser);
 int			arr2d_creator(t_parser *parser);
@@ -154,19 +146,20 @@ void 	lst_clear(t_cub **lst);
 int		arr2d_element_cnt(char **arr);
 void	arr2d_free(char ***arr);
 int		check_arg(char *str);
-void	elem_free(t_parser *parser);
+void	elem_free(t_game *game);
 void	remove_nl(char *str);
 int		get_opposite_color(t_parser *parser);
+void	game_free(t_game *game);
 
 /*-------------------------Game-------------------*/
 
-int		start_game(t_game *game, t_parser *parser);
-int		init_game(mlx_t *mlx, t_game *game, t_parser *parser);
+int		start_game(t_game *game);
+int		init_game(mlx_t *mlx, t_game *game);
 void 	draw_img_background(t_game *game);
 void	draw_img_minimap(t_game *game);
-void 	draw_minimap_tile(mlx_image_t *img_minimap, uint32_t x, uint32_t y, uint32_t color);
-void	draw_minimap_player(mlx_image_t *img_minimap, uint32_t x, uint32_t y, uint32_t color);
-void	draw_minimap_frame(mlx_image_t *img_minimap, uint32_t x, uint32_t y, uint32_t color);
+void 	draw_minimap_tile(mlx_image_t *img_mmap, uint32_t x, uint32_t y, uint32_t color);
+void	draw_minimap_player(mlx_image_t *img_mmap, uint32_t x, uint32_t y, uint32_t color);
+void	draw_minimap_frame(mlx_image_t *img_mmap, uint32_t x, uint32_t y, uint32_t color);
 void 	error(void);//not 100% sure ???
 void	updater(void *param);
 

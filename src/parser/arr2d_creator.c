@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 11:14:18 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/10/11 16:05:56 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/10/25 18:06:59 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	arr2d_size(t_parser *parser)
 
 	len = 0;
 	high = 1;
-	tmp = parser->map_firstline;
+	tmp = parser->map_ln0;
 	if (!tmp)
 		return (1);
 	len = ft_strlen(tmp->str);
@@ -48,16 +48,16 @@ int	arr2d_filler(t_parser *parser)
 	int	j;
 
 	i = 0;
-	while (parser->raw_map[i] != NULL && parser->map_firstline != NULL)
+	while (parser->raw_map[i] != NULL && parser->map_ln0 != NULL)
 	{
 		j = 0;
-		while (parser->map_firstline->str[j] != '\0' && j < parser->map.w)
+		while (parser->map_ln0->str[j] != '\0' && j < parser->map.w)
 		{
-			parser->raw_map[i][j] = parser->map_firstline->str[j];
+			parser->raw_map[i][j] = parser->map_ln0->str[j];
 			j++;
 		}
 		i++;
-		parser->map_firstline = parser->map_firstline->next;
+		parser->map_ln0 = parser->map_ln0->next;
 	}
 	return (0);
 }

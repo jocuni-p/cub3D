@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 15:33:39 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/10/16 14:21:10 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/10/25 19:15:01 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ void	get_player_pos(t_parser *parser, int x, int y)
 	if (parser->raw_map[y][x] == 'N' || parser->raw_map[y][x] == 'S' \
 	|| parser->raw_map[y][x] == 'W' || parser->raw_map[y][x] == 'E')
 	{
-		parser->map.player_x = x;
-		parser->map.player_y = y;
-		parser->raw_map[y][x] = '0';
+		parser->map.ply_x = x;
+		parser->map.ply_y = y;
+		parser->raw_map[y][x] = '0';//OJO: decidir si lo conservo en el mapa o no
 	}
 }
 
@@ -56,7 +56,7 @@ int	is_map_properly_closed(t_parser *parser)
 
 int	parse_map_2(t_parser *parser)
 {
-	if (parser->map.player_qty != 1)
+	if (parser->map.ply_qty != 1)
 		return (print_error(ERR_MAP), 1);	
 	if (parser->map.w < 3 || parser->map.h < 3)//minim map playeble size 
 		return (print_error(ERR_MAP), 1);

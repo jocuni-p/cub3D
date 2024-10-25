@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 11:19:53 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/10/25 15:01:26 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/10/25 20:02:17 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ void draw_img_background(t_game *game)
 		x = 0;
 		while (x < WIDTH)
 		{
-//			mlx_put_pixel(game->img_backgr, x, y, game->parser.elem.c_color);
-			mlx_put_pixel(game->img_backgr, x, y, 0x7070FFFF);
+			mlx_put_pixel(game->img_back, x, y, game->parser.elem.c_color);
+//			mlx_put_pixel(game->img_back, x, y, 0x7070FFFF);
 			x++;
 		}
 		y++;
@@ -36,8 +36,8 @@ void draw_img_background(t_game *game)
 		x = 0;
 		while (x < WIDTH)
 		{
-//			mlx_put_pixel(game->img_backgr, x, y, game->parser.elem.f_color);
-			mlx_put_pixel(game->img_backgr, x, y, 0xFF7070FF);
+			mlx_put_pixel(game->img_back, x, y, game->parser.elem.f_color);
+//			mlx_put_pixel(game->img_back, x, y, 0xFF7070FF);
 			x++;
 		}
 		y++;
