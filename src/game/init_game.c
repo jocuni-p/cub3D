@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 16:45:44 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/10/25 19:34:34 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/10/25 23:29:04 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,14 @@
 
 int	init_game(mlx_t *mlx, t_game *game)
 {
-	printf("parser->map.w: %d, h: %d\n", game->parser.map.w, game->parser.map.h);//DEBUG
+//	printf("map_w: %d, map_h: %d\n", game->map_w, game->map_h);//DEBUG
 	game->mlx = mlx;
-	game->map_arr = game->parser.raw_map;//OJO: de momento lo conservo, pero es duplicado
-	game->map_w = game->parser.map.w;//OJO: de momento lo conservo, pero es duplicado
-	game->map_h = game->parser.map.h;//OJO: de momento lo conservo, pero es duplicado
-	printf("game->map_w: %d, h: %d\n", game->map_w, game->map_h);
-	game->p_x = game->parser.map.ply_x;//OJO: de momento lo conservo, pero es duplicado
-	game->p_y = game->parser.map.ply_y;//OJO: de momento lo conservo, pero es duplicado
-	game->p_view = game->parser.map.ply_view;//OJO: de momento lo conservo, pero es duplicado
+//	game->map_arr = game->parser.raw_map;//OJO: de momento lo conservo, pero es duplicado
+//	game->map_w = game->parser.map.w;//OJO: de momento lo conservo, pero es duplicado
+//	game->map_h = game->parser.map.h;//OJO: de momento lo conservo, pero es duplicado
+//	game->p_x = game->parser.map.ply_x;//OJO: de momento lo conservo, pero es duplicado
+//	game->p_y = game->parser.map.ply_y;//OJO: de momento lo conservo, pero es duplicado
+//	game->p_view = game->parser.map.ply_view;//OJO: de momento lo conservo, pero es duplicado
 	
 /*-----Background img declaration, painting and putting into the mlx window-------*/	
 	game->img_back = mlx_new_image(mlx, 1000, 500);

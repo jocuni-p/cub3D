@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 14:27:44 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/10/25 19:13:16 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/10/25 23:01:11 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,17 @@ int	parse_cub(t_game *game, char *filename)
 	if (lst_creator(&game->parser, filename))
 		return (1);
 //	print_cub_list(parser->cub);//TEMPORAL
-	if (parse_elements(&game->parser))
+	if (parse_elements(game))
 		return (1);
 //	printf("map_pointer>>>%s\n", parser->cub->str);//TEMPORAL
-	if (parse_map_1(&game->parser))
+	if (parse_map_1(game))
 		return (1);
-	if (arr2d_creator(&game->parser))
+	if (arr2d_creator(game))
 		return (1);
 	lst_clear(&game->parser.cub_ln0);
-	if (parse_map_2(&game->parser))
+	if (parse_map_2(game))
 		return (1);
 //	print_elem(parser);//TEMPORAL
-	arr2d_print(game->parser.raw_map);//TEMPORAL
+	arr2d_print(game->map_arr);//TEMPORAL
 	return (0);
 }
