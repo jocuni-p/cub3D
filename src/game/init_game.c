@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 16:45:44 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/10/24 23:13:26 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/10/25 15:24:47 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	init_game(mlx_t *mlx, t_game *game, t_parser *parser)
 //	game->img_raycasting = mlx_new_image(mlx, 1000, 500);
 //	if (!game->img_raycasting)
 //		return (error(), 1);
-/*---To draw the RAYCASTING img is code pending------*/
+//	draw_img_raycasting(game);/*---RAYCASTING CODE IS PENDING------*/
 
 /*-----minimap img declaration, painting and putting into the mlx window-------*/
 	game->img_minimap = mlx_new_image(mlx, 300, 200);

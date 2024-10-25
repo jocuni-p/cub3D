@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 15:41:01 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/10/24 22:49:56 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/10/25 14:40:37 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -165,8 +165,8 @@ int		init_game(mlx_t *mlx, t_game *game, t_parser *parser);
 void 	draw_img_background(t_game *game);
 void	draw_img_minimap(t_game *game);
 void 	draw_minimap_tile(mlx_image_t *img_minimap, uint32_t x, uint32_t y, uint32_t color);
-void	draw_player_tile(mlx_image_t *img_minimap, uint32_t x, uint32_t y, uint32_t color);
-void	draw_mini_map_frame(mlx_image_t *img_minimap, uint32_t x, uint32_t y, uint32_t color);
+void	draw_minimap_player(mlx_image_t *img_minimap, uint32_t x, uint32_t y, uint32_t color);
+void	draw_minimap_frame(mlx_image_t *img_minimap, uint32_t x, uint32_t y, uint32_t color);
 void 	error(void);//not 100% sure ???
 void	updater(void *param);
 

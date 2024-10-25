@@ -6,34 +6,12 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 12:26:44 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/10/24 23:17:21 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/10/25 14:59:11 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-void	draw_mini_map_frame(mlx_image_t *img_minimap, uint32_t x, uint32_t y, uint32_t color)
-{
-	while (y < 200)
-	{
-		x = 0;
-		while (x < 300)
-		{
-			if (y == 0 || y == 199)
-			{
-				 mlx_put_pixel(img_minimap, x, y, color);
-				 x++;
-			}
-			else
-			{
-				mlx_put_pixel(img_minimap, 0, y, color);
-				mlx_put_pixel(img_minimap, 299, y, color);
-				x = 300;
-			}	
-		}
-		y++;
-	}
-}
 
 /* Draws a tile on the mini_map image at x, y position.*/
 void draw_minimap_tile(mlx_image_t *img_minimap, uint32_t x, uint32_t y, uint32_t color)
@@ -57,7 +35,7 @@ void draw_minimap_tile(mlx_image_t *img_minimap, uint32_t x, uint32_t y, uint32_
     }
 }
 
-void	draw_player_tile(mlx_image_t *img_minimap, uint32_t x, uint32_t y, uint32_t color)
+void	draw_minimap_player(mlx_image_t *img_minimap, uint32_t x, uint32_t y, uint32_t color)
 {
  	int i;
     int j;
@@ -76,6 +54,29 @@ void	draw_player_tile(mlx_image_t *img_minimap, uint32_t x, uint32_t y, uint32_t
         }
         i++;
     }
+}
+
+void	draw_minimap_frame(mlx_image_t *img_minimap, uint32_t x, uint32_t y, uint32_t color)
+{
+	while (y < 200)
+	{
+		x = 0;
+		while (x < 300)
+		{
+			if (y == 0 || y == 199)
+			{
+				 mlx_put_pixel(img_minimap, x, y, color);
+				 x++;
+			}
+			else
+			{
+				mlx_put_pixel(img_minimap, 0, y, color);
+				mlx_put_pixel(img_minimap, 299, y, color);
+				x = 300;
+			}	
+		}
+		y++;
+	}
 }
 
 /*Draws a small image of the map. The player keeps centered all time and the 
@@ -154,6 +155,7 @@ void draw_img_minimap(t_game *game)
 */
 void draw_img_minimap(t_game *game)
 {
+//	uint32_t	mmap
     uint32_t    x, y;
     int         row, col;
     int         map_offset_x, map_offset_y; // Para centrar al jugador
@@ -167,21 +169,31 @@ void draw_img_minimap(t_game *game)
     // Calcular el desplazamiento del mapa (offset) para centrar el minimapa en el jugador
     map_offset_x = (game->p_x * TILE_SIZE) - player_screen_x;
     map_offset_y = (game->p_y * TILE_SIZE) - player_screen_y;
-//	if (map_offset_x < 0) map_offset_x = 0;
-//	if (map_offset_y < 0) map_offset_y = 0;
-
-
 
     // Calcular los límites de las filas y columnas que deben dibujarse
-    start_col = (map_offset_x < 0) ? 0 : map_offset_x / TILE_SIZE;
-    start_row = (map_offset_y < 0) ? 0 : map_offset_y / TILE_SIZE;
+	// Calcular columna de inicio
+	if (map_offset_x < 0)
+	    start_col = 0;  // Si el offset es negativo, comenzamos desde la primera columna
+	else
+	    start_col = map_offset_x / TILE_SIZE;  // Si es positivo, calculamos la columna correspondiente
+	// Calcular fila de inicio
+	if (map_offset_y < 0)
+	    start_row = 0;  // Si el offset es negativo, comenzamos desde la primera fila
+	else
+	    start_row = map_offset_y / TILE_SIZE;  // Si es positivo, calculamos la fila correspondiente
+	// Calcular columna de final
     end_col = ((map_offset_x + game->img_minimap->width) / TILE_SIZE);
+	// Calcular fila de final
     end_row = ((map_offset_y + game->img_minimap->height) / TILE_SIZE);\
 
-	printf("start_col: %d, end_col: %d\n", start_col, end_col);
-	printf("start_row: %d, end_row: %d\n\n", start_row, end_row);
-	printf("game->map_w: %d, h: %d\n", game->map_w, game->map_h);
+	printf("start_col: %d, end_col: %d\n", start_col, end_col);//DEBUG
+	printf("start_row: %d, end_row: %d\n\n", start_row, end_row);//DEBUG
+	printf("game->map_w: %d, h: %d\n", game->map_w, game->map_h);//DEBUG
+	printf("map_offset_x: %d, map_offset_y: %d\n", map_offset_x, map_offset_y);//DEBUG
+	printf("player_screen_x: %d, player_screen_y: %d\n", player_screen_x, player_screen_y);//DEBUG
+	printf("game->p_x: %d, game->p_y: %d\n", game->p_x, game->p_y);//DEBUG
 	
+/* PIENSO Que no hace falta
 	// Asegurar que los valores no se salgan de los límites del mapa
 	if (end_col >= game->map_w)
 		end_col = game->map_w - 1;
@@ -192,7 +204,7 @@ void draw_img_minimap(t_game *game)
     	end_row = game->map_h - 1;
 	if (end_row < 0)
     	end_row = 0;
-		
+*/		
 	
     // Dibujar los tiles visibles en el minimapa
     row = start_row;
@@ -208,20 +220,18 @@ void draw_img_minimap(t_game *game)
             // Dibujar el tile solo si está dentro de los límites del minimapa
             if (x >= 0 && x < game->img_minimap->width && y >= 0 && y < game->img_minimap->height) {
                 if (game->map_arr[row][col] == '1' || game->map_arr[row][col] == ' ')
-                    draw_minimap_tile(game->img_minimap, x, y, 0x81320EFF);
+//					draw_minimap_tile(game->img_minimap, x, y, game->parser.elem.c_opposite);
+                    draw_minimap_tile(game->img_minimap, x, y, 0x5b700EFF);//TO FIX <<<<<<<<<<<<<<<<
             }
             col++;
         }
         row++;
     }
 	printf("Tile: row: %d, col: %d, x: %d, y: %d\n", row, col, x, y);//DEBUG
-	printf("map_offset_x: %d, map_offset_y: %d\n", map_offset_x, map_offset_y);
-	printf("player_screen_x: %d, player_screen_y: %d\n", player_screen_x, player_screen_y);
-	printf("game->p_x: %d, game->p_y: %d\n", game->p_x, game->p_y);
 	
     // Dibujar la posición del jugador centrada en el minimapa
-    draw_player_tile(game->img_minimap, player_screen_x + 3, player_screen_y + 2, 0xFFFFFFFF);
+    draw_minimap_player(game->img_minimap, player_screen_x + 3, player_screen_y + 2, 0x000000FF);
     
     // Dibujar el marco del minimapa
-    draw_mini_map_frame(game->img_minimap, 0, 0, 0xFFFFFFFF);
+   draw_minimap_frame(game->img_minimap, 0, 0, 0x000000FF);
 }
