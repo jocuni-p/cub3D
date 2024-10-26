@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_elem.c                                       :+:      :+:    :+:   */
+/*   print_vars.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 11:20:55 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/10/25 23:22:51 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/10/26 16:08:47 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,8 @@ void	print_variables(t_game *game)
 	printf("  op: 0x%X\n", game->parser.elem.c_opposite);
 	printf("  f:  0x%X\n", game->parser.elem.f_color);
 	printf("  map size: %i x %i\n", game->map_w, game->map_h);
-	printf("  ply start pos: (%i,%i)\n", game->p_x, game->p_y);
-	printf("  p_view: %c\n", game->p_view);
+	printf("  pl_orig: (%i,%i)\n", game->pl_orig[0], game->pl_orig[1]);
+	printf("  pl_view: %c\n", game->pl_view);
 	printf("└───────────────────────────────┘\n");
 	printf("\n");
 }

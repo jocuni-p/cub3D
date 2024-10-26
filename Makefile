@@ -6,7 +6,7 @@
 #    By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/26 17:23:07 by jocuni-p          #+#    #+#              #
-#    Updated: 2024/10/25 23:25:07 by jocuni-p         ###   ########.fr        #
+#    Updated: 2024/10/26 18:31:11 by jocuni-p         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ UNAME := $(shell uname)#gets the OS we are using (Mac or Linux)
 #CFLAGS	:= -Wextra -Wall -Werror -Wunreachable-code -Ofast -g #-fsanitize=address
 
 # For MacOS Apple Silicon platforms
-CFLAGS := -Wextra -Wall -Werror -Wunreachable-code -g -arch arm64
+CFLAGS := -Wextra -Wall -Werror -Wunreachable-code -g -arch arm64 #-fsanitize=address
 
 # Si uso fsanitize en las flags de compilado, debo ponerla tambien en las del enlazado, sino da error al compilar
 LDFLAGS	:= #-fsanitize=address #(only on MacOS systems)
@@ -73,9 +73,10 @@ SRCS_PARSER :=		./src/parser/parse_color.c \
 # Source files about print_tests
 SRCS_PRINT_TESTS := ./src/print_tests/arr2d_print.c \
 					./src/print_tests/print_cub_list.c \
-					./src/print_tests/print_elem.c \
+					./src/print_tests/print_vars.c \
 					./src/print_tests/print_map_list.c \
-					./src/print_tests/print_game_struct.c
+					./src/print_tests/print_game_struct.c \
+					./src/print_tests/print_minimap_vars.c
 
 # Source files about utils
 SRCS_UTILS := 		./src/utils/arr2d_element_cnt.c \
@@ -87,8 +88,8 @@ SRCS_UTILS := 		./src/utils/arr2d_element_cnt.c \
 					./src/utils/game_free.c
 
 # Source files about graphic part
-SRCS_GAME :=		./src/game/draw_img_background.c \
-					./src/game/draw_img_minimap.c \
+SRCS_GAME :=		./src/game/draw_background.c \
+					./src/game/draw_minimap.c \
 					./src/game/init_game.c \
 					./src/game/start_game.c \
 					./src/game/updater.c

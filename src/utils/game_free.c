@@ -17,5 +17,5 @@ void	game_free(t_game *game)
 {
 	lst_clear(&game->parser.cub_ln0);
 	elem_free(game);
-	arr2d_free(&game->parser.raw_map);
+	arr2d_free(&game->map_arr);
 }

@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 12:26:44 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/10/25 22:31:30 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/10/26 15:58:03 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,9 +65,9 @@ int	is_middle_char_valid(char *str, t_game *game)
 		else if (str[i] == 'N' || str[i] == 'S' || str[i] == 'W' \
 		|| str[i] == 'E')
 		{
-			game->parser.map.ply_qty++;
+			game->parser.ply_qty++;
 //			game->parser.map.ply_view = str[i];
-			game->p_view = str[i];
+			game->pl_view = str[i];
 			i++;
 		}
 		else

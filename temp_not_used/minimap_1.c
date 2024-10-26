@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 11:35:03 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/10/17 13:38:07 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/10/26 12:59:01 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	get_ceiling_oposite_color(t_parser *parser)
 {
 	int	oposit;
 	
-	oposit = combiner_to_hexcolorformat(-parser->elem.rgb_c[0], \
+	oposit = combiner_hex(-parser->elem.rgb_c[0], \
 	-parser->elem.rgb_c[1], -parser->elem.rgb_c[2], 255);
 	return (oposit);
 }
