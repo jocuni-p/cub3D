@@ -6,7 +6,7 @@
 #    By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/26 17:23:07 by jocuni-p          #+#    #+#              #
-#    Updated: 2024/10/26 18:31:11 by jocuni-p         ###   ########.fr        #
+#    Updated: 2024/10/27 20:02:06 by jocuni-p         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,8 +22,8 @@ NAME	:= cub3D
 UNAME := $(shell uname)#gets the OS we are using (Mac or Linux)
 #CFLAGS	:= -Wextra -Wall -Werror -Wunreachable-code -Ofast -g #-fsanitize=address
 
-# For MacOS Apple Silicon platforms
-CFLAGS := -Wextra -Wall -Werror -Wunreachable-code -g -arch arm64 #-fsanitize=address
+# For MacOS (Apple Silicon) platforms
+#CFLAGS := -Wextra -Wall -Werror -Wunreachable-code -g -arch arm64 #-fsanitize=address
 
 # Si uso fsanitize en las flags de compilado, debo ponerla tambien en las del enlazado, sino da error al compilar
 LDFLAGS	:= #-fsanitize=address #(only on MacOS systems)
@@ -34,20 +34,19 @@ HEADERS	:= -I ./include -I $(LIBMLX)/include -I $(LIBFT)
 
 # To compile the mlx on Linux at 42Barcelona campus   
 ifeq ($(UNAME), Linux)
-	LIBS	:= $(LIBMLX)/build/libmlx42.a -ldl -lglfw -pthread -lm #-g -fsanitize=address
-
-# To compile the mlx on MacOS
+	LIBS	:= $(LIBMLX)/build/libmlx42.a -ldl -lglfw -pthread -lm -g #-fsanitize=address
+	CFLAGS	:= -Wextra -Wall -Werror -Wunreachable-code -Ofast -g #-fsanitize=address
+# To compile the mlx on MacOS (Apple Silicon)
 else ifeq ($(UNAME), Darwin)
 	LIBS	:= $(LIBMLX)/build/libmlx42.a -ldl -L/opt/homebrew/lib -lglfw -pthread -lm #-g -fsanitize=address
+	CFLAGS := -Wextra -Wall -Werror -Wunreachable-code -g -arch arm64 #-fsanitize=address
 else
-    $(error Unsupported platform: $(UNAME))
+    $(Error. Unsupported platform: $(UNAME))
 endif
 
 ifeq ($(UNAME), Darwin)
     LIBS := $(LIBMLX)/build/libmlx42.a -ldl -L$(shell brew --prefix glfw)/lib -lglfw -pthread -lm
 endif
-
-
 
 
 
@@ -92,7 +91,8 @@ SRCS_GAME :=		./src/game/draw_background.c \
 					./src/game/draw_minimap.c \
 					./src/game/init_game.c \
 					./src/game/start_game.c \
-					./src/game/updater.c
+					./src/game/loop_updater.c \
+					./src/game/movement.c
 
 
 

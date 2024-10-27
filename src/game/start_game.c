@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 10:47:00 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/10/26 12:50:32 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/10/27 19:59:31 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	start_game(t_game *game)
 //	printf("start_game\n");//DEBUG
 	
 //It is executed each frame, updated accordingly every keypress/movement 
-//	mlx_loop_hook(mlx, updater, game);
+	mlx_loop_hook(mlx, loop_updater, game);
 	mlx_loop(mlx);
 	mlx_terminate(mlx);
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 16:45:44 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/10/26 16:01:23 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/10/27 19:02:45 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,14 @@ int	init_game(mlx_t *mlx, t_game *game)
 	draw_background(game);
 	mlx_image_to_window(game->mlx, game->img_back, 0, 0);
 	
-/*-----RAYCASTING img declaration, painting and putting into the mlx window-------*/
+/*-----RAYCASTING img declaration, paint and put into the mlx window-------*/
 //	game->img_ray = mlx_new_image(mlx, 1000, 500);
 //	if (!game->img_ray)
 //		return (error(), 1);
 //	draw_img_raycasting(game);/*---RAYCASTING CODE IS PENDING------*/
 
 /*-----MINIMAP img declaration, painting and putting into the mlx window-------*/
-	game->img_mmap = mlx_new_image(mlx, 300, 200);
+	game->img_mmap = mlx_new_image(mlx, (WIDTH / 5), (HEIGHT / 5));
 	if (!game->img_mmap)
 		return (error(), 1);
 	draw_minimap(game);

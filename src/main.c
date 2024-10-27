@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 12:38:53 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/10/26 17:34:25 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/10/27 16:06:39 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,20 +26,17 @@ int	main(int ac, char **av)
 	if (parse_cub(game, av[1]))
 		return (game_free(game), 1);
 		
-//	print_game_struct(&game);//DEBUG
 	print_variables(game);//TEMPORAL
 	
 	if (start_game(game))
 	
 	game_free(game);//this free + 'exit' must be called when 'esc' or 'close window' are pressed
-//	printf("EXIT PROPERLY \U0001F44D\n\n");//TEMPORAL
+//	printf("EXIT PROPERLY \U0001F44D\n\n");//DEBUG
 	return (0);//probably the program never is gonna finish here
 }
 
 
-/*There will be 3 different images into the game window:
+/*There are 3 different images into the game window:
 	-The background image, drawing half ceiling and half floor, displayed into the last window layer
 	-The raycasting image, drawing the walls in the right perspective, displayed into the medium layer
 	-The minimap image, drawing a top-left small square map, displayed into the first layer */
-
-/*NOTE: It is pending to decide if the minimap image should have the surrounding frame or not.*/

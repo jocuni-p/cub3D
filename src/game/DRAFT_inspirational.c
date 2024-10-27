@@ -19,7 +19,7 @@ void	game_loop(void *param)
 {
 	t_core			*core;
 	mlx_image_t		*image;
-	static int8_t	frame_count = 0;
+	static int8_t	frame_count = 0;//cuenta las veces que pasa por esta funcion loop
 
 	core = (t_core *)param;
 	image = core->img;

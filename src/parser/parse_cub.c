@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 14:27:44 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/10/26 12:45:31 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/10/27 19:04:13 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,6 @@ int	parse_cub(t_game *game, char *filename)
 	lst_clear(&game->parser.cub_ln0);
 	if (parse_map_2(game))
 		return (1);
-	arr2d_print(game->map_arr);//TEMPORAL
+	arr2d_print(game->map_arr);//TEMPORAL ??
 	return (0);
 }

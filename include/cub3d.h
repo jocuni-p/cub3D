@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 15:41:01 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/10/26 18:17:07 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/10/27 20:01:00 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ typedef struct s_cub
 	struct s_cub	*next;
 }					t_cub;
 
-/*-----Elements value----*/
+/*-----Elements----*/
 typedef struct s_elem
 {
 	char			*no;//path to the texture(.xpm)
@@ -70,14 +70,14 @@ typedef struct s_elem
 	uint32_t		f_color;
 }					t_elem;
 
-/*-------Parsing vars-------*/
+/*-------Parsing-------*/
 typedef struct s_parser
 {
 	t_cub			*cub;//List containing every line from file.cub
 	t_cub			*cub_ln0;//pointer to the first line of filename.cub
 	t_cub			*map_ln0;//points to the first line after the elements
 	t_elem			elem;
-	int				ply_qty;//
+	int				ply_qty;
 }					t_parser;
 
 /*---------minimap----------*/
@@ -97,21 +97,21 @@ typedef struct s_mmap
 	uint32_t		pl_screen_y;// Player pos in minimap img center
 }					t_mmap;
 
-/*------------Game vars----------*/
-typedef struct s_game//It will be passed to the graphic part of cu3D
+/*------------Game----------*/
+typedef struct s_game//This will be passed to the raycast
 {
-	t_parser		parser;
-	char			**map_arr;//already parsed and formated to rectangular shape
-	int				map_w;
-	int				map_h;
+	t_parser		parser;//parser data
+	char			**map_arr;//map cells formated 
+	int				map_w;//map size
+	int				map_h;//map size
 	int				pl_orig[2];//player starting pos in map_array( [0] = x, [1] = y)
 	int				pl_curr[2];//player current pos in map_arr
-	char			pl_view;
-	mlx_t			*mlx;
-	mlx_image_t		*img_back;
-	mlx_image_t		*img_ray;
-	mlx_image_t		*img_mmap;
-	t_mmap			mmap;
+	char			pl_view;//N, S, W or E
+	mlx_t			*mlx;//instance to MLX42 library
+	mlx_image_t		*img_back;//instance of background image
+	mlx_image_t		*img_ray;//instance to walls(raycasting) image
+	mlx_image_t		*img_mmap;//instance to minimap image
+	t_mmap			mmap;//minimap data
 }					t_game;
 
 
@@ -149,7 +149,7 @@ void		print_error(char *str);
 int			lst_size(t_cub *lst);
 void 		lst_clear(t_cub **lst);
 
-/*----------------------utils---------------------*/
+/*-------------------utils-----------------*/
 
 int			arr2d_element_cnt(char **arr);
 void		arr2d_free(char ***arr);
@@ -159,7 +159,7 @@ void		remove_nl(char *str);
 int			get_opposite_color(t_game * game);
 void		game_free(t_game *game);
 
-/*-------------------------Game-------------------*/
+/*--------------------Game-------------------*/
 
 int			start_game(t_game *game);
 int			init_game(mlx_t *mlx, t_game *game);
@@ -169,10 +169,11 @@ void 		draw_minimap_tile(mlx_image_t *img_mmap, uint32_t x, uint32_t y, uint32_t
 void		draw_minimap_player(mlx_image_t *img_mmap, uint32_t x, uint32_t y, uint32_t color);
 void		draw_minimap_frame(mlx_image_t *img_mmap, uint32_t x, uint32_t y, uint32_t color);
 void 		error(void);//not 100% sure ???
-void		updater(void *param);
+void		loop_updater(void *param);
+void		event_listener(t_game *game);
 
 
-/*---------TEMPORAL - Prints for testing----------*/
+/*---------- Prints for debug----------*/
 
 void		print_cub_list(t_cub *lst);
 void		arr2d_print(char **arr2d);
