@@ -1,22 +1,36 @@
-#Basic Makefile sample as a starting point from MLX42 repo
-
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/09/26 17:23:07 by jocuni-p          #+#    #+#              #
+#    Updated: 2024/10/30 19:13:25 by jocuni-p         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
 NAME	:= cub3D
-CFLAGS	:= -Wextra -Wall -Werror -Wunreachable-code -Ofast -g #-fsanitize=address #-fsanitize=leak
+UNAME := $(shell uname)#gets the OS we are using
+
 # Si uso fsanitize en las flags de compilado, debo ponerla tambien en las del enlazado, sino da error al compilar
-LDFLAGS	:= #-fsanitize=address
+LDFLAGS	:= -fsanitize=address #(only on MacOS systems)
 LIBMLX	:= ./lib/MLX42
 LIBFT	:= ./lib/libft/
 LIBFT_A	:= $(LIBFT)libft.a 
 HEADERS	:= -I ./include -I $(LIBMLX)/include -I $(LIBFT)
 
-# To compile the mlx on Linux at 42Barcelona campus   
+# To compile on Linux at 42Barcelona campus   
 ifeq ($(UNAME), Linux)
-	LIBS	:= $(LIBMLX)/build/libmlx42.a -ldl -lglfw -pthread -lm #-g -fsanitize=address
-
-# To compile the mlx on MacOS
+	LIBS	:= $(LIBMLX)/build/libmlx42.a -ldl -lglfw -pthread -lm -g #-fsanitize=address
+	CFLAGS	:= -Wextra -Wall -Werror -Wunreachable-code -Ofast -g #-fsanitize=address
+	
+# To compile on MacOS (Apple Silicon)
 else ifeq ($(UNAME), Darwin)
-	LIBS	:= $(LIBMLX)/build/libmlx42.a -ldl -L/opt/homebrew/lib -lglfw -pthread -lm #-g -fsanitize=address
+	LIBS	:= $(LIBMLX)/build/libmlx42.a -ldl -L/opt/homebrew/lib -lglfw -pthread -lm -g -fsanitize=address
+	CFLAGS := -Wextra -Wall -Werror -Wunreachable-code -g -arch arm64 #-fsanitize=address
+else
+    $(Error. Unsupported platform: $(UNAME))
 endif
 
 LIBS += -L$(LIBFT) -lft
@@ -32,31 +46,36 @@ SRCS_LST :=         ./src/lst/lst_creator.c \
 # Source files about parsing
 SRCS_PARSER :=		./src/parser/parse_color.c \
 			 		./src/parser/print_error.c \
-					./src/parser/init_parser.c \
 					./src/parser/parse_cub.c \
 					./src/parser/parse_elements.c \
 					./src/parser/parse_map_1.c \
 					./src/parser/parse_map_2.c \
 					./src/parser/arr2d_creator.c \
-					./src/parser/parser_free.c
 					
 # Source files about print_tests
 SRCS_PRINT_TESTS := ./src/print_tests/arr2d_print.c \
 					./src/print_tests/print_cub_list.c \
-					./src/print_tests/print_elem.c \
+					./src/print_tests/print_elements.c \
 					./src/print_tests/print_map_list.c \
-					./src/print_tests/print_game_struct.c
+					./src/print_tests/print_game.c \
+					./src/print_tests/print_minimap_vars.c
 
 # Source files about utils
 SRCS_UTILS := 		./src/utils/arr2d_element_cnt.c \
 					./src/utils/arr2d_free.c \
 					./src/utils/check_arg.c \
 					./src/utils/elem_free.c \
-					./src/utils/remove_nl.c
+					./src/utils/error_mlx.c \
+					./src/utils/remove_nl.c \
+					./src/utils/get_opposite_color.c \
+					./src/utils/game_free.c
 
 # Source files about graphic part
-SRCS_GAME :=		./src/game/init_game.c
-
+SRCS_GAME :=		./src/game/draw_background.c \
+					./src/game/draw_minimap.c \
+					./src/game/start_game.c \
+					./src/game/loop_updater.c \
+					./src/game/movement.c
 
 # Puts together all src files
 SRCS := ./src/main.c $(SRCS_LST) $(SRCS_PARSER) $(SRCS_PRINT_TESTS) $(SRCS_UTILS) $(SRCS_GAME)
@@ -89,7 +108,7 @@ libft:
 	@$(CC) $(CFLAGS) -o $@ -c $< $(HEADERS) && printf "Compiling: $(notdir $<)\n"
 
 $(NAME): $(OBJS)
-	@$(CC) $(OBJS) $(LIBS) $(HEADERS) $(LDFLAGS) -o $(NAME)
+	@$(CC) $(OBJS) $(HEADERS) -o $(NAME) $(LIBS) $(LDFLAGS)
 	@echo "\n$(DARK_GREEN)▶  cub3D built completed!$(DEF_COLOR)\n"
 
 clean:

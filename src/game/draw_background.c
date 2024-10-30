@@ -1,21 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser_free.c                                      :+:      :+:    :+:   */
+/*   draw_background.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/16 15:00:47 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/10/11 10:17:01 by jocuni-p         ###   ########.fr       */
+/*   Created: 2024/10/24 11:19:53 by jocuni-p          #+#    #+#             */
+/*   Updated: 2024/10/26 13:06:56 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-/*------Frees all t_parser struct memory-----*/
-void	parser_free(t_parser *parser)
+/*Draws enterely the background image*/
+void draw_background(t_game *game)
 {
-	lst_clear(&parser->cub_firstline);
-	elem_free(parser);
-	arr2d_free(&parser->raw_map);
+    int y;
+    int x;
+	y = 0;
+	while (y < HEIGHT >> 1)//it is equal to "/ 2"
+	{
+		x = 0;
+		while (x < WIDTH)
+		{
+			mlx_put_pixel(game->img_back, x, y, game->parser.elem.c_color);
+			x++;
+		}
+		y++;
+	}
+	while (y < HEIGHT)
+	{
+		x = 0;
+		while (x < WIDTH)
+		{
+			mlx_put_pixel(game->img_back, x, y, game->parser.elem.f_color);
+			x++;
+		}
+		y++;
+	}
 }

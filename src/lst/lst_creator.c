@@ -38,5 +38,6 @@ int	lst_creator(t_parser *parser, char *filename)
 		free(line);
 		line = get_next_line(fd);
 	}
+	parser->cub_ln0 = parser->cub;
 	return (close(fd), 0);
 }

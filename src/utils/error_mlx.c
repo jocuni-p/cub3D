@@ -1,27 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_game.c                                        :+:      :+:    :+:   */
+/*   error_mlx.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/09 16:45:44 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/10/10 13:11:50 by jocuni-p         ###   ########.fr       */
+/*   Created: 2024/10/30 17:12:21 by jocuni-p          #+#    #+#             */
+/*   Updated: 2024/10/30 17:12:53 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-void	init_game(t_game *game, t_parser *parser)
+// Exit the program properly when a mlx failure is found.
+void error_mlx(t_game *game)
 {
-	game->map = parser->raw_map;
-	game->p_x = parser->map.player_x;
-	game->p_y = parser->map.player_y;
-	game->p_view = parser->map.player_view;
-//	game->no = parser->elem.no;
-//	game->so = parser->elem.so;
-//	game->ea = parser->elem.ea;
-//	game->we = parser->elem.we;
-//	game->c_col = parser->elem.c_color;
-//	game->f_col = parser->elem.f_color;
+	ft_printf("MLX error code: %d\n", mlx_errno);
+	ft_printf("%s", mlx_strerror(mlx_errno));//prints the error string that describes the error code
+	game_free(game);
+	exit(EXIT_FAILURE);
 }
