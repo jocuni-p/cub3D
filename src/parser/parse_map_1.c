@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 12:26:44 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/10/26 15:58:03 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/10/30 16:56:10 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,7 @@ int	is_middle_char_valid(char *str, t_game *game)
 		|| str[i] == 'E')
 		{
 			game->parser.ply_qty++;
-//			game->parser.map.ply_view = str[i];
-			game->pl_view = str[i];
+			game->player.orientation = str[i];
 			i++;
 		}
 		else
@@ -90,7 +89,7 @@ int	parse_map_1(t_game *game)
 	while (game->parser.cub)
 	{
 		remove_nl(game->parser.cub->str);
-		if (game->parser.cub->str[0] == '\0')//if it's an empty line
+		if (game->parser.cub->str[0] == '\0')//if it is an empty line
 			return (print_error(ERR_MAP), 1);
 		trimmed_line = ft_strtrim(game->parser.cub->str, " ");//remove ' ' from beginning and from end
 		if (is_first_and_last_char_valid(trimmed_line))

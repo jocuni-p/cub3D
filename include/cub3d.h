@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 15:41:01 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/10/27 20:01:00 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/10/30 18:57:26 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <fcntl.h>// for ´open´
+# include <stdbool.h>
 //# include <math.h>//check with Roman if it is needed
 
 /*------------------Colors--------------------*/
@@ -41,11 +42,12 @@
 # define ERR_GRAPH "Error;\nGraphic failure\n"
 
 
-/*-------------------macros----------------------------*/
+/*-------------------game const params----------------------------*/
 # define WIDTH 1000
 # define HEIGHT 500
 # define TILE_SIZE 10
-
+# define SPEED 0.1f
+//# define ROTATION_SPEED 0.0005f
 
 /*-----List containing all lines from filename.cub------*/
 typedef struct s_cub
@@ -83,8 +85,8 @@ typedef struct s_parser
 /*---------minimap----------*/
 typedef struct s_mmap
 {
-	uint32_t		x;
-	uint32_t		y;
+	uint32_t		x;//coor de tile del minimap
+	uint32_t		y;//coor de tile del minimap
 	int				row;
 	int				col;
 	int				map_offset_x;//Map shift to center minimap on the player
@@ -97,21 +99,38 @@ typedef struct s_mmap
 	uint32_t		pl_screen_y;// Player pos in minimap img center
 }					t_mmap;
 
-/*------------Game----------*/
+/*-----------coordinates expressed in double type------------*/
+typedef struct s_coord
+{
+	double			x;
+	double			y;
+}					t_coord;
+
+/*------------player--------*/
+typedef struct s_player//>>>>>>>>>>>>IN PROGRESS<<<<<<<<<<<<<<<<<<<<<
+{
+	t_coord			pos;//(x,y) coordenada de donde esta ahora
+	t_coord			dir;//(x,y) define el vector de direccion (donde mira)
+//	t_coord			plane;//determina la proyección lateral de la cámara y 
+//							permite simular una vista en 3D
+	char			orientation;//starting orientation: N, S, E, W
+}					t_player;
+
+/*------------game----------*/
 typedef struct s_game//This will be passed to the raycast
 {
 	t_parser		parser;//parser data
 	char			**map_arr;//map cells formated 
 	int				map_w;//map size
 	int				map_h;//map size
-	int				pl_orig[2];//player starting pos in map_array( [0] = x, [1] = y)
-	int				pl_curr[2];//player current pos in map_arr
-	char			pl_view;//N, S, W or E
+	t_player		player;	
 	mlx_t			*mlx;//instance to MLX42 library
 	mlx_image_t		*img_back;//instance of background image
 	mlx_image_t		*img_ray;//instance to walls(raycasting) image
 	mlx_image_t		*img_mmap;//instance to minimap image
 	t_mmap			mmap;//minimap data
+	bool			is_moving;
+	
 }					t_game;
 
 
@@ -158,6 +177,7 @@ void		elem_free(t_game *game);
 void		remove_nl(char *str);
 int			get_opposite_color(t_game * game);
 void		game_free(t_game *game);
+void 		error_mlx(t_game *game);
 
 /*--------------------Game-------------------*/
 
@@ -168,9 +188,14 @@ void		draw_minimap(t_game *game);
 void 		draw_minimap_tile(mlx_image_t *img_mmap, uint32_t x, uint32_t y, uint32_t color);
 void		draw_minimap_player(mlx_image_t *img_mmap, uint32_t x, uint32_t y, uint32_t color);
 void		draw_minimap_frame(mlx_image_t *img_mmap, uint32_t x, uint32_t y, uint32_t color);
-void 		error(void);//not 100% sure ???
 void		loop_updater(void *param);
 void		event_listener(t_game *game);
+void		move(t_game *game, double dir_x, double dir_y, double move_speed);
+
+/*------------------Raycasting---------------*/
+
+//void		draw_raycasting(t_game *game);
+
 
 
 /*---------- Prints for debug----------*/
@@ -178,8 +203,8 @@ void		event_listener(t_game *game);
 void		print_cub_list(t_cub *lst);
 void		arr2d_print(char **arr2d);
 void		print_map_list(t_cub *lst);
-void		print_game_struct(t_game *game);
-void		print_variables(t_game *game);
+void		print_game(t_game *game);
+void		print_elements(t_game *game);
 void		print_minimap_vars(t_game *game);
 
 

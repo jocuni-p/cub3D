@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/26 17:22:07 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/10/26 17:24:34 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/10/30 10:59:59 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,6 @@ void	print_minimap_vars(t_game *game)
 	 game->mmap.map_offset_y);//DEBUG
 	printf("pl_screen_x: %d, pl_screen_y: %d\n", game->mmap.pl_screen_x,
 	 game->mmap.pl_screen_y);//DEBUG
-	printf("pl_orig_pos: (%d, %d)\n\n\n", game->pl_orig[0], game->pl_orig[1]);//DEBUG
+//	printf("pl_orig_pos: (%d, %d)\n\n\n", game->pl_orig[0], game->pl_orig[1]);//DEBUG
+	printf("player.pos: (%f, %f)\n\n\n", game->player.pos.x, game->player.pos.y);//DEBUG
 }

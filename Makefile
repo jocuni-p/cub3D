@@ -6,49 +6,32 @@
 #    By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/26 17:23:07 by jocuni-p          #+#    #+#              #
-#    Updated: 2024/10/27 20:02:06 by jocuni-p         ###   ########.fr        #
+#    Updated: 2024/10/30 18:26:16 by jocuni-p         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-# MacOS compilation: gcc main.c ... libmlx42.a -Iinclude -lglfw
-# Linux compilation: gcc main.c ... libmlx42.a -Iinclude -ldl -lglfw -pthread -lm
-
-# For MacOS you need to use the following flags to compile your program with the
-# library in order to link the program with the correct frameworks:
-# -framework Cocoa -framework OpenGL -framework IOKit
-
-
 NAME	:= cub3D
-UNAME := $(shell uname)#gets the OS we are using (Mac or Linux)
-#CFLAGS	:= -Wextra -Wall -Werror -Wunreachable-code -Ofast -g #-fsanitize=address
-
-# For MacOS (Apple Silicon) platforms
-#CFLAGS := -Wextra -Wall -Werror -Wunreachable-code -g -arch arm64 #-fsanitize=address
+UNAME := $(shell uname)#gets the OS we are using
 
 # Si uso fsanitize en las flags de compilado, debo ponerla tambien en las del enlazado, sino da error al compilar
-LDFLAGS	:= #-fsanitize=address #(only on MacOS systems)
+LDFLAGS	:= -fsanitize=address #(only on MacOS systems)
 LIBMLX	:= ./lib/MLX42
 LIBFT	:= ./lib/libft/
 LIBFT_A	:= $(LIBFT)libft.a 
 HEADERS	:= -I ./include -I $(LIBMLX)/include -I $(LIBFT)
 
-# To compile the mlx on Linux at 42Barcelona campus   
+# To compile on Linux at 42Barcelona campus   
 ifeq ($(UNAME), Linux)
 	LIBS	:= $(LIBMLX)/build/libmlx42.a -ldl -lglfw -pthread -lm -g #-fsanitize=address
 	CFLAGS	:= -Wextra -Wall -Werror -Wunreachable-code -Ofast -g #-fsanitize=address
-# To compile the mlx on MacOS (Apple Silicon)
+	
+# To compile on MacOS (Apple Silicon)
 else ifeq ($(UNAME), Darwin)
-	LIBS	:= $(LIBMLX)/build/libmlx42.a -ldl -L/opt/homebrew/lib -lglfw -pthread -lm #-g -fsanitize=address
+	LIBS	:= $(LIBMLX)/build/libmlx42.a -ldl -L/opt/homebrew/lib -lglfw -pthread -lm -g -fsanitize=address
 	CFLAGS := -Wextra -Wall -Werror -Wunreachable-code -g -arch arm64 #-fsanitize=address
 else
     $(Error. Unsupported platform: $(UNAME))
 endif
-
-ifeq ($(UNAME), Darwin)
-    LIBS := $(LIBMLX)/build/libmlx42.a -ldl -L$(shell brew --prefix glfw)/lib -lglfw -pthread -lm
-endif
-
-
 
 LIBS += -L$(LIBFT) -lft
 
@@ -72,9 +55,9 @@ SRCS_PARSER :=		./src/parser/parse_color.c \
 # Source files about print_tests
 SRCS_PRINT_TESTS := ./src/print_tests/arr2d_print.c \
 					./src/print_tests/print_cub_list.c \
-					./src/print_tests/print_vars.c \
+					./src/print_tests/print_elements.c \
 					./src/print_tests/print_map_list.c \
-					./src/print_tests/print_game_struct.c \
+					./src/print_tests/print_game.c \
 					./src/print_tests/print_minimap_vars.c
 
 # Source files about utils
@@ -82,6 +65,7 @@ SRCS_UTILS := 		./src/utils/arr2d_element_cnt.c \
 					./src/utils/arr2d_free.c \
 					./src/utils/check_arg.c \
 					./src/utils/elem_free.c \
+					./src/utils/error_mlx.c \
 					./src/utils/remove_nl.c \
 					./src/utils/get_opposite_color.c \
 					./src/utils/game_free.c
@@ -89,12 +73,9 @@ SRCS_UTILS := 		./src/utils/arr2d_element_cnt.c \
 # Source files about graphic part
 SRCS_GAME :=		./src/game/draw_background.c \
 					./src/game/draw_minimap.c \
-					./src/game/init_game.c \
 					./src/game/start_game.c \
 					./src/game/loop_updater.c \
 					./src/game/movement.c
-
-
 
 # Puts together all src files
 SRCS := ./src/main.c $(SRCS_LST) $(SRCS_PARSER) $(SRCS_PRINT_TESTS) $(SRCS_UTILS) $(SRCS_GAME)

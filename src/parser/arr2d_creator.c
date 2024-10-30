@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 11:14:18 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/10/25 22:51:50 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/10/30 18:32:48 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ int	arr2d_size(t_game *game)
 	}
 	game->map_w = len;
 	game->map_h = high;
-//	printf("map size = %i x %i\n\n", len, high);//TEMPORAL
 	return (0);
 }
 

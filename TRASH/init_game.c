@@ -1,17 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   start_game.c                                       :+:      :+:    :+:   */
+/*   init_game.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/14 10:47:00 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/10/30 18:51:54 by jocuni-p         ###   ########.fr       */
+/*   Created: 2024/10/09 16:45:44 by jocuni-p          #+#    #+#             */
+/*   Updated: 2024/10/30 17:16:37 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
-
 /*
 void set_player_direction(t_game *game, char orientation)
 {
@@ -38,46 +37,30 @@ int	init_game(mlx_t *mlx, t_game *game)
 	game->player.dir.y = -1;
 //	set_player_direction(game, game->player.orientation);
 	
+	
 /*=========================BACKGROUND=========================*/	
 	game->img_back = mlx_new_image(mlx, 1000, 500);
 	if (!game->img_back)
-		return (error_mlx(game), 1);
+		return (error(game), 1);
 	draw_background(game);
 	if (mlx_image_to_window(game->mlx, game->img_back, 0, 0) < 0)
-		return (error_mlx(game), 1);
+		return (error(game), 1);
 
-/*=================RAYCASTING - Initial image===================*/
-	game->img_ray = mlx_new_image(mlx, 1000, 500);
-	if (!game->img_ray)
-		return (error_mlx(game), 1);
-//	draw_raycasting(game);//MISSING CODE
-	if (mlx_image_to_window(game->mlx, game->img_ray, 0, 0) < 0)
-		return (error_mlx(game), 1);
+
+/*========================RAYCASTING===========================*/
+//	game->img_ray = mlx_new_image(mlx, 1000, 500);
+//	if (!game->img_ray)
+//		return (error(), 1);
+//	draw_raycasting(game);
+
 
 /*============================MINIMAP===========================*/
 	game->img_mmap = mlx_new_image(mlx, (WIDTH / 5), (HEIGHT / 5));
 	if (!game->img_mmap)
-		return (error_mlx(game), 1);
+		return (error(game), 1);
 	draw_minimap(game);
-	if (mlx_image_to_window(game->mlx, game->img_mmap, 0, 0) < 0)
-		return (error_mlx(game), 1);
+	if (mlx_image_to_window(game->mlx, game->img_mmap, 0, 0) < 0);
+		return (error(game), 1);
 		
 	return (0);
 }
-
-int	start_game(t_game *game)
-{
-	mlx_t *mlx;
-	
-	mlx = mlx_init(WIDTH, HEIGHT, "cub3D", 0);
-	if (!mlx)
-		return (error_mlx(game), 1);
-	if (init_game(mlx, game))
-		 return (error_mlx(game), 1);
-	mlx_loop_hook(mlx, loop_updater, game);
-	print_game(game);
-	mlx_loop(mlx);
-	mlx_terminate(mlx);
-	return (0);
-}
-	

@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 12:38:53 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/10/27 16:06:39 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/10/30 18:55:37 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,10 @@ int	main(int ac, char **av)
 	
 	if (parse_cub(game, av[1]))
 		return (game_free(game), 1);
-		
-	print_variables(game);//TEMPORAL
-	
+	print_elements(game);//DEBUG
 	if (start_game(game))
-	
+		return (1);
 	game_free(game);//this free + 'exit' must be called when 'esc' or 'close window' are pressed
-//	printf("EXIT PROPERLY \U0001F44D\n\n");//DEBUG
 	return (0);//probably the program never is gonna finish here
 }
 
