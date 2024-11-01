@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 10:47:00 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/10/30 18:51:54 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/10/31 11:20:50 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void set_player_direction(t_game *game, char orientation)
 int	init_game(mlx_t *mlx, t_game *game)
 {
 	game->mlx = mlx;
-	game->is_moving = 1;//it means that the images must be redrawn 
+	game->is_moving = 1;//flag to ensure that the images will be redrawn every loop
 	game->player.dir.x = 0;//player looks to EAST (1, 0) as a starting value
 	game->player.dir.y = -1;
 //	set_player_direction(game, game->player.orientation);
@@ -46,6 +46,11 @@ int	init_game(mlx_t *mlx, t_game *game)
 	if (mlx_image_to_window(game->mlx, game->img_back, 0, 0) < 0)
 		return (error_mlx(game), 1);
 
+
+/*========================TEMPORAL TEST========================*/
+	if (textures_test(game))
+		return (error_mlx(game), 1);
+	
 /*=================RAYCASTING - Initial image===================*/
 	game->img_ray = mlx_new_image(mlx, 1000, 500);
 	if (!game->img_ray)
@@ -75,7 +80,7 @@ int	start_game(t_game *game)
 	if (init_game(mlx, game))
 		 return (error_mlx(game), 1);
 	mlx_loop_hook(mlx, loop_updater, game);
-	print_game(game);
+	print_game_info(game);
 	mlx_loop(mlx);
 	mlx_terminate(mlx);
 	return (0);

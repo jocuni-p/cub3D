@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_game.c                                       :+:      :+:    :+:   */
+/*   print_game_info.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,12 +12,23 @@
 
 #include "../include/cub3d.h"
 
-void	print_game(t_game *game)
+void	print_game_info(t_game *game)
 {
-	printf("┌───────────────GAME──────────────┐\n");
+	arr2d_print(game->map_arr);
+	printf("\n┌──────────────ELEMENTS────────────┐\n\n");
+	printf("  no: %s\n", game->parser.elem.no);
+	printf("  so: %s\n", game->parser.elem.so);
+	printf("  we: %s\n", game->parser.elem.we);
+	printf("  ea: %s\n", game->parser.elem.ea);
+	printf("  c:  0x%X\n", game->parser.elem.c_color);
+//	printf("  op: 0x%X\n", game->parser.elem.c_opposite);
+	printf("  f:  0x%X\n", game->parser.elem.f_color);
+//	printf("└──────────────────────────────────┘\n");
+//	printf("\n");
+	printf("\n  ──────────────GAME─────────────  \n\n");
 	printf("  map size (w, h): (%i, %i)\n", game->map_w, game->map_h);
 	printf("  player.pos: (%f,%f)\n", game->player.pos.x, game->player.pos.y);
 	printf("  player.dir: (%f,%f)\n", game->player.dir.x, game->player.dir.y);
 	printf("  p.orientation %c\n", game->player.orientation);
-	printf("└─────────────────────────────────┘\n\n");
+	printf("\n└─────────────────────────────────┘\n\n");
 }

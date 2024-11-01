@@ -6,7 +6,7 @@
 #    By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/26 17:23:07 by jocuni-p          #+#    #+#              #
-#    Updated: 2024/10/30 18:26:16 by jocuni-p         ###   ########.fr        #
+#    Updated: 2024/10/31 19:48:47 by jocuni-p         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,7 +57,7 @@ SRCS_PRINT_TESTS := ./src/print_tests/arr2d_print.c \
 					./src/print_tests/print_cub_list.c \
 					./src/print_tests/print_elements.c \
 					./src/print_tests/print_map_list.c \
-					./src/print_tests/print_game.c \
+					./src/print_tests/print_game_info.c \
 					./src/print_tests/print_minimap_vars.c
 
 # Source files about utils
@@ -68,6 +68,7 @@ SRCS_UTILS := 		./src/utils/arr2d_element_cnt.c \
 					./src/utils/error_mlx.c \
 					./src/utils/remove_nl.c \
 					./src/utils/get_opposite_color.c \
+					./src/utils/texture_test.c \
 					./src/utils/game_free.c
 
 # Source files about graphic part
@@ -83,13 +84,30 @@ SRCS := ./src/main.c $(SRCS_LST) $(SRCS_PARSER) $(SRCS_PRINT_TESTS) $(SRCS_UTILS
 # Object files
 OBJS := $(SRCS:.c=.o)
 
-# Colors
+# Colors definition
 ################################################################################
 
 DEF_COLOR =		\033[0;39m
-DARK_YELLOW =	\033[38;5;143m
+DEL_LINE	=	\033[2K
 DARK_GREEN 	=	\033[1m\033[38;2;75;179;82m
-GREEN 		=	\033[0;32m
+ITALIC		=	\033[3m
+BOLD		=	\033[1m
+GRAY		=	\033[0;90m
+RED			=	\033[0;91m
+GREEN		=	\033[0;92m
+YELLOW		=	\033[0;93m
+BLUE		=	\033[0;94m
+MAGENTA		=	\033[0;95m
+CYAN		=	\033[0;96m
+WHITE		=	\033[0;97m
+BLACK		=	\033[0;99m
+ORANGE		=	\033[38;5;209m
+BROWN		=	\033[38;2;184;143;29m
+DARK_GRAY	=	\033[38;5;234m
+MID_GRAY	=	\033[38;5;245m
+DARK_GREEN	=	\033[38;2;75;179;82m
+DARK_YELLOW =	\033[38;5;143m
+
 
 # Rules
 ################################################################################
