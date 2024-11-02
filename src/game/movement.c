@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 12:19:47 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/10/30 18:45:06 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/11/02 19:08:04 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,13 @@ x e y de la dirección del jugador.*/
 		
 	if(mlx_is_key_down(game->mlx, MLX_KEY_D))
 		move(game, -game->player.dir.y, game->player.dir.x, SPEED * 0.5);
+
+//	if(mlx_is_key_put_down(game->mlx, MLX_KEY_SHFT)) //TODO FOR ROMAN
+//		SPEED *= 2;
+
+//	if(mlx_is_key_put_up(game->mlx, MLX_KEY_SHFT))
+//		SPEED *= 0.5;
+
 
 //	if (mlx_is_key_down(game->mlx, MLX_KEY_LEFT))
 //		rotate(game, -ROTATION_SPEED * 42);

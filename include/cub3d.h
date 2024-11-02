@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 15:41:01 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/10/30 18:57:26 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/11/02 16:38:52 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,34 +18,38 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <string.h>
 # include <fcntl.h>// for ´open´
 # include <stdbool.h>
 //# include <math.h>//check with Roman if it is needed
 
 /*------------------Colors--------------------*/
-# define RED "\033[1;31m"
+# define RED "\033[0;91m"
 # define DARK_RED "\033[0;31m"
 # define RES "\033[0m"
-
+# define GREEN "\033[0;92m"
+# define YELLOW "\033[0;93m"
+# define ORANGE "\033[38;5;209m"
+# define DEF_COLOR "\033[0;39m"
 /*-------------------Error messages--------------------*/
 
 # define ERR_ARG "Invalid argument number\n"
 # define ERR_ARG_NAME "Invalid argument name\n"
 # define ERR_ARG_EX "Invalid argument extension\n"
-# define ERR_FD "Error:\nInvalid file descriptor\n"
+# define ERR_FD "Error\nInvalid file descriptor\n"
 # define ERR_EMPTY_FILE "Error:\nArgument file is empty\n"
-# define ERR_FILE "Error:\nInvalid file data\n"
-# define ERR_ELEM "Error:\nInvalid elements data\n"
-# define ERR_MAP "Error:\nInvalid map data\n"
-# define ERR_MEMORY "Error:\n Memory failure\n"
-# define ERR_IMG "Error;\nImage not found\n"
-# define ERR_GRAPH "Error;\nGraphic failure\n"
+# define ERR_FILE "Error\nInvalid file data\n"
+# define ERR_ELEM "Error\nInvalid elements data\n"
+# define ERR_MAP "Error\nInvalid map data\n"
+# define ERR_MEMORY "Error\n Memory failure\n"
+# define ERR_IMG "Error\nImage not found\n"
+# define ERR_GRAPH "Error\nGraphic failure\n"
+# define ERR_PATH "Error\nPNG file/path is invalid\n"
 
-
-/*-------------------game const params----------------------------*/
-# define WIDTH 1000
-# define HEIGHT 500
-# define TILE_SIZE 10
+/*-------------------game const params------------------*/
+# define WIDTH 2000
+# define HEIGHT 1000
+# define TILE_SIZE 15
 # define SPEED 0.1f
 //# define ROTATION_SPEED 0.0005f
 
@@ -99,7 +103,7 @@ typedef struct s_mmap
 	uint32_t		pl_screen_y;// Player pos in minimap img center
 }					t_mmap;
 
-/*-----------coordinates expressed in double type------------*/
+/*-------coordinates expressed in double type------*/
 typedef struct s_coord
 {
 	double			x;
@@ -107,7 +111,7 @@ typedef struct s_coord
 }					t_coord;
 
 /*------------player--------*/
-typedef struct s_player//>>>>>>>>>>>>IN PROGRESS<<<<<<<<<<<<<<<<<<<<<
+typedef struct s_player
 {
 	t_coord			pos;//(x,y) coordenada de donde esta ahora
 	t_coord			dir;//(x,y) define el vector de direccion (donde mira)
@@ -141,13 +145,14 @@ int			check_arg_ext(char *str);
 int			lst_creator(t_parser *parser, char *filename);
 int			parse_cub(t_game *game, char *filename);
 int			parse_elements(t_game * game);
-int			check_element_chars(char *str);
+//int			check_element_chars(char *str);
+//int			check_element_path(t_game *game);
 int			set_element(t_game * game, char **elements);
 int			parse_color(t_game * game, char *str, char c);
 int			set_f(t_game * game, char *rgb_canal, int i);
 int			set_c(t_game * game, char *rgb_canal, int i);
 uint32_t	combiner_hex(uint32_t r, uint32_t g, uint32_t b, uint32_t alpha);
-int			flag_elem(t_game * game);
+int			check_setted_elements(t_game * game);
 int			parse_map_1(t_game * game);
 int			is_firstline_valid(char *str);
 int			is_first_and_last_char_valid(char *str);
@@ -192,9 +197,16 @@ void		loop_updater(void *param);
 void		event_listener(t_game *game);
 void		move(t_game *game, double dir_x, double dir_y, double move_speed);
 
+
 /*------------------Raycasting---------------*/
 
 //void		draw_raycasting(t_game *game);
+
+
+
+/*------------TEXTURES TEMPORAL TEST--------*/
+
+int			textures_test(t_game *game);
 
 
 
@@ -203,7 +215,7 @@ void		move(t_game *game, double dir_x, double dir_y, double move_speed);
 void		print_cub_list(t_cub *lst);
 void		arr2d_print(char **arr2d);
 void		print_map_list(t_cub *lst);
-void		print_game(t_game *game);
+void		print_game_info(t_game *game);
 void		print_elements(t_game *game);
 void		print_minimap_vars(t_game *game);
 

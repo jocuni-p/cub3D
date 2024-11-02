@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 14:49:10 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/10/28 09:41:28 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/10/31 10:36:02 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void arr2d_print(char **arr2d)
     }
 	printf("\n");
     while (arr2d[0][j++] != '\0')
-        printf("-");
+	        printf("-");
     printf("\n");
     while (arr2d[i] != NULL)
     {
