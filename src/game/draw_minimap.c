@@ -20,10 +20,10 @@ void draw_minimap_tile(mlx_image_t *img_mmap, uint32_t x, uint32_t y,
     uint32_t	j;
 
     i = 0;
-    while (i < TILE_SIZE)
+    while (i < MINIMAP_TILE_SIZE)
     {
         j = 0;
-        while (j < TILE_SIZE)
+        while (j < MINIMAP_TILE_SIZE)
         {
             //Draws only the pixels located inside the mini_map limits
             if ((uint32_t)x + i >= 0 && (uint32_t)x + i < img_mmap->width \
@@ -91,9 +91,9 @@ void	draw_minimap_only_visible_tiles(t_game *game)
         {
             // Calcular la posición del tile en la imagen del minimapa
             game->mmap.x = \
-			(game->mmap.col * TILE_SIZE) - game->mmap.map_offset_x;
+			(game->mmap.col * MINIMAP_TILE_SIZE) - game->mmap.map_offset_x;
             game->mmap.y = \
-			(game->mmap.row * TILE_SIZE) - game->mmap.map_offset_y;
+			(game->mmap.row * MINIMAP_TILE_SIZE) - game->mmap.map_offset_y;
             // Dibujar el tile solo si está dentro de los límites del minimapa
         	if (game->mmap.x >= 0 && game->mmap.x < game->img_mmap->width \
 			&& game->mmap.y >= 0 && game->mmap.y < game->img_mmap->height)
@@ -117,24 +117,24 @@ void draw_minimap(t_game *game)
 
     // Calcular el desplazamiento del mapa para centrar el minimapa en el jugador
 	//ESTE ES EL PARAM QUE HACE MOVER EL MAP DENTRO DEL MINIMAP
-	game->mmap.map_offset_x = (int)(game->player.pos.x * TILE_SIZE) -\
+	game->mmap.map_offset_x = (int)(game->player.pos.x * MINIMAP_TILE_SIZE) -\
 									 (game->img_mmap->width / 2);
-	game->mmap.map_offset_y = (int)(game->player.pos.y * TILE_SIZE) -\
+	game->mmap.map_offset_y = (int)(game->player.pos.y * MINIMAP_TILE_SIZE) -\
 									 (game->img_mmap->height / 2);
 
     // Calcular los límites de las filas y columnas que deben dibujarse
 	if (game->mmap.map_offset_x < 0)
 	    game->mmap.start_col = 0;  // Si el offset es negativo, comenzamos desde la primera columna
 	else
-	    game->mmap.start_col = game->mmap.map_offset_x / TILE_SIZE;  // Si es positivo, calculamos la columna correspondiente
+	    game->mmap.start_col = game->mmap.map_offset_x / MINIMAP_TILE_SIZE;  // Si es positivo, calculamos la columna correspondiente
 	if (game->mmap.map_offset_y < 0)
 	    game->mmap.start_row = 0;  // Si el offset es negativo, comenzamos desde la primera fila
 	else
-	    game->mmap.start_row = game->mmap.map_offset_y / TILE_SIZE;  // Si es positivo, calculamos la fila correspondiente
+	    game->mmap.start_row = game->mmap.map_offset_y / MINIMAP_TILE_SIZE;  // Si es positivo, calculamos la fila correspondiente
     game->mmap.end_col = ((game->mmap.map_offset_x +\
-						 game->img_mmap->width) / TILE_SIZE);
+						 game->img_mmap->width) / MINIMAP_TILE_SIZE);
     game->mmap.end_row = ((game->mmap.map_offset_y +\
-						 game->img_mmap->height) / TILE_SIZE);
+						 game->img_mmap->height) / MINIMAP_TILE_SIZE);
 
     // Dibujar los tiles visibles en el minimapa
 	draw_minimap_only_visible_tiles(game);
