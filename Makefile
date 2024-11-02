@@ -6,7 +6,7 @@
 #    By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/26 17:23:07 by jocuni-p          #+#    #+#              #
-#    Updated: 2024/10/31 19:48:47 by jocuni-p         ###   ########.fr        #
+#    Updated: 2024/11/02 14:59:47 by jocuni-p         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME	:= cub3D
 UNAME := $(shell uname)#gets the OS we are using
 
 # Si uso fsanitize en las flags de compilado, debo ponerla tambien en las del enlazado, sino da error al compilar
-LDFLAGS	:= -fsanitize=address #(only on MacOS systems)
+LDFLAGS	:= #-fsanitize=address #(only on MacOS systems)
 LIBMLX	:= ./lib/MLX42
 LIBFT	:= ./lib/libft/
 LIBFT_A	:= $(LIBFT)libft.a 
@@ -22,8 +22,8 @@ HEADERS	:= -I ./include -I $(LIBMLX)/include -I $(LIBFT)
 
 # To compile on Linux at 42Barcelona campus   
 ifeq ($(UNAME), Linux)
-	LIBS	:= $(LIBMLX)/build/libmlx42.a -ldl -lglfw -pthread -lm -g #-fsanitize=address
-	CFLAGS	:= -Wextra -Wall -Werror -Wunreachable-code -Ofast -g #-fsanitize=address
+	LIBS	:= $(LIBMLX)/build/libmlx42.a -ldl -lglfw -pthread -lm -g # -fsanitize=address
+	CFLAGS	:= -Wextra -Wall -Werror -Wunreachable-code -Ofast -g # -fsanitize=address
 	
 # To compile on MacOS (Apple Silicon)
 else ifeq ($(UNAME), Darwin)
@@ -122,7 +122,7 @@ libft:
 	@$(MAKE) -C $(LIBFT)
 
 # Regla para compilar cualquier archivo .c en los subdirectorios
-./src/%.o: ./src/%.c
+./src/%.o: ./src/%.c Makefile include/cub3d.h
 	@$(CC) $(CFLAGS) -o $@ -c $< $(HEADERS) && printf "Compiling: $(notdir $<)\n"
 
 $(NAME): $(OBJS)

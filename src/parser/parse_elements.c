@@ -6,48 +6,11 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 12:34:56 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/11/01 19:10:11 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/11/02 17:25:44 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
-
-/*Compares the input texture path with the expected one. Return 1 if are
- different*/
- /*
-int	check_element_path(t_game *game)
-{
-	printf("holi\n");//DEBUG
-	if (game->parser.elem.no && ft_strcmp(game->parser.elem.no, "./textures/brick_n.png") != 0)
-		return (1);
-	else if (game->parser.elem.so && ft_strcmp(game->parser.elem.so, "./textures/brick_s.png") != 0)
-		return (1);
-	else if (game->parser.elem.ea && ft_strcmp(game->parser.elem.ea, "./textures/brick_e.png") != 0)
-		return (1);
-	else if (game->parser.elem.we && ft_strcmp(game->parser.elem.we, "./textures/brick_w.png") != 0)
-		return (1);
-	else	
-		return (0);
-}
-*/
-
-/*Returns 1 if any invalid character is found, otherwise returns 0*/
-/*
-int	check_element_chars(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-	{
-		if (ft_isalnum(str[i]) || str[i] == '_' || str[i] == '/' \
-			|| str[i] == '.' || str[i] == ' ' || str[i] == ',')
-			i++;
-		else
-			return (1);
-	}
-	return (0);
-}*/
 
 /*Sets elem.variables with his value. If a duplicate or non valid 
 element is found returns 1. Finally, 'elements' is freed. */
@@ -84,23 +47,17 @@ int	check_setted_elements(t_game *game)
 	if (game->parser.elem.no != NULL && game->parser.elem.so != NULL \
 		&& game->parser.elem.we != NULL && game->parser.elem.ea != NULL \
 		&& game->parser.elem.c_color != 0 && game->parser.elem.f_color != 0)
-	{	
-		printf("NO: %s\n", game->parser.elem.no);//DEBUG
-		printf("SO: %s\n", game->parser.elem.so);//DEBUG
-		printf("EA: %s\n", game->parser.elem.ea);//DEBUG
-		printf("WE: %s\n", game->parser.elem.we);//DEBUG
-
-		printf(GREEN "texturas seteadas\n");//DEBUG
-		if (ft_strcmp(game->parser.elem.no, "./textures/brick_n.png") == 0 \
-		&& ft_strcmp(game->parser.elem.so, "./textures/brick_s.png") == 0 \
-		&& ft_strcmp(game->parser.elem.ea, "./textures/brick_e.png") == 0 \
-		&& ft_strcmp(game->parser.elem.we, "./textures/brick_w.png") == 0)
-		{
-			printf(GREEN "texturas con paths correctos\n");//DEBUG
+	{
+		if ((ft_strcmp(game->parser.elem.no, "./textures/brick_n.png") == 0 \
+		|| ft_strcmp(game->parser.elem.no, "textures/brick_n.png") == 0) \
+		&& (ft_strcmp(game->parser.elem.so, "./textures/brick_s.png") == 0 \
+		|| ft_strcmp(game->parser.elem.so, "textures/brick_s.png") == 0) \
+		&& (ft_strcmp(game->parser.elem.ea, "./textures/brick_e.png") == 0 \
+		|| ft_strcmp(game->parser.elem.ea, "textures/brick_e.png") == 0) \
+		&& (ft_strcmp(game->parser.elem.we, "./textures/brick_w.png") == 0 \
+		|| ft_strcmp(game->parser.elem.we, "textures/brick_w.png") == 0))
 			return (0);
-		}
 	}
-	printf(RED "texturas no todas seteadas\n");//DEBUG
 	return (1);
 }
 
@@ -117,22 +74,17 @@ int	parse_elements(t_game *game)
 			game->parser.cub = game->parser.cub->next;
 			continue ;
 		}
-		if (check_setted_elements(game) == 0)//checks if all elem.var are already setted. 
+		if (check_setted_elements(game) == 0)//checks if all elements are already setted properly 
 			return (0);
 		remove_nl(game->parser.cub->str);
-//		if (check_element_chars(game->parser.cub->str))
-//			return (print_error(ERR_ELEM), 1);
 		elements = ft_split(game->parser.cub->str, ' ');
 		if (arr2d_element_cnt(elements) != 2)
 			return (arr2d_free(&elements), print_error(ERR_ELEM), 1);
-		if (set_element(game, elements))//NEW ADDED
+		if (set_element(game, elements))
 			return (print_error(ERR_ELEM), 1);
 		game->parser.cub = game->parser.cub->next;
 		if (game->parser.cub == NULL)//if there isn't any map on the file.cub.
 			return (print_error(ERR_ELEM), 1);
-		printf("linea seteada\n");//DEBUG
 	}
-//	if (check_element_path(game))
-//		return (print_error(ERR_ELEM), 1);
 	return (0);
 }

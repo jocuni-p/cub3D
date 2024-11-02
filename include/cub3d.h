@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 15:41:01 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/11/01 19:10:11 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/11/02 16:38:52 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,9 @@
 # define DARK_RED "\033[0;31m"
 # define RES "\033[0m"
 # define GREEN "\033[0;92m"
+# define YELLOW "\033[0;93m"
+# define ORANGE "\033[38;5;209m"
+# define DEF_COLOR "\033[0;39m"
 /*-------------------Error messages--------------------*/
 
 # define ERR_ARG "Invalid argument number\n"
@@ -44,9 +47,9 @@
 # define ERR_PATH "Error\nPNG file/path is invalid\n"
 
 /*-------------------game const params------------------*/
-# define WIDTH 1000
-# define HEIGHT 500
-# define TILE_SIZE 10
+# define WIDTH 2000
+# define HEIGHT 1000
+# define TILE_SIZE 15
 # define SPEED 0.1f
 //# define ROTATION_SPEED 0.0005f
 
@@ -143,7 +146,7 @@ int			lst_creator(t_parser *parser, char *filename);
 int			parse_cub(t_game *game, char *filename);
 int			parse_elements(t_game * game);
 //int			check_element_chars(char *str);
-int			check_element_path(t_game *game);
+//int			check_element_path(t_game *game);
 int			set_element(t_game * game, char **elements);
 int			parse_color(t_game * game, char *str, char c);
 int			set_f(t_game * game, char *rgb_canal, int i);

@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 10:47:00 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/10/31 11:20:50 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/11/02 20:03:54 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,23 @@
 /*
 void set_player_direction(t_game *game, char orientation)
 {
-    if (orientation == 'N') {
+    if (orientation == 'N')
+	{
         game->player.dir.x = 0;
         game->player.dir.y = -1;
-    } else if (orientation == 'S') {
+    }
+	else if (orientation == 'S')
+	{
         game->player.dir.x = 0;
         game->player.dir.y = 1;
-    } else if (orientation == 'E') {
+    }
+	else if (orientation == 'E')
+	{
         game->player.dir.x = 1;
         game->player.dir.y = 0;
-    } else if (orientation == 'W') {
+    }
+	else if (orientation == 'W')
+	{
         game->player.dir.x = -1;
         game->player.dir.y = 0;
     }
@@ -38,21 +45,20 @@ int	init_game(mlx_t *mlx, t_game *game)
 	game->player.dir.y = -1;
 //	set_player_direction(game, game->player.orientation);
 	
-/*=========================BACKGROUND=========================*/	
-	game->img_back = mlx_new_image(mlx, 1000, 500);
+/*==========================BACKGROUND==========================*/	
+	game->img_back = mlx_new_image(mlx, WIDTH, HEIGHT);
 	if (!game->img_back)
 		return (error_mlx(game), 1);
 	draw_background(game);
 	if (mlx_image_to_window(game->mlx, game->img_back, 0, 0) < 0)
 		return (error_mlx(game), 1);
 
-
-/*========================TEMPORAL TEST========================*/
+/*======TEMPORAL - JUST TO SHOW THE TEXTURE IMAGES==============*/
 	if (textures_test(game))
 		return (error_mlx(game), 1);
 	
 /*=================RAYCASTING - Initial image===================*/
-	game->img_ray = mlx_new_image(mlx, 1000, 500);
+	game->img_ray = mlx_new_image(mlx, WIDTH, HEIGHT);
 	if (!game->img_ray)
 		return (error_mlx(game), 1);
 //	draw_raycasting(game);//MISSING CODE
@@ -73,7 +79,6 @@ int	init_game(mlx_t *mlx, t_game *game)
 int	start_game(t_game *game)
 {
 	mlx_t *mlx;
-	
 	mlx = mlx_init(WIDTH, HEIGHT, "cub3D", 0);
 	if (!mlx)
 		return (error_mlx(game), 1);

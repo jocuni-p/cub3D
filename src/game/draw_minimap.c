@@ -42,10 +42,10 @@ void	draw_minimap_player(mlx_image_t *img_mmap, uint32_t x, uint32_t y,
     int j;
 
     i = 0;
-    while (i < 4)//minimap player size
+    while (i < 6)//minimap player size
     {
         j = 0;
-        while (j < 4)//minimap player size
+        while (j < 6)//minimap player size
         {
                 mlx_put_pixel(img_mmap, x + i, y + j, color);
             j++;
@@ -72,7 +72,7 @@ void	draw_minimap_frame(mlx_image_t *img_mmap, uint32_t x, uint32_t y,
 			{
 				mlx_put_pixel(img_mmap, 0, y, color);
 				mlx_put_pixel(img_mmap, ((WIDTH / 5) - 1), y, color);
-				x = 300;
+				x = (WIDTH / 5);
 			}	
 		}
 		y++;
@@ -138,11 +138,9 @@ void draw_minimap(t_game *game)
 
     // Dibujar los tiles visibles en el minimapa
 	draw_minimap_only_visible_tiles(game);
-	
     // Dibujar la posición del jugador centrada en el minimapa
 	draw_minimap_player(game->img_mmap, game->mmap.pl_screen_x,
-					 	game->mmap.pl_screen_y, 0x000000FF);
-    
+					 	game->mmap.pl_screen_y, 0x000000FF);  
     // Dibujar el marco del minimapa
    draw_minimap_frame(game->img_mmap, 0, 0, 0x000000FF);
 }

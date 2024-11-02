@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 11:05:40 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/10/31 22:09:43 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/11/02 16:35:50 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +41,13 @@ int	textures_test(t_game *game)
 
 /*========= THIS PART IS JUST FOR TESTING ==========*/
 	// Display the image
-	if (mlx_image_to_window(game->mlx, img_n, 600, 300) < 0)
+	if (mlx_image_to_window(game->mlx, img_w, 1100, 300) < 0)
         return (1);
-	if (mlx_image_to_window(game->mlx, img_s, 700, 300) < 0)
+	if (mlx_image_to_window(game->mlx, img_n, 1200, 400) < 0)
         return (1);
-	if (mlx_image_to_window(game->mlx, img_e, 800, 300) < 0)
+	if (mlx_image_to_window(game->mlx, img_s, 1300, 500) < 0)
         return (1);
-	if (mlx_image_to_window(game->mlx, img_w, 900, 300) < 0)
+	if (mlx_image_to_window(game->mlx, img_e, 1400, 600) < 0)
         return (1);
 		
 	return (0);
