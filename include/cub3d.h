@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 15:41:01 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/11/02 16:38:52 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/11/02 21:04:54 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@
 /*-------------------game const params------------------*/
 # define WIDTH 2000
 # define HEIGHT 1000
-# define TILE_SIZE 15
+# define MINIMAP_TILE_SIZE 15
 # define SPEED 0.1f
 //# define ROTATION_SPEED 0.0005f
 
