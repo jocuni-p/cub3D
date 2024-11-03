@@ -6,7 +6,7 @@
 #    By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/26 17:23:07 by jocuni-p          #+#    #+#              #
-#    Updated: 2024/11/02 14:59:47 by jocuni-p         ###   ########.fr        #
+#    Updated: 2024/11/03 17:00:45 by jocuni-p         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ ifeq ($(UNAME), Linux)
 	
 # To compile on MacOS (Apple Silicon)
 else ifeq ($(UNAME), Darwin)
-	LIBS	:= $(LIBMLX)/build/libmlx42.a -ldl -L/opt/homebrew/lib -lglfw -pthread -lm -g -fsanitize=address
+	LIBS	:= $(LIBMLX)/build/libmlx42.a -ldl -L/opt/homebrew/lib -lglfw -pthread -lm -g #-fsanitize=address
 	CFLAGS := -Wextra -Wall -Werror -Wunreachable-code -g -arch arm64 #-fsanitize=address
 else
     $(Error. Unsupported platform: $(UNAME))
@@ -126,13 +126,13 @@ libft:
 	@$(CC) $(CFLAGS) -o $@ -c $< $(HEADERS) && printf "Compiling: $(notdir $<)\n"
 
 $(NAME): $(OBJS)
-	@$(CC) $(OBJS) $(HEADERS) -o $(NAME) $(LIBS) $(LDFLAGS)
+	@$(CC) $(LDFLAGS) $(OBJS) $(HEADERS) -o $(NAME) $(LIBS)
 	@echo "\n$(DARK_GREEN)▶  cub3D built completed!$(DEF_COLOR)\n"
 
 clean:
 	@rm -rf $(OBJS)
 	@rm -rf $(LIBMLX)/build
-#	@rm -rf $(LIBFT_A)
+	@rm -f $(LIBFT_A)
 	@$(MAKE) -C $(LIBFT) clean
 
 fclean: clean

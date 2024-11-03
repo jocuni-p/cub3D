@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 12:34:56 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/11/02 17:25:44 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/11/03 17:27:46 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ int	check_setted_elements(t_game *game)
 		&& (ft_strcmp(game->parser.elem.we, "./textures/brick_w.png") == 0 \
 		|| ft_strcmp(game->parser.elem.we, "textures/brick_w.png") == 0))
 			return (0);
+		return (2);
 	}
 	return (1);
 }
@@ -76,6 +77,8 @@ int	parse_elements(t_game *game)
 		}
 		if (check_setted_elements(game) == 0)//checks if all elements are already setted properly 
 			return (0);
+		if (check_setted_elements(game) == 2)//if texture path is invalid 
+			return (print_error(ERR_PATH), 1);
 		remove_nl(game->parser.cub->str);
 		elements = ft_split(game->parser.cub->str, ' ');
 		if (arr2d_element_cnt(elements) != 2)
