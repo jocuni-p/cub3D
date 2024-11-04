@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 15:41:01 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/11/04 17:48:40 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/11/04 19:14:41 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,8 +106,8 @@ typedef struct s_mmap
 /*-------coordinates expressed in double type------*/
 typedef struct s_coord
 {
-	double			x;
-	double			y;
+	float			x;
+	float			y;
 }					t_coord;
 
 /*------------player--------*/
@@ -195,7 +195,7 @@ void		draw_minimap_player(t_game *game, uint32_t color);
 void		draw_minimap_frame(mlx_image_t *img_mmap, uint32_t x, uint32_t y, uint32_t color);
 void		loop_updater(void *param);
 void		event_listener(t_game *game);
-void		move(t_game *game, double dir_x, double dir_y, double move_speed);
+void		move(t_game *game, float dir_x, float dir_y, float move_speed);
 
 
 /*------------------Raycasting---------------*/

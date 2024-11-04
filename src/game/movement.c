@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 12:19:47 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/11/04 18:48:10 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/11/04 19:30:46 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ y si es posible, actualiza la posición del jugador.*/
 /* Actualiza la posición del jugador en función de un vector de dirección (fx, fy) y
  una velocidad de movimiento (move_speed).*/
  
-void	move(t_game *game, double dir_x, double dir_y, double move_speed)
+void	move(t_game *game, float dir_x, float dir_y, float move_speed)
 {
-    double next_move_x;
-    double next_move_y;
+    float next_move_x;
+    float next_move_y;
 
     next_move_x = game->player.pos.x + dir_x * (move_speed + 0.01);
     next_move_y = game->player.pos.y + dir_y * (move_speed + 0.01);
@@ -42,7 +42,7 @@ void	move(t_game *game, double dir_x, double dir_y, double move_speed)
 }
 
 
-void rotate(t_game *game, double angle)
+void rotate(t_game *game, float angle)
 {
     float dir;
     float plane;
