@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 14:42:25 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/11/03 17:59:08 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/11/04 18:58:26 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,5 +60,4 @@ void	loop_updater(void *param)
 		game->is_moving = false;
 	}
 //	printf("%i\n", frame_cnt);
-	
 }

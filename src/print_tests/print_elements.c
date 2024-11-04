@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 11:20:55 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/10/30 14:43:35 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/11/04 18:09:49 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void	print_elements(t_game *game)
 	printf("  we: %s\n", game->parser.elem.we);
 	printf("  ea: %s\n", game->parser.elem.ea);
 	printf("  c:  0x%X\n", game->parser.elem.c_color);
+	printf("rgb_c[3]: %d,%d,%d\n", game->parser.elem.rgb_c[0], game->parser.elem.rgb_c[1], game->parser.elem.rgb_c[2]);
 	printf("  op: 0x%X\n", game->parser.elem.c_opposite);
 	printf("  f:  0x%X\n", game->parser.elem.f_color);
 //	printf("  player initial orientation: %c\n", game->player.orientation);

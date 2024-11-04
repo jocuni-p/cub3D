@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 15:41:01 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/11/03 17:26:32 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/11/04 17:48:40 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # include <string.h>
 # include <fcntl.h>// for ´open´
 # include <stdbool.h>
-//# include <math.h>//check with Roman if it is needed
+# include <math.h>//for 'cos' and 'sin'
 
 /*------------------Colors--------------------*/
 # define RED "\033[0;91m"
@@ -51,7 +51,7 @@
 # define HEIGHT 1000
 # define MINIMAP_TILE_SIZE 15
 # define SPEED 0.1f
-//# define ROTATION_SPEED 0.0005f
+# define ROTATION_SPEED 0.0005f
 
 /*-----List containing all lines from filename.cub------*/
 typedef struct s_cub
@@ -115,7 +115,7 @@ typedef struct s_player
 {
 	t_coord			pos;//(x,y) coordenada de donde esta ahora
 	t_coord			dir;//(x,y) define el vector de direccion (donde mira)
-//	t_coord			plane;//determina la proyección lateral de la cámara y 
+	t_coord			plane;//determina la proyección lateral de la cámara y 
 //							permite simular una vista en 3D
 	char			orientation;//starting orientation: N, S, E, W
 }					t_player;
@@ -191,7 +191,7 @@ int			init_game(mlx_t *mlx, t_game *game);
 void 		draw_background(t_game *game);
 void		draw_minimap(t_game *game);
 void 		draw_minimap_tile(mlx_image_t *img_mmap, uint32_t x, uint32_t y, uint32_t color);
-void		draw_minimap_player(mlx_image_t *img_mmap, uint32_t x, uint32_t y, uint32_t color);
+void		draw_minimap_player(t_game *game, uint32_t color);
 void		draw_minimap_frame(mlx_image_t *img_mmap, uint32_t x, uint32_t y, uint32_t color);
 void		loop_updater(void *param);
 void		event_listener(t_game *game);

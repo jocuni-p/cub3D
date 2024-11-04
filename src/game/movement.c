@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 12:19:47 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/11/02 19:08:04 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/11/04 18:48:10 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,25 @@ void	move(t_game *game, double dir_x, double dir_y, double move_speed)
     game->is_moving = true;
 }
 
-/*
-void	rotate(t_game *game, )
+
+void rotate(t_game *game, double angle)
 {
-	
-}*/
+    float dir;
+    float plane;
+
+    // Rotar la dirección del jugador (aplicando la formula de giro)
+    dir = game->player.dir.x;
+    game->player.dir.x = game->player.dir.x * cos(angle) - game->player.dir.y * sin(angle);
+    game->player.dir.y = dir * sin(angle) + game->player.dir.y * cos(angle);
+
+    // Rotar el plano de la cámara (aplicando la formula de giro)
+    plane = game->player.plane.x;
+    game->player.plane.x = game->player.plane.x * cos(angle) - game->player.plane.y * sin(angle);
+    game->player.plane.y = plane * sin(angle) + game->player.plane.y * cos(angle);
+
+	game->is_moving = true;
+}
+
 
 
 void	event_listener(t_game *game)
@@ -53,25 +67,28 @@ void	event_listener(t_game *game)
 	if(mlx_is_key_down(game->mlx, MLX_KEY_ESCAPE))
 		mlx_close_window(game->mlx);//+ salir limpiamente del programa
 /*
-Si se presiona la tecla UP o W, el jugador se mueve hacia adelante en la 
+Si se presiona la tecla W, el jugador se mueve hacia adelante en la 
 dirección actual a donde mira. move toma las coordenadas de la dirección del jugador 
-(scene->player.dir.x y scene->player.dir.y) y SPEED para ajustar la 
-velocidad de movimiento.*/
+(scene->player.dir.x y scene->player.dir.y) y SPEED ajusta la velocidad de movimiento.*/
 
 	if(mlx_is_key_down(game->mlx, MLX_KEY_W))
-		move(game, game->player.dir.x, game->player.dir.y, SPEED * 0.5);//mueve hacia palyer dir
+		move(game, game->player.dir.x, game->player.dir.y, SPEED);//mueve hacia palyer dir
 
-/*Si se presiona la tecla DOWN o S, el jugador se mueve hacia atrás. 
-Aquí, se invierte la dirección multiplicando por -1 los componentes 
-x e y de la dirección del jugador.*/
+/*Si se presiona la tecla S, el jugador se mueve hacia atrás. 
+Aquí, se invierte la dirección multiplicando por -1 los componentes x e y de la dirección del jugador.*/
 	if(mlx_is_key_down(game->mlx, MLX_KEY_S))
-		move(game, -game->player.dir.x, -game->player.dir.y, SPEED * 0.5);//multiplicando por 0.5 reduzco velocidad a la mitad.
+		move(game, -game->player.dir.x, -game->player.dir.y, SPEED);// * 0.5 reduce the speed by half.
 
 	if(mlx_is_key_down(game->mlx, MLX_KEY_A))
-		move(game, game->player.dir.y, -game->player.dir.x, SPEED * 0.5);
+		move(game, game->player.dir.y, -game->player.dir.x, SPEED);
 		
 	if(mlx_is_key_down(game->mlx, MLX_KEY_D))
-		move(game, -game->player.dir.y, game->player.dir.x, SPEED * 0.5);
+		move(game, -game->player.dir.y, game->player.dir.x, SPEED);
+
+	if (mlx_is_key_down(game->mlx, MLX_KEY_LEFT))
+		rotate(game, -ROTATION_SPEED * 42);//angulo de giro para el player y el plane
+	if (mlx_is_key_down(game->mlx, MLX_KEY_RIGHT))
+		rotate(game, ROTATION_SPEED * 42);//angulo de giro para el player y el plane
 
 //	if(mlx_is_key_put_down(game->mlx, MLX_KEY_SHFT)) //TODO FOR ROMAN
 //		SPEED *= 2;
@@ -80,8 +97,4 @@ x e y de la dirección del jugador.*/
 //		SPEED *= 0.5;
 
 
-//	if (mlx_is_key_down(game->mlx, MLX_KEY_LEFT))
-//		rotate(game, -ROTATION_SPEED * 42);
-//	if (mlx_is_key_down(game->mlx, MLX_KEY_RIGHT))
-//		rotate(game, ROTATION_SPEED * 42);
 }

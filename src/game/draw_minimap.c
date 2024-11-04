@@ -35,6 +35,77 @@ void draw_minimap_tile(mlx_image_t *img_mmap, uint32_t x, uint32_t y,
     }
 }
 
+//OJO: Potser millor amb doubles
+//void draw_minimap_direction_line(mlx_image_t *img, uint32_t x, uint32_t y, float dir_x, float dir_y, int length, uint32_t color)
+void	draw_minimap_direction_line(t_game *game, int line_length, uint32_t color)
+{
+	int	x;
+	int	y;
+
+	x = (int)game->mmap.pl_screen_x;
+	y = (int)game->mmap.pl_screen_y;
+
+    // Calcula el punto final de la línea utilizando la dirección y longitud deseada
+    int end_x = x + (int)(game->player.dir.x * line_length);
+    int end_y = y + (int)(game->player.dir.y * line_length);
+
+    // Algoritmo de Bresenham para trazar una línea desde (x, y) hasta (end_x, end_y)
+    int dx = abs(end_x - x);
+    int dy = abs(end_y - y);
+    int sx = (x < end_x) ? 1 : -1;//Pensar si ho simplifico o no ????
+    int sy = (y < end_y) ? 1 : -1;
+    int err = dx - dy;
+    int e2;
+
+    while (x != end_x || y != end_y)
+	{
+        mlx_put_pixel(game->img_mmap, x, y, color); // Dibuja el píxel de la línea
+        e2 = 2 * err;
+        if (e2 > -dy)
+		{
+            err -= dy;
+            x += sx;
+        }
+        if (e2 < dx)
+		{
+            err += dx;
+            y += sy;
+        }
+    }
+}
+
+
+//void	draw_minimap_player(mlx_image_t *img_mmap, uint32_t x, uint32_t y,
+//							 uint32_t color)
+void	draw_minimap_player(t_game *game, uint32_t color)
+{
+ 	int i;
+    int j;
+	int	line_length;
+
+    i = 0;
+    while (i < 6)//minimap player size
+    {
+        j = 0;
+        while (j < 6)//minimap player size
+        {
+                mlx_put_pixel(game->img_mmap, game->mmap.pl_screen_x + i,
+				 game->mmap.pl_screen_y + j, color);
+            j++;
+        }
+        i++;
+    }
+	// Dibujo la línea de dirección del jugador en el minimapa
+    line_length = 20; // Line length
+//    draw_minimap_direction_line(game->img_mmap, game->mmap.pl_screen_x,
+//                               game->mmap.pl_screen_y,
+//                                game->player.dir.x, game->player.dir.y,
+//                                line_length, 0xFF0000FF); // Línea roja
+	draw_minimap_direction_line(game, line_length, 0x000000FF);
+}
+
+
+/*
 void	draw_minimap_player(mlx_image_t *img_mmap, uint32_t x, uint32_t y,
 							 uint32_t color)
 {
@@ -52,7 +123,7 @@ void	draw_minimap_player(mlx_image_t *img_mmap, uint32_t x, uint32_t y,
         }
         i++;
     }
-}
+}*/
 
 void	draw_minimap_frame(mlx_image_t *img_mmap, uint32_t x, uint32_t y,
 							 uint32_t color)
@@ -136,11 +207,13 @@ void draw_minimap(t_game *game)
     game->mmap.end_row = ((game->mmap.map_offset_y +\
 						 game->img_mmap->height) / MINIMAP_TILE_SIZE);
 
-    // Dibujar los tiles visibles en el minimapa
 	draw_minimap_only_visible_tiles(game);
-    // Dibujar la posición del jugador centrada en el minimapa
-	draw_minimap_player(game->img_mmap, game->mmap.pl_screen_x,
-					 	game->mmap.pl_screen_y, 0x000000FF);  
-    // Dibujar el marco del minimapa
+
+	draw_minimap_player(game, 0x000000FF);
+//	draw_minimap_player(game->img_mmap, game->mmap.pl_screen_x,
+//					 	game->mmap.pl_screen_y, 0x000000FF); 
+	
+//	draw_minimap_direction_line(game);
+
    draw_minimap_frame(game->img_mmap, 0, 0, 0x000000FF);
 }
