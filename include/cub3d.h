@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 15:41:01 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/11/02 21:04:54 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/11/03 17:26:32 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@
 # define ERR_MEMORY "Error\n Memory failure\n"
 # define ERR_IMG "Error\nImage not found\n"
 # define ERR_GRAPH "Error\nGraphic failure\n"
-# define ERR_PATH "Error\nPNG file/path is invalid\n"
+# define ERR_PATH "Error\nPath/file to the texture is invalid\n"
 
 /*-------------------game const params------------------*/
 # define WIDTH 2000

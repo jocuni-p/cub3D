@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 14:42:25 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/11/02 15:48:47 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/11/03 17:59:08 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ void	loop_updater(void *param)
 	t_game *game = (t_game *)param;
 	
 	event_listener(game);
-	
 	
 //--------------------BACKGROUND--------------------------
 //Esta imagen no deberia actualizarse aqui porque siempre es igual
