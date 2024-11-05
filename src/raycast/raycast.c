@@ -56,22 +56,22 @@ void	set_ray_side_distances_and_steps(t_player *player, t_ray *ray)
 	if (ray->direction_x < 0)
 	{
 		ray->map_step_x = -1;
-		ray->side_dist_x = (player->x - ray->map_x) * ray->delta_dist_x;
+		ray->side_dist_x = (player->x - ray->map_x * TILE_SIZE) * ray->delta_dist_x;
 	}
 	else
 	{
 		ray->map_step_x = 1;
-		ray->side_dist_x = ((ray->map_x + 1.0f) - player->x) * ray->delta_dist_x;
+		ray->side_dist_x = ((ray->map_x + 1.0f) * TILE_SIZE - player->x) * ray->delta_dist_x;
 	}
 	if (ray->direction_y < 0)
 	{
 		ray->map_step_y = -1;
-		ray->side_dist_y = (player->y - ray->map_y) * ray->delta_dist_y;
+		ray->side_dist_y = (player->y - ray->map_y * TILE_SIZE) * ray->delta_dist_y;
 	}
 	else
 	{
 		ray->map_step_y = 1;
-		ray->side_dist_y = (ray->map_y + 1.0f - player->y) * ray->delta_dist_y;
+		ray->side_dist_y = (ray->map_y + 1.0f - player->y) * TILE_SIZE * ray->delta_dist_y;
 	}
 }
 
@@ -153,7 +153,7 @@ float	cast_one_ray(t_player *player, t_ray *ray, char **map)
 			printf("calculating hypotenuse\n");
 			printf("player->x is : %f, ray->map_x is : %d\n", player->x, ray->map_x);
 			printf("player->y is : %f, ray->map_y is : %d\n", player->y, ray->map_y);
-			ray->distance = hypot((ray->),
+			ray->distance = hypot((player->x - ray->map_x),
 			 						(player->y - ray->map_y));
 			// ray->distance = hypot(ray->changed_x_position * ray->side_dist_x,
 			// 						ray->changed_y_position * ray->side_dist_y);			

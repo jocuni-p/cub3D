@@ -14,7 +14,8 @@
 
 #ifndef RAYCAST_H
 # define RAYCAST_H
-# include "./MLX42/include/MLX42/MLX42.h"
+//# include "./MLX42/include/MLX42/MLX42.h"
+
 # include <math.h> // cos, sin, hypot, fmod
 # include <stdio.h>
 # include <stdlib.h>
