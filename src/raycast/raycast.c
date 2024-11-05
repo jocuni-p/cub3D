@@ -177,6 +177,50 @@ float	cast_one_ray(t_player *player, t_ray *ray, char **map)
 	return (ray->distance);
 }
 
+void	swap_axis_values(float *axis_1_c, float *axis_2_c,
+						float *axis_1_step, float *axis_2_step)
+{
+	float	temp;
+
+	temp = *axis_1_c;
+	*axis_1_c = *axis_2_c;
+	*axis_2_c = temp;
+	temp = *axis_1_step;
+	*axis_1_step = *axis_2_step;
+	*axis_2_step = temp;
+}
+
+float	inverse_tangent(angle_tangent, swap)
+{
+	float	result;
+
+	result = angle_tangent;
+	if (swap)
+		result = 1.0f / angle_tangent;
+	return (result);
+}
+
+
+
+float	get_perpendicular_intersection(t_player *player, t_ray *ray, int swap)
+{
+	float	axis_1_c;
+	float	axis_2_c;
+	float	axis_1_step;
+	float	axis_2_step;
+	float	angle_tan;
+	int		offset;
+
+	angle_tan = inverse_tangent(tan(ray->angle), swap);
+	axis_1_c = floor(player->x / TILE_SIZE) * TILE_SIZE;
+	axis_2_c = player->y + (axis_1_c - player->x) * angle_tan;
+	axis_1_step = TILE_SIZE;
+	axis_2_step = TILE_SIZE * angle_tan;
+	if (swap)
+		swap_axis_values(&axis_1_c, &axis_2_c, &axis_1_step, &axis_2_step);
+	offset = check_intersection(ray->angle, &axis_1_c, &axis_1_step, swap);
+
+}
 void	cast_all_rays(t_player *player, t_ray **rays, char **map)
 {
 	double	start_angle; 
