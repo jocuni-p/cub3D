@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 10:47:00 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/11/04 11:31:17 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/11/05 16:27:44 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,17 +54,17 @@ int	init_game(mlx_t *mlx, t_game *game)
 		return (error_mlx(game), 1);
 
 /*======TEMPORAL - JUST TO SHOW THE TEXTURE IMAGES==============*/
-	if (textures_test(game))
-		return (error_mlx(game), 1);
+//	if (textures_test(game))
+//		return (error_mlx(game), 1);
 	
 /*=================RAYCASTING - Initial image===================*/
-	game->img_ray = mlx_new_image(game->mlx, WIDTH, HEIGHT);
+/*	game->img_ray = mlx_new_image(game->mlx, WIDTH, HEIGHT);
 	if (!game->img_ray)
 		return (error_mlx(game), 1);
 //	draw_raycasting(game);//MISSING CODE
 	if (mlx_image_to_window(game->mlx, game->img_ray, 0, 0) < 0)
 		return (error_mlx(game), 1);
-
+*/
 /*============================MINIMAP===========================*/
 	game->img_mmap = mlx_new_image(game->mlx, (WIDTH / 5), (HEIGHT / 5));
 	if (!game->img_mmap)

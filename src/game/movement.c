@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 12:19:47 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/11/04 19:30:46 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/11/05 20:19:51 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,9 +86,9 @@ Aquí, se invierte la dirección multiplicando por -1 los componentes x e y de l
 		move(game, -game->player.dir.y, game->player.dir.x, SPEED);
 
 	if (mlx_is_key_down(game->mlx, MLX_KEY_LEFT))
-		rotate(game, -ROTATION_SPEED * 42);//angulo de giro para el player y el plane
+		rotate(game, -ROTATION_SPEED * 80);//angulo de giro para el player y el plane
 	if (mlx_is_key_down(game->mlx, MLX_KEY_RIGHT))
-		rotate(game, ROTATION_SPEED * 42);//angulo de giro para el player y el plane
+		rotate(game, ROTATION_SPEED * 80);//angulo de giro para el player y el plane
 
 //	if(mlx_is_key_put_down(game->mlx, MLX_KEY_SHFT)) //TODO FOR ROMAN
 //		SPEED *= 2;

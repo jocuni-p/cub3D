@@ -57,6 +57,26 @@ void	draw_minimap_direction_line(t_game *game, int line_length, uint32_t color)
     int err = dx - dy;
     int e2;
 
+/*int sx;
+int sy;
+
+if (x < end_x) {
+    sx = 1;
+} else {
+    sx = -1;
+}
+
+if (y < end_y) {
+    sy = 1;
+} else {
+    sy = -1;
+}
+*/
+
+
+
+
+
     while (x != end_x || y != end_y)
 	{
         mlx_put_pixel(game->img_mmap, x, y, color); // Dibuja el píxel de la línea
@@ -83,11 +103,11 @@ void	draw_minimap_player(t_game *game, uint32_t color)
     int j;
 	int	line_length;
 
-    i = 0;
-    while (i < 6)//minimap player size
+    i = -3;
+    while (i < 4)//minimap player size
     {
-        j = 0;
-        while (j < 6)//minimap player size
+        j = -3;
+        while (j < 4)//minimap player size
         {
                 mlx_put_pixel(game->img_mmap, game->mmap.pl_screen_x + i,
 				 game->mmap.pl_screen_y + j, color);
