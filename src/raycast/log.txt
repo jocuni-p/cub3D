@@ -1,1786 +1,393 @@
-Player's angle in Pi is 5.235988
+Player's angle in Pi is 2.094395
+0
 get_perp_dist
-hor_int is 480.000000
 get_perp_dist
-ray->angle is 4.712389
-tan(angle) is 7424468477.984783
-Intersection Parameters:
-inter_x: 512.00
-inter_y: -237582990751.51
-x_step: -64.00
-y_step: 475165982591.03
-offset: 1
-ver_int is 237582991295.513062
+ray->angle is 1.570796
+tan(angle) is 22273405433.954350
 Ray Information:
 -------------------------------
-Angle:				4.712389
-Angle in degrees:	270.000000
-Distance:			480.000000
+Angle:				1.570796
+Angle in degrees:	90.000000
+Distance:			416.000000
 -------------------------------
+1
 get_perp_dist
-hor_int is 480.001756
 get_perp_dist
-ray->angle is 4.713698
-tan(angle) is -763.943369
-Intersection Parameters:
-inter_x: 512.00
-inter_y: 24990.19
-x_step: -64.00
-y_step: -48892.38
-offset: 1
-ver_int is 24446.208756
+ray->angle is 1.572105
+tan(angle) is -763.943317
 Ray Information:
 -------------------------------
-Angle:				4.713698
-Angle in degrees:	270.075000
-Distance:			480.001756
+Angle:				1.572105
+Angle in degrees:	90.075000
+Distance:			416.000053
 -------------------------------
+2
 get_perp_dist
-hor_int is 480.007026
 get_perp_dist
-ray->angle is 4.715007
-tan(angle) is -381.971010
-Intersection Parameters:
-inter_x: 512.00
-inter_y: 12767.07
-x_step: -64.00
-y_step: -24446.14
-offset: 1
-ver_int is 12223.114221
+ray->angle is 1.573414
+tan(angle) is -381.970997
 Ray Information:
 -------------------------------
-Angle:				4.715007
-Angle in degrees:	270.150000
-Distance:			480.007026
+Angle:				1.573414
+Angle in degrees:	90.150000
+Distance:			416.000211
 -------------------------------
+3
 get_perp_dist
-hor_int is 480.015808
 get_perp_dist
-ray->angle is 4.716316
-tan(angle) is -254.646609
-Intersection Parameters:
-inter_x: 512.00
-inter_y: 8692.69
-x_step: -64.00
-y_step: -16297.38
-offset: 1
-ver_int is 8148.754310
+ray->angle is 1.574723
+tan(angle) is -254.646603
 Ray Information:
 -------------------------------
-Angle:				4.716316
-Angle in degrees:	270.225000
-Distance:			480.015808
+Angle:				1.574723
+Angle in degrees:	90.225000
+Distance:			416.000475
 -------------------------------
+4
 get_perp_dist
-hor_int is 480.028102
 get_perp_dist
-ray->angle is 4.717625
-tan(angle) is -190.984191
-Intersection Parameters:
-inter_x: 512.00
-inter_y: 6655.49
-x_step: -64.00
-y_step: -12222.99
-offset: 1
-ver_int is 6111.577897
+ray->angle is 1.576032
+tan(angle) is -190.984188
 Ray Information:
 -------------------------------
-Angle:				4.717625
-Angle in degrees:	270.300000
-Distance:			480.028102
+Angle:				1.576032
+Angle in degrees:	90.300000
+Distance:			416.000844
 -------------------------------
+5
 get_perp_dist
-hor_int is 480.043910
 get_perp_dist
-ray->angle is 4.718934
-tan(angle) is -152.786567
-Intersection Parameters:
-inter_x: 512.00
-inter_y: 5433.17
-x_step: -64.00
-y_step: -9778.34
-offset: 1
-ver_int is 4889.274859
+ray->angle is 1.577341
+tan(angle) is -152.786565
 Ray Information:
 -------------------------------
-Angle:				4.718934
-Angle in degrees:	270.375000
-Distance:			480.043910
+Angle:				1.577341
+Angle in degrees:	90.375000
+Distance:			416.001318
 -------------------------------
+6
 get_perp_dist
-hor_int is 480.063230
 get_perp_dist
-ray->angle is 4.720243
-tan(angle) is -127.321339
-Intersection Parameters:
-inter_x: 512.00
-inter_y: 4618.28
-x_step: -64.00
-y_step: -8148.57
-offset: 1
-ver_int is 4074.408501
+ray->angle is 1.578650
+tan(angle) is -127.321337
 Ray Information:
 -------------------------------
-Angle:				4.720243
-Angle in degrees:	270.450000
-Distance:			480.063230
+Angle:				1.578650
+Angle in degrees:	90.450000
+Distance:			416.001898
 -------------------------------
+7
 get_perp_dist
-hor_int is 480.086062
 get_perp_dist
-ray->angle is 4.721552
-tan(angle) is -109.131765
-Intersection Parameters:
-inter_x: 512.00
-inter_y: 4036.22
-x_step: -64.00
-y_step: -6984.43
-offset: 1
-ver_int is 3492.363101
+ray->angle is 1.579959
+tan(angle) is -109.131764
 Ray Information:
 -------------------------------
-Angle:				4.721552
-Angle in degrees:	270.525000
-Distance:			480.086062
+Angle:				1.579959
+Angle in degrees:	90.525000
+Distance:			416.002584
 -------------------------------
+8
 get_perp_dist
-hor_int is 480.112406
 get_perp_dist
-ray->angle is 4.722861
+ray->angle is 1.581268
 tan(angle) is -95.489476
-Intersection Parameters:
-inter_x: 512.00
-inter_y: 3599.66
-x_step: -64.00
-y_step: -6111.33
-offset: 1
-ver_int is 3055.830798
 Ray Information:
 -------------------------------
-Angle:				4.722861
-Angle in degrees:	270.600000
-Distance:			480.112406
+Angle:				1.581268
+Angle in degrees:	90.600000
+Distance:			416.003374
 -------------------------------
+9
 get_perp_dist
-hor_int is 480.142262
 get_perp_dist
-ray->angle is 4.724170
+ray->angle is 1.582577
 tan(angle) is -84.878710
-Intersection Parameters:
-inter_x: 512.00
-inter_y: 3260.12
-x_step: -64.00
-y_step: -5432.24
-offset: 1
-ver_int is 2716.307226
 Ray Information:
 -------------------------------
-Angle:				4.724170
-Angle in degrees:	270.675000
-Distance:			480.142262
+Angle:				1.582577
+Angle in degrees:	90.675000
+Distance:			416.004271
 -------------------------------
+10
 get_perp_dist
-hor_int is 480.175630
 get_perp_dist
-ray->angle is 4.725479
+ray->angle is 1.583886
 tan(angle) is -76.390010
-Intersection Parameters:
-inter_x: 512.00
-inter_y: 2988.48
-x_step: -64.00
-y_step: -4888.96
-offset: 1
-ver_int is 2444.689766
 Ray Information:
 -------------------------------
-Angle:				4.725479
-Angle in degrees:	270.750000
-Distance:			480.175630
+Angle:				1.583886
+Angle in degrees:	90.750000
+Distance:			416.005273
 -------------------------------
+11
 get_perp_dist
-hor_int is 480.212510
 get_perp_dist
-ray->angle is 4.726788
-tan(angle) is -69.444631
-Intersection Parameters:
-inter_x: 512.00
-inter_y: 2766.23
-x_step: -64.00
-y_step: -4444.46
-offset: 1
-ver_int is 2222.458568
+ray->angle is 1.585195
+tan(angle) is -69.444630
 Ray Information:
 -------------------------------
-Angle:				4.726788
-Angle in degrees:	270.825000
-Distance:			480.212510
+Angle:				1.585195
+Angle in degrees:	90.825000
+Distance:			416.006380
 -------------------------------
+12
 get_perp_dist
-hor_int is 480.252900
 get_perp_dist
-ray->angle is 4.728097
-tan(angle) is -63.656742
-Intersection Parameters:
-inter_x: 512.00
-inter_y: 2581.02
-x_step: -64.00
-y_step: -4074.03
-offset: 1
-ver_int is 2037.267067
+ray->angle is 1.586504
+tan(angle) is -63.656741
 Ray Information:
 -------------------------------
-Angle:				4.728097
-Angle in degrees:	270.900000
-Distance:			480.252900
+Angle:				1.586504
+Angle in degrees:	90.900000
+Distance:			416.007593
 -------------------------------
+13
 get_perp_dist
-hor_int is 480.296801
 get_perp_dist
-ray->angle is 4.729406
+ray->angle is 1.587813
 tan(angle) is -58.759230
-Intersection Parameters:
-inter_x: 512.00
-inter_y: 2424.30
-x_step: -64.00
-y_step: -3760.59
-offset: 1
-ver_int is 1880.567641
 Ray Information:
 -------------------------------
-Angle:				4.729406
-Angle in degrees:	270.975000
-Distance:			480.296801
+Angle:				1.587813
+Angle in degrees:	90.975000
+Distance:			416.008912
 -------------------------------
+14
 get_perp_dist
-hor_int is 480.344213
 get_perp_dist
-ray->angle is 4.730715
-tan(angle) is -54.561301
-Intersection Parameters:
-inter_x: 512.00
-inter_y: 2289.96
-x_step: -64.00
-y_step: -3491.92
-offset: 1
-ver_int is 1746.254845
+ray->angle is 1.589122
+tan(angle) is -54.561300
 Ray Information:
 -------------------------------
-Angle:				4.730715
-Angle in degrees:	271.050000
-Distance:			480.344213
+Angle:				1.589122
+Angle in degrees:	91.050000
+Distance:			416.010336
 -------------------------------
+15
 get_perp_dist
-hor_int is 480.395134
 get_perp_dist
-ray->angle is 4.732024
+ray->angle is 1.590431
 tan(angle) is -50.923037
-Intersection Parameters:
-inter_x: 512.00
-inter_y: 2173.54
-x_step: -64.00
-y_step: -3259.07
-offset: 1
-ver_int is 1629.851353
 Ray Information:
 -------------------------------
-Angle:				4.732024
-Angle in degrees:	271.125000
-Distance:			480.395134
+Angle:				1.590431
+Angle in degrees:	91.125000
+Distance:			416.011865
 -------------------------------
+16
 get_perp_dist
-hor_int is 480.449566
 get_perp_dist
-ray->angle is 4.733333
+ray->angle is 1.591740
 tan(angle) is -47.739502
-Intersection Parameters:
-inter_x: 512.00
-inter_y: 2071.66
-x_step: -64.00
-y_step: -3055.33
-offset: 1
-ver_int is 1527.999170
 Ray Information:
 -------------------------------
-Angle:				4.733333
-Angle in degrees:	271.200000
-Distance:			480.449566
+Angle:				1.591740
+Angle in degrees:	91.200000
+Distance:			416.013501
 -------------------------------
+17
 get_perp_dist
-hor_int is 480.507506
 get_perp_dist
-ray->angle is 4.734642
-tan(angle) is -44.930449
-Intersection Parameters:
-inter_x: 512.00
-inter_y: 1981.77
-x_step: -64.00
-y_step: -2875.55
-offset: 1
-ver_int is 1438.130419
+ray->angle is 1.593049
+tan(angle) is -44.930448
 Ray Information:
 -------------------------------
-Angle:				4.734642
-Angle in degrees:	271.275000
-Distance:			480.507506
+Angle:				1.593049
+Angle in degrees:	91.275000
+Distance:			416.015241
 -------------------------------
+18
 get_perp_dist
-hor_int is 480.568955
 get_perp_dist
-ray->angle is 4.735951
+ray->angle is 1.594358
 tan(angle) is -42.433464
-Intersection Parameters:
-inter_x: 512.00
-inter_y: 1901.87
-x_step: -64.00
-y_step: -2715.74
-offset: 1
-ver_int is 1358.247861
 Ray Information:
 -------------------------------
-Angle:				4.735951
-Angle in degrees:	271.350000
-Distance:			480.568955
+Angle:				1.594358
+Angle in degrees:	91.350000
+Distance:			416.017088
 -------------------------------
+19
 get_perp_dist
-hor_int is 480.633912
 get_perp_dist
-ray->angle is 4.737260
+ray->angle is 1.595667
 tan(angle) is -40.199274
-Intersection Parameters:
-inter_x: 512.00
-inter_y: 1830.38
-x_step: -64.00
-y_step: -2572.75
-offset: 1
-ver_int is 1286.774728
 Ray Information:
 -------------------------------
-Angle:				4.737260
-Angle in degrees:	271.425000
-Distance:			480.633912
+Angle:				1.595667
+Angle in degrees:	91.425000
+Distance:			416.019040
 -------------------------------
+20
 get_perp_dist
-hor_int is 480.702377
 get_perp_dist
-ray->angle is 4.738569
+ray->angle is 1.596976
 tan(angle) is -38.188459
-Intersection Parameters:
-inter_x: 512.00
-inter_y: 1766.03
-x_step: -64.00
-y_step: -2444.06
-offset: 1
-ver_int is 1222.449607
 Ray Information:
 -------------------------------
-Angle:				4.738569
-Angle in degrees:	271.500000
-Distance:			480.702377
+Angle:				1.596976
+Angle in degrees:	91.500000
+Distance:			416.021098
 -------------------------------
+21
 get_perp_dist
-hor_int is 480.774349
 get_perp_dist
-ray->angle is 4.739878
+ray->angle is 1.598285
 tan(angle) is -36.369109
-Intersection Parameters:
-inter_x: 512.00
-inter_y: 1707.81
-x_step: -64.00
-y_step: -2327.62
-offset: 1
-ver_int is 1164.251353
 Ray Information:
 -------------------------------
-Angle:				4.739878
-Angle in degrees:	271.575000
-Distance:			480.774349
+Angle:				1.598285
+Angle in degrees:	91.575000
+Distance:			416.023262
 -------------------------------
+22
 get_perp_dist
-hor_int is 480.849827
 get_perp_dist
-ray->angle is 4.741187
+ray->angle is 1.599594
 tan(angle) is -34.715115
-Intersection Parameters:
-inter_x: 512.00
-inter_y: 1654.88
-x_step: -64.00
-y_step: -2221.77
-offset: 1
-ver_int is 1111.344484
 Ray Information:
 -------------------------------
-Angle:				4.741187
-Angle in degrees:	271.650000
-Distance:			480.849827
+Angle:				1.599594
+Angle in degrees:	91.650000
+Distance:			416.025531
 -------------------------------
+23
 get_perp_dist
-hor_int is 480.928811
 get_perp_dist
-ray->angle is 4.742496
-tan(angle) is -33.204909
-Intersection Parameters:
-inter_x: 512.00
-inter_y: 1606.56
-x_step: -64.00
-y_step: -2125.11
-offset: 1
-ver_int is 1063.038821
+ray->angle is 1.600903
+tan(angle) is -33.204908
 Ray Information:
 -------------------------------
-Angle:				4.742496
-Angle in degrees:	271.725000
-Distance:			480.928811
+Angle:				1.600903
+Angle in degrees:	91.725000
+Distance:			416.027906
 -------------------------------
+24
 get_perp_dist
-hor_int is 481.011301
 get_perp_dist
-ray->angle is 4.743805
+ray->angle is 1.602212
 tan(angle) is -31.820516
-Intersection Parameters:
-inter_x: 512.00
-inter_y: 1562.26
-x_step: -64.00
-y_step: -2036.51
-offset: 1
-ver_int is 1018.759211
 Ray Information:
 -------------------------------
-Angle:				4.743805
-Angle in degrees:	271.800000
-Distance:			481.011301
+Angle:				1.602212
+Angle in degrees:	91.800000
+Distance:			416.030387
 -------------------------------
+25
 get_perp_dist
-hor_int is 481.097295
 get_perp_dist
-ray->angle is 4.745114
+ray->angle is 1.603521
 tan(angle) is -30.546840
-Intersection Parameters:
-inter_x: 512.00
-inter_y: 1521.50
-x_step: -64.00
-y_step: -1955.00
-offset: 1
-ver_int is 978.022529
 Ray Information:
 -------------------------------
-Angle:				4.745114
-Angle in degrees:	271.875000
-Distance:			481.097295
+Angle:				1.603521
+Angle in degrees:	91.875000
+Distance:			416.032974
 -------------------------------
+26
 get_perp_dist
-hor_int is 481.186793
 get_perp_dist
-ray->angle is 4.746423
+ray->angle is 1.604830
 tan(angle) is -29.371106
-Intersection Parameters:
-inter_x: 512.00
-inter_y: 1483.88
-x_step: -64.00
-y_step: -1879.75
-offset: 1
-ver_int is 940.419976
 Ray Information:
 -------------------------------
-Angle:				4.746423
-Angle in degrees:	271.950000
-Distance:			481.186793
+Angle:				1.604830
+Angle in degrees:	91.950000
+Distance:			416.035666
 -------------------------------
+27
 get_perp_dist
-hor_int is 481.279794
 get_perp_dist
-ray->angle is 4.747732
+ray->angle is 1.606139
 tan(angle) is -28.282430
-Intersection Parameters:
-inter_x: 512.00
-inter_y: 1449.04
-x_step: -64.00
-y_step: -1810.08
-offset: 1
-ver_int is 905.603314
 Ray Information:
 -------------------------------
-Angle:				4.747732
-Angle in degrees:	272.025000
-Distance:			481.279794
+Angle:				1.606139
+Angle in degrees:	92.025000
+Distance:			416.038465
 -------------------------------
+28
 get_perp_dist
-hor_int is 481.376297
 get_perp_dist
-ray->angle is 4.749041
+ray->angle is 1.607448
 tan(angle) is -27.271486
-Intersection Parameters:
-inter_x: 512.00
-inter_y: 1416.69
-x_step: -64.00
-y_step: -1745.38
-offset: 1
-ver_int is 873.274056
 Ray Information:
 -------------------------------
-Angle:				4.749041
-Angle in degrees:	272.100000
-Distance:			481.376297
+Angle:				1.607448
+Angle in degrees:	92.100000
+Distance:			416.041369
 -------------------------------
+29
 get_perp_dist
-hor_int is 481.476303
 get_perp_dist
-ray->angle is 4.750350
+ray->angle is 1.608757
 tan(angle) is -26.330232
-Intersection Parameters:
-inter_x: 512.00
-inter_y: 1386.57
-x_step: -64.00
-y_step: -1685.13
-offset: 1
-ver_int is 843.174883
 Ray Information:
 -------------------------------
-Angle:				4.750350
-Angle in degrees:	272.175000
-Distance:			481.476303
+Angle:				1.608757
+Angle in degrees:	92.175000
+Distance:			416.044380
 -------------------------------
+30
 get_perp_dist
-hor_int is 481.579808
 get_perp_dist
-ray->angle is 4.751659
+ray->angle is 1.610066
 tan(angle) is -25.451700
-Intersection Parameters:
-inter_x: 512.00
-inter_y: 1358.45
-x_step: -64.00
-y_step: -1628.91
-offset: 1
-ver_int is 815.082789
 Ray Information:
 -------------------------------
-Angle:				4.751659
-Angle in degrees:	272.250000
-Distance:			481.579808
+Angle:				1.610066
+Angle in degrees:	92.250000
+Distance:			416.047496
 -------------------------------
+31
 get_perp_dist
-hor_int is 481.686814
 get_perp_dist
-ray->angle is 4.752968
+ray->angle is 1.611375
 tan(angle) is -24.629818
-Intersection Parameters:
-inter_x: 512.00
-inter_y: 1332.15
-x_step: -64.00
-y_step: -1576.31
-offset: 1
-ver_int is 788.803538
 Ray Information:
 -------------------------------
-Angle:				4.752968
-Angle in degrees:	272.325000
-Distance:			481.686814
+Angle:				1.611375
+Angle in degrees:	92.325000
+Distance:			416.050719
 -------------------------------
+32
 get_perp_dist
-hor_int is 481.797319
 get_perp_dist
-ray->angle is 4.754277
+ray->angle is 1.612684
 tan(angle) is -23.859277
-Intersection Parameters:
-inter_x: 512.00
-inter_y: 1307.50
-x_step: -64.00
-y_step: -1526.99
-offset: 1
-ver_int is 764.167177
 Ray Information:
 -------------------------------
-Angle:				4.754277
-Angle in degrees:	272.400000
-Distance:			481.797319
+Angle:				1.612684
+Angle in degrees:	92.400000
+Distance:			416.054047
 -------------------------------
+33
 get_perp_dist
-hor_int is 481.911322
 get_perp_dist
-ray->angle is 4.755586
+ray->angle is 1.613993
 tan(angle) is -23.135409
-Intersection Parameters:
-inter_x: 512.00
-inter_y: 1284.33
-x_step: -64.00
-y_step: -1480.67
-offset: 1
-ver_int is 741.024353
 Ray Information:
 -------------------------------
-Angle:				4.755586
-Angle in degrees:	272.475000
-Distance:			481.911322
+Angle:				1.613993
+Angle in degrees:	92.475000
+Distance:			416.057482
 -------------------------------
+34
 get_perp_dist
-hor_int is 482.028823
 get_perp_dist
-ray->angle is 4.756895
+ray->angle is 1.615302
 tan(angle) is -22.454096
-Intersection Parameters:
-inter_x: 512.00
-inter_y: 1262.53
-x_step: -64.00
-y_step: -1437.06
-offset: 1
-ver_int is 719.243282
 Ray Information:
 -------------------------------
-Angle:				4.756895
-Angle in degrees:	272.550000
-Distance:			482.028823
+Angle:				1.615302
+Angle in degrees:	92.550000
+Distance:			416.061023
 -------------------------------
+35
 get_perp_dist
-hor_int is 482.149820
 get_perp_dist
-ray->angle is 4.758204
+ray->angle is 1.616611
 tan(angle) is -21.811690
-Intersection Parameters:
-inter_x: 512.00
-inter_y: 1241.97
-x_step: -64.00
-y_step: -1395.95
-offset: 1
-ver_int is 698.707244
 Ray Information:
--------------------------------
-Angle:				4.758204
-Angle in degrees:	272.625000
-Distance:			482.149820
--------------------------------
-get_perp_dist
-hor_int is 482.274312
-get_perp_dist
-ray->angle is 4.759513
-tan(angle) is -21.204949
-Intersection Parameters:
-inter_x: 512.00
-inter_y: 1222.56
-x_step: -64.00
-y_step: -1357.12
-offset: 1
-ver_int is 679.312485
-Ray Information:
--------------------------------
-Angle:				4.759513
-Angle in degrees:	272.700000
-Distance:			482.274312
--------------------------------
-get_perp_dist
-hor_int is 482.402298
-get_perp_dist
-ray->angle is 4.760822
-tan(angle) is -20.630981
-Intersection Parameters:
-inter_x: 512.00
-inter_y: 1204.19
-x_step: -64.00
-y_step: -1320.38
-offset: 1
-ver_int is 660.966469
-Ray Information:
--------------------------------
-Angle:				4.760822
-Angle in degrees:	272.775000
-Distance:			482.402298
--------------------------------
-get_perp_dist
-hor_int is 482.533778
-get_perp_dist
-ray->angle is 4.762131
-tan(angle) is -20.087199
-Intersection Parameters:
-inter_x: 512.00
-inter_y: 1186.79
-x_step: -64.00
-y_step: -1285.58
-offset: 1
-ver_int is 643.586402
-Ray Information:
--------------------------------
-Angle:				4.762131
-Angle in degrees:	272.850000
-Distance:			482.533778
--------------------------------
-get_perp_dist
-hor_int is 482.668750
-get_perp_dist
-ray->angle is 4.763440
-tan(angle) is -19.571281
-Intersection Parameters:
-inter_x: 512.00
-inter_y: 1170.28
-x_step: -64.00
-y_step: -1252.56
-offset: 1
-ver_int is 627.097978
-Ray Information:
--------------------------------
-Angle:				4.763440
-Angle in degrees:	272.925000
-Distance:			482.668750
--------------------------------
-get_perp_dist
-hor_int is 482.807214
-get_perp_dist
-ray->angle is 4.764749
-tan(angle) is -19.081137
-Intersection Parameters:
-inter_x: 512.00
-inter_y: 1154.60
-x_step: -64.00
-y_step: -1221.19
-offset: 1
-ver_int is 611.434325
-Ray Information:
--------------------------------
-Angle:				4.764749
-Angle in degrees:	273.000000
-Distance:			482.807214
--------------------------------
-get_perp_dist
-hor_int is 482.949168
-get_perp_dist
-ray->angle is 4.766058
-tan(angle) is -18.614881
-Intersection Parameters:
-inter_x: 512.00
-inter_y: 1139.68
-x_step: -64.00
-y_step: -1191.35
-offset: 1
-ver_int is 596.535094
-Ray Information:
--------------------------------
-Angle:				4.766058
-Angle in degrees:	273.075000
-Distance:			482.949168
--------------------------------
-get_perp_dist
-hor_int is 483.094610
-get_perp_dist
-ray->angle is 4.767367
-tan(angle) is -18.170807
-Intersection Parameters:
-inter_x: 512.00
-inter_y: 1125.47
-x_step: -64.00
-y_step: -1162.93
-offset: 1
-ver_int is 582.345683
-Ray Information:
--------------------------------
-Angle:				4.767367
-Angle in degrees:	273.150000
-Distance:			483.094610
--------------------------------
-get_perp_dist
-hor_int is 483.243541
-get_perp_dist
-ray->angle is 4.768676
-tan(angle) is -17.747367
-Intersection Parameters:
-inter_x: 512.00
-inter_y: 1111.92
-x_step: -64.00
-y_step: -1135.83
-offset: 1
-ver_int is 568.816571
-Ray Information:
--------------------------------
-Angle:				4.768676
-Angle in degrees:	273.225000
-Distance:			483.243541
--------------------------------
-get_perp_dist
-hor_int is 483.395958
-get_perp_dist
-ray->angle is 4.769985
-tan(angle) is -17.343155
-Intersection Parameters:
-inter_x: 512.00
-inter_y: 1098.98
-x_step: -64.00
-y_step: -1109.96
-offset: 1
-ver_int is 555.902736
-Ray Information:
--------------------------------
-Angle:				4.769985
-Angle in degrees:	273.300000
-Distance:			483.395958
--------------------------------
-get_perp_dist
-hor_int is 483.551861
-get_perp_dist
-ray->angle is 4.771294
-tan(angle) is -16.956888
-Intersection Parameters:
-inter_x: 512.00
-inter_y: 1086.62
-x_step: -64.00
-y_step: -1085.24
-offset: 1
-ver_int is 543.563160
-Ray Information:
--------------------------------
-Angle:				4.771294
-Angle in degrees:	273.375000
-Distance:			483.551861
--------------------------------
-get_perp_dist
-hor_int is 483.711248
-get_perp_dist
-ray->angle is 4.772603
-tan(angle) is -16.587396
-Intersection Parameters:
-inter_x: 512.00
-inter_y: 1074.80
-x_step: -64.00
-y_step: -1061.59
-offset: 1
-ver_int is 531.760392
-Ray Information:
--------------------------------
-Angle:				4.772603
-Angle in degrees:	273.450000
-Distance:			483.711248
--------------------------------
-get_perp_dist
-hor_int is 483.874118
-get_perp_dist
-ray->angle is 4.773912
-tan(angle) is -16.233609
-Intersection Parameters:
-inter_x: 512.00
-inter_y: 1063.48
-x_step: -64.00
-y_step: -1038.95
-offset: 1
-ver_int is 520.460167
-Ray Information:
--------------------------------
-Angle:				4.773912
-Angle in degrees:	273.525000
-Distance:			483.874118
--------------------------------
-get_perp_dist
-hor_int is 484.040470
-get_perp_dist
-ray->angle is 4.775221
-tan(angle) is -15.894545
-Intersection Parameters:
-inter_x: 512.00
-inter_y: 1052.63
-x_step: -64.00
-y_step: -1017.25
-offset: 1
-ver_int is 509.631077
-Ray Information:
--------------------------------
-Angle:				4.775221
-Angle in degrees:	273.600000
-Distance:			484.040470
--------------------------------
-get_perp_dist
-hor_int is 484.210302
-get_perp_dist
-ray->angle is 4.776530
-tan(angle) is -15.569302
-Intersection Parameters:
-inter_x: 512.00
-inter_y: 1042.22
-x_step: -64.00
-y_step: -996.44
-offset: 1
-ver_int is 499.244276
-Ray Information:
--------------------------------
-Angle:				4.776530
-Angle in degrees:	273.675000
-Distance:			484.210302
--------------------------------
-get_perp_dist
-hor_int is 484.383614
-get_perp_dist
-ray->angle is 4.777839
-tan(angle) is -15.257052
-Intersection Parameters:
-inter_x: 512.00
-inter_y: 1032.23
-x_step: -64.00
-y_step: -976.45
-offset: 1
-ver_int is 489.273227
-Ray Information:
--------------------------------
-Angle:				4.777839
-Angle in degrees:	273.750000
-Distance:			484.383614
--------------------------------
-get_perp_dist
-hor_int is 484.560403
-get_perp_dist
-ray->angle is 4.779148
-tan(angle) is -14.957029
-Intersection Parameters:
-inter_x: 512.00
-inter_y: 1022.62
-x_step: -64.00
-y_step: -957.25
-offset: 1
-ver_int is 479.693474
-Ray Information:
--------------------------------
-Angle:				4.779148
-Angle in degrees:	273.825000
-Distance:			479.693474
--------------------------------
-get_perp_dist
-hor_int is 484.740669
-get_perp_dist
-ray->angle is 4.780457
-tan(angle) is -14.668529
-Intersection Parameters:
-inter_x: 512.00
-inter_y: 1013.39
-x_step: -64.00
-y_step: -938.79
-offset: 1
-ver_int is 470.482442
-Ray Information:
--------------------------------
-Angle:				4.780457
-Angle in degrees:	273.900000
-Distance:			470.482442
--------------------------------
-get_perp_dist
-hor_int is 484.924410
-get_perp_dist
-ray->angle is 4.781766
-tan(angle) is -14.390900
-Intersection Parameters:
-inter_x: 512.00
-inter_y: 1004.51
-x_step: -64.00
-y_step: -921.02
-offset: 1
-ver_int is 461.619261
-Ray Information:
--------------------------------
-Angle:				4.781766
-Angle in degrees:	273.975000
-Distance:			461.619261
--------------------------------
-get_perp_dist
-hor_int is 485.111624
-get_perp_dist
-ray->angle is 4.783075
-tan(angle) is -14.123536
-Intersection Parameters:
-inter_x: 512.00
-inter_y: 995.95
-x_step: -64.00
-y_step: -903.91
-offset: 1
-ver_int is 453.084606
-Ray Information:
--------------------------------
-Angle:				4.783075
-Angle in degrees:	274.050000
-Distance:			453.084606
--------------------------------
-get_perp_dist
-hor_int is 485.302311
-get_perp_dist
-ray->angle is 4.784384
-tan(angle) is -13.865879
-Intersection Parameters:
-inter_x: 512.00
-inter_y: 987.71
-x_step: -64.00
-y_step: -887.42
-offset: 1
-ver_int is 444.860556
-Ray Information:
--------------------------------
-Angle:				4.784384
-Angle in degrees:	274.125000
-Distance:			444.860556
--------------------------------
-get_perp_dist
-hor_int is 485.496468
-get_perp_dist
-ray->angle is 4.785693
-tan(angle) is -13.617409
-Intersection Parameters:
-inter_x: 512.00
-inter_y: 979.76
-x_step: -64.00
-y_step: -871.51
-offset: 1
-ver_int is 436.930472
-Ray Information:
--------------------------------
-Angle:				4.785693
-Angle in degrees:	274.200000
-Distance:			436.930472
--------------------------------
-get_perp_dist
-hor_int is 485.694094
-get_perp_dist
-ray->angle is 4.787002
-tan(angle) is -13.377641
-Intersection Parameters:
-inter_x: 512.00
-inter_y: 972.08
-x_step: -64.00
-y_step: -856.17
-offset: 1
-ver_int is 429.278883
-Ray Information:
--------------------------------
-Angle:				4.787002
-Angle in degrees:	274.275000
-Distance:			429.278883
--------------------------------
-get_perp_dist
-hor_int is 485.895189
-get_perp_dist
-ray->angle is 4.788311
-tan(angle) is -13.146127
-Intersection Parameters:
-inter_x: 512.00
-inter_y: 964.68
-x_step: -64.00
-y_step: -841.35
-offset: 1
-ver_int is 421.891384
-Ray Information:
--------------------------------
-Angle:				4.788311
-Angle in degrees:	274.350000
-Distance:			421.891384
--------------------------------
-get_perp_dist
-hor_int is 486.099749
-get_perp_dist
-ray->angle is 4.789620
-tan(angle) is -12.922445
-Intersection Parameters:
-inter_x: 512.00
-inter_y: 957.52
-x_step: -64.00
-y_step: -827.04
-offset: 1
-ver_int is 414.754546
-Ray Information:
--------------------------------
-Angle:				4.789620
-Angle in degrees:	274.425000
-Distance:			414.754546
--------------------------------
-get_perp_dist
-hor_int is 486.307775
-get_perp_dist
-ray->angle is 4.790929
-tan(angle) is -12.706205
-Intersection Parameters:
-inter_x: 512.00
-inter_y: 950.60
-x_step: -64.00
-y_step: -813.20
-offset: 1
-ver_int is 407.855836
-Ray Information:
--------------------------------
-Angle:				4.790929
-Angle in degrees:	274.500000
-Distance:			407.855836
--------------------------------
-get_perp_dist
-hor_int is 486.519263
-get_perp_dist
-ray->angle is 4.792238
-tan(angle) is -12.497040
-Intersection Parameters:
-inter_x: 512.00
-inter_y: 943.91
-x_step: -64.00
-y_step: -799.81
-offset: 1
-ver_int is 401.183543
-Ray Information:
--------------------------------
-Angle:				4.792238
-Angle in degrees:	274.575000
-Distance:			401.183543
--------------------------------
-get_perp_dist
-hor_int is 486.734213
-get_perp_dist
-ray->angle is 4.793547
-tan(angle) is -12.294609
-Intersection Parameters:
-inter_x: 512.00
-inter_y: 937.43
-x_step: -64.00
-y_step: -786.85
-offset: 1
-ver_int is 394.726712
-Ray Information:
--------------------------------
-Angle:				4.793547
-Angle in degrees:	274.650000
-Distance:			394.726712
--------------------------------
-get_perp_dist
-hor_int is 486.952623
-get_perp_dist
-ray->angle is 4.794856
-tan(angle) is -12.098590
-Intersection Parameters:
-inter_x: 512.00
-inter_y: 931.15
-x_step: -64.00
-y_step: -774.31
-offset: 1
-ver_int is 388.475082
-Ray Information:
--------------------------------
-Angle:				4.794856
-Angle in degrees:	274.725000
-Distance:			388.475082
--------------------------------
-get_perp_dist
-hor_int is 487.174491
-get_perp_dist
-ray->angle is 4.796165
-tan(angle) is -11.908682
-Intersection Parameters:
-inter_x: 512.00
-inter_y: 925.08
-x_step: -64.00
-y_step: -762.16
-offset: 1
-ver_int is 382.419034
-Ray Information:
--------------------------------
-Angle:				4.796165
-Angle in degrees:	274.800000
-Distance:			382.419034
--------------------------------
-get_perp_dist
-hor_int is 487.399816
-get_perp_dist
-ray->angle is 4.797474
-tan(angle) is -11.724605
-Intersection Parameters:
-inter_x: 512.00
-inter_y: 919.19
-x_step: -64.00
-y_step: -750.37
-offset: 1
-ver_int is 376.549543
-Ray Information:
--------------------------------
-Angle:				4.797474
-Angle in degrees:	274.875000
-Distance:			376.549543
--------------------------------
-get_perp_dist
-hor_int is 487.628595
-get_perp_dist
-ray->angle is 4.798783
-tan(angle) is -11.546093
-Intersection Parameters:
-inter_x: 512.00
-inter_y: 913.47
-x_step: -64.00
-y_step: -738.95
-offset: 1
-ver_int is 370.858128
-Ray Information:
--------------------------------
-Angle:				4.798783
-Angle in degrees:	274.950000
-Distance:			370.858128
--------------------------------
-get_perp_dist
-hor_int is 487.860828
-get_perp_dist
-ray->angle is 4.800092
-tan(angle) is -11.372896
-Intersection Parameters:
-inter_x: 512.00
-inter_y: 907.93
-x_step: -64.00
-y_step: -727.87
-offset: 1
-ver_int is 365.336815
-Ray Information:
--------------------------------
-Angle:				4.800092
-Angle in degrees:	275.025000
-Distance:			365.336815
--------------------------------
-get_perp_dist
-hor_int is 488.096513
-get_perp_dist
-ray->angle is 4.801401
-tan(angle) is -11.204780
-Intersection Parameters:
-inter_x: 512.00
-inter_y: 902.55
-x_step: -64.00
-y_step: -717.11
-offset: 1
-ver_int is 359.978100
-Ray Information:
--------------------------------
-Angle:				4.801401
-Angle in degrees:	275.100000
-Distance:			359.978100
--------------------------------
-get_perp_dist
-hor_int is 488.335647
-get_perp_dist
-ray->angle is 4.802710
-tan(angle) is -11.041525
-Intersection Parameters:
-inter_x: 512.00
-inter_y: 897.33
-x_step: -64.00
-y_step: -706.66
-offset: 1
-ver_int is 354.774913
-Ray Information:
--------------------------------
-Angle:				4.802710
-Angle in degrees:	275.175000
-Distance:			354.774913
--------------------------------
-get_perp_dist
-hor_int is 488.578229
-get_perp_dist
-ray->angle is 4.804019
-tan(angle) is -10.882921
-Intersection Parameters:
-inter_x: 512.00
-inter_y: 892.25
-x_step: -64.00
-y_step: -696.51
-offset: 1
-ver_int is 349.720590
-Ray Information:
--------------------------------
-Angle:				4.804019
-Angle in degrees:	275.250000
-Distance:			349.720590
--------------------------------
-get_perp_dist
-hor_int is 488.824258
-get_perp_dist
-ray->angle is 4.805328
-tan(angle) is -10.728773
-Intersection Parameters:
-inter_x: 512.00
-inter_y: 887.32
-x_step: -64.00
-y_step: -686.64
-offset: 1
-ver_int is 344.808840
-Ray Information:
--------------------------------
-Angle:				4.805328
-Angle in degrees:	275.325000
-Distance:			344.808840
--------------------------------
-get_perp_dist
-hor_int is 489.073731
-get_perp_dist
-ray->angle is 4.806637
-tan(angle) is -10.578895
-Intersection Parameters:
-inter_x: 512.00
-inter_y: 882.52
-x_step: -64.00
-y_step: -677.05
-offset: 1
-ver_int is 340.033722
-Ray Information:
--------------------------------
-Angle:				4.806637
-Angle in degrees:	275.400000
-Distance:			340.033722
--------------------------------
-get_perp_dist
-hor_int is 489.326647
-get_perp_dist
-ray->angle is 4.807946
-tan(angle) is -10.433111
-Intersection Parameters:
-inter_x: 512.00
-inter_y: 877.86
-x_step: -64.00
-y_step: -667.72
-offset: 1
-ver_int is 335.389622
-Ray Information:
--------------------------------
-Angle:				4.807946
-Angle in degrees:	275.475000
-Distance:			335.389622
--------------------------------
-get_perp_dist
-hor_int is 489.583004
-get_perp_dist
-ray->angle is 4.809255
-tan(angle) is -10.291255
-Intersection Parameters:
-inter_x: 512.00
-inter_y: 873.32
-x_step: -64.00
-y_step: -658.64
-offset: 1
-ver_int is 330.871228
-Ray Information:
--------------------------------
-Angle:				4.809255
-Angle in degrees:	275.550000
-Distance:			330.871228
--------------------------------
-get_perp_dist
-hor_int is 489.842800
-get_perp_dist
-ray->angle is 4.810564
-tan(angle) is -10.153170
-Intersection Parameters:
-inter_x: 512.00
-inter_y: 868.90
-x_step: -64.00
-y_step: -649.80
-offset: 1
-ver_int is 326.473512
-Ray Information:
--------------------------------
-Angle:				4.810564
-Angle in degrees:	275.625000
-Distance:			326.473512
--------------------------------
-get_perp_dist
-hor_int is 490.106033
-get_perp_dist
-ray->angle is 4.811873
-tan(angle) is -10.018708
-Intersection Parameters:
-inter_x: 512.00
-inter_y: 864.60
-x_step: -64.00
-y_step: -641.20
-offset: 1
-ver_int is 322.191710
-Ray Information:
--------------------------------
-Angle:				4.811873
-Angle in degrees:	275.700000
-Distance:			322.191710
--------------------------------
-get_perp_dist
-hor_int is 490.372701
-get_perp_dist
-ray->angle is 4.813182
-tan(angle) is -9.887727
-Intersection Parameters:
-inter_x: 512.00
-inter_y: 860.41
-x_step: -64.00
-y_step: -632.81
-offset: 1
-ver_int is 318.021307
-Ray Information:
--------------------------------
-Angle:				4.813182
-Angle in degrees:	275.775000
-Distance:			318.021307
--------------------------------
-get_perp_dist
-hor_int is 490.642803
-get_perp_dist
-ray->angle is 4.814491
-tan(angle) is -9.760093
-Intersection Parameters:
-inter_x: 512.00
-inter_y: 856.32
-x_step: -64.00
-y_step: -624.65
-offset: 1
-ver_int is 313.958017
-Ray Information:
--------------------------------
-Angle:				4.814491
-Angle in degrees:	275.850000
-Distance:			313.958017
--------------------------------
-get_perp_dist
-hor_int is 427.002777
-get_perp_dist
-ray->angle is 4.815800
-tan(angle) is -9.635679
-Intersection Parameters:
-inter_x: 512.00
-inter_y: 852.34
-x_step: -64.00
-y_step: -616.68
-offset: 1
-ver_int is 309.997774
-Ray Information:
--------------------------------
-Angle:				4.815800
-Angle in degrees:	275.925000
-Distance:			309.997774
--------------------------------
-get_perp_dist
-hor_int is 427.281422
-get_perp_dist
-ray->angle is 4.817109
-tan(angle) is -9.514364
-Intersection Parameters:
-inter_x: 512.00
-inter_y: 848.46
-x_step: -64.00
-y_step: -608.92
-offset: 1
-ver_int is 306.136712
-Ray Information:
--------------------------------
-Angle:				4.817109
-Angle in degrees:	276.000000
-Distance:			306.136712
--------------------------------
-get_perp_dist
-hor_int is 427.563491
-get_perp_dist
-ray->angle is 4.818418
-tan(angle) is -9.396035
-Intersection Parameters:
-inter_x: 512.00
-inter_y: 844.67
-x_step: -64.00
-y_step: -601.35
-offset: 1
-ver_int is 302.371159
-Ray Information:
--------------------------------
-Angle:				4.818418
-Angle in degrees:	276.075000
-Distance:			302.371159
--------------------------------
-get_perp_dist
-hor_int is 427.848980
-get_perp_dist
-ray->angle is 4.819727
-tan(angle) is -9.280580
-Intersection Parameters:
-inter_x: 512.00
-inter_y: 840.98
-x_step: -64.00
-y_step: -593.96
-offset: 1
-ver_int is 298.697620
-Ray Information:
--------------------------------
-Angle:				4.819727
-Angle in degrees:	276.150000
-Distance:			298.697620
--------------------------------
-get_perp_dist
-hor_int is 428.137887
-get_perp_dist
-ray->angle is 4.821036
-tan(angle) is -9.167897
-Intersection Parameters:
-inter_x: 512.00
-inter_y: 837.37
-x_step: -64.00
-y_step: -586.75
-offset: 1
-ver_int is 295.112770
-Ray Information:
--------------------------------
-Angle:				4.821036
-Angle in degrees:	276.225000
-Distance:			295.112770
--------------------------------
-get_perp_dist
-hor_int is 428.430209
-get_perp_dist
-ray->angle is 4.822345
-tan(angle) is -9.057887
-Intersection Parameters:
-inter_x: 512.00
-inter_y: 833.85
-x_step: -64.00
-y_step: -579.70
-offset: 1
-ver_int is 291.613441
-Ray Information:
--------------------------------
-Angle:				4.822345
-Angle in degrees:	276.300000
-Distance:			291.613441
--------------------------------
-get_perp_dist
-hor_int is 364.996320
-get_perp_dist
-ray->angle is 4.823654
-tan(angle) is -8.950454
-Intersection Parameters:
-inter_x: 512.00
-inter_y: 830.41
-x_step: -64.00
-y_step: -572.83
-offset: 1
-ver_int is 288.196615
-Ray Information:
--------------------------------
-Angle:				4.823654
-Angle in degrees:	276.375000
-Distance:			288.196615
--------------------------------
-get_perp_dist
-hor_int is 365.300879
-get_perp_dist
-ray->angle is 4.824963
-tan(angle) is -8.845510
-Intersection Parameters:
-inter_x: 512.00
-inter_y: 827.06
-x_step: -64.00
-y_step: -566.11
-offset: 1
-ver_int is 284.859413
-Ray Information:
--------------------------------
-Angle:				4.824963
-Angle in degrees:	276.450000
-Distance:			284.859413
--------------------------------
-get_perp_dist
-hor_int is 365.608863
-get_perp_dist
-ray->angle is 4.826272
-tan(angle) is -8.742969
-Intersection Parameters:
-inter_x: 512.00
-inter_y: 823.77
-x_step: -64.00
-y_step: -559.55
-offset: 1
-ver_int is 281.599091
-Ray Information:
--------------------------------
-Angle:				4.826272
-Angle in degrees:	276.525000
-Distance:			281.599091
--------------------------------
-get_perp_dist
-hor_int is 365.920269
-get_perp_dist
-ray->angle is 4.827581
-tan(angle) is -8.642747
-Intersection Parameters:
-inter_x: 512.00
-inter_y: 820.57
-x_step: -64.00
-y_step: -553.14
-offset: 1
-ver_int is 278.413027
-Ray Information:
--------------------------------
-Angle:				4.827581
-Angle in degrees:	276.600000
-Distance:			278.413027
--------------------------------
-get_perp_dist
-hor_int is 366.235091
-get_perp_dist
-ray->angle is 4.828890
-tan(angle) is -8.544769
-Intersection Parameters:
-inter_x: 512.00
-inter_y: 817.43
-x_step: -64.00
-y_step: -546.87
-offset: 1
-ver_int is 275.298719
-Ray Information:
--------------------------------
-Angle:				4.828890
-Angle in degrees:	276.675000
-Distance:			275.298719
--------------------------------
-get_perp_dist
-hor_int is 366.553326
-get_perp_dist
-ray->angle is 4.830199
-tan(angle) is -8.448957
-Intersection Parameters:
-inter_x: 512.00
-inter_y: 814.37
-x_step: -64.00
-y_step: -540.73
-offset: 1
-ver_int is 272.253774
-Ray Information:
--------------------------------
-Angle:				4.830199
-Angle in degrees:	276.750000
-Distance:			272.253774
--------------------------------
-get_perp_dist
-hor_int is 366.874968
-get_perp_dist
-ray->angle is 4.831508
-tan(angle) is -8.355242
-Intersection Parameters:
-inter_x: 512.00
-inter_y: 811.37
-x_step: -64.00
-y_step: -534.74
-offset: 1
-ver_int is 269.275906
-Ray Information:
--------------------------------
-Angle:				4.831508
-Angle in degrees:	276.825000
-Distance:			269.275906
--------------------------------
-get_perp_dist
-hor_int is 303.835975
-get_perp_dist
-ray->angle is 4.832817
-tan(angle) is -8.263555
-Intersection Parameters:
-inter_x: 512.00
-inter_y: 808.43
-x_step: -64.00
-y_step: -528.87
-offset: 1
-ver_int is 266.362927
-Ray Information:
--------------------------------
-Angle:				4.832817
-Angle in degrees:	276.900000
-Distance:			266.362927
--------------------------------
-get_perp_dist
-hor_int is 304.176249
-get_perp_dist
-ray->angle is 4.834126
-tan(angle) is -8.173830
-Intersection Parameters:
-inter_x: 512.00
-inter_y: 805.56
-x_step: -64.00
-y_step: -523.13
-offset: 1
-ver_int is 263.512745
-Ray Information:
--------------------------------
-Angle:				4.834126
-Angle in degrees:	276.975000
-Distance:			263.512745
--------------------------------
-get_perp_dist
-hor_int is 304.519963
-get_perp_dist
-ray->angle is 4.835435
-tan(angle) is -8.086004
-Intersection Parameters:
-inter_x: 512.00
-inter_y: 802.75
-x_step: -64.00
-y_step: -517.50
-offset: 1
-ver_int is 260.723355
-Ray Information:
--------------------------------
-Angle:				4.835435
-Angle in degrees:	277.050000
-Distance:			260.723355
--------------------------------
-get_perp_dist
-hor_int is 304.867108
-get_perp_dist
-ray->angle is 4.836744
-tan(angle) is -8.000019
-Intersection Parameters:
-inter_x: 512.00
-inter_y: 800.00
-x_step: -64.00
-y_step: -512.00
-offset: 1
-ver_int is 257.992837
-Ray Information:
--------------------------------
-Angle:				4.836744
-Angle in degrees:	277.125000
-Distance:			257.992837
--------------------------------
-get_perp_dist
-hor_int is 305.217679
-get_perp_dist
-ray->angle is 4.838053
-tan(angle) is -7.915815
-Intersection Parameters:
-inter_x: 512.00
-inter_y: 797.31
-x_step: -64.00
-y_step: -506.61
-offset: 1
-ver_int is 255.319352
-Ray Information:
--------------------------------
-Angle:				4.838053
-Angle in degrees:	277.200000
-Distance:			255.319352
--------------------------------
-get_perp_dist
-hor_int is 305.571668
-get_perp_dist
-ray->angle is 4.839362
-tan(angle) is -7.833339
-Intersection Parameters:
-inter_x: 512.00
-inter_y: 794.67
-x_step: -64.00
-y_step: -501.33
-offset: 1
-ver_int is 252.701137
-Ray Information:
--------------------------------
-Angle:				4.839362
-Angle in degrees:	277.275000
-Distance:			252.701137
--------------------------------
-get_perp_dist
-hor_int is 305.929069
-get_perp_dist
-ray->angle is 4.840671
-tan(angle) is -7.752537
-Intersection Parameters:
-inter_x: 512.00
-inter_y: 792.08
-x_step: -64.00
-y_step: -496.16
-offset: 1
-ver_int is 250.136498
-Ray Information:
--------------------------------
-Angle:				4.840671
-Angle in degrees:	277.350000
-Distance:			250.136498
--------------------------------
-get_perp_dist
-hor_int is 306.289874
-get_perp_dist
+--------

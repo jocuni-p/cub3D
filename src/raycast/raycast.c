@@ -6,7 +6,7 @@
 /*   By: rzhdanov <rzhdanov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 11:28:56 by rzhdanov          #+#    #+#             */
-/*   Updated: 2024/11/06 21:53:30 by rzhdanov         ###   ########.fr       */
+/*   Updated: 2024/11/06 22:22:53 by rzhdanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -234,7 +234,7 @@ void	set_intersection_parameters(t_player *player, t_ray *ray,
 		inter_param->offset = check_inter(ray->angle, &inter_param->inter_x, 
 											&inter_param->x_step, orientation);
 		//TODO modify the y_step if necessary by multiplying by -1 depending on which half of the circle the ray is
-		print_inter_param(*inter_param);
+		//print_inter_param(*inter_param);
 		validate_step_direction(ray->angle, orientation, &inter_param->y_step);
 	}
 	else if(orientation == HORIZONTAL)
@@ -311,14 +311,15 @@ void	cast_all_rays(t_player *player, t_ray **rays, char **map)
 	i = -1;
 	while (++ i < WIN_WIDTH)
 	{
+		printf("%d\n", i);
 		initialize_ray(player, rays[i]);
 		rays[i]->angle = normalize_angle(start_angle + (i * angle_increment));
 		hor_intersection = get_perpendicular_intersection(player, rays[i],
 														map, HORIZONTAL);
-		printf("hor_int is %f\n", hor_intersection);
+	//	printf("hor_int is %f\n", hor_intersection);
 		ver_intersection = get_perpendicular_intersection(player, rays[i],
 														map, VERTICAL);
-		printf("ver_int is %f\n", ver_intersection);
+	//	printf("ver_int is %f\n", ver_intersection);
 		if (ver_intersection <= hor_intersection)
 			rays[i]->distance = ver_intersection;
 		else
@@ -327,6 +328,31 @@ void	cast_all_rays(t_player *player, t_ray **rays, char **map)
 	}
 }
 
+void draw_a_wall(t_player *player, t_ray *ray, int top_pixel, int bottom_pixel)
+{
+	int color;
+
+	color = 0x00FF00;
+	while (t_pix < b_pix)
+		//MLX42 pixel put;
+}
+
+void render_wall(t_player *player, t_ray *ray, t_mlx *mlx, int ray) // render the wall
+{
+	double wall_height;
+	double top_pixel;
+	double bottom_pixel;
+
+	ray->distance *= cos(normalize_angle(ray->angle - player->angle));
+	wall_height = (TILE_SIZE / ray->distance) * ((WIN_WIDTH / 2) / tan(player->fov / 2));
+	top_pixel = (WIN_HEIGHT / 2) - (wall_height / 2);
+	bottom_pixel = (WIN_HEIGHT / 2) + (wall_height / 2);
+	if (bottom_pixel > WIN_HEIGHT)
+		bottom_pixel = WIN_HEIGHT;
+	if (top_pixel < 0)
+		top_pixel = 0;
+	draw_wall(player, ray, top_pixel, bottom_pixel);
+}
 
 
 int	main(void)
@@ -353,7 +379,7 @@ int	main(void)
 		printf("Memory allocation for player failed \n");
 		return (1);
 	}
-	initialize_player(player, 8.5, 8.5, angle_in_radians(300.0));
+	initialize_player(player, 3.5, 3.5, angle_in_radians(120.0));
 	printf("Player's angle in Pi is %f\n", player->angle);
 	initialize_array_of_rays(rays, WIN_WIDTH);
 	cast_all_rays(player, rays, map);
