@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 15:33:39 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/10/30 18:49:40 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/11/05 19:47:49 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ void	get_player_pos(t_game *game, int x, int y)
 	if (game->map_arr[y][x] == 'N' || game->map_arr[y][x] == 'S' \
 	|| game->map_arr[y][x] == 'W' || game->map_arr[y][x] == 'E')
 	{
-		game->player.pos.x = x;
-		game->player.pos.y = y;
+		game->player.pos.x = (float)x + 0.5;//Para centrar la posicion original en la celda
+		game->player.pos.y = (float)y + 0.5;//Para centrar la posicion original en la celda
 	}
 }
 

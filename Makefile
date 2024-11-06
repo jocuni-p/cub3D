@@ -6,7 +6,7 @@
 #    By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/26 17:23:07 by jocuni-p          #+#    #+#              #
-#    Updated: 2024/11/02 20:54:03 by jocuni-p         ###   ########.fr        #
+#    Updated: 2024/11/06 22:09:59 by jocuni-p         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ ifeq ($(UNAME), Linux)
 	
 # To compile on MacOS (Apple Silicon)
 else ifeq ($(UNAME), Darwin)
-	LIBS	:= $(LIBMLX)/build/libmlx42.a -ldl -L/opt/homebrew/lib -lglfw -pthread -lm -g -fsanitize=address
+	LIBS	:= $(LIBMLX)/build/libmlx42.a -ldl -L/opt/homebrew/lib -lglfw -pthread -lm -g #-fsanitize=address
 	CFLAGS := -Wextra -Wall -Werror -Wunreachable-code -g -arch arm64 #-fsanitize=address
 else
     $(Error. Unsupported platform: $(UNAME))
@@ -35,7 +35,6 @@ endif
 
 LIBS += -L$(LIBFT) -lft
 
-# Source files about lists
 SRCS_LST :=         ./src/lst/lst_creator.c \
 					./src/lst/lst_newnode.c \
 					./src/lst/lst_size.c \
@@ -43,7 +42,6 @@ SRCS_LST :=         ./src/lst/lst_creator.c \
 					./src/lst/lstlast.c \
 					./src/lst/lst_clear.c
 
-# Source files about parsing
 SRCS_PARSER :=		./src/parser/parse_color.c \
 			 		./src/parser/print_error.c \
 					./src/parser/parse_cub.c \
@@ -52,7 +50,6 @@ SRCS_PARSER :=		./src/parser/parse_color.c \
 					./src/parser/parse_map_2.c \
 					./src/parser/arr2d_creator.c \
 					
-# Source files about print_tests
 SRCS_PRINT_TESTS := ./src/print_tests/arr2d_print.c \
 					./src/print_tests/print_cub_list.c \
 					./src/print_tests/print_elements.c \
@@ -60,7 +57,6 @@ SRCS_PRINT_TESTS := ./src/print_tests/arr2d_print.c \
 					./src/print_tests/print_game_info.c \
 					./src/print_tests/print_minimap_vars.c
 
-# Source files about utils
 SRCS_UTILS := 		./src/utils/arr2d_element_cnt.c \
 					./src/utils/arr2d_free.c \
 					./src/utils/check_arg.c \
@@ -71,15 +67,17 @@ SRCS_UTILS := 		./src/utils/arr2d_element_cnt.c \
 					./src/utils/texture_test.c \
 					./src/utils/game_free.c
 
-# Source files about graphic part
 SRCS_GAME :=		./src/game/draw_background.c \
-					./src/game/draw_minimap.c \
 					./src/game/start_game.c \
 					./src/game/loop_updater.c \
 					./src/game/movement.c
 
+SRCS_MINIMAP :=		./src/minimap/draw_minimap.c \
+					./src/minimap/draw_minimap_player.c
+
+
 # Puts together all src files
-SRCS := ./src/main.c $(SRCS_LST) $(SRCS_PARSER) $(SRCS_PRINT_TESTS) $(SRCS_UTILS) $(SRCS_GAME)
+SRCS := ./src/main.c $(SRCS_LST) $(SRCS_PARSER) $(SRCS_PRINT_TESTS) $(SRCS_UTILS) $(SRCS_MINIMAP) $(SRCS_GAME)#$(SRCS_MINIMAP)
 
 # Object files
 OBJS := $(SRCS:.c=.o)
@@ -126,13 +124,13 @@ libft:
 	@$(CC) $(CFLAGS) -o $@ -c $< $(HEADERS) && printf "Compiling: $(notdir $<)\n"
 
 $(NAME): $(OBJS)
-	@$(CC) $(OBJS) $(HEADERS) -o $(NAME) $(LIBS) $(LDFLAGS)
+	@$(CC) $(LDFLAGS) $(OBJS) $(HEADERS) -o $(NAME) $(LIBS)
 	@echo "\n$(DARK_GREEN)▶  cub3D built completed!$(DEF_COLOR)\n"
 
 clean:
 	@rm -rf $(OBJS)
 	@rm -rf $(LIBMLX)/build
-#	@rm -rf $(LIBFT_A)
+	@rm -f $(LIBFT_A)
 	@$(MAKE) -C $(LIBFT) clean
 
 fclean: clean

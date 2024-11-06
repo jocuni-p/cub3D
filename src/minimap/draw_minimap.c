@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "cub3d.h"
 
 /* Draws a tile on the mini_map image at x, y position.*/
 void draw_minimap_tile(mlx_image_t *img_mmap, uint32_t x, uint32_t y,
@@ -28,25 +28,6 @@ void draw_minimap_tile(mlx_image_t *img_mmap, uint32_t x, uint32_t y,
             //Draws only the pixels located inside the mini_map limits
             if ((uint32_t)x + i >= 0 && (uint32_t)x + i < img_mmap->width \
 			&& (uint32_t)y + j >= 0 && (uint32_t)y + j < img_mmap->height)
-                mlx_put_pixel(img_mmap, x + i, y + j, color);
-            j++;
-        }
-        i++;
-    }
-}
-
-void	draw_minimap_player(mlx_image_t *img_mmap, uint32_t x, uint32_t y,
-							 uint32_t color)
-{
- 	int i;
-    int j;
-
-    i = 0;
-    while (i < 6)//minimap player size
-    {
-        j = 0;
-        while (j < 6)//minimap player size
-        {
                 mlx_put_pixel(img_mmap, x + i, y + j, color);
             j++;
         }
@@ -78,6 +59,7 @@ void	draw_minimap_frame(mlx_image_t *img_mmap, uint32_t x, uint32_t y,
 		y++;
 	}
 }
+
 /*Draws the visible part of the map into the minimap*/
 void	draw_minimap_only_visible_tiles(t_game *game)
 {
@@ -136,11 +118,12 @@ void draw_minimap(t_game *game)
     game->mmap.end_row = ((game->mmap.map_offset_y +\
 						 game->img_mmap->height) / MINIMAP_TILE_SIZE);
 
-    // Dibujar los tiles visibles en el minimapa
 	draw_minimap_only_visible_tiles(game);
-    // Dibujar la posición del jugador centrada en el minimapa
-	draw_minimap_player(game->img_mmap, game->mmap.pl_screen_x,
-					 	game->mmap.pl_screen_y, 0x000000FF);  
-    // Dibujar el marco del minimapa
-   draw_minimap_frame(game->img_mmap, 0, 0, 0x000000FF);
+
+	draw_minimap_player(game, 0x000000FF);
+	
+	// Dibujo la línea de dirección del jugador en el minimapa
+	draw_minimap_direction_line(game, 0x000000FF);
+
+	draw_minimap_frame(game->img_mmap, 0, 0, 0x000000FF);
 }
