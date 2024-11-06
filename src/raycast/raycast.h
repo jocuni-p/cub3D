@@ -6,7 +6,7 @@
 /*   By: rzhdanov <rzhdanov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 11:28:56 by rzhdanov          #+#    #+#             */
-/*   Updated: 2024/11/06 11:58:54 by rzhdanov         ###   ########.fr       */
+/*   Updated: 2024/11/06 21:39:21 by rzhdanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <string.h>
+# include <stdbool.h>
 
 # ifndef FOV
 #  define FOV 60
@@ -67,16 +68,26 @@ typedef struct	s_ray
 	t_inter_param	*inter_param;
 }	t_ray;
 
-void	print_ray_info(t_ray *ray);
 double	angle_in_radians(double angle);
+void print_inter_param(t_inter_param param);
+void	print_ray_info(t_ray *ray);
 void	initialize_player(t_player *player, double x, double y, double angle);
-double	normalize_angle(double angle);
-void	initialize_ray(t_player *player, t_ray *ray);
-double	cast_one_ray(t_player *player, t_ray *ray, char **map);
-void	cast_all_rays(t_player *player, t_ray **rays, char **map);
 void	set_ray_side_distances_and_steps(t_player *player, t_ray *ray);
+void	initialize_ray(t_player *player, t_ray *ray);
 void	free_array_of_rays(t_ray **rays, int array_size);
 void	initialize_array_of_rays(t_ray **rays, int array_size);
-void	print_ray_data(t_ray *ray);
+double	normalize_angle(double angle);
+// double	cast_one_ray(t_player *player, t_ray *ray, char **map);
+int	check_inter(double angle, double *intersection, double *step, 
+				char orientation);
+bool	wall_is_hit(double x, double y, char **map);
+void	set_intersection_parameters(t_player *player, t_ray *ray, 
+									t_inter_param *inter_param, 
+									char orientation);
+void	validate_step_direction(double angle, char orientation, double *step);
+double	get_perpendicular_intersection(t_player *player, t_ray *ray,
+										char **map, char orientation);
+void	cast_all_rays(t_player *player, t_ray **rays, char **map);
+void	free_array_of_rays(t_ray **rays, int array_size);
 
 #endif

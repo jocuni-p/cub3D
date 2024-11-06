@@ -6,7 +6,7 @@
 /*   By: rzhdanov <rzhdanov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 11:28:56 by rzhdanov          #+#    #+#             */
-/*   Updated: 2024/11/06 13:00:02 by rzhdanov         ###   ########.fr       */
+/*   Updated: 2024/11/06 21:53:30 by rzhdanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,15 @@ double	angle_in_radians(double angle)
 	return (angle * PI / 180.0);
 }
 
+void print_inter_param(t_inter_param param)
+{
+	printf("Intersection Parameters:\n");
+	printf("inter_x: %.2f\n", param.inter_x);
+	printf("inter_y: %.2f\n", param.inter_y);
+	printf("x_step: %.2f\n", param.x_step);
+	printf("y_step: %.2f\n", param.y_step);
+	printf("offset: %d\n", param.offset);
+}
 void	print_ray_info(t_ray *ray)
 {
 	if (ray == NULL)
@@ -28,17 +37,17 @@ void	print_ray_info(t_ray *ray)
 	printf("Ray Information:\n");
 	printf("-------------------------------\n");
 	printf("Angle:				%f\n", ray->angle);
-	printf("Angle in degrees	%f\n", ray->angle * 180 / PI);
-	printf("Direction X:		%f\n", ray->direction_x);
-	printf("Direction Y:		%f\n", ray->direction_y);
-	printf("Map X:				%d\n", ray->map_x);
-	printf("Map Y:				%d\n", ray->map_y);
-	printf("Delta Dist X:		%f\n", ray->delta_dist_x);
-	printf("Delta Dist Y:		%f\n", ray->delta_dist_y);
-	printf("Map Step X:			%d\n", ray->map_step_x);
-	printf("Map Step Y:			%d\n", ray->map_step_y);
-	printf("Side Dist X:		%f\n", ray->side_dist_x);
-	printf("Side Dist Y:		%f\n", ray->side_dist_y);
+	printf("Angle in degrees:	%f\n", ray->angle * 180 / PI);
+	// printf("Direction X:		%f\n", ray->direction_x);
+	// printf("Direction Y:		%f\n", ray->direction_y);
+	// printf("Map X:				%d\n", ray->map_x);
+	// printf("Map Y:				%d\n", ray->map_y);
+	// printf("Delta Dist X:		%f\n", ray->delta_dist_x);
+	// printf("Delta Dist Y:		%f\n", ray->delta_dist_y);
+	// printf("Map Step X:			%d\n", ray->map_step_x);
+	// printf("Map Step Y:			%d\n", ray->map_step_y);
+	// printf("Side Dist X:		%f\n", ray->side_dist_x);
+	// printf("Side Dist Y:		%f\n", ray->side_dist_y);
 	printf("Distance:			%f\n", ray->distance);
 	printf("-------------------------------\n");
 }
@@ -129,57 +138,49 @@ double	normalize_angle(double angle)
 	return (angle);
 }
 
-void	print_ray_data(t_ray *ray)
-{	
-	printf("side_dist_x\t%f\nside_dist_y\t%f\ndistance\t%f\n",
-		ray->side_dist_x, ray->side_dist_y, ray->distance);
-	printf("map_x\t%d\nmap_y\t%d\n*********ANGLE\t%f\n",
-		ray->map_x, ray->map_y, ray->angle);
-	printf("ANGLE in degrees:%f\n\n", ray->angle * 180 / PI);
-}
+// double	cast_one_ray(t_player *player, t_ray *ray, char **map)
+// {
+// 	int		wall_hit;
 
-double	cast_one_ray(t_player *player, t_ray *ray, char **map)
-{
-	int		wall_hit;
-
-	wall_hit = 0;
-	//printf("Before the cycle:\n");
-	//print_ray_info(ray);
-	while (!wall_hit && ray->map_x >= 0 && ray->map_y >=0
-			&& ray->map_x < (int)strlen(map[0]) 
-			&& ray->map_y < (int)strlen(map[0]))
-	{
-		print_ray_info(ray);
-		if(map[ray->map_x][ray->map_y] == '1')
-		{
-			printf("calculating hypotenuse\n");
-			printf("player->x is : %f, ray->map_x is : %d\n", player->x, ray->map_x);
-			printf("player->y is : %f, ray->map_y is : %d\n", player->y, ray->map_y);
-			ray->distance = hypot((player->x - ray->map_x),
-			 						(player->y - ray->map_y));
-			// ray->distance = hypot(ray->changed_x_position * ray->side_dist_x,
-			// 						ray->changed_y_position * ray->side_dist_y);			
-			wall_hit = 1;
-			printf("HURRAY A HIT!\n");
-			print_ray_info(ray);
-			return (ray->distance);
-		}
-		if(ray->side_dist_x < ray->side_dist_y)
-		{
-			ray->side_dist_x += ray->delta_dist_x;
-			ray->map_x += ray->map_step_x;
+// 	wall_hit = 0;
+// 	//printf("Before the cycle:\n");
+// 	//print_ray_info(ray);
+// 	while (!wall_hit && ray->map_x >= 0 && ray->map_y >=0
+// 			&& ray->map_x < (int)strlen(map[0]) 
+// 			&& ray->map_y < (int)strlen(map[0]))
+// 	{
+// 		print_ray_info(ray);
+// 		if(map[ray->map_x][ray->map_y] == '1')
+// 		{
+// 			printf("calculating hypotenuse\n");
+// 			printf("player->x is : %f, ray->map_x is : %d\n", player->x, ray->map_x);
+// 			printf("player->y is : %f, ray->map_y is : %d\n", player->y, ray->map_y);
+// 			ray->distance = hypot((player->x - ray->map_x),
+// 			 						(player->y - ray->map_y));
+// 			// ray->distance = hypot(ray->changed_x_position * ray->side_dist_x,
+// 			// 						ray->changed_y_position * ray->side_dist_y);			
+// 			wall_hit = 1;
+// 			printf("HURRAY A HIT!\n");
+// 			print_ray_info(ray);
+// 			return (ray->distance);
+// 		}
+// 		if(ray->side_dist_x < ray->side_dist_y)
+// 		{
+// 			ray->side_dist_x += ray->delta_dist_x;
+// 			ray->map_x += ray->map_step_x;
 			
-		}
-		else
-		{
-			ray->side_dist_y += ray->delta_dist_y;
-			ray->map_y += ray->map_step_y;
-		}
-	}
-	return (ray->distance);
-}
+// 		}
+// 		else
+// 		{
+// 			ray->side_dist_y += ray->delta_dist_y;
+// 			ray->map_y += ray->map_step_y;
+// 		}
+// 	}
+// 	return (ray->distance);
+// }
 
-int	check_inter(double angle, double *intersection, double *step, char orientation)
+int	check_inter(double angle, double *intersection, double *step,
+				char orientation)
 {
 	if(orientation == VERTICAL)
 	{
@@ -202,19 +203,39 @@ int	check_inter(double angle, double *intersection, double *step, char orientati
 	return (1);
 }
 
+bool	wall_is_hit(double x, double y, char **map)
+{
+	int	map_x;
+	int	map_y;
+
+	map_x = floor(x / TILE_SIZE);
+	map_y = floor(y / TILE_SIZE);
+	if (x < 0 || y < 0 || map_x > (int)strlen(map[0]) ||
+						map_y > (int)strlen(map[0])) // works only with squares. need to change
+		return (1);
+	if (map[map_y][map_x] == '1')
+		return (1);
+	return (0);
+}
+
 void	set_intersection_parameters(t_player *player, t_ray *ray, 
-									t_inter_param *inter_param, char orientation)
+									t_inter_param *inter_param,
+									char orientation)
 {
 	if (orientation == VERTICAL)
 	{
 		inter_param->x_step = TILE_SIZE;
 		inter_param->y_step = TILE_SIZE * tan(ray->angle);
+		printf("ray->angle is %f\n", ray->angle);
+		printf("tan(angle) is %f\n", tan(ray->angle));
 		inter_param->inter_x = floor(player->x / TILE_SIZE) * TILE_SIZE;
 		inter_param->inter_y = player->y + (inter_param->inter_x - player->x) *
 											 tan(ray->angle);
 		inter_param->offset = check_inter(ray->angle, &inter_param->inter_x, 
 											&inter_param->x_step, orientation);
 		//TODO modify the y_step if necessary by multiplying by -1 depending on which half of the circle the ray is
+		print_inter_param(*inter_param);
+		validate_step_direction(ray->angle, orientation, &inter_param->y_step);
 	}
 	else if(orientation == HORIZONTAL)
 	{
@@ -226,22 +247,63 @@ void	set_intersection_parameters(t_player *player, t_ray *ray,
 		inter_param->offset = check_inter(ray->angle, &inter_param->inter_y,
 											&inter_param->y_step, orientation);
 		//TODO modify the x_step if necessary by multiplying by -1 depending on which half of the circle the ray is
+		validate_step_direction(ray->angle, orientation, &inter_param->x_step);
+	}
+}
+
+void	validate_step_direction(double angle, char orientation, double *step)
+{
+	bool	target_circle_half;
+
+	if (orientation == VERTICAL)
+	{
+		target_circle_half = angle > 0 && angle < PI;
+		if ((target_circle_half && *step < 0) ||
+			(!target_circle_half && *step > 0))
+			*step *= -1;
+	}
+	else if (orientation == HORIZONTAL)
+	{
+		target_circle_half = angle > (PI / 2) && angle < (3 * PI / 2);
+		if ((target_circle_half && *step > 0) ||
+			(!target_circle_half && *step < 0))
+			*step *= -1;
 	}
 }
 
 double	get_perpendicular_intersection(t_player *player, t_ray *ray,
-										char orientation)
+										char **map, char orientation)
 {
-	set_intersection_parameters(player, ray, ray->inter_param, orientation);
-	
-	
-}
+	printf("get_perp_dist\n");
+	t_inter_param	*tmp;
 
+	tmp = ray->inter_param;
+	set_intersection_parameters(player, ray, tmp, orientation);
+	if (orientation == VERTICAL)
+	{
+		while(!wall_is_hit(tmp->inter_x - tmp->offset, tmp->inter_y, map))
+		{
+			tmp->inter_x += tmp->x_step;
+			tmp->inter_y += tmp->y_step;
+		}
+	}
+	else if (orientation == HORIZONTAL)
+	{
+		while(!wall_is_hit(tmp->inter_x, tmp->inter_y - tmp->offset, map))
+		{
+			tmp->inter_x += tmp->x_step;
+			tmp->inter_y += tmp->y_step;
+		}
+	}
+	return (hypot((tmp->inter_x - player->x), (tmp->inter_y - player->y)));
+}
 
 void	cast_all_rays(t_player *player, t_ray **rays, char **map)
 {
-	double	start_angle; 
+	double	start_angle;
 	double	angle_increment;
+	double	hor_intersection;
+	double	ver_intersection;
 	int		i;
 
 	start_angle = player->angle - (player->fov / 2);
@@ -249,16 +311,23 @@ void	cast_all_rays(t_player *player, t_ray **rays, char **map)
 	i = -1;
 	while (++ i < WIN_WIDTH)
 	{
-		// Initialize the ray to starting values
-		rays[i]->angle = start_angle + (i * angle_increment);
 		initialize_ray(player, rays[i]);
-		// Calculate the angle for this specific ray
-		// Cast the ray at this angle and calculate the distance to a wall
-		printf("===RAY No %d===\n\n\n", i);
-		cast_one_ray(player, rays[i], map);
-		//i += 10;
+		rays[i]->angle = normalize_angle(start_angle + (i * angle_increment));
+		hor_intersection = get_perpendicular_intersection(player, rays[i],
+														map, HORIZONTAL);
+		printf("hor_int is %f\n", hor_intersection);
+		ver_intersection = get_perpendicular_intersection(player, rays[i],
+														map, VERTICAL);
+		printf("ver_int is %f\n", ver_intersection);
+		if (ver_intersection <= hor_intersection)
+			rays[i]->distance = ver_intersection;
+		else
+			rays[i]->distance = hor_intersection;
+		print_ray_info(rays[i]);
 	}
 }
+
+
 
 int	main(void)
 {
@@ -284,7 +353,7 @@ int	main(void)
 		printf("Memory allocation for player failed \n");
 		return (1);
 	}
-	initialize_player(player, 6.5, 6.5, angle_in_radians(120.0));
+	initialize_player(player, 8.5, 8.5, angle_in_radians(300.0));
 	printf("Player's angle in Pi is %f\n", player->angle);
 	initialize_array_of_rays(rays, WIN_WIDTH);
 	cast_all_rays(player, rays, map);
