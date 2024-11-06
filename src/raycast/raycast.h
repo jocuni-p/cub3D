@@ -6,7 +6,7 @@
 /*   By: rzhdanov <rzhdanov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 11:28:56 by rzhdanov          #+#    #+#             */
-/*   Updated: 2024/11/04 11:44:51 by rzhdanov         ###   ########.fr       */
+/*   Updated: 2024/11/06 11:58:54 by rzhdanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,17 @@
 # define WIN_WIDTH 800
 # define WIN_HEIGHT 600
 # define TILE_SIZE 64
+# define VERTICAL 'v'
+# define HORIZONTAL 'h'
+
+typedef	struct s_intersection_parameters
+{
+	double	inter_x;
+	double	inter_y;
+	double	x_step;
+	double	y_step;
+	int		offset;
+}	t_inter_param;
 
 typedef struct	s_player
 {
@@ -41,20 +52,19 @@ typedef struct	s_player
 
 typedef struct	s_ray
 {
-	double	angle;
-	double	direction_x;
-	double	direction_y;
-	int		map_x;			// coordinate for the map grid
-	int		map_y;			// coordinate for the map grid
-	double	delta_dist_x;
-	double	delta_dist_y;
-	int		changed_x_position;
-	int		changed_y_position;
-	int		map_step_x;
-	int		map_step_y;
-	double	side_dist_x;	// distance to next intersection on x axis
-	double	side_dist_y; 	// distance to next intersection on y axis
-	double	distance;		// Distance from player to the wall
+	double			angle;
+	double			direction_x;
+	double			direction_y;
+	int				map_x;			// coordinate for the map grid
+	int				map_y;			// coordinate for the map grid
+	double			delta_dist_x;
+	double			delta_dist_y;
+	int				map_step_x;
+	int				map_step_y;
+	double			side_dist_x;	// distance to next intersection on x axis
+	double			side_dist_y; 	// distance to next intersection on y axis
+	double			distance;		// Distance from player to the wall
+	t_inter_param	*inter_param;
 }	t_ray;
 
 void	print_ray_info(t_ray *ray);
@@ -62,7 +72,7 @@ double	angle_in_radians(double angle);
 void	initialize_player(t_player *player, double x, double y, double angle);
 double	normalize_angle(double angle);
 void	initialize_ray(t_player *player, t_ray *ray);
-float	cast_one_ray(t_player *player, t_ray *ray, char **map);
+double	cast_one_ray(t_player *player, t_ray *ray, char **map);
 void	cast_all_rays(t_player *player, t_ray **rays, char **map);
 void	set_ray_side_distances_and_steps(t_player *player, t_ray *ray);
 void	free_array_of_rays(t_ray **rays, int array_size);
