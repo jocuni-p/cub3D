@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 15:41:01 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/11/05 16:37:19 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/11/06 18:27:43 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,23 @@ typedef struct s_parser
 	int				ply_qty;
 }					t_parser;
 
+/*---Bresenham's algorithm---*/
+//Bresenham's algorithm for drawing lines on a pixel grid.
+typedef struct s_bresenham
+{
+	int				x;//initial line's point 
+	int				y;
+	int				end_x;//final line's point
+	int				end_y;
+	int				d_x;//distance diference between axis x and y
+	int				d_y;
+	int				sx;//determine the increment direction to the final point
+	int				sy;
+	int				err;//helps to decide if move towards x or y
+	int				e2;
+}					t_bresenham;
+
+
 /*---------minimap----------*/
 typedef struct s_mmap
 {
@@ -101,6 +118,7 @@ typedef struct s_mmap
 	int				end_row;//Limit of tiles that can be seen on the minimap
 	uint32_t		pl_screen_x;// Player pos in minimap img center
 	uint32_t		pl_screen_y;// Player pos in minimap img center
+	t_bresenham		bres;//Bresenham's algorithm
 }					t_mmap;
 
 /*-------coordinates expressed in double type------*/
@@ -189,14 +207,19 @@ void 		error_mlx(t_game *game);
 int			start_game(t_game *game);
 int			init_game(mlx_t *mlx, t_game *game);
 void 		draw_background(t_game *game);
-void		draw_minimap(t_game *game);
-void 		draw_minimap_tile(mlx_image_t *img_mmap, uint32_t x, uint32_t y, uint32_t color);
-void		draw_minimap_player(t_game *game, uint32_t color);
-void		draw_minimap_frame(mlx_image_t *img_mmap, uint32_t x, uint32_t y, uint32_t color);
 void		loop_updater(void *param);
 void		event_listener(t_game *game);
 void		move(t_game *game, float dir_x, float dir_y, float move_speed);
 
+/*------------------minimap------------------*/
+void		draw_minimap(t_game *game);
+void 		draw_minimap_tile(mlx_image_t *img_mmap, uint32_t x, uint32_t y, uint32_t color);
+void		draw_minimap_only_visible_tiles(t_game *game);
+void		draw_minimap_frame(mlx_image_t *img_mmap, uint32_t x, uint32_t y, uint32_t color);
+//void		draw_minimap_player(t_game *game, uint32_t color);
+void		draw_minimap_player(t_game *game, uint32_t color);
+void		draw_minimap_direction_line(t_game *game, uint32_t color);
+void		set_bresenham_values(t_game *game);
 
 /*------------------Raycasting---------------*/
 
