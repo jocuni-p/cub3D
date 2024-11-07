@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 17:12:21 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/10/31 19:45:00 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/11/07 20:29:55 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,6 @@ void error_mlx(t_game *game)
 //	ft_printf("MLX error code: %d\n", mlx_errno);
 	ft_printf(RED "%s\n", mlx_strerror(mlx_errno));//prints the error string that describes the error code
 	game_free(game);
+	mlx_terminate(game->mlx);
 	exit(EXIT_FAILURE);
 }

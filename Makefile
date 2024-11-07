@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: rzhdanov <rzhdanov@student.42.fr>          +#+  +:+       +#+         #
+#    By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/26 17:23:07 by jocuni-p          #+#    #+#              #
-#    Updated: 2024/11/07 06:56:34 by rzhdanov         ###   ########.fr        #
+#    Updated: 2024/11/07 21:55:10 by jocuni-p         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,8 +22,8 @@ HEADERS	:= -I ./include -I $(LIBMLX)/include -I $(LIBFT)
 
 # To compile on Linux at 42Barcelona campus   
 ifeq ($(UNAME), Linux)
-	LIBS	:= $(LIBMLX)/build/libmlx42.a -ldl -lglfw -pthread -lm -g # -fsanitize=address
-	CFLAGS	:= -Wextra -Wall -Werror -Wunreachable-code -Ofast -g # -fsanitize=address
+	LIBS	:= $(LIBMLX)/build/libmlx42.a -ldl -lglfw -pthread -lm -g -fsanitize=address
+	CFLAGS	:= -Wextra -Wall -Werror -Wunreachable-code -Ofast -g -fsanitize=address
 	
 # To compile on MacOS (Apple Silicon)
 else ifeq ($(UNAME), Darwin)
@@ -64,8 +64,8 @@ SRCS_UTILS := 		./src/utils/arr2d_element_cnt.c \
 					./src/utils/error_mlx.c \
 					./src/utils/remove_nl.c \
 					./src/utils/get_opposite_color.c \
-					./src/utils/texture_test.c \
 					./src/utils/game_free.c \
+					./src/utils/init_textures.c \
 					./src/utils/textures_free.c
 
 SRCS_GAME :=		./src/game/draw_background.c \

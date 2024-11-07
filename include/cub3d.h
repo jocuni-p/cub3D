@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rzhdanov <rzhdanov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 15:41:01 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/11/07 06:55:17 by rzhdanov         ###   ########.fr       */
+/*   Updated: 2024/11/07 21:41:43 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,7 +149,6 @@ typedef struct	s_textures
 	mlx_image_t 	*img_s;
 	mlx_image_t 	*img_e;
 	mlx_image_t 	*img_w;
-	t_textures		*textures;
 }				t_textures;
 
 /*------------game----------*/
@@ -165,6 +164,7 @@ typedef struct s_game//This will be passed to the raycast
 	mlx_image_t		*img_ray;//instance to walls(raycasting) image
 	mlx_image_t		*img_mmap;//instance to minimap image
 	t_mmap			mmap;//minimap data
+	t_textures		textures;
 	bool			is_moving;
 	
 }					t_game;
@@ -219,7 +219,7 @@ void 		error_mlx(t_game *game);
 /*--------------------Game-------------------*/
 
 int			start_game(t_game *game);
-int			init_game(mlx_t *mlx, t_game *game);
+int			init_game(t_game *game);
 void 		draw_background(t_game *game);
 void		loop_updater(void *param);
 void		event_listener(t_game *game);
@@ -241,18 +241,17 @@ void		set_bresenham_values(t_game *game);
 
 
 
-/*------------TEXTURES TEMPORAL TEST--------*/
+/*------------TEXTURES---------------*/
 
-int			textures_test(t_game *game);
-void		init_textures(t_game *game);
+int			init_textures(t_game *game);
 void		textures_free(t_game *game);
 
 
 /*---------- Prints for debug----------*/
 
-void		print_cub_list(t_cub *lst);
+//void		print_cub_list(t_cub *lst);
 void		arr2d_print(char **arr2d);
-void		print_map_list(t_cub *lst);
+//void		print_map_list(t_cub *lst);
 void		print_game_info(t_game *game);
 void		print_elements(t_game *game);
 void		print_minimap_vars(t_game *game);

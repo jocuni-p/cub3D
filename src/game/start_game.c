@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 10:47:00 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/11/05 16:27:44 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/11/07 21:11:16 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,13 @@ void set_player_direction(t_game *game)
     }
 }
 
-int	init_game(mlx_t *mlx, t_game *game)
+int	init_game(t_game *game)
 {
-	game->mlx = mlx;
+//	game->mlx = mlx;
 	game->is_moving = 1;//flag to ensure that the images will be redrawn every loop
-//	game->player.dir.x = 0;
-//	game->player.dir.y = -1;
 	set_player_direction(game);
+	if (init_textures(game))
+		return (error_mlx(game), 1);
 	
 /*==========================BACKGROUND==========================*/	
 	game->img_back = mlx_new_image(game->mlx, WIDTH, HEIGHT);
@@ -78,16 +78,16 @@ int	init_game(mlx_t *mlx, t_game *game)
 
 int	start_game(t_game *game)
 {
-	mlx_t *mlx;
-	mlx = mlx_init(WIDTH, HEIGHT, "cub3D", 0);
-	if (!mlx)
+//	mlx_t *mlx;
+	game->mlx = mlx_init(WIDTH, HEIGHT, "cub3D", 0);
+	if (!game->mlx)
 		return (error_mlx(game), 1);
-	if (init_game(mlx, game))
+	if (init_game(game))
 		 return (error_mlx(game), 1);
-	mlx_loop_hook(mlx, loop_updater, game);
+	mlx_loop_hook(game->mlx, loop_updater, game);
 	print_game_info(game);
-	mlx_loop(mlx);
-	mlx_terminate(mlx);
+	mlx_loop(game->mlx);
+	mlx_terminate(game->mlx);
 	return (0);
 }
 	
