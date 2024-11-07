@@ -6,7 +6,7 @@
 /*   By: rzhdanov <rzhdanov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 11:28:56 by rzhdanov          #+#    #+#             */
-/*   Updated: 2024/11/06 22:22:53 by rzhdanov         ###   ########.fr       */
+/*   Updated: 2024/11/07 06:10:20 by rzhdanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,13 @@ double	angle_in_radians(double angle)
 	return (angle * PI / 180.0);
 }
 
+double	my_tan(double angle)
+{
+	angle = normalize_angle(angle);
+	if (angle == PI / 2 || angle == 3 * PI / 2)
+		angle -= 1e-6;
+	return(tan(angle));
+}
 void print_inter_param(t_inter_param param)
 {
 	printf("Intersection Parameters:\n");
@@ -28,6 +35,7 @@ void print_inter_param(t_inter_param param)
 	printf("offset: %d\n", param.offset);
 }
 void	print_ray_info(t_ray *ray)
+
 {
 	if (ray == NULL)
 	{
@@ -225,12 +233,13 @@ void	set_intersection_parameters(t_player *player, t_ray *ray,
 	if (orientation == VERTICAL)
 	{
 		inter_param->x_step = TILE_SIZE;
-		inter_param->y_step = TILE_SIZE * tan(ray->angle);
+		inter_param->y_step = TILE_SIZE * my_tan(ray->angle);
 		printf("ray->angle is %f\n", ray->angle);
-		printf("tan(angle) is %f\n", tan(ray->angle));
+		printf("my_tan(angle) is %f\n", tan(ray->angle));
+		printf("tan(angle) is %f\n", my_tan(ray->angle));
 		inter_param->inter_x = floor(player->x / TILE_SIZE) * TILE_SIZE;
 		inter_param->inter_y = player->y + (inter_param->inter_x - player->x) *
-											 tan(ray->angle);
+											 my_tan(ray->angle);
 		inter_param->offset = check_inter(ray->angle, &inter_param->inter_x, 
 											&inter_param->x_step, orientation);
 		//TODO modify the y_step if necessary by multiplying by -1 depending on which half of the circle the ray is
@@ -239,10 +248,10 @@ void	set_intersection_parameters(t_player *player, t_ray *ray,
 	}
 	else if(orientation == HORIZONTAL)
 	{
-		inter_param->x_step = TILE_SIZE / tan(ray->angle);
+		inter_param->x_step = TILE_SIZE / my_tan(ray->angle);
 		inter_param->y_step = TILE_SIZE;
 		inter_param->inter_x = player->x + (inter_param->inter_y - player->y) /
-											tan(ray->angle);
+											my_tan(ray->angle);
 		inter_param->inter_y = floor(player->y / TILE_SIZE) * TILE_SIZE;
 		inter_param->offset = check_inter(ray->angle, &inter_param->inter_y,
 											&inter_param->y_step, orientation);
@@ -274,7 +283,7 @@ void	validate_step_direction(double angle, char orientation, double *step)
 double	get_perpendicular_intersection(t_player *player, t_ray *ray,
 										char **map, char orientation)
 {
-	printf("get_perp_dist\n");
+	//printf("get_perp_dist\n");
 	t_inter_param	*tmp;
 
 	tmp = ray->inter_param;
@@ -295,6 +304,7 @@ double	get_perpendicular_intersection(t_player *player, t_ray *ray,
 			tmp->inter_y += tmp->y_step;
 		}
 	}
+	print_inter_param(*tmp);
 	return (hypot((tmp->inter_x - player->x), (tmp->inter_y - player->y)));
 }
 
@@ -306,14 +316,15 @@ void	cast_all_rays(t_player *player, t_ray **rays, char **map)
 	double	ver_intersection;
 	int		i;
 
-	start_angle = player->angle - (player->fov / 2);
+	start_angle = normalize_angle(player->angle - (player->fov / 2));
+	printf("STARTING RAY IS %f\n", start_angle * 180 / M_PI);
 	angle_increment = player->fov / WIN_WIDTH;
 	i = -1;
 	while (++ i < WIN_WIDTH)
 	{
 		printf("%d\n", i);
 		initialize_ray(player, rays[i]);
-		rays[i]->angle = normalize_angle(start_angle + (i * angle_increment));
+		rays[i]->angle = start_angle + (i * angle_increment);
 		hor_intersection = get_perpendicular_intersection(player, rays[i],
 														map, HORIZONTAL);
 	//	printf("hor_int is %f\n", hor_intersection);
@@ -328,31 +339,31 @@ void	cast_all_rays(t_player *player, t_ray **rays, char **map)
 	}
 }
 
-void draw_a_wall(t_player *player, t_ray *ray, int top_pixel, int bottom_pixel)
-{
-	int color;
+// void draw_a_wall(t_player *player, t_ray *ray, int top_pixel, int bottom_pixel)
+// {
+// 	int color;
 
-	color = 0x00FF00;
-	while (t_pix < b_pix)
-		//MLX42 pixel put;
-}
+// 	color = 0x00FF00;
+// 	while (t_pix < b_pix)
+// 		//MLX42 pixel put;
+// }
 
-void render_wall(t_player *player, t_ray *ray, t_mlx *mlx, int ray) // render the wall
-{
-	double wall_height;
-	double top_pixel;
-	double bottom_pixel;
+// void render_wall(t_player *player, t_ray *ray, t_mlx *mlx, int ray) // render the wall
+// {
+// 	double wall_height;
+// 	double top_pixel;
+// 	double bottom_pixel;
 
-	ray->distance *= cos(normalize_angle(ray->angle - player->angle));
-	wall_height = (TILE_SIZE / ray->distance) * ((WIN_WIDTH / 2) / tan(player->fov / 2));
-	top_pixel = (WIN_HEIGHT / 2) - (wall_height / 2);
-	bottom_pixel = (WIN_HEIGHT / 2) + (wall_height / 2);
-	if (bottom_pixel > WIN_HEIGHT)
-		bottom_pixel = WIN_HEIGHT;
-	if (top_pixel < 0)
-		top_pixel = 0;
-	draw_wall(player, ray, top_pixel, bottom_pixel);
-}
+// 	ray->distance *= cos(normalize_angle(ray->angle - player->angle));
+// 	wall_height = (TILE_SIZE / ray->distance) * ((WIN_WIDTH / 2) / tan(player->fov / 2));
+// 	top_pixel = (WIN_HEIGHT / 2) - (wall_height / 2);
+// 	bottom_pixel = (WIN_HEIGHT / 2) + (wall_height / 2);
+// 	if (bottom_pixel > WIN_HEIGHT)
+// 		bottom_pixel = WIN_HEIGHT;
+// 	if (top_pixel < 0)
+// 		top_pixel = 0;
+// 	draw_wall(player, ray, top_pixel, bottom_pixel);
+// }
 
 
 int	main(void)
@@ -362,7 +373,7 @@ int	main(void)
 	char 		*map[] = {
 		"11111111111",
 		"10000000001",
-		"10000000001",
+		"10000000x01",
 		"10000000001",
 		"10000000001",
 		"10000000001",
@@ -379,16 +390,9 @@ int	main(void)
 		printf("Memory allocation for player failed \n");
 		return (1);
 	}
-	initialize_player(player, 3.5, 3.5, angle_in_radians(120.0));
+	initialize_player(player, 8.1, 8.1, angle_in_radians(120.0));
 	printf("Player's angle in Pi is %f\n", player->angle);
 	initialize_array_of_rays(rays, WIN_WIDTH);
 	cast_all_rays(player, rays, map);
-	int i = -1;
-	while (++i < WIN_WIDTH)
-	{
-		//print_ray_data(rays[i]);
-	//	printf("Ray No: %d,\nangle\t%f\ndistance\t%f\n", i, rays[i]->angle,
-	//													rays[i]->distance);
-	}
 	return (0);
 }

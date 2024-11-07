@@ -6,7 +6,7 @@
 /*   By: rzhdanov <rzhdanov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 11:28:56 by rzhdanov          #+#    #+#             */
-/*   Updated: 2024/11/06 21:39:21 by rzhdanov         ###   ########.fr       */
+/*   Updated: 2024/11/07 00:44:01 by rzhdanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 # ifndef FOV
 #  define FOV 60
 # endif
-# define PI 3.1415926535
+# define PI 3.141592653589793
 # define RAD(deg) ((deg) * PI / 180.0) // Not sure if it is allowed, got a function angle_in_radians if this cannot be used
 # define MAX_DIST 1600 // Test the number, maybe too small. Also think about fog if distance is bigger.
 # define WIN_WIDTH 800
