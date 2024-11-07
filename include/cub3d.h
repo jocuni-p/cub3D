@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
+/*   By: rzhdanov <rzhdanov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 15:41:01 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/11/06 18:27:43 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/11/07 06:55:17 by rzhdanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,6 +138,20 @@ typedef struct s_player
 	char			orientation;//starting orientation: N, S, E, W
 }					t_player;
 
+/*------------textures--------*/
+typedef struct	s_textures
+{
+	mlx_texture_t	*text_n;//Declaration of a texture
+	mlx_texture_t	*text_s;
+	mlx_texture_t	*text_e;
+	mlx_texture_t	*text_w;
+	mlx_image_t 	*img_n;//Declaration of an image
+	mlx_image_t 	*img_s;
+	mlx_image_t 	*img_e;
+	mlx_image_t 	*img_w;
+	t_textures		*textures;
+}				t_textures;
+
 /*------------game----------*/
 typedef struct s_game//This will be passed to the raycast
 {
@@ -230,7 +244,8 @@ void		set_bresenham_values(t_game *game);
 /*------------TEXTURES TEMPORAL TEST--------*/
 
 int			textures_test(t_game *game);
-
+void		init_textures(t_game *game);
+void		textures_free(t_game *game);
 
 
 /*---------- Prints for debug----------*/

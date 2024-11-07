@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+         #
+#    By: rzhdanov <rzhdanov@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/26 17:23:07 by jocuni-p          #+#    #+#              #
-#    Updated: 2024/11/06 22:09:59 by jocuni-p         ###   ########.fr        #
+#    Updated: 2024/11/07 06:56:34 by rzhdanov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -65,7 +65,8 @@ SRCS_UTILS := 		./src/utils/arr2d_element_cnt.c \
 					./src/utils/remove_nl.c \
 					./src/utils/get_opposite_color.c \
 					./src/utils/texture_test.c \
-					./src/utils/game_free.c
+					./src/utils/game_free.c \
+					./src/utils/textures_free.c
 
 SRCS_GAME :=		./src/game/draw_background.c \
 					./src/game/start_game.c \

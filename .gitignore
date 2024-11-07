@@ -16,3 +16,5 @@ a.out
 src/*.o
 cub3D
 build/
+a.out
+*.gch
