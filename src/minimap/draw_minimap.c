@@ -38,8 +38,8 @@ void draw_minimap_tile(mlx_image_t *img_mmap, uint32_t x, uint32_t y,
 void	draw_minimap_frame(mlx_image_t *img_mmap, uint32_t x, uint32_t y,
 							 uint32_t color)
 {
-//	while (y < 100) VOLVER A UN TAMANYO FIJO DEL MINIMAP, SI NO ES EFICIENTE
-	while (y < (HEIGHT / 5))
+//	while (y < 100) //a fixed minimap size 
+	while (y < (HEIGHT / 5))//a proportional minimap size
 	{
 		x = 0;
 		while (x < (WIDTH / 5))

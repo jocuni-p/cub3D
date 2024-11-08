@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 14:42:25 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/11/05 16:29:13 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/11/08 17:41:50 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,24 +40,23 @@ void	loop_updater(void *param)
 	
 //--------------------BACKGROUND--------------------------
 //Esta imagen no deberia actualizarse aqui porque siempre es igual
-//	mlx_image_to_window(game->mlx, game->img_back, 0, 0);//va en la tercera capa
+//	mlx_image_to_window(game->mlx, game->img_back, 0, 0);//deeper layer
 
 
 //--------------------RAYCASTING--------------------------
-//	if (game->is_moving)//si ha habido un movimiento en el juego
+//	if (game->is_moving)//if any key has been pressed
 //	{
 //		clear_image(game->img_ray, 0x00000000);//Every frame/movement, put all pixels in black color before to be drawn with the right color
 //		draw_raycasting(game); Draw walls with raycasting. It is updated every loop/frame
-//		mlx_image_to_window(game->mlx, game->img_ray, 0, 0);//va en segunda capa
+//		mlx_image_to_window(game->mlx, game->img_ray, 0, 0);//middle layer
 //	}
 
 //---------------------MINIMAP----------------------------
-	if (game->is_moving)//si ha habido un movimiento en el juego
+	if (game->is_moving)//if any key has been pressed
 	{
-		clear_image(game->img_mmap, 0x00000000); // Limpia la imagen del minimapa en cada movimiento
+		clear_image(game->img_mmap, 0x00000000); // Clears the minimap image when a key is pressed
 		draw_minimap(game);
-//		mlx_image_to_window(game->mlx, game->img_mmap, 0, 0);//va en primera capa
+//		mlx_image_to_window(game->mlx, game->img_mmap, 0, 0);//superficial layer
 		game->is_moving = false;
 	}
-//	printf("%i\n", frame_cnt);
 }

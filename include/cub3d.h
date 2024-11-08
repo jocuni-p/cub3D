@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 15:41:01 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/11/07 21:41:43 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/11/08 17:20:35 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -213,6 +213,7 @@ int			check_arg(char *str);
 void		elem_free(t_game *game);
 void		remove_nl(char *str);
 int			get_opposite_color(t_game * game);
+void		parser_free(t_game *game);
 void		game_free(t_game *game);
 void 		error_mlx(t_game *game);
 
@@ -220,9 +221,12 @@ void 		error_mlx(t_game *game);
 
 int			start_game(t_game *game);
 int			init_game(t_game *game);
+void 		set_player_direction(t_game *game);
+int			init_textures(t_game *game);
 void 		draw_background(t_game *game);
 void		loop_updater(void *param);
 void		event_listener(t_game *game);
+void 		clear_image(mlx_image_t *img, uint32_t color);
 void		move(t_game *game, float dir_x, float dir_y, float move_speed);
 
 /*------------------minimap------------------*/
@@ -230,7 +234,6 @@ void		draw_minimap(t_game *game);
 void 		draw_minimap_tile(mlx_image_t *img_mmap, uint32_t x, uint32_t y, uint32_t color);
 void		draw_minimap_only_visible_tiles(t_game *game);
 void		draw_minimap_frame(mlx_image_t *img_mmap, uint32_t x, uint32_t y, uint32_t color);
-//void		draw_minimap_player(t_game *game, uint32_t color);
 void		draw_minimap_player(t_game *game, uint32_t color);
 void		draw_minimap_direction_line(t_game *game, uint32_t color);
 void		set_bresenham_values(t_game *game);

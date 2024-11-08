@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 12:38:53 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/11/07 22:00:20 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/11/08 17:19:20 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	main(int ac, char **av)
 		return (game_free(game), 1);
 	if (start_game(game))
 		return (1);
-	game_free(game);//this free + 'exit' must be called when 'esc' or 'close window' are pressed
+	game_free(game);
 	return (0);//probably the program never is gonna finish here
 }
 

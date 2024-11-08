@@ -6,7 +6,7 @@
 #    By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/26 17:23:07 by jocuni-p          #+#    #+#              #
-#    Updated: 2024/11/07 21:55:10 by jocuni-p         ###   ########.fr        #
+#    Updated: 2024/11/08 16:46:18 by jocuni-p         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -65,7 +65,6 @@ SRCS_UTILS := 		./src/utils/arr2d_element_cnt.c \
 					./src/utils/remove_nl.c \
 					./src/utils/get_opposite_color.c \
 					./src/utils/game_free.c \
-					./src/utils/init_textures.c \
 					./src/utils/textures_free.c
 
 SRCS_GAME :=		./src/game/draw_background.c \

@@ -6,13 +6,13 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 14:49:10 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/10/31 10:36:02 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/11/08 17:17:25 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-/*-------Prints the map already parsed and formated------*/
+/*-------Prints the content of an char **------*/
 void arr2d_print(char **arr2d)
 {
     int i = 0;

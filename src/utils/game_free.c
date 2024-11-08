@@ -12,11 +12,17 @@
 
 #include "../include/cub3d.h"
 
-/*------Frees all t_parser struct memory-----*/
-void	game_free(t_game *game)
+/*------Frees parser' allocated resources-----*/
+void	parser_free(t_game *game)
 {
 	lst_clear(&game->parser.cub_ln0);
 	elem_free(game);
+}
+
+/*------Frees game' allocated resources-----*/
+void	game_free(t_game *game)
+{
+	parser_free(game);
 	arr2d_free(&game->map_arr);
 	textures_free(game);
 }
