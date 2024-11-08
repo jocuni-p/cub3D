@@ -2,10 +2,11 @@
 
 
 
-NO     ./textures/wall_no.xpm
-WE ./textures/wall_we.xpm
-SO ./textures/wall_so.xpm
-                    EA ./textures/wall_ea.xpm
+NO          ./textures/brick_n.png
+SO ./textures/brick_s.png
+
+WE ./textures/brick_w.png
+              EA ./textures/brick_e.png
 
        F 111,12,2
 C 35,206,215

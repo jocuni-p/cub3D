@@ -1,7 +1,7 @@
-NO textures/wall_1.xpm
-SO textures/wall_2.xpm
-WE textures/wall_3.xpm
-EA textures/wall_4.xpm
+NO ./textures/brick_n.png
+SO ./textures/brick_s.png
+WE ./textures/brick_w.png
+EA ./textures/brick_e.png
 
 F 184,113,39
 C 25,0,5

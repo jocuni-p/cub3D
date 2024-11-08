@@ -1,5 +1,4 @@
 NO ./textures/brick_n.png
-
 SO ./textures/brick_s.png
 WE ./textures/brick_w.png
 EA ./textures/brick_e.png

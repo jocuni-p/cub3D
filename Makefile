@@ -6,7 +6,7 @@
 #    By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/26 17:23:07 by jocuni-p          #+#    #+#              #
-#    Updated: 2024/11/08 16:46:18 by jocuni-p         ###   ########.fr        #
+#    Updated: 2024/11/08 22:29:04 by jocuni-p         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME	:= cub3D
 UNAME := $(shell uname)#gets the OS we are using
 
 # Si uso fsanitize en las flags de compilado, debo ponerla tambien en las del enlazado, sino da error al compilar
-LDFLAGS	:= #-fsanitize=address #(only on MacOS systems)
+LDFLAGS	:= -fsanitize=address #(only on MacOS systems)
 LIBMLX	:= ./lib/MLX42
 LIBFT	:= ./lib/libft/
 LIBFT_A	:= $(LIBFT)libft.a 
@@ -27,8 +27,8 @@ ifeq ($(UNAME), Linux)
 	
 # To compile on MacOS (Apple Silicon)
 else ifeq ($(UNAME), Darwin)
-	LIBS	:= $(LIBMLX)/build/libmlx42.a -ldl -L/opt/homebrew/lib -lglfw -pthread -lm -g #-fsanitize=address
-	CFLAGS := -Wextra -Wall -Werror -Wunreachable-code -g -arch arm64 #-fsanitize=address
+	LIBS	:= $(LIBMLX)/build/libmlx42.a -ldl -L/opt/homebrew/lib -lglfw -pthread -lm -g -fsanitize=address
+	CFLAGS := -Wextra -Wall -Werror -Wunreachable-code -g -arch arm64 -fsanitize=address
 else
     $(Error. Unsupported platform: $(UNAME))
 endif

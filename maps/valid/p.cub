@@ -1,10 +1,12 @@
-NO textures/torch/torch1_wall.xpm
+NO ./textures/brick_n.png
 
-SO textures/torch/torch1_wall.xpm
 
-WE textures/torch/torch1_wall.xpm
+SO ./textures/brick_s.png
 
-EA textures/torch/torch1_wall.xpm
+WE ./textures/brick_w.png
+
+
+EA ./textures/brick_e.png
 
 
 F 184,113,39
