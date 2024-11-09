@@ -1,5 +1,4 @@
 
-F 210,10,0
 
 NO ./textures/brick_n.png
 SO ./textures/brick_s.png
@@ -7,7 +6,8 @@ WE ./textures/brick_w.png
 EA ./textures/brick_e.png
 
 
-C 25,230,0
+    C 171,219,245
+F 117,98,75
 
 1111111111111111111111111111
 1000000000110000000000000001

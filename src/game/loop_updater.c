@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 14:42:25 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/11/08 17:41:50 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/11/09 18:16:54 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ void clear_image(mlx_image_t *img, uint32_t color)
 		y++;
 	}
 }
-
 
 /*Contains all functions that must be repeated/updated every mlx_loop_hook */
 void	loop_updater(void *param)

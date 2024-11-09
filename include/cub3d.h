@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 15:41:01 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/11/08 17:20:35 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/11/09 18:21:19 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,8 +106,8 @@ typedef struct s_bresenham
 /*---------minimap----------*/
 typedef struct s_mmap
 {
-	uint32_t		x;//coor de tile del minimap
-	uint32_t		y;//coor de tile del minimap
+	uint32_t		x;//minimap tile x coordinate
+	uint32_t		y;//minimap tile y coordinate
 	int				row;
 	int				col;
 	int				map_offset_x;//Map shift to center minimap on the player
@@ -118,10 +118,10 @@ typedef struct s_mmap
 	int				end_row;//Limit of tiles that can be seen on the minimap
 	uint32_t		pl_screen_x;// Player pos in minimap img center
 	uint32_t		pl_screen_y;// Player pos in minimap img center
-	t_bresenham		bres;//Bresenham's algorithm
+	t_bresenham		bres;//Bresenham's algorithm (direction player's line)
 }					t_mmap;
 
-/*-------coordinates expressed in double type------*/
+
 typedef struct s_coord
 {
 	float			x;
@@ -131,11 +131,11 @@ typedef struct s_coord
 /*------------player--------*/
 typedef struct s_player
 {
-	t_coord			pos;//(x,y) coordenada de donde esta ahora
-	t_coord			dir;//(x,y) define el vector de direccion (donde mira)
+	t_coord			pos;//(x,y) player's current position
+	t_coord			dir;//(x,y) player's current direction
 	t_coord			plane;//determina la proyección lateral de la cámara y 
 //							permite simular una vista en 3D
-	char			orientation;//starting orientation: N, S, E, W
+	char			orientation;//initial orientation: N, S, E, W
 }					t_player;
 
 /*------------textures--------*/
@@ -152,7 +152,7 @@ typedef struct	s_textures
 }				t_textures;
 
 /*------------game----------*/
-typedef struct s_game//This will be passed to the raycast
+typedef struct s_game
 {
 	t_parser		parser;//parser data
 	char			**map_arr;//map cells formated 
@@ -177,8 +177,6 @@ int			check_arg_ext(char *str);
 int			lst_creator(t_parser *parser, char *filename);
 int			parse_cub(t_game *game, char *filename);
 int			parse_elements(t_game * game);
-//int			check_element_chars(char *str);
-//int			check_element_path(t_game *game);
 int			set_element(t_game * game, char **elements);
 int			parse_color(t_game * game, char *str, char c);
 int			set_f(t_game * game, char *rgb_canal, int i);
@@ -229,6 +227,12 @@ void		event_listener(t_game *game);
 void 		clear_image(mlx_image_t *img, uint32_t color);
 void		move(t_game *game, float dir_x, float dir_y, float move_speed);
 
+
+/*------------------Raycasting---------------*/
+
+//void		draw_raycasting(t_game *game);
+
+
 /*------------------minimap------------------*/
 void		draw_minimap(t_game *game);
 void 		draw_minimap_tile(mlx_image_t *img_mmap, uint32_t x, uint32_t y, uint32_t color);
@@ -238,13 +242,7 @@ void		draw_minimap_player(t_game *game, uint32_t color);
 void		draw_minimap_direction_line(t_game *game, uint32_t color);
 void		set_bresenham_values(t_game *game);
 
-/*------------------Raycasting---------------*/
-
-//void		draw_raycasting(t_game *game);
-
-
-
-/*------------TEXTURES---------------*/
+/*--------------Textures---------------*/
 
 int			init_textures(t_game *game);
 void		textures_free(t_game *game);

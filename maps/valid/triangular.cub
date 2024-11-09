@@ -8,8 +8,8 @@ SO ./textures/brick_s.png
 WE ./textures/brick_w.png
               EA ./textures/brick_e.png
 
-       F 111,12,2
-C 35,206,215
+       C 171,219,245
+F 117,98,75
 
  1111111111111111111111
 100000000000000000000N1

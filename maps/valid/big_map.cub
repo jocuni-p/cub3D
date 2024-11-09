@@ -1,10 +1,9 @@
 NO ./textures/brick_n.png
 SO ./textures/brick_s.png
-WE ./textures/brick_e.png
-EA ./textures/brick_w.png
-
-F 184,113,39
-C 0,255,0
+WE ./textures/brick_w.png
+EA ./textures/brick_e.png
+C 171,219,245
+F 117,98,75
 
 
 

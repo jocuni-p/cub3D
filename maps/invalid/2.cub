@@ -1,15 +1,11 @@
-NO textures/torch/torch1_wall_1.xpm
-NO textures/torch/torch2_wall_1.xpm
-NO textures/torch/torch3_wall_1.xpm
-SO textures/torch/torch2_wall_2.xpm
-SO textures/torch/torch3_wall_2.xpm
-SO textures/torch/torch1_wall_2.xpm
-WE textures/torch/torch3_wall_3.xpm
-WE textures/torch/torch1_wall_3.xpm
-WE textures/torch/torch2_wall_3.xpm
-EA textures/torch/torch1_wall_3.xpm
-EA textures/torch/torch2_wall_3.xpm
-EA textures/torch/torch3_wall_3.xpm
+NO ./textures/brick_n.png
+SO ./textures/brick_s.png
+WE ./textures/brick_e.png
+EA ./textures/brick_w.png
+NO ./textures/brick_n.png
+SO ./textures/brick_s.png
+WE ./textures/brick_e.png
+EA ./textures/brick_w.png
 
 F 150,75,0
 C 41,117,119

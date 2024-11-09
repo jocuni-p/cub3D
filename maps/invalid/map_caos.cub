@@ -1,3 +1,7 @@
+NO ./textures/brick_n.png
+SO ./textures/brick_s.png
+WE ./textures/brick_e.png
+EA ./textures/brick_w.png
 NO textures/Pac-Man/Ghosts/Panic/ghost_panic1a.xpm
 NO textures/Pac-Man/Ghosts/Panic/ghost_panic1b.xpm
 NO textures/Pac-Man/Ghosts/Panic/ghost_panic2a.xpm
