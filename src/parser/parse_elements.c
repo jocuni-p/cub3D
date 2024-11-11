@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 12:34:56 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/11/09 18:14:07 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/11/11 19:06:06 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,16 +48,16 @@ int	check_setted_elements(t_game *game)
 		&& game->parser.elem.we != NULL && game->parser.elem.ea != NULL \
 		&& game->parser.elem.c_color != 0 && game->parser.elem.f_color != 0)
 	{
-		if ((ft_strcmp(game->parser.elem.no, "./textures/brick_n.png") == 0 \
+/*		if ((ft_strcmp(game->parser.elem.no, "./textures/brick_n.png") == 0 \
 		|| ft_strcmp(game->parser.elem.no, "textures/brick_n.png") == 0) \
 		&& (ft_strcmp(game->parser.elem.so, "./textures/brick_s.png") == 0 \
 		|| ft_strcmp(game->parser.elem.so, "textures/brick_s.png") == 0) \
 		&& (ft_strcmp(game->parser.elem.ea, "./textures/brick_e.png") == 0 \
 		|| ft_strcmp(game->parser.elem.ea, "textures/brick_e.png") == 0) \
 		&& (ft_strcmp(game->parser.elem.we, "./textures/brick_w.png") == 0 \
-		|| ft_strcmp(game->parser.elem.we, "textures/brick_w.png") == 0))
+		|| ft_strcmp(game->parser.elem.we, "textures/brick_w.png") == 0))*/
 			return (0);
-		return (2);
+//		return (2);
 	}
 	return (1);
 }
@@ -77,8 +77,8 @@ int	parse_elements(t_game *game)
 		}
 		if (check_setted_elements(game) == 0)//checks if all elements are already setted properly 
 			return (0);
-		if (check_setted_elements(game) == 2)//if texture path is invalid 
-			return (print_error(ERR_PATH), 1);
+//		if (check_setted_elements(game) == 2)//if texture path is invalid 
+//			return (print_error(ERR_PATH), 1);
 		remove_nl(game->parser.cub->str);
 		elements = ft_split(game->parser.cub->str, ' ');
 		if (arr2d_element_cnt(elements) != 2)

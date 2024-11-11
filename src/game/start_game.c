@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 10:47:00 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/11/08 16:46:51 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/11/11 19:39:43 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,21 @@ int	init_game(t_game *game)
 	draw_background(game);
 	if (mlx_image_to_window(game->mlx, game->img_back, 0, 0) < 0)
 		return (1);
+
+
+//-----ROMAN, this is just a prove to see the textures,
+// please comment this part at your convenience.
+//======================textures TEST==========================
+	if (mlx_image_to_window(game->mlx, game->textures.img_e, 100, 250) < 0)
+		return (1);
+	if (mlx_image_to_window(game->mlx, game->textures.img_w, 550, 250) < 0)
+		return (1);
+	if (mlx_image_to_window(game->mlx, game->textures.img_n, 1000, 250) < 0)
+		return (1);
+	if (mlx_image_to_window(game->mlx, game->textures.img_s, 1450, 250) < 0)
+		return (1);
+//===============================================================
+		
 		
 //=================RAYCASTING - Initial image===================
 /*	game->img_ray = mlx_new_image(game->mlx, WIDTH, HEIGHT);
@@ -84,6 +99,7 @@ int	init_game(t_game *game)
 	if (mlx_image_to_window(game->mlx, game->img_ray, 0, 0) < 0)
 		return (1);
 */
+
 //============================MINIMAP===========================
 	game->img_mmap = mlx_new_image(game->mlx, (WIDTH / 5), (HEIGHT / 5));
 	if (!game->img_mmap)

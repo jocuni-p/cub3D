@@ -1,7 +1,7 @@
-NO ./textures/brick_n.png
-SO ./textures/brick_s.png
-WE ./textures/brick_w.png
-EA ./textures/brick_e.png
+NO ./textures/wood_green.png
+SO ./textures/wood_yellow.png
+WE ./textures/wood_red.png
+EA ./textures/wood_blue.png
 
 
 F 184,113,39

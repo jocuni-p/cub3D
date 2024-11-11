@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 15:41:01 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/11/09 18:21:19 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/11/11 18:58:23 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@
 # define YELLOW "\033[0;93m"
 # define ORANGE "\033[38;5;209m"
 # define DEF_COLOR "\033[0;39m"
+
 /*-------------------Error messages--------------------*/
 
 # define ERR_ARG "Invalid argument number\n"
@@ -86,8 +87,8 @@ typedef struct s_parser
 	int				ply_qty;
 }					t_parser;
 
-/*---Bresenham's algorithm---*/
-//Bresenham's algorithm for drawing lines on a pixel grid.
+
+/*Bresenham's algorithm for drawing lines on a pixel grid.*/
 typedef struct s_bresenham
 {
 	int				x;//initial line's point 
