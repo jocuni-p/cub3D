@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   loop_updater.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
+/*   By: rzhdanov <rzhdanov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 14:42:25 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/11/09 18:16:54 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/11/25 01:40:26 by rzhdanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,19 +43,19 @@ void	loop_updater(void *param)
 
 
 //--------------------RAYCASTING--------------------------
-//	if (game->is_moving)//if any key has been pressed
-//	{
-//		clear_image(game->img_ray, 0x00000000);//Every frame/movement, put all pixels in black color before to be drawn with the right color
-//		draw_raycasting(game); Draw walls with raycasting. It is updated every loop/frame
-//		mlx_image_to_window(game->mlx, game->img_ray, 0, 0);//middle layer
-//	}
+	if (game->is_moving)//if any key has been pressed
+	{
+		clear_image(game->img_ray, 0x00000000);//Every frame/movement, put all pixels in black color before to be drawn with the right color
+		draw_raycasting(game); //Draw walls with raycasting. It is updated every loop/frame
+		// mlx_image_to_window(game->mlx, game->img_ray, 0, 0);//middle layer
+	}
 
 //---------------------MINIMAP----------------------------
 	if (game->is_moving)//if any key has been pressed
 	{
 		clear_image(game->img_mmap, 0x00000000); // Clears the minimap image when a key is pressed
 		draw_minimap(game);
-//		mlx_image_to_window(game->mlx, game->img_mmap, 0, 0);//superficial layer
+		// mlx_image_to_window(game->mlx, game->img_mmap, 0, 0);//superficial layer
 		game->is_moving = false;
 	}
 }
