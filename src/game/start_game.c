@@ -6,7 +6,7 @@
 /*   By: rzhdanov <rzhdanov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 10:47:00 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/11/25 01:44:46 by rzhdanov         ###   ########.fr       */
+/*   Updated: 2024/11/25 02:41:00 by rzhdanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,12 +81,12 @@ int	init_game(t_game *game)
 		
 		
 //=================RAYCASTING - Initial image===================
-	game->rays = malloc(sizeof(t_ray) * WIDTH);
-	if (!game->rays)
+	game->ray = malloc(sizeof(t_ray));
+	if (!game->ray)
 		return (1);
-	initialize_array_of_rays(game->rays, WIDTH);
-	if (!game->rays)
-		return (1);
+	// initialize_array_of_rays(game->rays, WIDTH);
+	// if (!game->rays)
+	// 	return (1);
 
 	game->img_ray = mlx_new_image(game->mlx, WIDTH, HEIGHT);
 	if (!game->img_ray)

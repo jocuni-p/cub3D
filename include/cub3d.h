@@ -6,7 +6,7 @@
 /*   By: rzhdanov <rzhdanov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 15:41:01 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/11/25 01:01:18 by rzhdanov         ###   ########.fr       */
+/*   Updated: 2024/11/25 02:39:22 by rzhdanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -190,7 +190,8 @@ typedef struct s_game
 	t_mmap			mmap;//minimap data
 	t_textures		textures;
 	bool			is_moving;
-	t_ray			**rays;
+	t_ray			*ray;
+	// t_ray			**rays;
 }					t_game;
 
 
@@ -262,12 +263,12 @@ void		move(t_game *game, float dir_x, float dir_y, float move_speed);
 void		initialize_array_of_rays(t_ray **rays, int array_size);
 void		reset_ray_values(t_ray *ray);
 void		free_array_of_rays(t_ray **rays, int array_size);
-void		initialize_raycast_info(int column, t_game *game);
+void		initialize_raycast_info(int column, t_game *game, t_ray *ray);
 void		configure_dda(t_game *game, t_ray *ray);
 void		execute_dda(t_game *game, t_ray *ray);
 void		compute_wall_intersections(t_game *game, t_ray *ray);
 int			execute_raycasting(t_game *game);
-void		draw_wall(t_ray *ray, mlx_image_t *img, int x, int bottom_pixel, int top_pixel);
+void		draw_wall(mlx_image_t *img, int x, int bottom_pixel, int top_pixel, uint32_t color);
 void		render_frame(t_game *game);
 void		draw_raycasting(t_game *game);
 
