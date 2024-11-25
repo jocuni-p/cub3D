@@ -6,7 +6,7 @@
 /*   By: rzhdanov <rzhdanov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 11:28:56 by rzhdanov          #+#    #+#             */
-/*   Updated: 2024/11/25 12:34:48 by rzhdanov         ###   ########.fr       */
+/*   Updated: 2024/11/25 12:38:28 by rzhdanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,10 +86,8 @@ void	initialize_raycast_info(int column, t_game *game, t_ray *ray)
 	// printf("%s FINISHED\n", __func__);
 }
 
-/*
-- Sets up the DDA algorithm based on the ray direction and player's position.
-- Adjusts step and initial side distances in the x and y directions.
-*/
+// Set up the DDA algorithm based on the ray direction and player's positioon
+// Adjust step and initial side distances in  x and y directions.
 
 void	configure_dda(t_game *game, t_ray *ray)
 {
@@ -121,9 +119,9 @@ void	configure_dda(t_game *game, t_ray *ray)
 	// printf("%s FINISHED\n", __func__);
 }
 
-/*
-- Executes the DDA loop to determine the first wall intersection point.
-*/
+
+// Execute the DDA loop to determine the first wall intersection point
+
 
 // void	execute_dda(t_data *game_data, t_ray *ray)
 void	execute_dda(t_game *game, t_ray *ray)
@@ -162,9 +160,7 @@ void	execute_dda(t_game *game, t_ray *ray)
 	// printf("%s FINISHED\n", __func__);
 }
 
-/*
-- Calculates the height of the line to be drawn based on the wall hit point.
-*/
+// Calculate the height of the line to be drawn based on the wall hit point.
 
 void	compute_wall_intersections(t_game *game, t_ray *ray)
 {
@@ -188,6 +184,8 @@ void	compute_wall_intersections(t_game *game, t_ray *ray)
 		ray->wall_hit_x = player->pos.x + ray->wall_distance * ray->direction.x;
 	ray->wall_hit_x -= floor(ray->wall_hit_x);
 }
+
+// One function to bind them all
 
 int execute_raycasting(t_game *game)
 {
@@ -221,16 +219,16 @@ int execute_raycasting(t_game *game)
 		if (ray->side == 0) // Hit a vertical wall (North or South)
 		{
 			if (ray->step_x > 0) // Ray moving to the East
-				texture = game->textures.text_e; // Red for East
+				texture = game->textures.text_e; 
 			else // Ray moving to the West
-				texture = game->textures.text_w; // Green for West
+				texture = game->textures.text_w; 
 		}
 		else // Hit a horizontal wall (East or West)
 		{
 			if (ray->step_y > 0) // Ray moving to the South
-				texture = game->textures.text_s; // Blue for South
+				texture = game->textures.text_s; 
 			else // Ray moving to the North
-				texture = game->textures.text_n; // Yellow for North
+				texture = game->textures.text_n;
 		}
 		draw_wall(ray, game->img_ray, texture, column, ray->bottom_pixel, ray->top_pixel);
 	}
