@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
+/*   By: rzhdanov <rzhdanov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 15:41:01 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/11/11 18:58:23 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/11/25 04:22:46 by rzhdanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,11 +133,37 @@ typedef struct s_coord
 typedef struct s_player
 {
 	t_coord			pos;//(x,y) player's current position
+	t_coord			orig_pos;// (x,y) player's original position
 	t_coord			dir;//(x,y) player's current direction
+	t_coord			orig_dir;// (x,y) player's original position
 	t_coord			plane;//determina la proyección lateral de la cámara y 
 //							permite simular una vista en 3D
 	char			orientation;//initial orientation: N, S, E, W
+	float			speed;
+	float			rotation_speed;
+	bool			is_running;
 }					t_player;
+
+/*------------ray--------*/
+typedef struct s_ray
+{
+	float	camera_offset;		// Camera position offset for the current ray
+	t_coord	direction;			// Ray's coordinates
+	int		grid_x;				// Current grid cell x-coordinate
+	int		grid_y;				// Current grid cell y-coordinate
+	int		step_x;				// Step direction in x-axis (+1 or -1)
+	int		step_y;				// Step direction in y-axis (+1 or -1)
+	float	side_dist_x;		// Distance to the next x-side of the grid
+	float	side_dist_y;		// Distance to the next y-side of the grid
+	float	delta_dist_x;		// Distance between x-sides of the grid
+	float	delta_dist_y;		// Distance between y-sides of the grid
+	float	wall_distance;		// Distance to the wall hit by the ray
+	float	wall_hit_x;			// Exact x-coordinate of the wall hit
+	int		side;				// 0 if the wall hit is vertical, 1 if horizontal
+	int		wall_height;		// Height of the wall line to draw
+	int		bottom_pixel;		// Starting pixel for the wall line
+	int		top_pixel;			// Ending pixel for the wall line
+}	t_ray;
 
 /*------------textures--------*/
 typedef struct	s_textures
@@ -167,7 +193,8 @@ typedef struct s_game
 	t_mmap			mmap;//minimap data
 	t_textures		textures;
 	bool			is_moving;
-	
+	t_ray			*ray;
+	// t_ray			**rays;
 }					t_game;
 
 
@@ -220,18 +247,35 @@ void 		error_mlx(t_game *game);
 
 int			start_game(t_game *game);
 int			init_game(t_game *game);
-void 		set_player_direction(t_game *game);
+void 		init_player_values(t_game *game);
+void		reset_player_direction(t_game *game);
+void		set_direction_north(t_game *game);
+void		set_direction_south(t_game *game);
+void		set_direction_east(t_game *game);
+void		set_direction_west(t_game *game);
 int			init_textures(t_game *game);
 void 		draw_background(t_game *game);
 void		loop_updater(void *param);
 void		event_listener(t_game *game);
 void 		clear_image(mlx_image_t *img, uint32_t color);
 void		move(t_game *game, float dir_x, float dir_y, float move_speed);
+void		teleport_to_original_position (t_game *game);
+
 
 
 /*------------------Raycasting---------------*/
 
-//void		draw_raycasting(t_game *game);
+//functions from ./raycast.c
+void		initialize_array_of_rays(t_ray **rays, int array_size);
+void		reset_ray_values(t_ray *ray);
+void		free_array_of_rays(t_ray **rays, int array_size);
+void		initialize_raycast_info(int column, t_game *game, t_ray *ray);
+void		configure_dda(t_game *game, t_ray *ray);
+void		execute_dda(t_game *game, t_ray *ray);
+void		compute_wall_intersections(t_game *game, t_ray *ray);
+int			execute_raycasting(t_game *game);
+void		draw_wall(t_ray *ray, mlx_image_t *img, mlx_texture_t *texture, int column, int bottom_pixel, int top_pixel);
+void		render_frame(t_game *game);
 
 
 /*------------------minimap------------------*/

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   start_game.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
+/*   By: rzhdanov <rzhdanov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 10:47:00 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/11/11 19:39:43 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/11/25 12:32:34 by rzhdanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,34 +37,31 @@ int	init_textures(t_game *game)
 	return (0);
 }
 
-void set_player_direction(t_game *game)
+void	init_player_values(t_game *game)
 {
-    if (game->player.orientation == 'N')//player looks to NORTH (0, -1)
-	{
-        game->player.dir.x = 0;
-        game->player.dir.y = -1;
-    }
+	game->player.is_running = false; // probably do a standalone init function
+									// or rename this one
+	game->player.speed = SPEED;
+	game->player.rotation_speed = ROTATION_SPEED;
+	reset_player_direction(game);
+}
+
+void	reset_player_direction(t_game *game)
+{
+	if (game->player.orientation == 'N')//player looks to NORTH (0, -1)
+		set_direction_north(game);
 	else if (game->player.orientation == 'S')//player looks to SOUTH (0, 1)
-	{
-        game->player.dir.x = 0;
-        game->player.dir.y = 1;
-    }
+		set_direction_south(game);
 	else if (game->player.orientation == 'E')//player looks to EAST (1, 0)
-	{
-        game->player.dir.x = 1;
-        game->player.dir.y = 0;
-    }
+		set_direction_east(game);
 	else if (game->player.orientation == 'W')//player looks to WEST (-1, 0)
-	{
-        game->player.dir.x = -1;
-        game->player.dir.y = 0;
-    }
+		set_direction_west(game);
 }
 
 int	init_game(t_game *game)
 {
 	game->is_moving = 1;//flag to ensure that the images which have changed will be redrawn on the next loop
-	set_player_direction(game);
+	init_player_values(game);
 	if (init_textures(game))
 		return (1);
 	
@@ -75,30 +72,35 @@ int	init_game(t_game *game)
 	draw_background(game);
 	if (mlx_image_to_window(game->mlx, game->img_back, 0, 0) < 0)
 		return (1);
-
-
 //-----ROMAN, this is just a prove to see the textures,
 // please comment this part at your convenience.
 //======================textures TEST==========================
-	if (mlx_image_to_window(game->mlx, game->textures.img_e, 100, 250) < 0)
-		return (1);
-	if (mlx_image_to_window(game->mlx, game->textures.img_w, 550, 250) < 0)
-		return (1);
-	if (mlx_image_to_window(game->mlx, game->textures.img_n, 1000, 250) < 0)
-		return (1);
-	if (mlx_image_to_window(game->mlx, game->textures.img_s, 1450, 250) < 0)
-		return (1);
+	// if (mlx_image_to_window(game->mlx, game->textures.img_e, 100, 250) < 0)
+	// 	return (1);
+	// if (mlx_image_to_window(game->mlx, game->textures.img_w, 550, 250) < 0)
+	// 	return (1);
+	// if (mlx_image_to_window(game->mlx, game->textures.img_n, 1000, 250) < 0)
+	// 	return (1);
+	// if (mlx_image_to_window(game->mlx, game->textures.img_s, 1450, 250) < 0)
+	// 	return (1);
 //===============================================================
 		
 		
 //=================RAYCASTING - Initial image===================
-/*	game->img_ray = mlx_new_image(game->mlx, WIDTH, HEIGHT);
+	game->ray = malloc(sizeof(t_ray));
+	if (!game->ray)
+		return (1);
+	// initialize_array_of_rays(game->rays, WIDTH);
+	// if (!game->rays)
+	// 	return (1);
+
+	game->img_ray = mlx_new_image(game->mlx, WIDTH, HEIGHT);
 	if (!game->img_ray)
 		return (1);
-//	draw_raycasting(game);//MISSING CODE
+	execute_raycasting(game);//MISSING CODE
+	// printf("called execute_raycasting\n");
 	if (mlx_image_to_window(game->mlx, game->img_ray, 0, 0) < 0)
 		return (1);
-*/
 
 //============================MINIMAP===========================
 	game->img_mmap = mlx_new_image(game->mlx, (WIDTH / 5), (HEIGHT / 5));

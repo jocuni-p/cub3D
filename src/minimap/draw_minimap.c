@@ -26,8 +26,8 @@ void draw_minimap_tile(mlx_image_t *img_mmap, uint32_t x, uint32_t y,
         while (j < MINIMAP_TILE_SIZE)
         {
             //Draws only the pixels located inside the mini_map limits
-            if ((uint32_t)x + i >= 0 && (uint32_t)x + i < img_mmap->width \
-			&& (uint32_t)y + j >= 0 && (uint32_t)y + j < img_mmap->height)
+            if ((uint32_t)x + i < img_mmap->width \
+			&& (uint32_t)y + j < img_mmap->height)
                 mlx_put_pixel(img_mmap, x + i, y + j, color);
             j++;
         }
@@ -77,8 +77,8 @@ void	draw_minimap_only_visible_tiles(t_game *game)
             game->mmap.y = \
 			(game->mmap.row * MINIMAP_TILE_SIZE) - game->mmap.map_offset_y;
             // Dibujar el tile solo si está dentro de los límites del minimapa
-        	if (game->mmap.x >= 0 && game->mmap.x < game->img_mmap->width \
-			&& game->mmap.y >= 0 && game->mmap.y < game->img_mmap->height)
+        	if (game->mmap.x < game->img_mmap->width \
+			&& game->mmap.y < game->img_mmap->height)
 			{
             	if (game->map_arr[game->mmap.row][game->mmap.col] == '1' \
 				|| game->map_arr[game->mmap.row][game->mmap.col] == ' ')

@@ -23,7 +23,7 @@ int	set_c(t_game *game, char *rgb_canal, int i)
 	uint32_t	nbr;
 
 	nbr = (uint32_t)ft_atoi(rgb_canal);
-	if (nbr < 0 || nbr > 255)
+	if (nbr > 255)
 		return (1);
 	if (i == 0)
 		game->parser.elem.rgb_c[0] = nbr;
@@ -48,7 +48,7 @@ int	set_f(t_game *game, char *rgb_canal, int i)
 	uint32_t	nbr;
 
 	nbr = (uint32_t)ft_atoi(rgb_canal);
-	if (nbr < 0 || nbr > 255)
+	if (nbr > 255)
 		return (1);
 	if (i == 0)
 		game->parser.elem.rgb_f[0] = nbr;

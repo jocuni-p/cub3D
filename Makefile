@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+         #
+#    By: rzhdanov <rzhdanov@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/26 17:23:07 by jocuni-p          #+#    #+#              #
-#    Updated: 2024/11/08 22:29:04 by jocuni-p         ###   ########.fr        #
+#    Updated: 2024/11/25 04:22:46 by rzhdanov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -70,14 +70,16 @@ SRCS_UTILS := 		./src/utils/arr2d_element_cnt.c \
 SRCS_GAME :=		./src/game/draw_background.c \
 					./src/game/start_game.c \
 					./src/game/loop_updater.c \
-					./src/game/movement.c
+					./src/game/movement.c \
+					./src/game/reset_player_direction.c
 
 SRCS_MINIMAP :=		./src/minimap/draw_minimap.c \
 					./src/minimap/draw_minimap_player.c
 
+SRCS_RAYCAST :=		./src/raycast/raycast.c
 
 # Puts together all src files
-SRCS := ./src/main.c $(SRCS_LST) $(SRCS_PARSER) $(SRCS_PRINT_TESTS) $(SRCS_UTILS) $(SRCS_MINIMAP) $(SRCS_GAME)#$(SRCS_MINIMAP)
+SRCS := ./src/main.c $(SRCS_LST) $(SRCS_PARSER) $(SRCS_PRINT_TESTS) $(SRCS_UTILS) $(SRCS_MINIMAP) $(SRCS_GAME) $(SRCS_RAYCAST)#$(SRCS_MINIMAP)
 
 # Object files
 OBJS := $(SRCS:.c=.o)

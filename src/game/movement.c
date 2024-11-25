@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   movement.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
+/*   By: rzhdanov <rzhdanov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 12:19:47 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/11/08 17:12:12 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/11/25 12:31:54 by rzhdanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,27 +67,45 @@ void	event_listener(t_game *game)
 /*Si se presiona la tecla W, el jugador se mueve hacia adelante en la 
 dirección actual a donde mira. move toma las coordenadas de la dirección del jugador 
 (scene->player.dir.x y scene->player.dir.y) y SPEED ajusta la velocidad de movimiento.*/
-	if(mlx_is_key_down(game->mlx, MLX_KEY_W))
-		move(game, game->player.dir.x, game->player.dir.y, SPEED);//moves towards palyer.dir
+	if(mlx_is_key_down(game->mlx, MLX_KEY_W) || mlx_is_key_down(game->mlx, MLX_KEY_UP))
+		move(game, game->player.dir.x, game->player.dir.y, game->player.speed);//moves towards palyer.dir
 		
 /*Si se presiona la tecla S, el jugador se mueve hacia atrás. 
 Aquí, se invierte la dirección multiplicando por -1 los componentes
  x e y de la dirección del jugador.*/
-	if(mlx_is_key_down(game->mlx, MLX_KEY_S))
-		move(game, -game->player.dir.x, -game->player.dir.y, SPEED);
+	if(mlx_is_key_down(game->mlx, MLX_KEY_S) || mlx_is_key_down(game->mlx, MLX_KEY_DOWN))
+		move(game, -game->player.dir.x, -game->player.dir.y, game->player.speed);
 	if(mlx_is_key_down(game->mlx, MLX_KEY_A))
-		move(game, game->player.dir.y, -game->player.dir.x, SPEED);
+		move(game, game->player.dir.y, -game->player.dir.x, game->player.speed);
 		
 	if(mlx_is_key_down(game->mlx, MLX_KEY_D))
-		move(game, -game->player.dir.y, game->player.dir.x, SPEED);
+		move(game, -game->player.dir.y, game->player.dir.x, game->player.speed);
 
 	if (mlx_is_key_down(game->mlx, MLX_KEY_LEFT))
-		rotate(game, -ROTATION_SPEED * 80);//angulo de giro para el player y el plane
+		rotate(game, -game->player.rotation_speed * 80);//angulo de giro para el player y el plane
 	if (mlx_is_key_down(game->mlx, MLX_KEY_RIGHT))
-		rotate(game, ROTATION_SPEED * 80);//angulo de giro para el player y el plane
+		rotate(game, game->player.rotation_speed * 80);//angulo de giro para el player y el plane
+	if (mlx_is_key_down(game->mlx, MLX_KEY_Y))
+		teleport_to_original_position(game);
+	if(mlx_is_key_down(game->mlx, MLX_KEY_LEFT_SHIFT) && !game->player.is_running)
+	{
+		game->player.speed *= 2;
+		game->player.rotation_speed += ROTATION_SPEED / 2;
+		game->player.is_running = true;
+	} //TODO FOR ROMAN
+	
+	if(!mlx_is_key_down(game->mlx, MLX_KEY_LEFT_SHIFT) && game->player.is_running)
+	{
+		game->player.speed *= 0.5;
+		game->player.rotation_speed -= ROTATION_SPEED / 2;
+		game->player.is_running = false;
+	}
+}
 
-//	if(mlx_is_key_put_down(game->mlx, MLX_KEY_SHFT)) //TODO FOR ROMAN
-//		SPEED *= 2;
-//	if(mlx_is_key_put_up(game->mlx, MLX_KEY_SHFT))
-//		SPEED *= 0.5;
+void	teleport_to_original_position (t_game *game)
+{
+	reset_player_direction(game);
+	game->player.pos.x = game->player.orig_pos.x;
+	game->player.pos.y = game->player.orig_pos.y;
+	game->is_moving = true;
 }

@@ -15,5 +15,8 @@
 /*------Prints an error message-----*/
 void	print_error(char *str)
 {
-	write(2, str, ft_strlen(str));
+	int	i;
+
+	i = write(2, str, ft_strlen(str));
+	(void)i;
 }
