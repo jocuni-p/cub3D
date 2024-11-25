@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   init_game.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
+/*   By: rzhdanov <rzhdanov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 16:45:44 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/10/30 17:16:37 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/11/25 04:22:46 by rzhdanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 /*
-void set_player_direction(t_game *game, char orientation)
+void reset_player_direction(t_game *game, char orientation)
 {
     if (orientation == 'N') {
         game->player.dir.x = 0;
@@ -35,7 +35,7 @@ int	init_game(mlx_t *mlx, t_game *game)
 	game->is_moving = 1;//it means that the images must be redrawn 
 	game->player.dir.x = 0;//player looks to EAST (1, 0) as a starting value
 	game->player.dir.y = -1;
-//	set_player_direction(game, game->player.orientation);
+//	reset_player_direction(game, game->player.orientation);
 	
 	
 /*=========================BACKGROUND=========================*/	
@@ -51,7 +51,7 @@ int	init_game(mlx_t *mlx, t_game *game)
 //	game->img_ray = mlx_new_image(mlx, 1000, 500);
 //	if (!game->img_ray)
 //		return (error(), 1);
-//	draw_raycasting(game);
+//	execute_raycasting(game);
 
 
 /*============================MINIMAP===========================*/

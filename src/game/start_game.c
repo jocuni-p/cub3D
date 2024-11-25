@@ -6,7 +6,7 @@
 /*   By: rzhdanov <rzhdanov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 10:47:00 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/11/25 02:41:00 by rzhdanov         ###   ########.fr       */
+/*   Updated: 2024/11/25 04:23:01 by rzhdanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,19 +37,25 @@ int	init_textures(t_game *game)
 	return (0);
 }
 
-void init_player_values(t_game *game)
+void	init_player_values(t_game *game)
 {
 	game->player.is_running = false; // probably do a standalone init function
 									// or rename this one
 	game->player.speed = SPEED;
-    if (game->player.orientation == 'N')//player looks to NORTH (0, -1)
-		set_player_direction_north(game);
+	game->player.rotation_speed = ROTATION_SPEED;
+	reset_player_direction(game);
+}
+
+void	reset_player_direction(t_game *game)
+{
+	if (game->player.orientation == 'N')//player looks to NORTH (0, -1)
+		set_direction_north(game);
 	else if (game->player.orientation == 'S')//player looks to SOUTH (0, 1)
-		set_player_direction_south(game);
+		set_direction_south(game);
 	else if (game->player.orientation == 'E')//player looks to EAST (1, 0)
-		set_player_direction_east(game);
+		set_direction_east(game);
 	else if (game->player.orientation == 'W')//player looks to WEST (-1, 0)
-		set_player_direction_west(game);
+		set_direction_west(game);
 }
 
 int	init_game(t_game *game)
@@ -91,8 +97,8 @@ int	init_game(t_game *game)
 	game->img_ray = mlx_new_image(game->mlx, WIDTH, HEIGHT);
 	if (!game->img_ray)
 		return (1);
-	draw_raycasting(game);//MISSING CODE
-	// printf("called draw_raycasting\n");
+	execute_raycasting(game);//MISSING CODE
+	// printf("called execute_raycasting\n");
 	if (mlx_image_to_window(game->mlx, game->img_ray, 0, 0) < 0)
 		return (1);
 

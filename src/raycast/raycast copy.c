@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   raycast.c                                          :+:      :+:    :+:   */
+/*   raycast copy.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rzhdanov <rzhdanov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 11:28:56 by rzhdanov          #+#    #+#             */
-/*   Updated: 2024/11/25 01:51:22 by rzhdanov         ###   ########.fr       */
+/*   Updated: 2024/11/25 03:43:39 by rzhdanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -503,7 +503,7 @@ void	render_frame(t_game *game)
 // 	return (0);
 // }
 
-void	draw_raycasting(t_game *game)
+void	execute_raycastin(t_game *game)
 {
 	execute_raycasting(game);
 	// printf("execute_raycasting_complete\n");

@@ -6,7 +6,7 @@
 /*   By: rzhdanov <rzhdanov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 12:19:47 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/11/25 02:17:01 by rzhdanov         ###   ########.fr       */
+/*   Updated: 2024/11/25 04:23:30 by rzhdanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,19 +82,30 @@ Aquí, se invierte la dirección multiplicando por -1 los componentes
 		move(game, -game->player.dir.y, game->player.dir.x, game->player.speed);
 
 	if (mlx_is_key_down(game->mlx, MLX_KEY_LEFT))
-		rotate(game, -ROTATION_SPEED * 80);//angulo de giro para el player y el plane
+		rotate(game, -game->player.rotation_speed * 80);//angulo de giro para el player y el plane
 	if (mlx_is_key_down(game->mlx, MLX_KEY_RIGHT))
-		rotate(game, ROTATION_SPEED * 80);//angulo de giro para el player y el plane
-
+		rotate(game, game->player.rotation_speed * 80);//angulo de giro para el player y el plane
+	if (mlx_is_key_down(game->mlx, MLX_KEY_Y))
+		teleport_to_original_position(game);
 	if(mlx_is_key_down(game->mlx, MLX_KEY_LEFT_SHIFT) && !game->player.is_running)
 	{
 		game->player.speed *= 2;
+		game->player.rotation_speed += ROTATION_SPEED / 2;
 		game->player.is_running = true;
 	} //TODO FOR ROMAN
 	
 	if(!mlx_is_key_down(game->mlx, MLX_KEY_LEFT_SHIFT) && game->player.is_running)
 	{
 		game->player.speed *= 0.5;
+		game->player.rotation_speed -= ROTATION_SPEED / 2;
 		game->player.is_running = false;
 	}
+}
+
+void	teleport_to_original_position (t_game *game)
+{
+	reset_player_direction(game);
+	game->player.pos.x = game->player.orig_pos.x;
+	game->player.pos.y = game->player.orig_pos.y;
+	game->is_moving = true;
 }

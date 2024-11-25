@@ -52,7 +52,7 @@ int	start_game(t_game *game)
 	return (0);
 }
 
-void set_player_direction(t_game *game, char orientation)
+void reset_player_direction(t_game *game, char orientation)
 {
     if (orientation == 'N') {
         game->player.dir.x = 0;
@@ -74,7 +74,7 @@ int	init_game(mlx_t *mlx, t_game *game)
 	game->mlx = mlx;
 	game->is_moving = 1;//it means that the images must be redrawn 
 //	game->player.dir.x = 1;//player looks to EAST (1, 0) as a starting value
-	set_player_direction(game, game->player.orientation);
+	reset_player_direction(game, game->player.orientation);
 	
 /*-----BACKGROUND img declaration, painting and putting into the mlx window-------*/	
 	game->img_back = mlx_new_image(mlx, 1000, 500);
@@ -89,7 +89,7 @@ int	init_game(mlx_t *mlx, t_game *game)
 //	game->img_ray = mlx_new_image(mlx, 1000, 500);
 //	if (!game->img_ray)
 //		return (error(), 1);
-//	draw_raycasting(game);/*---RAYCASTING CODE IS PENDING------*/
+//	execute_raycasting(game);/*---RAYCASTING CODE IS PENDING------*/
 
 
 /*-----MINIMAP img declaration, painting and putting into the mlx window-------*/

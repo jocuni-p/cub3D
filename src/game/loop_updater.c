@@ -6,7 +6,7 @@
 /*   By: rzhdanov <rzhdanov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 14:42:25 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/11/25 02:09:53 by rzhdanov         ###   ########.fr       */
+/*   Updated: 2024/11/25 03:43:20 by rzhdanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	loop_updater(void *param)
 	if (game->is_moving)//if any key has been pressed
 	{
 		clear_image(game->img_ray, 0x00000000);//Every frame/movement, put all pixels in black color before to be drawn with the right color
-		draw_raycasting(game); //Draw walls with raycasting. It is updated every loop/frame
+		execute_raycasting(game); //Draw walls with raycasting. It is updated every loop/frame
 		// mlx_image_to_window(game->mlx, game->img_ray, 0, 0);//middle layer
 	}
 

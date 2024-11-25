@@ -6,7 +6,7 @@
 /*   By: rzhdanov <rzhdanov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 15:41:01 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/11/25 02:39:22 by rzhdanov         ###   ########.fr       */
+/*   Updated: 2024/11/25 04:22:46 by rzhdanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,11 +133,14 @@ typedef struct s_coord
 typedef struct s_player
 {
 	t_coord			pos;//(x,y) player's current position
+	t_coord			orig_pos;// (x,y) player's original position
 	t_coord			dir;//(x,y) player's current direction
+	t_coord			orig_dir;// (x,y) player's original position
 	t_coord			plane;//determina la proyección lateral de la cámara y 
 //							permite simular una vista en 3D
 	char			orientation;//initial orientation: N, S, E, W
 	float			speed;
+	float			rotation_speed;
 	bool			is_running;
 }					t_player;
 
@@ -245,16 +248,19 @@ void 		error_mlx(t_game *game);
 int			start_game(t_game *game);
 int			init_game(t_game *game);
 void 		init_player_values(t_game *game);
-void		set_player_direction_north(t_game *game);
-void		set_player_direction_south(t_game *game);
-void		set_player_direction_east(t_game *game);
-void		set_player_direction_west(t_game *game);
+void		reset_player_direction(t_game *game);
+void		set_direction_north(t_game *game);
+void		set_direction_south(t_game *game);
+void		set_direction_east(t_game *game);
+void		set_direction_west(t_game *game);
 int			init_textures(t_game *game);
 void 		draw_background(t_game *game);
 void		loop_updater(void *param);
 void		event_listener(t_game *game);
 void 		clear_image(mlx_image_t *img, uint32_t color);
 void		move(t_game *game, float dir_x, float dir_y, float move_speed);
+void		teleport_to_original_position (t_game *game);
+
 
 
 /*------------------Raycasting---------------*/
@@ -268,9 +274,8 @@ void		configure_dda(t_game *game, t_ray *ray);
 void		execute_dda(t_game *game, t_ray *ray);
 void		compute_wall_intersections(t_game *game, t_ray *ray);
 int			execute_raycasting(t_game *game);
-void		draw_wall(mlx_image_t *img, int x, int bottom_pixel, int top_pixel, uint32_t color);
+void		draw_wall(t_ray *ray, mlx_image_t *img, mlx_texture_t *texture, int column, int bottom_pixel, int top_pixel);
 void		render_frame(t_game *game);
-void		draw_raycasting(t_game *game);
 
 
 /*------------------minimap------------------*/
