@@ -6,7 +6,7 @@
 /*   By: rzhdanov <rzhdanov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 15:33:39 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/11/25 04:17:22 by rzhdanov         ###   ########.fr       */
+/*   Updated: 2024/11/25 12:34:33 by rzhdanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ void	get_player_pos(t_game *game, int x, int y)
 	{
 		game->player.pos.x = (float)x + 0.5;//Para centrar la posicion original en la celda
 		game->player.pos.y = (float)y + 0.5;//Para centrar la posicion original en la celda
-		game->player.orig_pos.x = game->player.pos.x;
-		game->player.orig_pos.y = game->player.pos.y;
+		game->player.orig_pos.x = game->player.pos.x; //added to enable teleport to starting position
+		game->player.orig_pos.y = game->player.pos.y; //added to enable teleport to starting position
 	}
 }
 
