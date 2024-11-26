@@ -6,7 +6,7 @@
 /*   By: rzhdanov <rzhdanov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 12:19:47 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/11/25 12:31:54 by rzhdanov         ###   ########.fr       */
+/*   Updated: 2024/11/26 23:40:09 by rzhdanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,47 +59,103 @@ void rotate(t_game *game, float angle)
 	game->is_moving = true;
 }
 
-void	event_listener(t_game *game)
-{
-	if(mlx_is_key_down(game->mlx, MLX_KEY_ESCAPE))
-		error_mlx(game);
-
 /*Si se presiona la tecla W, el jugador se mueve hacia adelante en la 
 dirección actual a donde mira. move toma las coordenadas de la dirección del jugador 
 (scene->player.dir.x y scene->player.dir.y) y SPEED ajusta la velocidad de movimiento.*/
-	if(mlx_is_key_down(game->mlx, MLX_KEY_W) || mlx_is_key_down(game->mlx, MLX_KEY_UP))
-		move(game, game->player.dir.x, game->player.dir.y, game->player.speed);//moves towards palyer.dir
-		
+
 /*Si se presiona la tecla S, el jugador se mueve hacia atrás. 
 Aquí, se invierte la dirección multiplicando por -1 los componentes
  x e y de la dirección del jugador.*/
+
+// If we add much more functionality, we will need to split the event listener down into
+// several parts, one for each group of keys, e.g. AWSD + up + down
+// move 
+
+void	try_to_move_forward(t_game *game)
+{
+	if(mlx_is_key_down(game->mlx, MLX_KEY_W) || mlx_is_key_down(game->mlx, MLX_KEY_UP))
+		move(game, game->player.dir.x, game->player.dir.y, game->player.speed);//moves towards palyer.dir
+}
+
+void	try_to_move_backward(t_game *game)
+{
 	if(mlx_is_key_down(game->mlx, MLX_KEY_S) || mlx_is_key_down(game->mlx, MLX_KEY_DOWN))
 		move(game, -game->player.dir.x, -game->player.dir.y, game->player.speed);
+}
+
+void	try_to_strafe(t_game *game)
+{
 	if(mlx_is_key_down(game->mlx, MLX_KEY_A))
 		move(game, game->player.dir.y, -game->player.dir.x, game->player.speed);
-		
 	if(mlx_is_key_down(game->mlx, MLX_KEY_D))
 		move(game, -game->player.dir.y, game->player.dir.x, game->player.speed);
+}
 
+void	try_to_rotate(t_game *game)
+{
 	if (mlx_is_key_down(game->mlx, MLX_KEY_LEFT))
 		rotate(game, -game->player.rotation_speed * 80);//angulo de giro para el player y el plane
 	if (mlx_is_key_down(game->mlx, MLX_KEY_RIGHT))
 		rotate(game, game->player.rotation_speed * 80);//angulo de giro para el player y el plane
+}
+
+void	try_to_teleport(t_game *game)
+{
 	if (mlx_is_key_down(game->mlx, MLX_KEY_Y))
 		teleport_to_original_position(game);
+}
+
+void	try_to_run(t_game *game)
+{
 	if(mlx_is_key_down(game->mlx, MLX_KEY_LEFT_SHIFT) && !game->player.is_running)
-	{
-		game->player.speed *= 2;
-		game->player.rotation_speed += ROTATION_SPEED / 2;
-		game->player.is_running = true;
-	} //TODO FOR ROMAN
-	
+		sprint_on(game);
 	if(!mlx_is_key_down(game->mlx, MLX_KEY_LEFT_SHIFT) && game->player.is_running)
-	{
-		game->player.speed *= 0.5;
-		game->player.rotation_speed -= ROTATION_SPEED / 2;
-		game->player.is_running = false;
-	}
+		sprint_off(game);
+}
+
+void	process_movement(t_game *game)
+{
+	try_to_move_forward(game);
+	try_to_move_backward(game);
+	try_to_strafe(game);
+	try_to_rotate(game);
+	try_to_run(game);
+	try_to_teleport(game);
+}
+
+void	event_listener(t_game *game)
+{
+	if(mlx_is_key_down(game->mlx, MLX_KEY_ESCAPE))
+		error_mlx(game);
+	process_movement(game);
+	// if(mlx_is_key_down(game->mlx, MLX_KEY_W) || mlx_is_key_down(game->mlx, MLX_KEY_UP))
+	// 	move(game, game->player.dir.x, game->player.dir.y, game->player.speed);//moves towards palyer.dir
+	// if(mlx_is_key_down(game->mlx, MLX_KEY_S) || mlx_is_key_down(game->mlx, MLX_KEY_DOWN))
+	// 	move(game, -game->player.dir.x, -game->player.dir.y, game->player.speed);
+	// if(mlx_is_key_down(game->mlx, MLX_KEY_A))
+	// 	move(game, game->player.dir.y, -game->player.dir.x, game->player.speed);
+	// if(mlx_is_key_down(game->mlx, MLX_KEY_D))
+	// 	move(game, -game->player.dir.y, game->player.dir.x, game->player.speed);
+	// if (mlx_is_key_down(game->mlx, MLX_KEY_Y))
+	// 	teleport_to_original_position(game);
+	// if(mlx_is_key_down(game->mlx, MLX_KEY_LEFT_SHIFT) && !game->player.is_running)
+	// 	sprint_on(game);
+	// if(!mlx_is_key_down(game->mlx, MLX_KEY_LEFT_SHIFT) && game->player.is_running)
+	// 	sprint_off(game);
+}
+
+void	sprint_on(t_game *game)
+{
+	game->player.speed *= 2;
+	game->player.rotation_speed += ROTATION_SPEED / 2;
+	game->player.is_running = true;
+}
+
+void	sprint_off(t_game *game)
+{
+	game->player.speed *= 0.5;
+	game->player.rotation_speed -= ROTATION_SPEED / 2;
+	game->player.is_running = false;
 }
 
 void	teleport_to_original_position (t_game *game)

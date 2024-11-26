@@ -6,7 +6,7 @@
 /*   By: rzhdanov <rzhdanov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 11:28:56 by rzhdanov          #+#    #+#             */
-/*   Updated: 2024/11/25 12:38:28 by rzhdanov         ###   ########.fr       */
+/*   Updated: 2024/11/26 23:41:01 by rzhdanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,24 @@
 
 #include "../include/cub3d.h"
 
-void	initialize_array_of_rays(t_ray **rays, int array_size)
-{
-	int i;
+// void	initialize_array_of_rays(t_ray **rays, int array_size)
+// {
+// 	int i;
 
-	i = -1;
-	// printf("%s STARTED\n", __func__);
-	while (++i < array_size)
-	{
-		rays[i] = malloc(sizeof(t_ray));
-		if (!rays[i])
-		{
-			free_array_of_rays(rays, i);
-			printf("Failed to allocate memory for ray No %d\n", i);
-			return ;
-		}
-	}
-	// printf("%s FINISHED\n", __func__);
-}
+// 	i = -1;
+// 	// printf("%s STARTED\n", __func__);
+// 	while (++i < array_size)
+// 	{
+// 		rays[i] = malloc(sizeof(t_ray));
+// 		if (!rays[i])
+// 		{
+// 			free_array_of_rays(rays, i);
+// 			printf("Failed to allocate memory for ray No %d\n", i);
+// 			return ;
+// 		}
+// 	}
+// 	// printf("%s FINISHED\n", __func__);
+// }
 
 void	reset_ray_values(t_ray *ray)
 {
@@ -55,14 +55,13 @@ void	reset_ray_values(t_ray *ray)
 }
 
 /* Struct freeing functions */
-void	free_array_of_rays(t_ray **rays, int array_size)
+void	ray_free(t_game *game)
 {
-	int	i;
-
-	i = -1;
-	while (++i < array_size)
-		free(rays[i]);
-	free(rays);
+	if (game->ray)
+	{
+		free(game->ray);
+		game->ray = NULL;
+	}
 }
 
 /* Ray casting functions */

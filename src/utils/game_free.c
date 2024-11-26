@@ -25,4 +25,6 @@ void	game_free(t_game *game)
 	parser_free(game);
 	arr2d_free(&game->map_arr);
 	textures_free(game);
+	ray_free(game);
+	// free(game);
 }

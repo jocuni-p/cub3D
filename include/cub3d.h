@@ -6,7 +6,7 @@
 /*   By: rzhdanov <rzhdanov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 15:41:01 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/11/25 04:22:46 by rzhdanov         ###   ########.fr       */
+/*   Updated: 2024/11/26 23:38:00 by rzhdanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -260,6 +260,15 @@ void		event_listener(t_game *game);
 void 		clear_image(mlx_image_t *img, uint32_t color);
 void		move(t_game *game, float dir_x, float dir_y, float move_speed);
 void		teleport_to_original_position (t_game *game);
+void		process_movement(t_game *game);
+void		try_to_move_forward(t_game *game);
+void		try_to_move_backward(t_game *game);
+void		try_to_run(t_game *game);
+void		sprint_on(t_game *game);
+void		sprint_off(t_game *game);
+void		try_to_strafe(t_game *game);
+void		try_to_rotate(t_game *game);
+void		try_to_teleport(t_game *game);
 
 
 
@@ -268,7 +277,7 @@ void		teleport_to_original_position (t_game *game);
 //functions from ./raycast.c
 void		initialize_array_of_rays(t_ray **rays, int array_size);
 void		reset_ray_values(t_ray *ray);
-void		free_array_of_rays(t_ray **rays, int array_size);
+void		ray_free(t_game *game);
 void		initialize_raycast_info(int column, t_game *game, t_ray *ray);
 void		configure_dda(t_game *game, t_ray *ray);
 void		execute_dda(t_game *game, t_ray *ray);
