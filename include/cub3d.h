@@ -6,7 +6,7 @@
 /*   By: rzhdanov <rzhdanov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 15:41:01 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/11/26 23:38:00 by rzhdanov         ###   ########.fr       */
+/*   Updated: 2024/11/29 23:59:55 by rzhdanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -275,15 +275,15 @@ void		try_to_teleport(t_game *game);
 /*------------------Raycasting---------------*/
 
 //functions from ./raycast.c
-void		initialize_array_of_rays(t_ray **rays, int array_size);
 void		reset_ray_values(t_ray *ray);
 void		ray_free(t_game *game);
-void		initialize_raycast_info(int column, t_game *game, t_ray *ray);
+void		prepare_drawing_info(t_game *game, int column);
+void		initialize_raycast_info(int column, t_game *game);
 void		configure_dda(t_game *game, t_ray *ray);
 void		execute_dda(t_game *game, t_ray *ray);
 void		compute_wall_intersections(t_game *game, t_ray *ray);
 int			execute_raycasting(t_game *game);
-void		draw_wall(t_ray *ray, mlx_image_t *img, mlx_texture_t *texture, int column, int bottom_pixel, int top_pixel);
+void		draw_wall(t_game *game, mlx_texture_t *texture, int column);
 void		render_frame(t_game *game);
 
 
