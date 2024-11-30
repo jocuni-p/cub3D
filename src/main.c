@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
+/*   By: rzhdanov <rzhdanov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 12:38:53 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/11/08 17:19:20 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/11/30 19:02:25 by rzhdanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,24 @@ int	main(int ac, char **av)
 		return (print_error(ERR_MEMORY), 1);
 	ft_memset(game, 0, sizeof(t_game));
 	if (parse_cub(game, av[1]))
-		return (game_free(game), 1);
-	if (start_game(game))
+	{
+		game_free(game);
+		free(game);
 		return (1);
-	game_free(game);
-	return (0);//probably the program never is gonna finish here
+	}
+	if (start_game(game))
+	{
+		game_free(game);
+		free(game);
+		return (1);
+	}
+	return (0);
 }
 
-
 /*There are 3 different images into the game window:
-	-The background image, drawing half ceiling and half floor, displayed into the last window layer
-	-The raycasting image, drawing the walls in the right perspective, displayed into the medium layer
-	-The minimap image, drawing a top-left small square map, displayed into the first layer */
+	-The background image, drawing half ceiling and 
+	half floor, displayed into the last window layer
+	-The raycasting image, drawing the walls in the 
+	right perspective, displayed into the medium layer
+	-The minimap image, drawing a top-left small square
+	map, displayed into the first layer */

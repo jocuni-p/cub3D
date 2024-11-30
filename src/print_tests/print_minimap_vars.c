@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_minimap_vars.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
+/*   By: rzhdanov <rzhdanov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/26 17:22:07 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/10/30 10:59:59 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/11/30 19:49:13 by rzhdanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,15 @@
 
 void	print_minimap_vars(t_game *game)
 {
-	printf("--------MINIMAP_VARS-------\n");//DEBUG
+	printf("--------MINIMAP_VARS-------\n");
 	printf("start_col: %d, end_col: %d\n", game->mmap.start_col,
-	 game->mmap.end_col);//DEBUG
+		game->mmap.end_col);
 	printf("start_row: %d, end_row: %d\n", game->mmap.start_row,
-	 game->mmap.end_row);//DEBUG
+		game->mmap.end_row);
 	printf("map_offset_x: %d, map_offset_y: %d\n", game->mmap.map_offset_x,
-	 game->mmap.map_offset_y);//DEBUG
+		game->mmap.map_offset_y);
 	printf("pl_screen_x: %d, pl_screen_y: %d\n", game->mmap.pl_screen_x,
-	 game->mmap.pl_screen_y);//DEBUG
-//	printf("pl_orig_pos: (%d, %d)\n\n\n", game->pl_orig[0], game->pl_orig[1]);//DEBUG
-	printf("player.pos: (%f, %f)\n\n\n", game->player.pos.x, game->player.pos.y);//DEBUG
+		game->mmap.pl_screen_y);
+	printf("player.pos: (%f, %f)\n\n\n", game->player.pos.x,
+		game->player.pos.y);
 }
