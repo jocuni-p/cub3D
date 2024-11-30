@@ -6,7 +6,7 @@
 /*   By: rzhdanov <rzhdanov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 10:47:00 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/12/01 01:07:30 by rzhdanov         ###   ########.fr       */
+/*   Updated: 2024/12/01 01:08:59 by rzhdanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ void	init_player_values(t_game *game)
 	game->player.rotation_speed = ROTATION_SPEED;
 	reset_player_direction(game);
 }
+
 /**
  * Allocates memory for the raycasting structure. Returns 1 if memory
  * allocation fails, otherwise returns 0.

@@ -6,7 +6,7 @@
 #    By: rzhdanov <rzhdanov@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/26 17:23:07 by jocuni-p          #+#    #+#              #
-#    Updated: 2024/11/30 13:43:14 by rzhdanov         ###   ########.fr        #
+#    Updated: 2024/12/01 01:13:17 by rzhdanov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -143,5 +143,8 @@ fclean: clean
 	@rm -rf $(NAME)
 
 re: clean all
+
+norm:
+	norminette $(SRCS) $(LIBFT) ./include
 
 .PHONY: all, clean, fclean, re, libmlx
