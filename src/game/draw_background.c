@@ -12,7 +12,19 @@
 
 #include "../include/cub3d.h"
 
-/*Draws enterely the background image*/
+/*
+ * Draws the screen background. Fills the upper half with the ceiling color.
+ * Fills the lower half with the floor color.
+ *
+ * Parameters:
+ *  - t_game *game: Game structure with image and color data.
+ *
+ * Implementation:
+ *  - Loops through each pixel. Uses `mlx_put_pixel` to set colors.
+ *  - Ceiling color: `game->parser.elem.c_color`.
+ *  - Floor color: `game->parser.elem.f_color`.
+ */
+
 void	draw_background(t_game *game)
 {
 	int	y;

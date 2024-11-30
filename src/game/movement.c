@@ -6,7 +6,7 @@
 /*   By: rzhdanov <rzhdanov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 12:19:47 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/11/30 13:35:16 by rzhdanov         ###   ########.fr       */
+/*   Updated: 2024/12/01 01:00:39 by rzhdanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,12 @@ y si es posible, actualiza la posición del jugador.*/
 /* Actualiza la posición del jugador en función de un vector de dirección 
 (fx, fy) y una velocidad de movimiento (move_speed).*/
 
+/**
+ * Moves the player in a specified direction. Calculates the new position
+ * using the direction vector and movement speed. Checks for collisions
+ * with walls or obstacles. Updates the player's position if the path is
+ * clear. Marks the player as moving.
+ */
 void	move(t_game *game, float dir_x, float dir_y, float move_speed)
 {
 	float	next_move_x;
@@ -40,6 +46,11 @@ void	move(t_game *game, float dir_x, float dir_y, float move_speed)
 	game->is_moving = true;
 }
 
+/**
+ * Rotates the player's direction and camera plane by a given angle. Uses
+ * trigonometric functions to calculate the new direction and plane vectors.
+ * Marks the player as moving to update the game state.
+ */
 void	rotate(t_game *game, float angle)
 {
 	float	dir;
@@ -58,6 +69,11 @@ void	rotate(t_game *game, float angle)
 	game->is_moving = true;
 }
 
+/**
+ * Teleports the player to their original position. Resets the direction
+ * to the initial state. Updates the player's position to the stored
+ * original coordinates. Marks the player as moving to refresh the state.
+ */
 void	teleport_to_original_position(t_game *game)
 {
 	reset_player_direction(game);
@@ -66,18 +82,11 @@ void	teleport_to_original_position(t_game *game)
 	game->is_moving = true;
 }
 
-/*Si se presiona la tecla W, el jugador se mueve hacia adelante en la 
-dirección actual a donde mira. move toma las coordenadas de la dirección 
-del jugador (scene->player.dir.x y scene->player.dir.y) y SPEED ajusta 
-la velocidad de movimiento.*/
-/*Si se presiona la tecla S, el jugador se mueve hacia atrás. 
-Aquí, se invierte la dirección multiplicando por -1 los componentes
- x e y de la dirección del jugador.*/
-// If we add much more functionality, we will need to split 
-// the event listener down into
-// several parts, one for each group of keys, e.g. AWSD + up + down
-// move 
-
+/**
+ * Handles all movement-related actions. Calls specific functions for
+ * moving forward, backward, strafing, rotating, running, and teleporting.
+ * Centralizes movement processing to simplify event handling.
+ */
 void	process_movement(t_game *game)
 {
 	try_to_move_forward(game);
@@ -88,6 +97,11 @@ void	process_movement(t_game *game)
 	try_to_teleport(game);
 }
 
+/**
+ * Listens for input events. Checks for key presses such as ESCAPE to quit
+ * the game. Delegates movement handling to the `process_movement` function.
+ * Ensures all input-driven actions are processed during the game loop.
+ */
 void	event_listener(t_game *game)
 {
 	if (mlx_is_key_down(game->mlx, MLX_KEY_ESCAPE))

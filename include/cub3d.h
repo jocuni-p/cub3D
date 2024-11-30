@@ -6,7 +6,7 @@
 /*   By: rzhdanov <rzhdanov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 15:41:01 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/11/30 19:56:49 by rzhdanov         ###   ########.fr       */
+/*   Updated: 2024/12/01 00:55:59 by rzhdanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@
 # define YELLOW "\033[0;93m"
 # define ORANGE "\033[38;5;209m"
 # define DEF_COLOR "\033[0;39m"
+# define TRANSPARENT 0x00000000
 
 /*-------------------Error messages--------------------*/
 

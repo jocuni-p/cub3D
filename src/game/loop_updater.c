@@ -6,11 +6,18 @@
 /*   By: rzhdanov <rzhdanov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 14:42:25 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/11/30 13:39:45 by rzhdanov         ###   ########.fr       */
+/*   Updated: 2024/12/01 00:55:40 by rzhdanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
+
+/**
+ * Clears an image by setting all its pixels to a specified color. Loops
+ * through each pixel in the image's width and height. Calls `mlx_put_pixel`
+ * for every pixel to apply the color. Ensures the entire image is uniform
+ * with the given color.
+ */
 
 void	clear_image(mlx_image_t *img, uint32_t color)
 {
@@ -30,8 +37,14 @@ void	clear_image(mlx_image_t *img, uint32_t color)
 	}
 }
 
-/*Contains all functions that must be repeated/updated every mlx_loop_hook */
-// mlx_image_to_window needs to be used just once at the start of the game
+/**
+ * Handles game loop updates. Processes input events with `event_listener`.
+ * Clears raycasting and minimap images if movement is detected. Executes
+ * raycasting to update the view. Redraws the minimap to reflect changes.
+ * Resets the movement flag (`is_moving`) after updates. Ensures the screen
+ * is refreshed correctly after every frame.
+ */
+
 void	loop_updater(void *param)
 {
 	t_game	*game;
@@ -40,12 +53,12 @@ void	loop_updater(void *param)
 	event_listener(game);
 	if (game->is_moving)
 	{
-		clear_image(game->img_ray, 0x00000000);
+		clear_image(game->img_ray, TRANSPARENT);
 		execute_raycasting(game);
 	}
 	if (game->is_moving)
 	{
-		clear_image(game->img_mmap, 0x00000000);
+		clear_image(game->img_mmap, TRANSPARENT);
 		draw_minimap(game);
 		game->is_moving = false;
 	}

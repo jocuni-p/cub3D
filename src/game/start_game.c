@@ -6,12 +6,18 @@
 /*   By: rzhdanov <rzhdanov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 10:47:00 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/11/30 15:37:46 by rzhdanov         ###   ########.fr       */
+/*   Updated: 2024/12/01 01:07:30 by rzhdanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
+/**
+ * Loads textures for the game. Reads texture file paths from the parser
+ * and loads them as PNGs using `mlx_load_png`. Converts the textures to
+ * images with `mlx_texture_to_image`. Returns 1 if any texture fails to
+ * load or convert, otherwise returns 0.
+ */
 int	init_textures(t_game *game)
 {
 	game->textures.text_n = mlx_load_png(game->parser.elem.no);
@@ -35,6 +41,11 @@ int	init_textures(t_game *game)
 	return (0);
 }
 
+/**
+ * Initializes player-related values. Sets default movement speed,
+ * rotation speed, and running state. Resets the player's direction
+ * based on their orientation using `reset_player_direction`.
+ */
 void	init_player_values(t_game *game)
 {
 	game->player.is_running = false;
@@ -42,7 +53,10 @@ void	init_player_values(t_game *game)
 	game->player.rotation_speed = ROTATION_SPEED;
 	reset_player_direction(game);
 }
-
+/**
+ * Allocates memory for the raycasting structure. Returns 1 if memory
+ * allocation fails, otherwise returns 0.
+ */
 int	init_ray(t_game *game)
 {
 	game->ray = malloc(sizeof(t_ray));
@@ -51,6 +65,12 @@ int	init_ray(t_game *game)
 	return (0);
 }
 
+/**
+ * Initializes the game. Sets up textures, player values, background,
+ * raycasting, and minimap images. Loads all graphical elements into
+ * the game window. Returns 1 if any initialization step fails,
+ * otherwise returns 0.
+ */
 int	init_game(t_game *game)
 {
 	game->is_moving = 1;
@@ -80,6 +100,12 @@ int	init_game(t_game *game)
 	return (0);
 }
 
+/**
+ * Starts the game loop. Initializes the graphical window and game
+ * resources. Hooks the game loop to the updater function. Displays
+ * game information and enters the main event loop. Cleans up resources
+ * upon termination. Returns 0 on success or 1 on failure.
+ */
 int	start_game(t_game *game)
 {
 	game->mlx = mlx_init(WIDTH, HEIGHT, "cub3D", 0);
