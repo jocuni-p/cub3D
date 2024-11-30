@@ -6,7 +6,7 @@
 #    By: rzhdanov <rzhdanov@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/26 17:23:07 by jocuni-p          #+#    #+#              #
-#    Updated: 2024/11/30 00:00:35 by rzhdanov         ###   ########.fr        #
+#    Updated: 2024/11/30 13:43:14 by rzhdanov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -71,7 +71,9 @@ SRCS_GAME :=		./src/game/draw_background.c \
 					./src/game/start_game.c \
 					./src/game/loop_updater.c \
 					./src/game/movement.c \
-					./src/game/reset_player_direction.c
+					./src/game/reset_player_direction.c \
+					./src/game/movement_utils_0.c \
+					./src/game/movement_utils_1.c
 
 SRCS_MINIMAP :=		./src/minimap/draw_minimap.c \
 					./src/minimap/draw_minimap_player.c

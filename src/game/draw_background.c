@@ -13,12 +13,13 @@
 #include "../include/cub3d.h"
 
 /*Draws enterely the background image*/
-void draw_background(t_game *game)
+void	draw_background(t_game *game)
 {
-    int y;
-    int x;
+	int	y;
+	int	x;
+
 	y = 0;
-	while (y < HEIGHT >> 1)//it is equal to "/ 2"
+	while (y < HEIGHT >> 1)
 	{
 		x = 0;
 		while (x < WIDTH)

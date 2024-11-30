@@ -6,7 +6,7 @@
 /*   By: rzhdanov <rzhdanov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 15:41:01 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/11/29 23:59:55 by rzhdanov         ###   ########.fr       */
+/*   Updated: 2024/11/30 14:09:05 by rzhdanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -259,18 +259,17 @@ void		loop_updater(void *param);
 void		event_listener(t_game *game);
 void 		clear_image(mlx_image_t *img, uint32_t color);
 void		move(t_game *game, float dir_x, float dir_y, float move_speed);
+void		rotate(t_game *game, float angle);
 void		teleport_to_original_position (t_game *game);
 void		process_movement(t_game *game);
 void		try_to_move_forward(t_game *game);
 void		try_to_move_backward(t_game *game);
+void		try_to_strafe(t_game *game);
+void		try_to_teleport(t_game *game);
+void		try_to_rotate(t_game *game);
 void		try_to_run(t_game *game);
 void		sprint_on(t_game *game);
 void		sprint_off(t_game *game);
-void		try_to_strafe(t_game *game);
-void		try_to_rotate(t_game *game);
-void		try_to_teleport(t_game *game);
-
-
 
 /*------------------Raycasting---------------*/
 
