@@ -6,7 +6,7 @@
 /*   By: rzhdanov <rzhdanov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 15:41:01 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/11/30 14:09:05 by rzhdanov         ###   ########.fr       */
+/*   Updated: 2024/11/30 16:02:57 by rzhdanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -194,7 +194,6 @@ typedef struct s_game
 	t_textures		textures;
 	bool			is_moving;
 	t_ray			*ray;
-	// t_ray			**rays;
 }					t_game;
 
 
@@ -294,6 +293,7 @@ void		draw_minimap_frame(mlx_image_t *img_mmap, uint32_t x, uint32_t y, uint32_t
 void		draw_minimap_player(t_game *game, uint32_t color);
 void		draw_minimap_direction_line(t_game *game, uint32_t color);
 void		set_bresenham_values(t_game *game);
+void		update_bresenham_values(t_game *game);
 
 /*--------------Textures---------------*/
 

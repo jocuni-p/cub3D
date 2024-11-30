@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lst_clear.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
+/*   By: rzhdanov <rzhdanov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 15:07:50 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/10/11 12:50:26 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/11/30 15:49:14 by rzhdanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ finally points the list to NULL*/
 void	lst_clear(t_cub **lst)
 {
 	t_cub	*aux;
-	
+
 	aux = NULL;
 	while (*lst)
 	{
