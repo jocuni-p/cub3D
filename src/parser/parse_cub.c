@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_cub.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
+/*   By: rzhdanov <rzhdanov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 14:27:44 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/10/31 10:16:32 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/11/30 16:28:16 by rzhdanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,5 @@ int	parse_cub(t_game *game, char *filename)
 	lst_clear(&game->parser.cub_ln0);
 	if (parse_map_2(game))
 		return (1);
-//	arr2d_print(game->map_arr);//DEBUG
 	return (0);
 }

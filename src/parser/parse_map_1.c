@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 12:26:44 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/12/01 18:08:05 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/12/01 19:03:58 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,29 +75,35 @@ int	is_middle_char_valid(char *str, t_game *game)
 	return (0);
 }
 
+static void	skip_new_lines(t_game *game)
+{
+	while (game->parser.cub->str[0] == '\n' && game->parser.cub->next)
+		game->parser.cub = game->parser.cub->next;
+	game->parser.map_ln0 = game->parser.cub;
+}
+
 /*Parses since the next line of elements til the end of file.cub*/
 int	parse_map_1(t_game *game)
 {
 	char	*trimmed_line;
 
-	while (game->parser.cub->str[0] == '\n' && game->parser.cub->next)//added to fix SEGV
-		game->parser.cub = game->parser.cub->next;
-	game->parser.map_ln0 = game->parser.cub;//sets a pointer to the map first line
-	if (game->parser.map_ln0 == NULL || is_firstline_valid(game->parser.cub->str))
+	skip_new_lines(game);
+	if (game->parser.map_ln0 == NULL
+		|| is_firstline_valid(game->parser.cub->str))
 		return (print_error(ERR_MAP), 1);
 	game->parser.cub = game->parser.cub->next;
 	while (game->parser.cub)
 	{
 		remove_nl(game->parser.cub->str);
-		if (game->parser.cub->str[0] == '\0')//if it is an empty line
+		if (game->parser.cub->str[0] == '\0')
 			return (print_error(ERR_MAP), 1);
-		trimmed_line = ft_strtrim(game->parser.cub->str, " ");//remove ' ' from beginning and from end
+		trimmed_line = ft_strtrim(game->parser.cub->str, " ");
 		if (is_first_and_last_char_valid(trimmed_line))
 			return (free(trimmed_line), print_error(ERR_MAP), 1);
 		if (is_middle_char_valid(trimmed_line, game))
 			return (free(trimmed_line), print_error(ERR_MAP), 1);
-		if (game->parser.cub->next == NULL)//if it is the last line
-			if (is_firstline_valid(trimmed_line))//cheks if the last map line is valid 
+		if (game->parser.cub->next == NULL)
+			if (is_firstline_valid(trimmed_line))
 				return (free(trimmed_line), print_error(ERR_MAP), 1);
 		free(trimmed_line);
 		game->parser.cub = game->parser.cub->next;

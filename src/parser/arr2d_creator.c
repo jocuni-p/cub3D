@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   arr2d_creator.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
+/*   By: rzhdanov <rzhdanov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 11:14:18 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/10/30 18:32:48 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/11/30 16:26:53 by rzhdanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int	arr2d_creator(t_game *game)
 		return (print_error(ERR_MAP), 1);
 	game->map_arr = (char **)malloc(sizeof(char *) * (game->map_h + 1));
 	if (!game->map_arr)
-		return (print_error(ERR_MAP), 1);		
+		return (print_error(ERR_MAP), 1);
 	while (i < game->map_h)
 	{
 		game->map_arr[i] = (char *)malloc(sizeof(char) * (game->map_w + 1));

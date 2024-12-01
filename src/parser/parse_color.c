@@ -23,7 +23,7 @@ int	set_c(t_game *game, char *rgb_canal, int i)
 	uint32_t	nbr;
 
 	nbr = (uint32_t)ft_atoi(rgb_canal);
-	if (nbr < 0 || nbr > 255)
+	if (nbr > 255)
 		return (1);
 	if (i == 0)
 		game->parser.elem.rgb_c[0] = nbr;
@@ -33,10 +33,10 @@ int	set_c(t_game *game, char *rgb_canal, int i)
 	{
 		game->parser.elem.rgb_c[2] = nbr;
 		game->parser.elem.c_color = combiner_hex(\
-									game->parser.elem.rgb_c[0],
-									 game->parser.elem.rgb_c[1],
-									 game->parser.elem.rgb_c[2],
-									 255);
+				game->parser.elem.rgb_c[0],
+				game->parser.elem.rgb_c[1],
+				game->parser.elem.rgb_c[2],
+				255);
 		game->parser.elem.c_opposite = get_opposite_color(game);
 	}
 	return (0);
@@ -48,7 +48,7 @@ int	set_f(t_game *game, char *rgb_canal, int i)
 	uint32_t	nbr;
 
 	nbr = (uint32_t)ft_atoi(rgb_canal);
-	if (nbr < 0 || nbr > 255)
+	if (nbr > 255)
 		return (1);
 	if (i == 0)
 		game->parser.elem.rgb_f[0] = nbr;
@@ -58,9 +58,9 @@ int	set_f(t_game *game, char *rgb_canal, int i)
 	{
 		game->parser.elem.rgb_f[2] = nbr;
 		game->parser.elem.f_color = combiner_hex(game->parser.elem.rgb_f[0],
-												 game->parser.elem.rgb_f[1],
-												 game->parser.elem.rgb_f[2],
-												 255);
+				game->parser.elem.rgb_f[1],
+				game->parser.elem.rgb_f[2],
+				255);
 	}
 	return (0);
 }

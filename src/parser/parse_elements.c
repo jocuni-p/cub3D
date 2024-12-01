@@ -6,24 +6,37 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 12:34:56 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/12/01 18:05:54 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/12/01 19:00:02 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
+static void	set_elements_directions(t_game *game, char **elements)
+{
+	if ((ft_strcmp(elements[0], "NO") == 0)
+		&& game->parser.elem.no == NULL)
+		game->parser.elem.no = ft_strdup(elements[1]);
+	else if ((ft_strcmp(elements[0], "SO") == 0)
+		&& game->parser.elem.so == NULL)
+		game->parser.elem.so = ft_strdup(elements[1]);
+	else if ((ft_strcmp(elements[0], "WE") == 0)
+		&& game->parser.elem.we == NULL)
+		game->parser.elem.we = ft_strdup(elements[1]);
+	else if ((ft_strcmp(elements[0], "EA") == 0)
+		&& game->parser.elem.ea == NULL)
+		game->parser.elem.ea = ft_strdup(elements[1]);
+}
+
 /*Sets elem.variables with his value. If a duplicate or non valid 
 element is found returns 1. Finally, 'elements' is freed. */
 int	set_element(t_game *game, char **elements)
 {
-	if ((ft_strcmp(elements[0], "NO") == 0) && game->parser.elem.no == NULL)
-		game->parser.elem.no = ft_strdup(elements[1]);
-	else if ((ft_strcmp(elements[0], "SO") == 0) && game->parser.elem.so == NULL)
-		game->parser.elem.so = ft_strdup(elements[1]);
-	else if ((ft_strcmp(elements[0], "WE") == 0) && game->parser.elem.we == NULL)
-		game->parser.elem.we = ft_strdup(elements[1]);
-	else if ((ft_strcmp(elements[0], "EA") == 0) && game->parser.elem.ea == NULL)
-		game->parser.elem.ea = ft_strdup(elements[1]);
+	if ((ft_strcmp(elements[0], "NO") == 0)
+		|| (ft_strcmp(elements[0], "SO") == 0)
+		|| (ft_strcmp(elements[0], "WE") == 0)
+		|| (ft_strcmp(elements[0], "EA") == 0))
+		set_elements_directions(game, elements);
 	else if ((ft_strcmp(elements[0], "C") == 0) && game->parser.elem.c == NULL)
 	{
 		game->parser.elem.c = ft_strdup(elements[1]);
@@ -47,18 +60,7 @@ int	check_setted_elements(t_game *game)
 	if (game->parser.elem.no != NULL && game->parser.elem.so != NULL \
 		&& game->parser.elem.we != NULL && game->parser.elem.ea != NULL \
 		&& game->parser.elem.c_color != 0 && game->parser.elem.f_color != 0)
-	{
-/*		if ((ft_strcmp(game->parser.elem.no, "./textures/brick_n.png") == 0 \
-		|| ft_strcmp(game->parser.elem.no, "textures/brick_n.png") == 0) \
-		&& (ft_strcmp(game->parser.elem.so, "./textures/brick_s.png") == 0 \
-		|| ft_strcmp(game->parser.elem.so, "textures/brick_s.png") == 0) \
-		&& (ft_strcmp(game->parser.elem.ea, "./textures/brick_e.png") == 0 \
-		|| ft_strcmp(game->parser.elem.ea, "textures/brick_e.png") == 0) \
-		&& (ft_strcmp(game->parser.elem.we, "./textures/brick_w.png") == 0 \
-		|| ft_strcmp(game->parser.elem.we, "textures/brick_w.png") == 0))*/
-			return (0);
-//		return (2);
-	}
+		return (0);
 	return (1);
 }
 
@@ -75,10 +77,8 @@ int	parse_elements(t_game *game)
 			game->parser.cub = game->parser.cub->next;
 			continue ;
 		}
-		if (check_setted_elements(game) == 0)//checks if all elements are already setted properly 
+		if (check_setted_elements(game) == 0)
 			return (0);
-//		if (check_setted_elements(game) == 2)//if texture path is invalid 
-//			return (print_error(ERR_PATH), 1);
 		remove_nl(game->parser.cub->str);
 		elements = ft_split(game->parser.cub->str, ' ');
 		if (arr2d_element_cnt(elements) != 2)
