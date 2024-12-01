@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rzhdanov <rzhdanov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 15:41:01 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/12/01 00:55:59 by rzhdanov         ###   ########.fr       */
+/*   Updated: 2024/12/01 22:08:53 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <string.h>
-# include <fcntl.h>// for ´open´
+# include <fcntl.h> // for ´open´
 # include <stdbool.h>
-# include <math.h>//for 'cos' and 'sin'
+# include <math.h> //for 'cos' and 'sin'
 
 /*------------------Colors--------------------*/
 # define RED "\033[0;91m"
@@ -65,13 +65,13 @@ typedef struct s_cub
 /*-----Elements----*/
 typedef struct s_elem
 {
-	char			*no;//path to the texture(.xpm)
+	char			*no;
 	char			*so;
 	char			*we;
 	char			*ea;
-	char			*c;//color data before parse
-	uint32_t		rgb_c[3];//rgb color values
-	uint32_t		c_color;//color value converted to hexadecimal
+	char			*c;
+	uint32_t		rgb_c[3];
+	uint32_t		c_color;
 	uint32_t		c_opposite;
 	char			*f;
 	uint32_t		rgb_f[3];
@@ -81,9 +81,9 @@ typedef struct s_elem
 /*-------Parsing-------*/
 typedef struct s_parser
 {
-	t_cub			*cub;//List containing every line from file.cub
-	t_cub			*cub_ln0;//pointer to the first line of filename.cub
-	t_cub			*map_ln0;//points to the first line after the elements
+	t_cub			*cub;
+	t_cub			*cub_ln0;
+	t_cub			*map_ln0;
 	t_elem			elem;
 	int				ply_qty;
 }					t_parser;
@@ -91,34 +91,34 @@ typedef struct s_parser
 /*Bresenham's algorithm for drawing lines on a pixel grid.*/
 typedef struct s_bresenham
 {
-	int				x;//initial line's point 
+	int				x;
 	int				y;
-	int				end_x;//final line's point
+	int				end_x;
 	int				end_y;
-	int				d_x;//distance diference between axis x and y
+	int				d_x;
 	int				d_y;
-	int				sx;//determine the increment direction to the final point
+	int				sx;
 	int				sy;
-	int				err;//helps to decide if move towards x or y
+	int				err;
 	int				e2;
 }					t_bresenham;
 
 /*---------minimap----------*/
 typedef struct s_mmap
 {
-	uint32_t		x;//minimap tile x coordinate
-	uint32_t		y;//minimap tile y coordinate
+	uint32_t		x;
+	uint32_t		y;
 	int				row;
 	int				col;
-	int				map_offset_x;//Map shift to center minimap on the player
-	int				map_offset_y;//Map shift to center minimap on the player
-	int				start_col;//Limit of tiles that can be seen on the minimap
-	int				end_col;//Limit of tiles that can be seen on the minimap
-	int				start_row;//Limit of tiles that can be seen on the minimap
-	int				end_row;//Limit of tiles that can be seen on the minimap
-	uint32_t		pl_screen_x;// Player pos in minimap img center
-	uint32_t		pl_screen_y;// Player pos in minimap img center
-	t_bresenham		bres;//Bresenham's algorithm (direction player's line)
+	int				map_offset_x;
+	int				map_offset_y;
+	int				start_col;
+	int				end_col;
+	int				start_row;
+	int				end_row;
+	uint32_t		pl_screen_x;
+	uint32_t		pl_screen_y;
+	t_bresenham		bres;
 }					t_mmap;
 
 typedef struct s_coord
@@ -130,13 +130,12 @@ typedef struct s_coord
 /*------------player--------*/
 typedef struct s_player
 {
-	t_coord			pos;//(x,y) player's current position
-	t_coord			orig_pos;// (x,y) player's original position
-	t_coord			dir;//(x,y) player's current direction
-	t_coord			orig_dir;// (x,y) player's original position
-	t_coord			plane;//determina la proyección lateral de la cámara y 
-//							permite simular una vista en 3D
-	char			orientation;//initial orientation: N, S, E, W
+	t_coord			pos;
+	t_coord			orig_pos;
+	t_coord			dir;
+	t_coord			orig_dir;
+	t_coord			plane;
+	char			orientation;
 	float			speed;
 	float			rotation_speed;
 	bool			is_running;
@@ -145,33 +144,32 @@ typedef struct s_player
 /*------------ray--------*/
 typedef struct s_ray
 {
-	float	camera_offset;		// Camera position offset for the current ray
-	t_coord	direction;			// Ray's coordinates
-	int		grid_x;				// Current grid cell x-coordinate
-	int		grid_y;				// Current grid cell y-coordinate
-	int		step_x;				// Step direction in x-axis (+1 or -1)
-	int		step_y;				// Step direction in y-axis (+1 or -1)
-	float	side_dist_x;		// Distance to the next x-side of the grid
-	float	side_dist_y;		// Distance to the next y-side of the grid
-	float	delta_dist_x;		// Distance between x-sides of the grid
-	float	delta_dist_y;		// Distance between y-sides of the grid
-	float	wall_distance;		// Distance to the wall hit by the ray
-	float	wall_hit_x;			// Exact x-coordinate of the wall hit
-	int		side;				// 0 if the wall hit is vertical,
-								// 1 if horizontal
-	int		wall_height;		// Height of the wall line to draw
-	int		bottom_pixel;		// Starting pixel for the wall line
-	int		top_pixel;			// Ending pixel for the wall line
+	float	camera_offset;
+	t_coord	direction;
+	int		grid_x;
+	int		grid_y;
+	int		step_x;
+	int		step_y;
+	float	side_dist_x;
+	float	side_dist_y;
+	float	delta_dist_x;
+	float	delta_dist_y;
+	float	wall_distance;
+	float	wall_hit_x;
+	int		side;
+	int		wall_height;
+	int		bottom_pixel;
+	int		top_pixel;
 }	t_ray;
 
 /*------------textures--------*/
 typedef struct s_textures
 {
-	mlx_texture_t	*text_n;//Declaration of a texture
+	mlx_texture_t	*text_n;
 	mlx_texture_t	*text_s;
 	mlx_texture_t	*text_e;
 	mlx_texture_t	*text_w;
-	mlx_image_t		*img_n;//Declaration of an image
+	mlx_image_t		*img_n;
 	mlx_image_t		*img_s;
 	mlx_image_t		*img_e;
 	mlx_image_t		*img_w;
@@ -180,16 +178,16 @@ typedef struct s_textures
 /*------------game----------*/
 typedef struct s_game
 {
-	t_parser		parser;//parser data
-	char			**map_arr;//map cells formated 
-	int				map_w;//map size
-	int				map_h;//map size
+	t_parser		parser;
+	char			**map_arr;
+	int				map_w;
+	int				map_h;
 	t_player		player;	
-	mlx_t			*mlx;//instance to MLX42 library
-	mlx_image_t		*img_back;//instance of background image
-	mlx_image_t		*img_ray;//instance to walls(raycasting) image
-	mlx_image_t		*img_mmap;//instance to minimap image
-	t_mmap			mmap;//minimap data
+	mlx_t			*mlx;
+	mlx_image_t		*img_back;
+	mlx_image_t		*img_ray;
+	mlx_image_t		*img_mmap;
+	t_mmap			mmap;
 	t_textures		textures;
 	bool			is_moving;
 	t_ray			*ray;

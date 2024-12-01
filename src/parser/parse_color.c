@@ -92,8 +92,7 @@ int	parse_color(t_game *game, char *str, char c)
 	char	**rgb_canals;
 
 	i = 0;
-	//anyadir funcion de utils que cuenta si hay mas de 2 "'" en el string
-	if (coma_counter(str) != 2)//added to fix coma problem
+	if (coma_counter(str) != 2)
 		return (1);
 	rgb_canals = ft_split(str, ',');
 	if (arr2d_element_cnt(rgb_canals) != 3)

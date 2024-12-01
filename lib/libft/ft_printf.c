@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 12:49:21 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/11/17 19:10:54 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/12/01 21:54:58 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	ft_printf(char const *fmt, ...)
 		if (fmt[i] == '%')
 		{
 			len_tmp = sel_fmt(fmt, i, args);
-			i++;//OJO aqui
+			i++;
 		}
 		else
 			len_tmp = put_c(fmt[i]);

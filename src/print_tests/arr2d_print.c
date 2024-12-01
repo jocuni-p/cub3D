@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   arr2d_print.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rzhdanov <rzhdanov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 14:49:10 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/11/30 19:46:58 by rzhdanov         ###   ########.fr       */
+/*   Updated: 2024/12/01 22:10:57 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-/*-------Prints the content of an char **------*/
+/*-------Prints the content of a char** ------*/
 void	arr2d_print(char **arr2d)
 {
 	int	i;

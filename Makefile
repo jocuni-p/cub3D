@@ -3,17 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: rzhdanov <rzhdanov@student.42.fr>          +#+  +:+       +#+         #
+#    By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/26 17:23:07 by jocuni-p          #+#    #+#              #
-#    Updated: 2024/12/01 01:13:17 by rzhdanov         ###   ########.fr        #
+#    Updated: 2024/12/01 22:15:23 by jocuni-p         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	:= cub3D
 UNAME := $(shell uname)#gets the OS we are using
 
-# Si uso fsanitize en las flags de compilado, debo ponerla tambien en las del enlazado, sino da error al compilar
 LDFLAGS	:= -fsanitize=address #(only on MacOS systems)
 LIBMLX	:= ./lib/MLX42
 LIBFT	:= ./lib/libft/
@@ -125,7 +124,7 @@ libmlx:
 libft: 
 	@$(MAKE) -C $(LIBFT)
 
-# Regla para compilar cualquier archivo .c en los subdirectorios
+
 ./src/%.o: ./src/%.c Makefile include/cub3d.h
 	@$(CC) $(CFLAGS) -o $@ -c $< $(HEADERS) && printf "Compiling: $(notdir $<)\n"
 

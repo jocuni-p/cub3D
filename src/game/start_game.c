@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   start_game.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rzhdanov <rzhdanov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 10:47:00 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/12/01 01:08:59 by rzhdanov         ###   ########.fr       */
+/*   Updated: 2024/12/01 21:48:27 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,15 @@ int	init_ray(t_game *game)
  * raycasting, and minimap images. Loads all graphical elements into
  * the game window. Returns 1 if any initialization step fails,
  * otherwise returns 0.
- */
+ *
+ * There are 3 different images into the game window:
+ * -The background image, drawing half ceiling and 
+ *  half floor, displayed into the last window layer
+ * -The raycasting image, drawing the walls in the 
+ *  right perspective, displayed into the medium layer
+ * -The minimap image, drawing a top-left small square
+ *  map, displayed into the first layer 
+*/
 int	init_game(t_game *game)
 {
 	game->is_moving = 1;

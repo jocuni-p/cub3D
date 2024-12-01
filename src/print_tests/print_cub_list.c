@@ -12,7 +12,7 @@
 
 #include "../include/cub3d.h"
 
-/*----Prints a t_cub list----*/
+/*----Prints a t_cub list for debbuging purposes----*/
 void	print_cub_list(t_cub *lst)
 {
 	printf ("===============LIST ELEMENTS============\n");

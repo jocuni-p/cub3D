@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rzhdanov <rzhdanov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 12:38:53 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/11/30 19:02:25 by rzhdanov         ###   ########.fr       */
+/*   Updated: 2024/12/01 21:48:36 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,3 @@ int	main(int ac, char **av)
 	}
 	return (0);
 }
-
-/*There are 3 different images into the game window:
-	-The background image, drawing half ceiling and 
-	half floor, displayed into the last window layer
-	-The raycasting image, drawing the walls in the 
-	right perspective, displayed into the medium layer
-	-The minimap image, drawing a top-left small square
-	map, displayed into the first layer */
