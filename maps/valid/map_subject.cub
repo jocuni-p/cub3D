@@ -1,9 +1,12 @@
 
 
 NO ./textures/wood_green.png
+
 SO ./textures/wood_yellow.png
+
+
 WE ./textures/wood_red.png
-EA ./textures/wood_blue.png
+EA       ./textures/wood_blue.png
 
 
     C 171,219,245
