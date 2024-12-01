@@ -12,7 +12,14 @@
 
 #include "../include/cub3d.h"
 
-/*----Copies every line from filename into a list----*/
+/**
+ * Reads lines from a file and stores them in a linked list. Opens the file
+ * in read-only mode. Reads each line using `get_next_line` and creates a
+ * new list node for it. Appends nodes to the end of the list. Frees memory
+ * for the line buffer after processing. Handles errors for file access,
+ * empty files, or memory allocation. Closes the file and sets the list's
+ * starting pointer (`cub_ln0`) to the head of the list.
+ */
 int	lst_creator(t_parser *parser, char *filename)
 {
 	int		fd;

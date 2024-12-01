@@ -6,12 +6,16 @@
 /*   By: rzhdanov <rzhdanov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 14:27:44 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/11/30 16:28:16 by rzhdanov         ###   ########.fr       */
+/*   Updated: 2024/12/01 23:55:54 by rzhdanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
-/*Manage all parsing parts of the project*/
+/**
+ * Manages all parsing tasks for the `.cub` configuration file. Validates
+ * arguments, parses elements, maps, and creates a 2D array representation
+ * of the map. Clears memory after processing. Returns 1 on any error.
+ */
 int	parse_cub(t_game *game, char *filename)
 {
 	if (check_arg(filename))

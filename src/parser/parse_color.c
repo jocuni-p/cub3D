@@ -17,7 +17,11 @@ uint32_t	combiner_hex(uint32_t r, uint32_t g, uint32_t b, uint32_t alpha)
 	return (r << 24 | g << 16 | b << 8 | alpha);
 }
 
-/*Set ceiling' rgb values*/
+/**
+ * Sets the ceiling color based on an RGB channel value. Converts RGB to
+ * a hexadecimal color and stores it in the game's parser structure. Returns
+ * 1 if the value is invalid.
+ */
 int	set_c(t_game *game, char *rgb_canal, int i)
 {
 	uint32_t	nbr;
@@ -42,7 +46,11 @@ int	set_c(t_game *game, char *rgb_canal, int i)
 	return (0);
 }
 
-/*Set floor' rgb values*/
+/**
+ * Sets the floor color based on an RGB channel value. Converts RGB to
+ * a hexadecimal color and stores it in the game's parser structure. Returns
+ * 1 if the value is invalid.
+ */
 int	set_f(t_game *game, char *rgb_canal, int i)
 {
 	uint32_t	nbr;
@@ -65,8 +73,11 @@ int	set_f(t_game *game, char *rgb_canal, int i)
 	return (0);
 }
 
-/*Set the elem.f_color and elem.c_color variables to hexadecimal value, 
-if it fails return 1*/
+/**
+ * Parses a color string for the ceiling or floor. Splits the string into
+ * RGB components. Validates and converts the values to hexadecimal colors.
+ * Returns 1 if the format or values are invalid.
+ */
 int	parse_color(t_game *game, char *str, char c)
 {
 	int		i;

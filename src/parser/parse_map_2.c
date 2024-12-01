@@ -6,13 +6,17 @@
 /*   By: rzhdanov <rzhdanov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 15:33:39 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/11/30 19:01:34 by rzhdanov         ###   ########.fr       */
+/*   Updated: 2024/12/01 23:59:36 by rzhdanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-/*gets the player position on the map*/
+/**
+ * Retrieves the player's position from the map. Identifies the player's
+ * starting position based on the characters 'N', 'S', 'W', or 'E'. Updates
+ * the player's position and original position to the center of the tile.
+ */
 void	get_player_pos(t_game *game, int x, int y)
 {
 	if (game->map_arr[y][x] == 'N' || game->map_arr[y][x] == 'S'
@@ -25,8 +29,12 @@ void	get_player_pos(t_game *game, int x, int y)
 	}
 }
 
-/*Iters through the entire map and check if the characters '0', 'N', 'S', 
-'E', or 'W' have any ' ' character around them.*/
+/**
+ * Checks if the map is properly enclosed. Iterates through the map and ensures
+ * that characters '0', 'N', 'S', 'W', or 'E' are not adjacent to a ' ' character.
+ * Calls `get_player_pos` to set the player's starting position if found. Returns
+ * 1 if the map is improperly closed, otherwise returns 0.
+ */
 int	is_map_properly_closed(t_game *game)
 {
 	int		x;
@@ -56,6 +64,12 @@ int	is_map_properly_closed(t_game *game)
 	return (0);
 }
 
+/**
+ * Validates the map after the elements have been parsed. Ensures there is exactly
+ * one player, and the map dimensions meet the minimum requirements. Checks if the
+ * map is properly enclosed using `is_map_properly_closed`. Returns 1 if any validation
+ * fails.
+ */
 int	parse_map_2(t_game *game)
 {
 	if (game->parser.ply_qty != 1)
