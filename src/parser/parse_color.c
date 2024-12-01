@@ -74,6 +74,7 @@ int	parse_color(t_game *game, char *str, char c)
 	char	**rgb_canals;
 
 	i = 0;
+	//anyadir funcion de utils que cuenta si hay mas de 2 "'" en el string
 	rgb_canals = ft_split(str, ',');
 	if (arr2d_element_cnt(rgb_canals) != 3)
 		return (arr2d_free(&rgb_canals), 1);

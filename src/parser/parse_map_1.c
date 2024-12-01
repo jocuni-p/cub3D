@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 12:26:44 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/10/30 16:56:10 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/12/01 18:08:05 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ int	parse_map_1(t_game *game)
 {
 	char	*trimmed_line;
 
-	while (game->parser.cub->str[0] == '\n')
+	while (game->parser.cub->str[0] == '\n' && game->parser.cub->next)//added to fix SEGV
 		game->parser.cub = game->parser.cub->next;
 	game->parser.map_ln0 = game->parser.cub;//sets a pointer to the map first line
 	if (game->parser.map_ln0 == NULL || is_firstline_valid(game->parser.cub->str))

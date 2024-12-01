@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 12:34:56 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/11/11 22:23:42 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/12/01 18:05:54 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ int	parse_elements(t_game *game)
 
 	while (game->parser.cub)
 	{
-		if (game->parser.cub->str[0] == '\n')
+		if (game->parser.cub->str[0] == '\n' && game->parser.cub->next)//to fix SEGV
 		{
 			game->parser.cub = game->parser.cub->next;
 			continue ;
@@ -85,8 +85,9 @@ int	parse_elements(t_game *game)
 			return (arr2d_free(&elements), print_error(ERR_ELEM), 1);
 		if (set_element(game, elements))
 			return (print_error(ERR_ELEM), 1);
-		game->parser.cub = game->parser.cub->next;
-		if (game->parser.cub == NULL)//if there isn't any map on the file.cub.
+		if (game->parser.cub->next)//added to fix SEGV
+			game->parser.cub = game->parser.cub->next;
+		if (game->parser.cub->next == NULL)//if there isn't any map on the file.cub.
 			return (print_error(ERR_ELEM), 1);
 	}
 	return (0);
