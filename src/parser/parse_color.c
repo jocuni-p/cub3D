@@ -11,6 +11,24 @@
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
+
+/*--Returns the number of ',' characters found in the given string.--*/
+int	coma_counter(const char *str)
+{
+	int	counter;
+
+	counter = 0;
+	if (str == NULL)
+		return (0);
+	while (*str)
+	{
+		if (*str == ',')
+			counter++;
+		str++;
+	}
+	return (counter);
+}
+
 /*Encodes to one hexadecimal the four diferent color parameters*/
 uint32_t	combiner_hex(uint32_t r, uint32_t g, uint32_t b, uint32_t alpha)
 {
@@ -75,6 +93,8 @@ int	parse_color(t_game *game, char *str, char c)
 
 	i = 0;
 	//anyadir funcion de utils que cuenta si hay mas de 2 "'" en el string
+	if (coma_counter(str) != 2)//added to fix coma problem
+		return (1);
 	rgb_canals = ft_split(str, ',');
 	if (arr2d_element_cnt(rgb_canals) != 3)
 		return (arr2d_free(&rgb_canals), 1);
