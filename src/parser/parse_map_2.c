@@ -6,7 +6,7 @@
 /*   By: rzhdanov <rzhdanov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 15:33:39 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/12/01 23:59:36 by rzhdanov         ###   ########.fr       */
+/*   Updated: 2024/12/02 01:19:59 by rzhdanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,9 @@ void	get_player_pos(t_game *game, int x, int y)
 
 /**
  * Checks if the map is properly enclosed. Iterates through the map and ensures
- * that characters '0', 'N', 'S', 'W', or 'E' are not adjacent to a ' ' character.
- * Calls `get_player_pos` to set the player's starting position if found. Returns
- * 1 if the map is improperly closed, otherwise returns 0.
+ * that characters '0', 'N', 'S', 'W', or 'E' are not adjacent to a ' ' 
+ * character.  * Calls `get_player_pos` to set the player's starting position 
+ * if found. Returns * 1 if the map is improperly closed, otherwise returns 0.
  */
 int	is_map_properly_closed(t_game *game)
 {
@@ -65,10 +65,10 @@ int	is_map_properly_closed(t_game *game)
 }
 
 /**
- * Validates the map after the elements have been parsed. Ensures there is exactly
- * one player, and the map dimensions meet the minimum requirements. Checks if the
- * map is properly enclosed using `is_map_properly_closed`. Returns 1 if any validation
- * fails.
+ * Validates the map after the elements have been parsed. Ensures there is 
+ * exactly one player, and the map dimensions meet the minimum requirements. 
+ * Checks if the map is properly enclosed using `is_map_properly_closed`. 
+ * Returns 1 if any validation fails.
  */
 int	parse_map_2(t_game *game)
 {

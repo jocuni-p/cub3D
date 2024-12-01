@@ -6,12 +6,25 @@
 /*   By: rzhdanov <rzhdanov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 12:38:53 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/11/30 19:02:25 by rzhdanov         ###   ########.fr       */
+/*   Updated: 2024/12/02 01:25:00 by rzhdanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
+/**
+ * The entry point of the program. Validates the command-line arguments
+ * and initializes the game structure. Parses the `.cub` configuration file
+ * and starts the game if parsing succeeds. Frees allocated resources on
+ * failure or program exit. Returns 0 on successful execution, otherwise 1.
+ *
+ * Notes:
+ * - Accepts exactly one command-line argument: the `.cub` file.
+ * - Initializes three images in the game:
+ *   - Background: Ceiling and floor, rendered on the last layer.
+ *   - Raycasting: Walls, rendered on the middle layer.
+ *   - Minimap: A small top-left map, rendered on the first layer.
+ */
 int	main(int ac, char **av)
 {
 	t_game		*game;
@@ -36,11 +49,3 @@ int	main(int ac, char **av)
 	}
 	return (0);
 }
-
-/*There are 3 different images into the game window:
-	-The background image, drawing half ceiling and 
-	half floor, displayed into the last window layer
-	-The raycasting image, drawing the walls in the 
-	right perspective, displayed into the medium layer
-	-The minimap image, drawing a top-left small square
-	map, displayed into the first layer */

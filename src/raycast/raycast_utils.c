@@ -6,12 +6,17 @@
 /*   By: rzhdanov <rzhdanov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 11:28:56 by rzhdanov          #+#    #+#             */
-/*   Updated: 2024/11/30 00:04:57 by rzhdanov         ###   ########.fr       */
+/*   Updated: 2024/12/02 01:12:19 by rzhdanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
+/**
+ * Initializes the raycasting information for a given column. Calculates the
+ * ray direction and grid position based on the camera plane and player
+ * direction. Computes the delta distances for ray traversal.
+ */
 void	initialize_raycast_info(int column, t_game *game)
 {
 	t_player	*player;
@@ -29,6 +34,10 @@ void	initialize_raycast_info(int column, t_game *game)
 	game->ray->delta_dist_y = fabs(1 / game->ray->direction.y);
 }
 
+/**
+ * Resets all raycasting-related values in the `t_ray` structure to their
+ * default state.
+ */
 void	reset_ray_values(t_ray *ray)
 {
 	ray->camera_offset = 0;
@@ -50,6 +59,10 @@ void	reset_ray_values(t_ray *ray)
 	ray->top_pixel = 0;
 }
 
+/**
+ * Frees the memory allocated for the raycasting structure and sets its
+ * pointer to NULL.
+ */
 void	ray_free(t_game *game)
 {
 	if (game->ray)
@@ -59,6 +72,11 @@ void	ray_free(t_game *game)
 	}
 }
 
+/**
+ * Prepares the raycasting data for a column. Initializes ray information,
+ * configures the DDA algorithm, executes the DDA to find a wall hit, and
+ * computes wall intersection data for rendering.
+ */
 void	prepare_drawing_info(t_game *game, int column)
 {
 	initialize_raycast_info(column, game);

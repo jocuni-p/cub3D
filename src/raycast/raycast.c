@@ -6,12 +6,16 @@
 /*   By: rzhdanov <rzhdanov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 11:28:56 by rzhdanov          #+#    #+#             */
-/*   Updated: 2024/11/30 13:37:58 by rzhdanov         ###   ########.fr       */
+/*   Updated: 2024/12/02 01:11:26 by rzhdanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
+/**
+ * Configures the DDA algorithm for raycasting. Sets the step direction and
+ * initial side distances based on the ray's direction and player position.
+ */
 void	configure_dda(t_game *game, t_ray *ray)
 {
 	if (ray->direction.x < 0)
@@ -40,6 +44,11 @@ void	configure_dda(t_game *game, t_ray *ray)
 	}
 }
 
+/**
+ * Executes the DDA algorithm to find the first wall hit along the ray.
+ * Iteratively steps through the map grid, updating side distances and grid
+ * coordinates until a wall is hit.
+ */
 void	execute_dda(t_game *game, t_ray *ray)
 {
 	int		has_hit;
@@ -67,6 +76,11 @@ void	execute_dda(t_game *game, t_ray *ray)
 	}
 }
 
+/**
+ * Computes wall intersection points and dimensions after a wall is hit.
+ * Calculates the distance to the wall, wall height, and the range of pixels
+ * to render the wall slice. Determines the exact hit position on the wall.
+ */
 void	compute_wall_intersections(t_game *game, t_ray *ray)
 {
 	t_player	*player;
@@ -90,6 +104,11 @@ void	compute_wall_intersections(t_game *game, t_ray *ray)
 	ray->wall_hit_x -= floor(ray->wall_hit_x);
 }
 
+/**
+ * Executes the raycasting process for the entire screen. Casts a ray for
+ * each column, determines the hit texture, and draws the wall slice using
+ * `draw_wall`. Returns 1 on success.
+ */
 int	execute_raycasting(t_game *game)
 {
 	int				column;
