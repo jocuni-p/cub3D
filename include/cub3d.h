@@ -6,7 +6,7 @@
 /*   By: rzhdanov <rzhdanov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 15:41:01 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/12/01 23:51:08 by rzhdanov         ###   ########.fr       */
+/*   Updated: 2024/12/02 22:13:31 by rzhdanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,10 @@
 # define MINIMAP_TILE_SIZE 15
 # define SPEED 0.1f
 # define ROTATION_SPEED 0.0005f
+
+/*-------------------angle macro for testing------------------*/
+/* set in degrees */
+# define ANGLE 1.0f
 
 /*-----List containing all lines from filename.cub------*/
 typedef struct s_cub
@@ -251,6 +255,7 @@ void		set_direction_north(t_game *game);
 void		set_direction_south(t_game *game);
 void		set_direction_east(t_game *game);
 void		set_direction_west(t_game *game);
+void		set_direction_based_on_angle(t_game *game, float angle);
 int			init_textures(t_game *game);
 void		draw_background(t_game *game);
 void		loop_updater(void *param);

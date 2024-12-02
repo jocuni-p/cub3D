@@ -6,7 +6,7 @@
 /*   By: rzhdanov <rzhdanov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 12:19:47 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/12/01 01:00:39 by rzhdanov         ###   ########.fr       */
+/*   Updated: 2024/12/02 22:06:14 by rzhdanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,8 @@ void	event_listener(t_game *game)
 {
 	if (mlx_is_key_down(game->mlx, MLX_KEY_ESCAPE))
 		error_mlx(game);
+	if (mlx_is_key_down(game->mlx, MLX_KEY_P))
+		set_direction_based_on_angle(game, (float) ANGLE);
 	process_movement(game);
 }
 
