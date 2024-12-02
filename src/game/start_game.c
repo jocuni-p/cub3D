@@ -6,7 +6,7 @@
 /*   By: rzhdanov <rzhdanov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 10:47:00 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/12/01 01:08:59 by rzhdanov         ###   ########.fr       */
+/*   Updated: 2024/12/02 22:18:49 by rzhdanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ void	init_player_values(t_game *game)
 	game->player.is_running = false;
 	game->player.speed = SPEED;
 	game->player.rotation_speed = ROTATION_SPEED;
+	game->player.angle = ANGLE;
 	reset_player_direction(game);
 }
 

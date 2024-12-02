@@ -6,7 +6,7 @@
 /*   By: rzhdanov <rzhdanov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/30 13:31:21 by rzhdanov          #+#    #+#             */
-/*   Updated: 2024/12/01 01:02:01 by rzhdanov         ###   ########.fr       */
+/*   Updated: 2024/12/02 22:33:08 by rzhdanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,4 +49,20 @@ void	sprint_off(t_game *game)
 	game->player.speed *= 0.5;
 	game->player.rotation_speed -= ROTATION_SPEED / 2;
 	game->player.is_running = false;
+}
+
+void	change_angle_for_testing(t_game *game)
+{
+	if (mlx_is_key_down(game->mlx, MLX_KEY_M))
+	{
+		game->player.angle += 1.0f;
+		printf("Angle INCREASED by 1 degree.\nNew value: %f\n",
+			game->player.angle);
+	}
+	if (mlx_is_key_down(game->mlx, MLX_KEY_N))
+	{
+		game->player.angle -= 1.0f;
+		printf("Angle DECREASED by 1 degree.\nNew value: %f\n",
+			game->player.angle);
+	}
 }

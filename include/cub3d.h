@@ -6,7 +6,7 @@
 /*   By: rzhdanov <rzhdanov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 15:41:01 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/12/02 22:13:31 by rzhdanov         ###   ########.fr       */
+/*   Updated: 2024/12/02 22:28:21 by rzhdanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,6 +144,7 @@ typedef struct s_player
 	char			orientation;//initial orientation: N, S, E, W
 	float			speed;
 	float			rotation_speed;
+	float			angle;
 	bool			is_running;
 }					t_player;
 
@@ -255,7 +256,8 @@ void		set_direction_north(t_game *game);
 void		set_direction_south(t_game *game);
 void		set_direction_east(t_game *game);
 void		set_direction_west(t_game *game);
-void		set_direction_based_on_angle(t_game *game, float angle);
+void		set_direction_based_on_angle(t_game *game);
+void		change_angle_for_testing(t_game *game);
 int			init_textures(t_game *game);
 void		draw_background(t_game *game);
 void		loop_updater(void *param);
