@@ -6,12 +6,17 @@
 /*   By: rzhdanov <rzhdanov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 15:09:25 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/11/30 19:01:32 by rzhdanov         ###   ########.fr       */
+/*   Updated: 2024/12/02 01:22:34 by rzhdanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
+/**
+ * Calculates and returns the opposite color of the ceiling's RGB values.
+ * Uses the `combiner_hex` function to combine the inverted RGB values
+ * with full opacity (alpha = 255).
+ */
 int	get_opposite_color(t_game *game)
 {
 	int	opposite;

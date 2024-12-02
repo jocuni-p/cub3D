@@ -6,7 +6,7 @@
 #    By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/26 17:23:07 by jocuni-p          #+#    #+#              #
-#    Updated: 2024/12/01 22:15:23 by jocuni-p         ###   ########.fr        #
+#    Updated: 2024/12/02 13:06:17 by jocuni-p         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -146,4 +146,4 @@ re: clean all
 norm:
 	norminette $(SRCS) $(LIBFT) ./include
 
-.PHONY: all, clean, fclean, re, libmlx
+.PHONY: all, clean, fclean, re, libmlx, norm

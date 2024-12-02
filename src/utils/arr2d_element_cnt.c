@@ -3,16 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   arr2d_element_cnt.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
+/*   By: rzhdanov <rzhdanov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 14:49:27 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/09/22 18:36:27 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/12/02 01:20:31 by rzhdanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-/*Returns the num of elements has a 2D_array (char **str)*/
+/**
+ * Counts the number of elements in a 2D character array (`char **arr`).
+ * Returns the count of non-NULL elements. Returns 0 if the array is NULL.
+ */
 int	arr2d_element_cnt(char **arr)
 {
 	int	cnt;

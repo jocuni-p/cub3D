@@ -6,12 +6,16 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 12:34:56 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/12/01 21:53:41 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/12/02 13:09:09 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
+/**
+ * Parses and sets directional texture paths in the game's parser structure.
+ * Stores the values for North, South, West, and East directions if valid.
+ */
 static void	set_elements_directions(t_game *game, char **elements)
 {
 	if ((ft_strcmp(elements[0], "NO") == 0)
@@ -28,8 +32,11 @@ static void	set_elements_directions(t_game *game, char **elements)
 		game->parser.elem.ea = ft_strdup(elements[1]);
 }
 
-/*Sets elem.variables with his value. If a duplicate or non valid 
-element is found returns 1. Finally, 'elements' is freed. */
+/**
+ * Sets game elements like textures and colors. Validates the element type
+ * and its value. Parses colors for ceiling and floor. Frees memory on errors.
+ * Returns 1 if an invalid or duplicate element is found.
+ */
 int	set_element(t_game *game, char **elements)
 {
 	if ((ft_strcmp(elements[0], "NO") == 0)
@@ -54,7 +61,10 @@ int	set_element(t_game *game, char **elements)
 	return (arr2d_free(&elements), 0);
 }
 
-/*Return 0 if all elements are setted with correct path; otherwise returns 1*/
+/**
+ * Checks if all required elements (4 textures, 2 colors) are set. Returns
+ * 0 if all elements are properly initialized; otherwise, returns 1.
+ */
 int	check_setted_elements(t_game *game)
 {
 	if (game->parser.elem.no != NULL && game->parser.elem.so != NULL \
@@ -64,8 +74,11 @@ int	check_setted_elements(t_game *game)
 	return (1);
 }
 
-/*----Parses only the elements (4 textures + 2 colors) and sets a pointer to 
-the map starting line. Returns 1 if some invalid case is found---*/
+/**
+ * Parses the configuration file's elements section. Extracts textures and
+ * colors and validates their formats. Sets a pointer to the map starting
+ * line. Returns 1 on any error or invalid case.
+ */
 int	parse_elements(t_game *game)
 {
 	char	**elements;

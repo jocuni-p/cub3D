@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 15:41:01 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/12/01 22:08:53 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/12/02 13:07:24 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@
 # define ORANGE "\033[38;5;209m"
 # define DEF_COLOR "\033[0;39m"
 # define TRANSPARENT 0x00000000
+# define BLACK 0x000000FF
 
 /*-------------------Error messages--------------------*/
 

@@ -6,12 +6,25 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 12:38:53 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/12/01 21:48:36 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/12/02 13:08:09 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
+/**
+ * The entry point of the program. Validates the command-line arguments
+ * and initializes the game structure. Parses the `.cub` configuration file
+ * and starts the game if parsing succeeds. Frees allocated resources on
+ * failure or program exit. Returns 0 on successful execution, otherwise 1.
+ *
+ * Notes:
+ * - Accepts exactly one command-line argument: the `.cub` file.
+ * - Initializes three images in the game:
+ *   - Background: Ceiling and floor, rendered on the last layer.
+ *   - Raycasting: Walls, rendered on the middle layer.
+ *   - Minimap: A small top-left map, rendered on the first layer.
+ */
 int	main(int ac, char **av)
 {
 	t_game		*game;

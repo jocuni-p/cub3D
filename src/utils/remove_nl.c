@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   remove_nl.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
+/*   By: rzhdanov <rzhdanov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 17:28:49 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/10/10 17:17:43 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/12/02 01:23:03 by rzhdanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-//Removes '\n' at the end of the string if it exist.
+//Removes '\n' at the end of the string if it exists.
 void	remove_nl(char *str)
 {
 	size_t	len;

@@ -6,14 +6,16 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 12:26:44 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/12/01 19:03:58 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/12/02 13:10:07 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-/*---Return 0 if str contains '1' and/or ' ' character, otherwise return 1*/
-/*The function works equally for the first or the last lines*/
+/**
+ * Validates the first line of the map. Ensures it contains only '1' or ' '
+ * characters. Returns 1 if invalid, otherwise returns 0.
+ */
 int	is_firstline_valid(char *str)
 {
 	int		i;
@@ -43,7 +45,10 @@ int	is_firstline_valid(char *str)
 	return (0);
 }
 
-/*Return 0 if str began and finish with char '1', otherwise return 1*/
+/**
+ * Checks that the first and last characters of a map line are '1'. Returns
+ * 1 if invalid, otherwise returns 0.
+ */
 int	is_first_and_last_char_valid(char *str)
 {
 	if (str[0] == '1' && str[ft_strlen(str) - 1] == '1')
@@ -52,7 +57,11 @@ int	is_first_and_last_char_valid(char *str)
 		return (1);
 }
 
-/*Return 0 if str contents 1/0/' '/N/S/W or E, otherwise return 1*/
+/**
+ * Validates the middle characters of a map line. Ensures they are valid map
+ * characters ('1', '0', ' ', or player orientations 'N', 'S', 'W', 'E'). Updates
+ * player orientation if found. Returns 1 if invalid.
+ */
 int	is_middle_char_valid(char *str, t_game *game)
 {
 	int	i;
@@ -75,6 +84,10 @@ int	is_middle_char_valid(char *str, t_game *game)
 	return (0);
 }
 
+/**
+ * Skips newline characters in the map's linked list and sets the starting
+ * line pointer to the first valid map line.
+ */
 static void	skip_new_lines(t_game *game)
 {
 	while (game->parser.cub->str[0] == '\n' && game->parser.cub->next)
@@ -82,7 +95,10 @@ static void	skip_new_lines(t_game *game)
 	game->parser.map_ln0 = game->parser.cub;
 }
 
-/*Parses since the next line of elements til the end of file.cub*/
+/**
+ * Parses the map section of the configuration file. Validates each map line,
+ * ensuring proper formatting and characters. Returns 1 if any validation fails.
+ */
 int	parse_map_1(t_game *game)
 {
 	char	*trimmed_line;

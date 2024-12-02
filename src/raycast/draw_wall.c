@@ -6,12 +6,17 @@
 /*   By: rzhdanov <rzhdanov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 11:28:56 by rzhdanov          #+#    #+#             */
-/*   Updated: 2024/11/30 00:30:07 by rzhdanov         ###   ########.fr       */
+/*   Updated: 2024/12/02 01:10:02 by rzhdanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
+/**
+ * Computes the x-coordinate of the texture for a wall slice. Adjusts the
+ * value based on the ray's hit side and direction. Ensures the texture x
+ * value stays within valid bounds.
+ */
 static void	set_texture_x(t_game *game, mlx_texture_t *texture,
 							int *texture_x)
 {
@@ -32,6 +37,11 @@ static void	set_texture_x(t_game *game, mlx_texture_t *texture,
 // int			texture_y; //i_a[3]
 // The normal version is commented out below
 
+/**
+ * Draws a vertical slice of a wall for the given column. Uses the raycasting
+ * data to calculate the texture coordinates and fetches the pixel colors
+ * from the texture. Maps these colors onto the screen using `mlx_put_pixel`.
+ */
 void	draw_wall(t_game *game, mlx_texture_t *texture, int column)
 {
 	int			i_a[4];

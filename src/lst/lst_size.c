@@ -3,16 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   lst_size.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
+/*   By: rzhdanov <rzhdanov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 11:08:38 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/10/10 16:42:26 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/12/01 23:47:04 by rzhdanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-/*Counts the number of nodes of a list.*/
+/**
+ * Counts the number of nodes in a linked list of type `t_cub`. Iterates
+ * through the list, incrementing a counter for each node. Returns the total
+ * count of nodes. If the list is empty, returns 0.
+ */
 int	lst_size(t_cub *lst)
 {
 	int	size;
