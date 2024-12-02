@@ -3,16 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   arr2d_creator.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
+/*   By: rzhdanov <rzhdanov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 11:14:18 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/10/30 18:32:48 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/12/01 23:54:27 by rzhdanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-/*Calculates an array of strings size according the measures of our map*/
+/**
+ * Calculates the size of a 2D array to represent the map. Determines the
+ * maximum width and total height of the map from the linked list of lines.
+ * Updates the game's map dimensions.
+ */
 int	arr2d_size(t_game *game)
 {
 	t_cub	*tmp;
@@ -40,7 +44,10 @@ int	arr2d_size(t_game *game)
 	return (0);
 }
 
-/*Fills every element of the array*/
+/**
+ * Fills the 2D array with data from the linked list of map lines. Copies
+ * each character from the list into the corresponding array position.
+ */
 int	arr2d_filler(t_game *game)
 {
 	int	i;
@@ -61,7 +68,11 @@ int	arr2d_filler(t_game *game)
 	return (0);
 }
 
-/*Transfers map from a list into a 2D matrix*/
+/**
+ * Creates a 2D array to represent the map. Allocates memory for the array
+ * based on the map's dimensions. Fills the array using `arr2d_filler`. Returns
+ * 1 if any allocation fails or the map is invalid.
+ */
 int	arr2d_creator(t_game *game)
 {
 	int	i;
@@ -71,7 +82,7 @@ int	arr2d_creator(t_game *game)
 		return (print_error(ERR_MAP), 1);
 	game->map_arr = (char **)malloc(sizeof(char *) * (game->map_h + 1));
 	if (!game->map_arr)
-		return (print_error(ERR_MAP), 1);		
+		return (print_error(ERR_MAP), 1);
 	while (i < game->map_h)
 	{
 		game->map_arr[i] = (char *)malloc(sizeof(char) * (game->map_w + 1));

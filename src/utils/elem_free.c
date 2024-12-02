@@ -3,16 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   elem_free.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
+/*   By: rzhdanov <rzhdanov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 10:13:43 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/10/25 18:03:56 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/12/02 01:21:38 by rzhdanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-/*Frees all allocated elements in the struct elem */
+/**
+ * Frees all dynamically allocated elements in the `elem` structure of the
+ * game's parser. Handles textures and colors.
+ */
 void	elem_free(t_game *game)
 {
 	if (game->parser.elem.no)

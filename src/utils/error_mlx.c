@@ -3,22 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   error_mlx.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
+/*   By: rzhdanov <rzhdanov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 17:12:21 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/11/11 22:11:00 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/12/02 01:21:51 by rzhdanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-// Exit the program properly when a mlx failure is found.
-void error_mlx(t_game *game)
+/**
+ * Handles errors related to the MiniLibX library (MLX). Prints the MLX error
+ * code and message if an error exists. Frees game resources and terminates
+ * the program.
+ */
+void	error_mlx(t_game *game)
 {
 	if (mlx_errno != 0)
 	{
-		ft_printf("Error\nMLX error code: %d\n", mlx_errno);//prints the MLX error code
-		ft_printf("%s\n", mlx_strerror(mlx_errno));//prints a string that describes the error code
+		ft_printf("Error\nMLX error code: %d\n", mlx_errno);
+		ft_printf("%s\n", mlx_strerror(mlx_errno));
 	}
 	game_free(game);
 	mlx_terminate(game->mlx);

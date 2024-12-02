@@ -3,17 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: rzhdanov <rzhdanov@student.42.fr>          +#+  +:+       +#+         #
+#    By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/26 17:23:07 by jocuni-p          #+#    #+#              #
-#    Updated: 2024/11/25 04:22:46 by rzhdanov         ###   ########.fr        #
+#    Updated: 2024/12/02 21:57:15 by jocuni-p         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	:= cub3D
 UNAME := $(shell uname)#gets the OS we are using
 
-# Si uso fsanitize en las flags de compilado, debo ponerla tambien en las del enlazado, sino da error al compilar
 LDFLAGS	:= -fsanitize=address #(only on MacOS systems)
 LIBMLX	:= ./lib/MLX42
 LIBFT	:= ./lib/libft/
@@ -71,12 +70,16 @@ SRCS_GAME :=		./src/game/draw_background.c \
 					./src/game/start_game.c \
 					./src/game/loop_updater.c \
 					./src/game/movement.c \
-					./src/game/reset_player_direction.c
+					./src/game/reset_player_direction.c \
+					./src/game/movement_utils_0.c \
+					./src/game/movement_utils_1.c
 
 SRCS_MINIMAP :=		./src/minimap/draw_minimap.c \
 					./src/minimap/draw_minimap_player.c
 
-SRCS_RAYCAST :=		./src/raycast/raycast.c
+SRCS_RAYCAST :=		./src/raycast/raycast.c \
+					./src/raycast/raycast_utils.c \
+					./src/raycast/draw_wall.c
 
 # Puts together all src files
 SRCS := ./src/main.c $(SRCS_LST) $(SRCS_PARSER) $(SRCS_PRINT_TESTS) $(SRCS_UTILS) $(SRCS_MINIMAP) $(SRCS_GAME) $(SRCS_RAYCAST)#$(SRCS_MINIMAP)
@@ -121,7 +124,7 @@ libmlx:
 libft: 
 	@$(MAKE) -C $(LIBFT)
 
-# Regla para compilar cualquier archivo .c en los subdirectorios
+
 ./src/%.o: ./src/%.c Makefile include/cub3d.h
 	@$(CC) $(CFLAGS) -o $@ -c $< $(HEADERS) && printf "Compiling: $(notdir $<)\n"
 
@@ -140,4 +143,7 @@ fclean: clean
 
 re: clean all
 
-.PHONY: all, clean, fclean, re, libmlx
+norm:
+	norminette $(SRCS) $(LIBFT) ./include
+
+.PHONY: all, clean, fclean, re, libmlx, norm

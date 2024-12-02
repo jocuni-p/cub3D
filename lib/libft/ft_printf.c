@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jocuni-p <jocuni-p@student.42barcelona.co  +#+  +:+       +#+        */
+/*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 12:49:21 by jocuni-p          #+#    #+#             */
-/*   Updated: 2023/12/21 10:35:07 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/12/01 21:54:58 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,10 @@ int	ft_printf(char const *fmt, ...)
 	{
 		len_tmp = 0;
 		if (fmt[i] == '%')
-			len_tmp = sel_fmt(fmt, i++, args);
+		{
+			len_tmp = sel_fmt(fmt, i, args);
+			i++;
+		}
 		else
 			len_tmp = put_c(fmt[i]);
 		if (len_tmp < 0)

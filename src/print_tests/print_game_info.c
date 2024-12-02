@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_game_info.c                                       :+:      :+:    :+:   */
+/*   print_game_info.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -22,7 +22,7 @@ void	print_game_info(t_game *game)
 	printf("  ea: %s\n", game->parser.elem.ea);
 	printf("  c:  0x%X\n", game->parser.elem.c_color);
 	printf("  f:  0x%X\n", game->parser.elem.f_color);
-	printf("\n  ──────────────GAME─────────────  \n\n");
+	printf("\n      ──────────GAME─────────  \n\n");
 	printf("  map size (w, h): (%i, %i)\n", game->map_w, game->map_h);
 	printf("  player.pos: (%f,%f)\n", game->player.pos.x, game->player.pos.y);
 	printf("  player.dir: (%f,%f)\n", game->player.dir.x, game->player.dir.y);

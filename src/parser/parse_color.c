@@ -11,13 +11,35 @@
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
+
+/*--Returns the number of ',' characters found in the given string.--*/
+int	coma_counter(const char *str)
+{
+	int	counter;
+
+	counter = 0;
+	if (str == NULL)
+		return (0);
+	while (*str)
+	{
+		if (*str == ',')
+			counter++;
+		str++;
+	}
+	return (counter);
+}
+
 /*Encodes to one hexadecimal the four diferent color parameters*/
 uint32_t	combiner_hex(uint32_t r, uint32_t g, uint32_t b, uint32_t alpha)
 {
 	return (r << 24 | g << 16 | b << 8 | alpha);
 }
 
-/*Set ceiling' rgb values*/
+/**
+ * Sets the ceiling color based on an RGB channel value. Converts RGB to
+ * a hexadecimal color and stores it in the game's parser structure. Returns
+ * 1 if the value is invalid.
+ */
 int	set_c(t_game *game, char *rgb_canal, int i)
 {
 	uint32_t	nbr;
@@ -33,16 +55,20 @@ int	set_c(t_game *game, char *rgb_canal, int i)
 	{
 		game->parser.elem.rgb_c[2] = nbr;
 		game->parser.elem.c_color = combiner_hex(\
-									game->parser.elem.rgb_c[0],
-									 game->parser.elem.rgb_c[1],
-									 game->parser.elem.rgb_c[2],
-									 255);
+				game->parser.elem.rgb_c[0],
+				game->parser.elem.rgb_c[1],
+				game->parser.elem.rgb_c[2],
+				255);
 		game->parser.elem.c_opposite = get_opposite_color(game);
 	}
 	return (0);
 }
 
-/*Set floor' rgb values*/
+/**
+ * Sets the floor color based on an RGB channel value. Converts RGB to
+ * a hexadecimal color and stores it in the game's parser structure. Returns
+ * 1 if the value is invalid.
+ */
 int	set_f(t_game *game, char *rgb_canal, int i)
 {
 	uint32_t	nbr;
@@ -58,15 +84,18 @@ int	set_f(t_game *game, char *rgb_canal, int i)
 	{
 		game->parser.elem.rgb_f[2] = nbr;
 		game->parser.elem.f_color = combiner_hex(game->parser.elem.rgb_f[0],
-												 game->parser.elem.rgb_f[1],
-												 game->parser.elem.rgb_f[2],
-												 255);
+				game->parser.elem.rgb_f[1],
+				game->parser.elem.rgb_f[2],
+				255);
 	}
 	return (0);
 }
 
-/*Set the elem.f_color and elem.c_color variables to hexadecimal value, 
-if it fails return 1*/
+/**
+ * Parses a color string for the ceiling or floor. Splits the string into
+ * RGB components. Validates and converts the values to hexadecimal colors.
+ * Returns 1 if the format or values are invalid.
+ */
 int	parse_color(t_game *game, char *str, char c)
 {
 	int		i;
@@ -74,6 +103,8 @@ int	parse_color(t_game *game, char *str, char c)
 	char	**rgb_canals;
 
 	i = 0;
+	if (coma_counter(str) != 2)
+		return (1);
 	rgb_canals = ft_split(str, ',');
 	if (arr2d_element_cnt(rgb_canals) != 3)
 		return (arr2d_free(&rgb_canals), 1);

@@ -6,12 +6,25 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 12:38:53 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/11/08 17:19:20 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/12/02 19:14:46 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
+/**
+ * The entry point of the program. Validates the command-line arguments
+ * and initializes the game structure. Parses the `.cub` configuration file
+ * and starts the game if parsing succeeds. Frees allocated resources on
+ * failure or program exit. Returns 0 on successful execution, otherwise 1.
+ *
+ * Notes:
+ * - Accepts exactly one command-line argument: the `.cub` file.
+ * - Initializes three images in the game:
+ *   - Background: Ceiling and floor, rendered on the last layer.
+ *   - Raycasting: Walls, rendered on the middle layer.
+ *   - Minimap: A small top-left map, rendered on the first layer.
+ */
 int	main(int ac, char **av)
 {
 	t_game		*game;
@@ -23,15 +36,18 @@ int	main(int ac, char **av)
 		return (print_error(ERR_MEMORY), 1);
 	ft_memset(game, 0, sizeof(t_game));
 	if (parse_cub(game, av[1]))
-		return (game_free(game), 1);
-	if (start_game(game))
+	{
+		game_free(game);
+		free(game);
 		return (1);
+	}
+	if (start_game(game))
+	{
+		game_free(game);
+		free(game);
+		return (1);
+	}
 	game_free(game);
-	return (0);//probably the program never is gonna finish here
+	free(game);
+	return (0);
 }
-
-
-/*There are 3 different images into the game window:
-	-The background image, drawing half ceiling and half floor, displayed into the last window layer
-	-The raycasting image, drawing the walls in the right perspective, displayed into the medium layer
-	-The minimap image, drawing a top-left small square map, displayed into the first layer */
