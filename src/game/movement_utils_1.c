@@ -6,7 +6,7 @@
 /*   By: rzhdanov <rzhdanov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/30 13:31:21 by rzhdanov          #+#    #+#             */
-/*   Updated: 2024/12/02 22:33:08 by rzhdanov         ###   ########.fr       */
+/*   Updated: 2024/12/02 22:59:45 by rzhdanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,16 +53,22 @@ void	sprint_off(t_game *game)
 
 void	change_angle_for_testing(t_game *game)
 {
-	if (mlx_is_key_down(game->mlx, MLX_KEY_M))
+	if (mlx_is_key_down(game->mlx, MLX_KEY_M) && !game->player.m_n_is_pressed)
 	{
+		game->player.m_n_is_pressed = true;
 		game->player.angle += 1.0f;
 		printf("Angle INCREASED by 1 degree.\nNew value: %f\n",
 			game->player.angle);
 	}
-	if (mlx_is_key_down(game->mlx, MLX_KEY_N))
+	if (mlx_is_key_down(game->mlx, MLX_KEY_N) && !game->player.m_n_is_pressed)
 	{
+		game->player.m_n_is_pressed = true;
 		game->player.angle -= 1.0f;
 		printf("Angle DECREASED by 1 degree.\nNew value: %f\n",
 			game->player.angle);
 	}
+	if (!mlx_is_key_down(game->mlx, MLX_KEY_M)
+		&& !mlx_is_key_down(game->mlx, MLX_KEY_N)
+		&& game->player.m_n_is_pressed)
+		game->player.m_n_is_pressed = false;
 }

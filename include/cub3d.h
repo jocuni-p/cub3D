@@ -6,7 +6,7 @@
 /*   By: rzhdanov <rzhdanov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 15:41:01 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/12/02 22:28:21 by rzhdanov         ###   ########.fr       */
+/*   Updated: 2024/12/02 22:59:09 by rzhdanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,6 +146,7 @@ typedef struct s_player
 	float			rotation_speed;
 	float			angle;
 	bool			is_running;
+	bool			m_n_is_pressed;
 }					t_player;
 
 /*------------ray--------*/
