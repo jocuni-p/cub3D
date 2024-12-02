@@ -6,44 +6,28 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 12:34:56 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/12/02 13:09:09 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/12/02 21:11:37 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
 /**
- * Parses and sets directional texture paths in the game's parser structure.
- * Stores the values for North, South, West, and East directions if valid.
- */
-static void	set_elements_directions(t_game *game, char **elements)
-{
-	if ((ft_strcmp(elements[0], "NO") == 0)
-		&& game->parser.elem.no == NULL)
-		game->parser.elem.no = ft_strdup(elements[1]);
-	else if ((ft_strcmp(elements[0], "SO") == 0)
-		&& game->parser.elem.so == NULL)
-		game->parser.elem.so = ft_strdup(elements[1]);
-	else if ((ft_strcmp(elements[0], "WE") == 0)
-		&& game->parser.elem.we == NULL)
-		game->parser.elem.we = ft_strdup(elements[1]);
-	else if ((ft_strcmp(elements[0], "EA") == 0)
-		&& game->parser.elem.ea == NULL)
-		game->parser.elem.ea = ft_strdup(elements[1]);
-}
-
-/**
- * Sets game elements like textures and colors. Validates the element type
+ * Sets game elements like textures and colors. Stores the values for North, 
+ * South, West, and East directions if valid.Validates the element type
  * and its value. Parses colors for ceiling and floor. Frees memory on errors.
  * Returns 1 if an invalid or duplicate element is found.
  */
 int	set_element(t_game *game, char **elements)
 {
-	if ((ft_strcmp(elements[0], "NO") == 0)
-		|| (ft_strcmp(elements[0], "SO") == 0)
-		|| (ft_strcmp(elements[0], "WE") == 0)
-		|| (ft_strcmp(elements[0], "EA") == 0))
-		set_elements_directions(game, elements);
+	if ((ft_strcmp(elements[0], "NO") == 0) && game->parser.elem.no == NULL)
+		game->parser.elem.no = ft_strdup(elements[1]);
+	else if ((ft_strcmp(elements[0], "SO") == 0) && game->parser.elem.so == NULL)
+		game->parser.elem.so = ft_strdup(elements[1]);
+	else if ((ft_strcmp(elements[0], "WE") == 0) && game->parser.elem.we == NULL)
+		game->parser.elem.we = ft_strdup(elements[1]);
+	else if ((ft_strcmp(elements[0], "EA") == 0) && game->parser.elem.ea == NULL)
+		game->parser.elem.ea = ft_strdup(elements[1]);
 	else if ((ft_strcmp(elements[0], "C") == 0) && game->parser.elem.c == NULL)
 	{
 		game->parser.elem.c = ft_strdup(elements[1]);
@@ -59,6 +43,33 @@ int	set_element(t_game *game, char **elements)
 	else
 		return (arr2d_free(&elements), 1);
 	return (arr2d_free(&elements), 0);
+}
+
+/*--Returns the number of '/' characters found in the given string.--*/
+static int	slash_counter(char *str)
+{
+	int	counter;
+
+	counter = 0;
+	if (str == NULL)
+		return (0);
+	while (*str)
+	{
+		if (*str == '/')
+			counter++;
+		str++;
+	}
+	return (counter);
+}
+/* Checks if every texture path contains only 2 '/' caracters*/
+static int	slash_checker(t_game *game)
+{
+	if (slash_counter(game->parser.elem.no) == 2 
+		&& slash_counter(game->parser.elem.so) == 2
+		&& slash_counter(game->parser.elem.we) == 2
+		&& slash_counter(game->parser.elem.ea) == 2)
+		return (2);
+	return (0);	
 }
 
 /**
@@ -90,7 +101,7 @@ int	parse_elements(t_game *game)
 			game->parser.cub = game->parser.cub->next;
 			continue ;
 		}
-		if (check_setted_elements(game) == 0)
+		if (check_setted_elements(game) == 0 && slash_checker(game) == 2)
 			return (0);
 		remove_nl(game->parser.cub->str);
 		elements = ft_split(game->parser.cub->str, ' ');

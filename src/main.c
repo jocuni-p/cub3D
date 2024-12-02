@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 12:38:53 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/12/02 13:08:09 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/12/02 19:14:46 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,5 +47,7 @@ int	main(int ac, char **av)
 		free(game);
 		return (1);
 	}
+	game_free(game);
+	free(game);
 	return (0);
 }
