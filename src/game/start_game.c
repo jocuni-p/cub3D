@@ -6,7 +6,7 @@
 /*   By: rzhdanov <rzhdanov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 10:47:00 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/12/02 22:59:01 by rzhdanov         ###   ########.fr       */
+/*   Updated: 2024/12/03 00:33:45 by rzhdanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,10 @@ int	init_textures(t_game *game)
 }
 
 /**
- * Initializes player-related values. Sets default movement speed,
- * rotation speed, and running state. Resets the player's direction
- * based on their orientation using `reset_player_direction`.
+ * Initializes player-related values. Sets default movement speed, 
+ * rotation speed, and running state. Sets sensitivity for mouse 
+ * rotation. Resets the player's direction based on their orientation 
+ * using `reset_player_direction`.
  */
 void	init_player_values(t_game *game)
 {
@@ -53,6 +54,7 @@ void	init_player_values(t_game *game)
 	game->player.rotation_speed = ROTATION_SPEED;
 	game->player.angle = ANGLE;
 	game->player.m_n_is_pressed = false;
+	game->sensitivity = 0.002;
 	reset_player_direction(game);
 }
 
@@ -117,6 +119,8 @@ int	start_game(t_game *game)
 	if (init_game(game))
 		return (error_mlx(game), 1);
 	mlx_loop_hook(game->mlx, loop_updater, game);
+	mlx_scroll_hook(game->mlx, scroll_hook, game);
+	mlx_mouse_hook(game->mlx, mouse_button_hook, game);
 	print_game_info(game);
 	mlx_loop(game->mlx);
 	mlx_terminate(game->mlx);

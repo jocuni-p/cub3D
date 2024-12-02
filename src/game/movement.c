@@ -6,7 +6,7 @@
 /*   By: rzhdanov <rzhdanov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 12:19:47 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/12/02 22:54:02 by rzhdanov         ###   ########.fr       */
+/*   Updated: 2024/12/03 00:56:01 by rzhdanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,7 @@ void	event_listener(t_game *game)
 		set_direction_based_on_angle(game);
 	change_angle_for_testing(game);
 	process_movement(game);
+	rotate_with_mouse(game);
 }
 
 /*

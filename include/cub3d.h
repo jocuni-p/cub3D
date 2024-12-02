@@ -6,7 +6,7 @@
 /*   By: rzhdanov <rzhdanov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 15:41:01 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/12/02 22:59:09 by rzhdanov         ###   ########.fr       */
+/*   Updated: 2024/12/03 00:56:01 by rzhdanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -191,6 +191,7 @@ typedef struct s_game
 	char			**map_arr;//map cells formated 
 	int				map_w;//map size
 	int				map_h;//map size
+	float			sensitivity;
 	t_player		player;	
 	mlx_t			*mlx;//instance to MLX42 library
 	mlx_image_t		*img_back;//instance of background image
@@ -276,6 +277,10 @@ void		try_to_rotate(t_game *game);
 void		try_to_run(t_game *game);
 void		sprint_on(t_game *game);
 void		sprint_off(t_game *game);
+void		rotate_with_mouse(t_game *game);
+void		scroll_hook(double xoffset, double yoffset, void *param);
+void		mouse_button_hook(mouse_key_t button, action_t action,
+				modifier_key_t mods, void *param);
 
 /*------------------Raycasting---------------*/
 
