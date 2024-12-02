@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   movement.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
+/*   By: rzhdanov <rzhdanov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 12:19:47 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/12/02 22:02:36 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/12/03 01:09:53 by rzhdanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,7 @@ void	event_listener(t_game *game)
 	if (mlx_is_key_down(game->mlx, MLX_KEY_ESCAPE))
 		error_mlx(game);
 	process_movement(game);
+	rotate_with_mouse(game);
 }
 
 /*

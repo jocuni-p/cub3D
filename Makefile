@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+         #
+#    By: rzhdanov <rzhdanov@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/26 17:23:07 by jocuni-p          #+#    #+#              #
-#    Updated: 2024/12/02 21:57:15 by jocuni-p         ###   ########.fr        #
+#    Updated: 2024/12/03 01:03:05 by rzhdanov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -72,7 +72,8 @@ SRCS_GAME :=		./src/game/draw_background.c \
 					./src/game/movement.c \
 					./src/game/reset_player_direction.c \
 					./src/game/movement_utils_0.c \
-					./src/game/movement_utils_1.c
+					./src/game/movement_utils_1.c \
+					./src/game/movement_mouse.c
 
 SRCS_MINIMAP :=		./src/minimap/draw_minimap.c \
 					./src/minimap/draw_minimap_player.c
