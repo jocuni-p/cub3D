@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 12:49:21 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/12/01 21:54:58 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/12/03 16:39:11 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,7 @@ int	ft_printf(char const *fmt, ...)
 		else
 			len_tmp = put_c(fmt[i]);
 		if (len_tmp < 0)
-		{
-			va_end(args);
-			return (-1);
-		}
+			return (va_end(args), -1);
 		len += len_tmp;
 		i++;
 	}

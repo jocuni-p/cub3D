@@ -6,7 +6,7 @@
 /*   By: jocuni-p <jocuni-p@student.42barcelona.com +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 15:41:01 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/12/02 22:00:28 by jocuni-p         ###   ########.fr       */
+/*   Updated: 2024/12/03 15:44:19 by jocuni-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,8 @@
 # define ERR_PATH "Error\nPath/file to the texture is invalid\n"
 
 /*-------------------game const params------------------*/
-# define WIDTH 2000
-# define HEIGHT 1000
+# define WIDTH 2800
+# define HEIGHT 1500
 # define MINIMAP_TILE_SIZE 15
 # define SPEED 0.1f
 # define ROTATION_SPEED 0.0005f
