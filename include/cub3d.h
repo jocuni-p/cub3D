@@ -6,7 +6,7 @@
 /*   By: rzhdanov <rzhdanov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 15:41:01 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/12/03 01:14:47 by rzhdanov         ###   ########.fr       */
+/*   Updated: 2024/12/07 16:00:40 by rzhdanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -192,6 +192,8 @@ typedef struct s_game
 	t_mmap			mmap;
 	t_textures		textures;
 	bool			is_moving;
+	bool			mouse_on;
+	bool			m_is_pressed;
 	t_ray			*ray;
 }					t_game;
 
@@ -271,6 +273,7 @@ void		rotate_with_mouse(t_game *game);
 void		scroll_hook(double xoffset, double yoffset, void *param);
 void		mouse_button_hook(mouse_key_t button, action_t action,
 				modifier_key_t mods, void *param);
+void		toggle_mouse(t_game *game);
 
 /*------------------Raycasting---------------*/
 

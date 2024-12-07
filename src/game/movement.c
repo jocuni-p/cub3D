@@ -6,7 +6,7 @@
 /*   By: rzhdanov <rzhdanov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 12:19:47 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/12/03 01:09:53 by rzhdanov         ###   ########.fr       */
+/*   Updated: 2024/12/07 15:59:45 by rzhdanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,7 @@ void	event_listener(t_game *game)
 	if (mlx_is_key_down(game->mlx, MLX_KEY_ESCAPE))
 		error_mlx(game);
 	process_movement(game);
+	toggle_mouse(game);
 	rotate_with_mouse(game);
 }
 
