@@ -12,124 +12,73 @@
 
 #include "../include/cub3d.h"
 
-/*
- * Draws the screen background. Fills the upper half with the ceiling color.
- * Fills the lower half with the floor color.
- *
- * Parameters:
- *  - t_game *game: Game structure with image and color data.
- *
- * Implementation:
- *  - Loops through each pixel. Uses `mlx_put_pixel` to set colors.
- *  - Ceiling color: `game->parser.elem.c_color`.
- *  - Floor color: `game->parser.elem.f_color`.
+/**
+ * Draws a ceiling pixel with brightness adjustment. Calculates the pixel's
+ * color by blending the ceiling color with the specified brightness. Places
+ * the pixel on the background image at position (x, y).
  */
-
-// void	draw_ceiling(t_game *game)
-// {
-// 	return ;
-// }
-
-// static void	draw_floor(t_game *game)
-// {
-// 	return ;
-// }
-
-void draw_background(t_game *game)
+static void	draw_ceiling(t_game *game, int x, int y, float brightness)
 {
-    int 	y;
-    int 	x;
-	// float	distance;
-	// float	max_distance;
-	float	brightness;
+	uint32_t	pixel_color;
+	uint32_t	background_color;
 
-    y = 0;
-    while (y < HEIGHT >> 1)
-    {
-        x = 0;
-        while (x < WIDTH)
-        {
-			// distance = (float)(y);
-            // Calculate lighting factor based on distance
-            // max_distance = (float)(HEIGHT / 2);
-            // brightness = 1.0f - ((float)y / max_distance);
-			brightness = calculate_brightness((float) y, (float) (HEIGHT / 2),
-							0.2f);
-            // Make the effect more pronounced
-            // brightness = brightness * brightness;
-            // // Clamp lighting factor between 0 and 1
-            // if (brightness < 0.0f)
-            //     brightness = 0.0f;
-            // else if (brightness > 1.0f)
-            //     brightness = 1.0f;
-
-            // Apply lighting to ceiling color
-            uint32_t r = (uint32_t)(((game->parser.elem.c_color >> 24) & 0xFF) * (brightness));
-            uint32_t g = (uint32_t)(((game->parser.elem.c_color >> 16) & 0xFF) * (brightness));
-            uint32_t b = (uint32_t)(((game->parser.elem.c_color >> 8) & 0xFF) * (brightness));
-            uint32_t color = combiner_hex(r, g, b, 255);
-
-            mlx_put_pixel(game->img_back, x, y, color);
-            x++;
-        }
-        y++;
-    }
-    while (y < HEIGHT)
-    {
-        x = 0;
-        while (x < WIDTH)
-        {
-            // Calculate lighting factor based on distance
-            float distance = (float)(y - HEIGHT / 2);
-            float max_distance = (float)(HEIGHT / 2);
-            float brightness = 1.0f - (distance / max_distance);
-
-            // Make the effect more pronounced
-            brightness = brightness * brightness;
-
-            // Clamp lighting factor between 0 and 1
-            if (brightness < 0.0f)
-                brightness = 0.0f;
-            else if (brightness > 1.0f)
-                brightness = 1.0f;
-
-            // Apply lighting to floor color
-            uint32_t r = (uint32_t)(((game->parser.elem.f_color >> 24) & 0xFF) * (1.0f - brightness));
-            uint32_t g = (uint32_t)(((game->parser.elem.f_color >> 16) & 0xFF) * (1.0f - brightness));
-            uint32_t b = (uint32_t)(((game->parser.elem.f_color >> 8) & 0xFF) * (1.0f - brightness));
-            uint32_t color = combiner_hex(r, g, b, 255);
-
-            mlx_put_pixel(game->img_back, x, y, color);
-            x++;
-        }
-        y++;
-    }
+	background_color = game->parser.elem.c_color;
+	pixel_color = combiner_hex((uint32_t)(((background_color >> 24) & 0xFF)
+				* (brightness)),
+			(uint32_t)(((game->parser.elem.c_color >> 16) & 0xFF)
+				* (brightness)),
+			(uint32_t)(((game->parser.elem.c_color >> 8) & 0xFF)
+				* (brightness)), 255);
+	mlx_put_pixel(game->img_back, x, y, pixel_color);
 }
 
-// void	draw_background(t_game *game)
-// {
-// 	int	y;
-// 	int	x;
+/**
+ * Draws a floor pixel with brightness adjustment. Calculates the pixel's
+ * color by blending the floor color with the specified brightness. Places
+ * the pixel on the background image at position (x, y).
+ */
+static void	draw_floor(t_game *game, int x, int y, float brightness)
+{
+	uint32_t	pixel_color;
+	uint32_t	background_color;
 
-// 	y = 0;
-// 	while (y < HEIGHT >> 1)
-// 	{
-// 		x = 0;
-// 		while (x < WIDTH)
-// 		{
-// 			mlx_put_pixel(game->img_back, x, y, game->parser.elem.c_color);
-// 			x++;
-// 		}
-// 		y++;
-// 	}
-// 	while (y < HEIGHT)
-// 	{
-// 		x = 0;
-// 		while (x < WIDTH)
-// 		{
-// 			mlx_put_pixel(game->img_back, x, y, game->parser.elem.f_color);
-// 			x++;
-// 		}
-// 		y++;
-// 	}
-// }
+	background_color = game->parser.elem.f_color;
+	pixel_color = combiner_hex((uint32_t)(((background_color >> 24) & 0xFF)
+				* (brightness)),
+			(uint32_t)(((game->parser.elem.c_color >> 16) & 0xFF)
+				* (brightness)),
+			(uint32_t)(((game->parser.elem.c_color >> 8) & 0xFF)
+				* (brightness)), 255);
+	mlx_put_pixel(game->img_back, x, y, pixel_color);
+}
+
+/**
+ * Draws the entire background, including the ceiling and floor. Gradually
+ * adjusts the brightness of the ceiling and floor based on their distance
+ * from the middle of the screen. Calls `draw_ceiling` and `draw_floor` for
+ * individual pixel rendering.
+ */
+void	draw_background(t_game *game)
+{
+	int			y;
+	int			x;
+	float		brightness;
+
+	y = -1;
+	while (++ y < HEIGHT >> 1)
+	{
+		brightness = calculate_brightness((float) y, (float)(HEIGHT / 2),
+				0.2f);
+		x = -1;
+		while (++ x < WIDTH)
+			draw_ceiling(game, x, y, brightness);
+	}
+	while (y ++ < HEIGHT)
+	{
+		x = -1;
+		brightness = 1.0f - calculate_brightness((float)(y - HEIGHT / 2),
+				(float)(HEIGHT / 2), 0.2f);
+		while (++ x < WIDTH)
+			draw_floor(game, x, y, brightness);
+	}
+}

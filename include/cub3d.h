@@ -6,7 +6,7 @@
 /*   By: rzhdanov <rzhdanov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 15:41:01 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/12/08 15:41:57 by rzhdanov         ###   ########.fr       */
+/*   Updated: 2024/12/08 17:42:25 by rzhdanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -287,7 +287,7 @@ int			execute_raycasting(t_game *game);
 void		draw_wall(t_game *game, mlx_texture_t *texture, int column);
 void		render_frame(t_game *game);
 float		calculate_brightness(float distance, float max_distance,
-					float min_brightness);
+				float min_brightness);
 
 /*------------------minimap------------------*/
 void		draw_minimap(t_game *game);
