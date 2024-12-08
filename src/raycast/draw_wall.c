@@ -6,7 +6,7 @@
 /*   By: rzhdanov <rzhdanov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 11:28:56 by rzhdanov          #+#    #+#             */
-/*   Updated: 2024/12/02 01:10:02 by rzhdanov         ###   ########.fr       */
+/*   Updated: 2024/12/08 15:45:39 by rzhdanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,24 @@ static void	set_texture_x(t_game *game, mlx_texture_t *texture,
 	if ((uint32_t) * texture_x >= texture->width)
 		*texture_x = texture->width - 1;
 }
+
+float	calculate_brightness(float distance, float max_distance,
+					float min_brightness)
+{
+	float	brightness;
+
+	if (max_distance < 0.0f)
+		max_distance = 20.0f;
+	if (min_brightness < 0.2f)
+		min_brightness = 0.2f;
+	// Calculate brightness as inversely proportional to distance.
+	brightness = 1.0 / (distance / max_distance + 1.0);
+	brightness = brightness * brightness * brightness;
+	// Clamp the brightness to a minimum value.
+	if (brightness < min_brightness)
+		brightness = min_brightness;
+	return brightness;
+}
 // The ugly int array inside is my way of addressing too many arguments issue 
 // the components are as follows
 // int			y; //i_a[0]
@@ -47,6 +65,8 @@ void	draw_wall(t_game *game, mlx_texture_t *texture, int column)
 	int			i_a[4];
 	uint32_t	color;
 	uint8_t		*pixel;
+	float		brightness = calculate_brightness(game->ray->wall_distance, 
+								game->max_distance, 0.2f);
 
 	i_a[0] = game->ray->bottom_pixel;
 	set_texture_x(game, texture, &i_a[2]);
@@ -60,11 +80,57 @@ void	draw_wall(t_game *game, mlx_texture_t *texture, int column)
 			i_a[3] = texture->height - 1;
 		pixel = texture->pixels + (i_a[3] * texture->width + i_a[2])
 			* texture->bytes_per_pixel;
-		color = combiner_hex(pixel[0], pixel[1], pixel[2], 255);
+		color = combiner_hex(pixel[0] * brightness, pixel[1] * brightness, pixel[2] * brightness, 255);
 		mlx_put_pixel(game->img_ray, column, i_a[0], color);
 		i_a[0]++;
 	}
 }
+
+// void draw_wall(t_game *game, mlx_texture_t *texture, int column)
+// {
+//	 int i_a[4];
+//	 uint32_t color;
+//	 uint8_t *pixel;
+
+//	 // Precompute the lighting factor based on the distance
+//	 float distance = game->ray->wall_distance; // Assuming distance is stored in the ray struct
+//	 float max_distance = 100.0f; // Define a maximum distance for lighting
+//	 float lighting_factor = 1.0f - (distance / max_distance);
+// 	lighting_factor = lighting_factor * lighting_factor;
+
+//	 // Clamp lighting factor between 0 and 1
+//	 if (lighting_factor < 0.0f)
+//		 lighting_factor = 0.0f;
+//	 else if (lighting_factor > 1.0f)
+//		 lighting_factor = 1.0f;
+
+//	 i_a[0] = game->ray->bottom_pixel;
+//	 set_texture_x(game, texture, &i_a[2]);
+//	 while (i_a[0] <= game->ray->top_pixel)
+//	 {
+//		 i_a[1] = i_a[0] * 2 - HEIGHT + game->ray->wall_height;
+//		 i_a[3] = ((i_a[1] * texture->height) / game->ray->wall_height) / 2;
+//		 if (i_a[3] < 0)
+//			 i_a[3] = 0;
+//		 if ((uint32_t)i_a[3] >= texture->height)
+//			 i_a[3] = texture->height - 1;
+
+//		 // Get the original pixel color
+//		 pixel = texture->pixels + (i_a[3] * texture->width + i_a[2]) * texture->bytes_per_pixel;
+		
+//		 // Apply lighting to the RGB components
+//		 uint32_t r = (uint32_t)(pixel[0] * lighting_factor);
+//		 uint32_t g = (uint32_t)(pixel[1] * lighting_factor);
+//		 uint32_t b = (uint32_t)(pixel[2] * lighting_factor);
+
+//		 // Combine the modified color with alpha
+//		 color = combiner_hex(r, g, b, 255);
+
+//		 // Draw the pixel with the modified color
+//		 mlx_put_pixel(game->img_ray, column, i_a[0], color);
+//		 i_a[0]++;
+//	 }
+// }
 
 // void	draw_wall(t_game *game, mlx_texture_t *texture, int column)
 // {

@@ -6,7 +6,7 @@
 /*   By: rzhdanov <rzhdanov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 10:47:00 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/12/03 01:08:52 by rzhdanov         ###   ########.fr       */
+/*   Updated: 2024/12/08 15:40:53 by rzhdanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ void	init_player_values(t_game *game)
 	game->player.speed = SPEED;
 	game->player.rotation_speed = ROTATION_SPEED;
 	game->sensitivity = 0.002;
+	game->max_distance = 25.0f;
 	reset_player_direction(game);
 }
 

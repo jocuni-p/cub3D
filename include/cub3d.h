@@ -6,7 +6,7 @@
 /*   By: rzhdanov <rzhdanov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 15:41:01 by jocuni-p          #+#    #+#             */
-/*   Updated: 2024/12/03 01:14:47 by rzhdanov         ###   ########.fr       */
+/*   Updated: 2024/12/08 15:41:57 by rzhdanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -193,6 +193,7 @@ typedef struct s_game
 	t_textures		textures;
 	bool			is_moving;
 	t_ray			*ray;
+	float			max_distance;
 }					t_game;
 
 /*-------------parse management--------------*/
@@ -285,6 +286,8 @@ void		compute_wall_intersections(t_game *game, t_ray *ray);
 int			execute_raycasting(t_game *game);
 void		draw_wall(t_game *game, mlx_texture_t *texture, int column);
 void		render_frame(t_game *game);
+float		calculate_brightness(float distance, float max_distance,
+					float min_brightness);
 
 /*------------------minimap------------------*/
 void		draw_minimap(t_game *game);
