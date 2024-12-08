@@ -52,8 +52,10 @@ void	init_player_values(t_game *game)
 	game->player.speed = SPEED;
 	game->player.rotation_speed = ROTATION_SPEED;
 	game->sensitivity = 0.002;
-	game->max_distance = 20.0f;
 	reset_player_direction(game);
+	game->max_distance = 20.0f;
+	game->mouse_on = false;
+	game->m_is_pressed = false;
 }
 
 /**

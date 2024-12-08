@@ -107,6 +107,7 @@ void	event_listener(t_game *game)
 	if (mlx_is_key_down(game->mlx, MLX_KEY_ESCAPE))
 		error_mlx(game);
 	process_movement(game);
+	toggle_mouse(game);
 	rotate_with_mouse(game);
 }
 

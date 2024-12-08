@@ -192,8 +192,10 @@ typedef struct s_game
 	t_mmap			mmap;
 	t_textures		textures;
 	bool			is_moving;
-	t_ray			*ray;
 	float			max_distance;
+	bool			mouse_on;
+	bool			m_is_pressed;
+	t_ray			*ray;
 }					t_game;
 
 /*-------------parse management--------------*/
@@ -268,6 +270,7 @@ void		try_to_rotate(t_game *game);
 void		try_to_run(t_game *game);
 void		sprint_on(t_game *game);
 void		sprint_off(t_game *game);
+void		toggle_mouse(t_game *game);
 void		rotate_with_mouse(t_game *game);
 void		scroll_hook(double xoffset, double yoffset, void *param);
 void		mouse_button_hook(mouse_key_t button, action_t action,

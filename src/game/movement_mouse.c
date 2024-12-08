@@ -24,11 +24,36 @@ void	rotate_with_mouse(t_game *game)
 	int32_t			current_mouse_y;
 	int32_t			delta_x;
 
-	mlx_get_mouse_pos(game->mlx, &current_mouse_x, &current_mouse_y);
-	delta_x = current_mouse_x - prev_mouse_x;
-	if (delta_x != 0)
-		rotate(game, delta_x * game->sensitivity);
-	prev_mouse_x = current_mouse_x;
+	if (game->mouse_on)
+	{
+		mlx_get_mouse_pos(game->mlx, &current_mouse_x, &current_mouse_y);
+		delta_x = current_mouse_x - prev_mouse_x;
+		if (delta_x != 0)
+			rotate(game, delta_x * game->sensitivity);
+		prev_mouse_x = current_mouse_x;
+	}
+}
+
+/**
+ * Toggles the mouse control state in the game when the M key is pressed.
+ * Checks if the M key is pressed and not already held down. Flips the
+ * `mouse_on` state (enables/disables mouse control). Prevents repeated toggles
+ * by tracking the key press state with `m_is_pressed`.
+ */
+void	toggle_mouse(t_game *game)
+{
+	if (mlx_is_key_down(game->mlx, MLX_KEY_M) && !game->m_is_pressed)
+	{
+		if (!game->mouse_on)
+			game->mouse_on = true;
+		else
+			game->mouse_on = false;
+		game->m_is_pressed = true;
+	}
+	else if (!mlx_is_key_down(game->mlx, MLX_KEY_M) && game->m_is_pressed)
+	{
+		game->m_is_pressed = false;
+	}
 }
 
 /**
