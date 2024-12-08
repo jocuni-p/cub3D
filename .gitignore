@@ -11,6 +11,7 @@ a.out
 *.o
 *.obj
 *.a
+*.py
 /mpanic
 .timmer
 src/*.o
