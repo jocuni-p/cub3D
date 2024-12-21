@@ -45,9 +45,9 @@ static void	draw_floor(t_game *game, int x, int y, float brightness)
 	background_color = game->parser.elem.f_color;
 	pixel_color = combiner_hex((uint32_t)(((background_color >> 24) & 0xFF)
 				* (brightness)),
-			(uint32_t)(((game->parser.elem.c_color >> 16) & 0xFF)
+			(uint32_t)(((game->parser.elem.f_color >> 16) & 0xFF)
 				* (brightness)),
-			(uint32_t)(((game->parser.elem.c_color >> 8) & 0xFF)
+			(uint32_t)(((game->parser.elem.f_color >> 8) & 0xFF)
 				* (brightness)), 255);
 	mlx_put_pixel(game->img_back, x, y, pixel_color);
 }
