@@ -2,7 +2,8 @@
 
 cub3D is a 3D graphical project inspired by the popular game **Wolfenstein 3D**. It is developed in **C** and leverages raycasting techniques to create a pseudo-3D game environment. This project is part of the **42 School curriculum** and aims to demonstrate mastery of graphics programming, mathematical algorithms, and performance optimization.
 
----
+
+
 <img width="1508" alt="cub3D_preview" src="https://github.com/user-attachments/assets/04107508-e348-4b8b-8743-e395ef571f15" />
 
 ## Features
