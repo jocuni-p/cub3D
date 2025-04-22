@@ -39,7 +39,7 @@ make
 
 This will generate the `cub3D` executable in the root directory.
 ```bash
-./cub3D maps/valid/choose_a_map
+./cub3D maps/valid/choose_a_map_file
 ```
 
 ---
