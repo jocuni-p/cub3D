@@ -50,11 +50,11 @@
 # define ERR_PATH "Error\nPath/file to the texture is invalid\n"
 
 /*-------------------game const params------------------*/
-# define WIDTH 2000
+# define WIDTH 1800
 # define HEIGHT 1000
 # define MINIMAP_TILE_SIZE 15
-# define SPEED 0.1f
-# define ROTATION_SPEED 0.0005f
+# define SPEED 0.025f
+# define ROTATION_SPEED 0.000125f
 
 /*-----List containing all lines from filename.cub------*/
 typedef struct s_cub

@@ -53,7 +53,7 @@
 # define WIDTH 2000
 # define HEIGHT 1000
 # define MINIMAP_TILE_SIZE 15
-# define SPEED 0.1f
+# define SPEED 0.1f 
 # define ROTATION_SPEED 0.0005f
 
 /*-----List containing all lines from filename.cub------*/
