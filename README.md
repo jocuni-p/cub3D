@@ -112,4 +112,3 @@ This project is part of the **42 School curriculum**. Special thanks to the 42 N
 This project is licensed under the [MIT License](./LICENSE).
 ```
 
-Let me know if you'd like to adjust or expand on any part of this `README.md`!
